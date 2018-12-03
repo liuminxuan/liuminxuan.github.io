@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="title： 扩展ACL#扩张ACL  与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 ##演习1条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通   1234567Router(config)#">
+<meta name="description" content="title： 扩展ACL#扩张ACL  与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 ##演习1      条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通   1234567Router(co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="liuminxuan">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/扩展ACL/index.html">
 <meta property="og:site_name" content="liuminxuan">
-<meta property="og:description" content="title： 扩展ACL#扩张ACL  与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 ##演习1条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通   1234567Router(config)#">
+<meta property="og:description" content="title： 扩展ACL#扩张ACL  与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 ##演习1      条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通   1234567Router(co">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
-<meta property="og:updated_time" content="2018-12-03T11:50:00.196Z">
+<meta property="og:updated_time" content="2018-12-03T11:52:59.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="liuminxuan">
-<meta name="twitter:description" content="title： 扩展ACL#扩张ACL  与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 ##演习1条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通   1234567Router(config)#">
+<meta name="twitter:description" content="title： 扩展ACL#扩张ACL  与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 ##演习1      条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通   1234567Router(co">
 <meta name="twitter:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
 
 
@@ -314,7 +314,9 @@
         <hr>
 <h2 id="title：-扩展ACL"><a href="#title：-扩展ACL" class="headerlink" title="title： 扩展ACL"></a>title： 扩展ACL</h2><p>#扩张ACL</p>
 <p> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
-<p>##演习1<br><img src="/images/演习1拓扑图.jpg" alt=""><br>条件：<br>1.整个网络要能互相ping通<br>2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</p>
+<p>##演习1  </p>
+<p><img src="/images/演习1拓扑图.jpg" alt="">  </p>
+<p>条件：<br>1.整个网络要能互相ping通<br>2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</p>
 <p>首先配置路由器让其互相ping通  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#interface fastethernet 0</span><br><span class="line">Router(config)#ip address 192.168.1.254 255.255.255.0</span><br><span class="line">Router(config)#no shutdown</span><br><span class="line">Router(config)#interface fastethernet 1</span><br><span class="line">Router(config)#ip address 192.168.2.254 255.255.255.0</span><br><span class="line">Router(config)#no shutdown</span><br><span class="line">Router#show interface   确认端口是否配置成功</span><br></pre></td></tr></table></figure>
 <p>配置ACL</p>
