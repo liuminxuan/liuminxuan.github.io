@@ -239,6 +239,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/扩展ACL/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuminxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuminxuan">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/03/扩展ACL/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T20:20:32+09:00">
+                2018-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<h2 id="title：-扩展ACL"><a href="#title：-扩展ACL" class="headerlink" title="title： 扩展ACL"></a>title： 扩展ACL</h2><p>#扩张ACL</p>
+<p> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
+<p>##演习1<br><img src="/images/演习1拓扑图.jpg" alt=""><br>条件：<br>1.整个网络要能互相ping通<br>2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</p>
+<p>首先配置路由器让其互相ping通  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#interface fastethernet 0</span><br><span class="line">Router(config)#ip address 192.168.1.254 255.255.255.0</span><br><span class="line">Router(config)#no shutdown</span><br><span class="line">Router(config)#interface fastethernet 1</span><br><span class="line">Router(config)#ip address 192.168.2.254 255.255.255.0</span><br><span class="line">Router(config)#no shutdown</span><br><span class="line">Router#show interface   确认端口是否配置成功</span><br></pre></td></tr></table></figure>
+<p>配置ACL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span><br><span class="line">Router(config)#access-list 100 permit ip any any</span><br><span class="line">Router(config)#show access-lists 确认ACL是否建立成功</span><br><span class="line">Router(config)#interface fastethernet 0</span><br><span class="line">Router(config)#ip access-group 100 in</span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">如果想设置Fa 1端口，就用</span><br></pre></td></tr></table></figure>
+<p>Router(config)#interface fastethernet 1<br>Router(config)#ip access-group 100 out<br><code>`</code>  </p>
+<p>最后检查结果时，会出现PCA1到PCB1到达不能，PCB1到PCA1出现timeout，这是正常结果，因为tcp/ip的三次握手中，当PCA1到PCB1通路阻断时，PCA1不能回应PCB1发出的“问候”，从而出现timeout。  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/HelloWorld/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -394,7 +523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
