@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通1234567Router(config)#interface fastethe">
+<meta name="description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
 <meta name="keywords" content="network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扩张ACL(二)">
 <meta property="og:url" content="http://yoursite.com/2018/12/03/扩展ACL（二）/index.html">
 <meta property="og:site_name" content="liuminxuan&#39;s blog">
-<meta property="og:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通1234567Router(config)#interface fastethe">
+<meta property="og:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
-<meta property="og:updated_time" content="2018-12-04T06:16:32.479Z">
+<meta property="og:updated_time" content="2018-12-05T08:27:11.338Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扩张ACL(二)">
-<meta name="twitter:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。 首先配置路由器让其互相ping通1234567Router(config)#interface fastethe">
+<meta name="twitter:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
 <meta name="twitter:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
 
 
@@ -317,6 +317,7 @@
 
 <p><img src="/images/演习1拓扑图.jpg" alt="">  </p>
 <p>条件：<br>1.整个网络要能互相ping通<br>2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</p>
+<a id="more"></a>
 <p>首先配置路由器让其互相ping通<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure></p>
 <p>配置ACL<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span></span><br><span class="line">Router(config)<span class="meta">#access-list 100 permit ip any any</span></span><br><span class="line">Router(config)<span class="meta">#show access-lists 确认ACL是否建立成功</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 in</span></span><br></pre></td></tr></table></figure></p>
 <p>如果想设置Fa 1端口，就用<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1  </span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 out</span></span><br></pre></td></tr></table></figure></p>

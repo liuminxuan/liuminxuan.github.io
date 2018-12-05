@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。 配置路由器 1234567Router(config)#interfa">
+<meta name="description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。">
 <meta name="keywords" content="network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="扩张ACL（三）">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/扩展ACL（三）/index.html">
 <meta property="og:site_name" content="liuminxuan&#39;s blog">
-<meta property="og:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。 配置路由器 1234567Router(config)#interfa">
+<meta property="og:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
-<meta property="og:updated_time" content="2018-12-04T06:53:44.513Z">
+<meta property="og:updated_time" content="2018-12-05T08:27:49.884Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="扩张ACL（三）">
-<meta name="twitter:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。 配置路由器 1234567Router(config)#interfa">
+<meta name="twitter:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。">
 <meta name="twitter:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
 
 
@@ -314,6 +314,7 @@
       
         <p></p><h2>演习2</h2><br> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。  <p></p>
 <p><img src="/images/演习1拓扑图.jpg" alt=""><br>条件：<br>1.网络拓扑图如图所示，首先PC之间互相ping通。<br>2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。</p>
+<a id="more"></a>
 <p>配置路由器</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure>
 <p>配置ACL </p>
