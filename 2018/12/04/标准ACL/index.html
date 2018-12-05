@@ -88,7 +88,7 @@
 <meta property="og:description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。   演习 条件:   组成如图所示的网络并相互ping通 192.168.1.0所属的PC能够和192.168.2.1通信 但是192.168.1.1拒绝通信">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/标准ACL.jpg">
-<meta property="og:updated_time" content="2018-12-05T09:08:26.751Z">
+<meta property="og:updated_time" content="2018-12-05T09:11:04.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="标准ACL">
 <meta name="twitter:description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。   演习 条件:   组成如图所示的网络并相互ping通 192.168.1.0所属的PC能够和192.168.2.1通信 但是192.168.1.1拒绝通信">
@@ -335,9 +335,9 @@
 </ul>
 </blockquote>
 <p>如果选择Fa 1端口配置ACL的话，就修改成如下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#interface fastethernet 1</span><br><span class="line">Router(config-if)#ip access-group 1 out</span><br><span class="line">Router#show access-lists  确认ACL创建成功</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip access-group 1 out</span></span><br><span class="line">Router<span class="meta">#show access-lists  确认ACL创建成功</span></span><br></pre></td></tr></table></figure>
 <p>如果不需要这个ACL的话</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#no access-list 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#no access-list 1</span></span><br></pre></td></tr></table></figure>
 <p>就可以将ACL删去.</p>
 <p>ACL的对照顺序是自上向下并且默认是deny的，如果将实验中ACL的两行互换在本演习中理论上没有影响，但是具体实验并没有实施，“顺序因素对ACL的影响”是以后可以考虑的问题点之一。</p>
 
@@ -379,6 +379,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/05/单臂路由的实现/" rel="prev" title="单臂路由的实现">
+                单臂路由的实现 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -455,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
