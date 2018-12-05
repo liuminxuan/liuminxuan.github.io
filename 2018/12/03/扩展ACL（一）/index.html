@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。">
+<meta name="description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
 <meta name="keywords" content="network">
 <meta property="og:type" content="article">
-<meta property="og:title" content="扩张ACL（三）">
-<meta property="og:url" content="http://yoursite.com/2018/12/04/扩展ACL（三）/index.html">
+<meta property="og:title" content="扩张ACL(一)">
+<meta property="og:url" content="http://yoursite.com/2018/12/03/扩展ACL（一）/index.html">
 <meta property="og:site_name" content="liuminxuan&#39;s blog">
-<meta property="og:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。">
+<meta property="og:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
-<meta property="og:updated_time" content="2018-12-05T08:27:49.884Z">
+<meta property="og:updated_time" content="2018-12-05T08:30:16.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="扩张ACL（三）">
-<meta name="twitter:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。   条件：1.网络拓扑图如图所示，首先PC之间互相ping通。2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。">
+<meta name="twitter:title" content="扩张ACL(一)">
+<meta name="twitter:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1       条件：1.整个网络要能互相ping通2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
 <meta name="twitter:image" content="http://yoursite.com/images/演习1拓扑图.jpg">
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/04/扩展ACL（三）/">
+  <link rel="canonical" href="http://yoursite.com/2018/12/03/扩展ACL（一）/">
 
 
 
 
 
-  <title>扩张ACL（三） | liuminxuan's blog</title>
+  <title>扩张ACL(一) | liuminxuan's blog</title>
   
 
 
@@ -245,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/扩展ACL（三）/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/03/扩展ACL（一）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminxuan">
@@ -262,7 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">扩张ACL（三）</h1>
+          <h1 class="post-title" itemprop="name headline">扩张ACL(一)</h1>
         
 
         <div class="post-meta">
@@ -274,8 +274,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-04T15:06:38+09:00">
-                2018-12-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-03T20:59:01+09:00">
+                2018-12-03
               </time>
             
 
@@ -312,19 +312,16 @@
       
 
       
-        <p></p><h2>演习2</h2><br> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。  <p></p>
-<p><img src="/images/演习1拓扑图.jpg" alt=""><br>条件：<br>1.网络拓扑图如图所示，首先PC之间互相ping通。<br>2.从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。</p>
+        <p> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
+<h2>演习1</h2>  
+
+<p><img src="/images/演习1拓扑图.jpg" alt="">  </p>
+<p>条件：<br>1.整个网络要能互相ping通<br>2.设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</p>
 <a id="more"></a>
-<p>配置路由器</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure>
-<p>配置ACL </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 100 deny tcp host 192.168.1.1 host 192.168.2.1 eq 23  </span></span><br><span class="line">Router(config)<span class="meta">#access-list 100 permit ip any any</span></span><br><span class="line">Router(config)<span class="meta">#show access-lists 确认ACL是否建立成功</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 in</span></span><br></pre></td></tr></table></figure>
-<p>配置switch</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="meta">#interface vlan 1</span></span><br><span class="line"><span class="keyword">switch</span>(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.1.100 255.255.255.0</span></span><br><span class="line"><span class="keyword">switch</span>(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line"><span class="keyword">switch</span>(config-<span class="keyword">if</span>)<span class="meta">#exit</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="meta">#ip default-gateway 192.168.1.254</span></span><br></pre></td></tr></table></figure>
-<p>switch有两台，根据上述代码可以配置另一台  </p>
-<p>配置router密码  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#<span class="meta-keyword">line</span> vty 0 4</span></span><br><span class="line">Router(config-line)<span class="meta">#password cisco</span></span><br><span class="line">Router(config-line)<span class="meta">#login</span></span><br><span class="line">Router(config-line)<span class="meta">#end</span></span><br><span class="line">Router<span class="meta">#show run 确认router密码是否配置成功</span></span><br></pre></td></tr></table></figure>
-<p>最终结果为PCA无法telnet到PCB（显示访问拒绝），但是PCB可以telnet到PCA，电脑之间的互相ping正常。</p>
+<p>首先配置路由器让其互相ping通<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure></p>
+<p>配置ACL<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span></span><br><span class="line">Router(config)<span class="meta">#access-list 100 permit ip any any</span></span><br><span class="line">Router(config)<span class="meta">#show access-lists 确认ACL是否建立成功</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 in</span></span><br></pre></td></tr></table></figure></p>
+<p>如果想设置Fa 1端口，就用<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1  </span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 out</span></span><br></pre></td></tr></table></figure></p>
+<p>最后检查结果时，会出现PCA1到PCB1到达不能，PCB1到PCA1出现timeout，这是正常结果，因为tcp/ip的三次握手中，当PCA1到PCB1通路阻断时，PCA1不能回应PCB1发出的“问候”，从而出现timeout。  </p>
 
       
     </div>
@@ -355,8 +352,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/03/扩展ACL（二）/" rel="next" title="扩张ACL(二)">
-                <i class="fa fa-chevron-left"></i> 扩张ACL(二)
+              <a href="/2018/12/02/HelloWorld/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -365,8 +362,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/扩张ACL（一）/" rel="prev" title="标准ACL">
-                标准ACL <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/扩展ACL（二）/" rel="prev" title="扩张ACL（二）">
+                扩张ACL（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,7 +487,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">演习2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">演习1</span></a></li></ol></div>
             
 
           </div>
