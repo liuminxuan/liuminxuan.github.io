@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="network,">
+  <meta name="keywords" content="Hexo,博客,GitHub,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.0 access当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题 ，比如192.168.1.1和192.168.2.1即使被access划分进了一">
-<meta name="keywords" content="network">
+<meta name="description" content="利用GitHub和Hexo搭建个人博客">
+<meta name="keywords" content="Hexo,博客,GitHub">
 <meta property="og:type" content="article">
-<meta property="og:title" content="network学习笔记：access和trunk配置">
-<meta property="og:url" content="http://yoursite.com/2018/12/06/network学习笔记：access和trunk配置/index.html">
+<meta property="og:title" content="利用GitHub和Hexo搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2018/11/18/HelloWorld/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="1.0 access当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题 ，比如192.168.1.1和192.168.2.1即使被access划分进了一">
+<meta property="og:description" content="利用GitHub和Hexo搭建个人博客">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-24T04:38:49.616Z">
+<meta property="og:updated_time" content="2018-12-24T04:56:25.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="network学习笔记：access和trunk配置">
-<meta name="twitter:description" content="1.0 access当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题 ，比如192.168.1.1和192.168.2.1即使被access划分进了一">
+<meta name="twitter:title" content="利用GitHub和Hexo搭建个人博客">
+<meta name="twitter:description" content="利用GitHub和Hexo搭建个人博客">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/06/network学习笔记：access和trunk配置/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/18/HelloWorld/">
 
 
 
 
 
-  <title>network学习笔记：access和trunk配置 | LIU的学习笔记</title>
+  <title>利用GitHub和Hexo搭建个人博客 | LIU的学习笔记</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/network学习笔记：access和trunk配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/HelloWorld/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminxuan">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">network学习笔记：access和trunk配置</h1>
+          <h1 class="post-title" itemprop="name headline">利用GitHub和Hexo搭建个人博客</h1>
         
 
         <div class="post-meta">
@@ -272,8 +272,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-06T09:26:01+08:00">
-                2018-12-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-18T12:10:58+08:00">
+                2018-11-18
               </time>
             
 
@@ -310,26 +310,8 @@
       
 
       
-        <h1>1.0 access</h1><br>当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。<br><strong>access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题</strong> ，比如192.168.1.1和192.168.2.1即使被access划分进了一个vlan也不能相互通信。<br><br><a id="more"></a><br><h1>1.1 access演习</h1>
+        <h1>利用GitHub和Hexo搭建个人博客</h1>
 
-<p>将switch进行如下设置：</p>
-<blockquote>
-<ul>
-<li>Fa 0/1 - 8 =&gt; VLAN 10</li>
-<li>Fa 0/9 - 16 =&gt; VLAN 20</li>
-<li>四台电脑之间通信确认</li>
-</ul>
-</blockquote>
-<h2>配置SWITCH</h2>
-
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/1 - 8</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/9 - 16</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 20</span></span><br></pre></td></tr></table></figure></div>
-<h2>结果</h2><br>至此access配置完成，结果是vlan10接口之间可以相互通信，vlan20接口之间可以相互通信，vlan10接口与vlan20接口即使切换成同一网段也无法实现通信。<br><br><h1>2.0 trunk</h1><br>第一章我们解决了同一台switch之间不同vlan的划分，然而两台甚至多台switch如何解决通信呢？这就需要trunk来解决问题，trunk可以解决两台switch设置成同一vlan之间的通信问题。<br><br><h1>2.1 trunk演习</h1><br><body><br>将两台switch进行如下设定：<br>&gt;- Fa 0/1 - 8 =&gt; VLAN 10<br>&gt;- Fa 0/9 - 16 =&gt; VLAN 20<br>&gt;- Fa 0/24 为trunk口<br>&gt;- vlan10的PC分为192.168.10.1和192.168.10.2<br>&gt;- vlan20的PC分为192.168.20.12和192.168.20.13<br>&gt;- switchport通信确认<br>  - switchport 1和switchport 2<br>  - switchport 1和switchport 13<br>  - switchport 12和switchport 13<br></body><br><br><h2>配置switch</h2>
-
-<h3>配置access</h3>
-
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/1 - 8</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/9 - 16</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 20</span></span><br></pre></td></tr></table></figure></div>
-<p></p><h3>配置trunk</h3><br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SW1(config)<span class="meta">#interface range fastethernet 0/24</span></span><br><span class="line">SW1(config-<span class="keyword">if</span>-range)<span class="meta">#switchport trunk encapsulation dot1q</span></span><br><span class="line">SW1(config-<span class="keyword">if</span>-range)<span class="meta">#switchport nonegotiate</span></span><br></pre></td></tr></table></figure></div><p></p>
-<p></p><h2>结果</h2><br>两台switch之间vlan10和vlan20可以分别相互通信。<p></p>
 
       
     </div>
@@ -347,7 +329,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/network/" rel="tag"># network</a>
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/博客/" rel="tag"># 博客</a>
+          
+            <a href="/tags/GitHub/" rel="tag"># GitHub</a>
           
         </div>
       
@@ -360,18 +346,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/05/network学习笔记：单臂路由的实现/" rel="next" title="network学习笔记：单臂路由的实现">
-                <i class="fa fa-chevron-left"></i> network学习笔记：单臂路由的实现
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/10/遗传算法学习笔记-用遗传算法求最大值/" rel="prev" title="遗传算法学习笔记(一):用遗传算法求最大值">
-                遗传算法学习笔记(一):用遗传算法求最大值 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/03/network学习笔记：扩展ACL（一）/" rel="prev" title="network学习笔记：扩张ACL(一)">
+                network学习笔记：扩张ACL(一) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -505,7 +487,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">1.0 access</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">1.1 access演习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">配置SWITCH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">2.0 trunk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">2.1 trunk演习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">配置switch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.1.</span> <span class="nav-text">配置access</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.2.</span> <span class="nav-text">配置trunk</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">利用GitHub和Hexo搭建个人博客</span></a></li></ol></div>
             
 
           </div>
