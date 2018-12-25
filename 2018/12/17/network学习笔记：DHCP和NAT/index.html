@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="LIU的学习笔记">
 <meta property="og:description" content="DHCP概要DHCP(dynamic host configuration protocol)是局域网中的一种协议，可以给内部网自动分配ip地址。DHCP客户端和DHCP服务器之间连接过程分为四步：1. discovery阶段：客户端通过broadcast寻找服务器2. offer阶段：服务器预约ip地址并回信给客户端3. request阶段：客户端收到offer，并将需要的ip地址，broadc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-24T04:39:05.935Z">
+<meta property="og:updated_time" content="2018-12-25T02:24:02.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="network学习笔记：DHCP和NAT">
 <meta name="twitter:description" content="DHCP概要DHCP(dynamic host configuration protocol)是局域网中的一种协议，可以给内部网自动分配ip地址。DHCP客户端和DHCP服务器之间连接过程分为四步：1. discovery阶段：客户端通过broadcast寻找服务器2. offer阶段：服务器预约ip地址并回信给客户端3. request阶段：客户端收到offer，并将需要的ip地址，broadc">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2018-12-24T12:39:05+08:00">
-                2018-12-24
+              <time title="Post modified" itemprop="dateModified" datetime="2018-12-25T10:24:02+08:00">
+                2018-12-25
               </time>
             
           </span>
@@ -349,7 +349,7 @@
 
 <p>network拓扑图如下,要求用两台router，一台switch完成实验，PC取得适当的ip地址后，模拟网络服务(loopback)能完成通信的话就是成功。</p>
 <p><strong>首先配置GW的路由器NAT：</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GW_Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.32.254 255.255.255.0</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip nat inside</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">GW_Router(config)<span class="meta">#interface fastrthernet 1</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 209.165.201.18 255.255.255.0</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip nat outside</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">GW_Router(config)<span class="meta">#ip nat pool DPAT 209.165.201.16 209.165.201.16 netmask 255.255.255.0</span></span><br><span class="line">GW_Router(config)<span class="meta">#access-list 1 permit host 192.168.32.0  <span class="comment">//设置ACL</span></span></span><br><span class="line">GW_Router(config)<span class="meta">#ip nat inside source list 1 pool DPAT overload <span class="comment">//PAT定义</span></span></span><br></pre></td></tr></table></figure></div>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GW_Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.32.254 255.255.255.0</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip nat inside</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">GW_Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 209.165.201.18 255.255.255.0</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#ip nat outside</span></span><br><span class="line">GW_Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">GW_Router(config)<span class="meta">#ip nat pool DPAT 209.165.201.16 209.165.201.16 netmask 255.255.255.0</span></span><br><span class="line">GW_Router(config)<span class="meta">#access-list 1 permit host 192.168.32.0  <span class="comment">//设置ACL</span></span></span><br><span class="line">GW_Router(config)<span class="meta">#ip nat inside source list 1 pool DPAT overload <span class="comment">//PAT定义</span></span></span><br></pre></td></tr></table></figure></div>
 <p><strong>其次配置GW路由器DHCP：</strong></p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GW_Router(config)<span class="meta">#ip dhcp pool LANUser</span></span><br><span class="line">GW_Router(dhcp-config)<span class="meta">#network 192.168.32.0 255.255.255.0</span></span><br><span class="line">GW_Router(dhcp-config)<span class="meta">#default-router 192.168.32.254</span></span><br><span class="line">GW_Router(dhcp-config)<span class="meta">#domain-name google.com</span></span><br><span class="line">GW_Router(dhcp-config)<span class="meta">#dns-server 8.8.8.8 <span class="comment">//设定dns服务器</span></span></span><br><span class="line">GW_Router(dhcp-config)<span class="meta">#lease 0 12 <span class="comment">//释放时间设置为12小时</span></span></span><br></pre></td></tr></table></figure></div>
 <p><strong>接着配置ISP服务器：</strong></p>
@@ -488,7 +488,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -501,7 +501,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
