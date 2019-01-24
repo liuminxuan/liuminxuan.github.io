@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1   条件 整个网络要能互相ping通   设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
+<meta name="description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
 <meta name="keywords" content="network,cisco">
 <meta property="og:type" content="article">
 <meta property="og:title" content="network学习笔记：扩张ACL(一)">
 <meta property="og:url" content="http://liuminxuan.github.io/2018/12/03/network学习笔记：扩展ACL（一）/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1   条件 整个网络要能互相ping通   设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
+<meta property="og:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
-<meta property="og:updated_time" content="2019-01-23T13:33:30.151Z">
+<meta property="og:updated_time" content="2019-01-24T13:21:36.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="network学习笔记：扩张ACL(一)">
-<meta name="twitter:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。 演习1   条件 整个网络要能互相ping通   设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。">
+<meta name="twitter:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
 <meta name="twitter:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
 
 
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-23T22:33:30+09:00">
-                2019-01-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-24T22:21:36+09:00">
+                2019-01-24
               </time>
             
           </span>
@@ -325,12 +325,12 @@
 
       
         <p> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
+<a id="more"></a>
 <h2 id="演习1"><a href="#演习1" class="headerlink" title="演习1"></a>演习1</h2><p><img src="/images/演习1拓扑图.jpg" alt="">  </p>
 <h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><ol>
 <li>整个网络要能互相ping通  </li>
 <li>设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</li>
 </ol>
-<a id="more"></a>
 <p>首先配置路由器让其互相ping通<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure></div></p>
 <p>配置ACL<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span></span><br><span class="line">Router(config)<span class="meta">#access-list 100 permit ip any any</span></span><br><span class="line">Router(config)<span class="meta">#show access-lists 确认ACL是否建立成功</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 in</span></span><br></pre></td></tr></table></figure></div></p>
 <p>如果想设置Fa 1端口，就用<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1  </span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 out</span></span><br></pre></td></tr></table></figure></div></p>
@@ -474,7 +474,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
