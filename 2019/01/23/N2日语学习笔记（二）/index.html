@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="network,cisco,">
+  <meta name="keywords" content="日语,JLPT_N2,日语语法,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。   标准acl list的号码可以是1〜99和1300〜1999，扩张acl list号码为100〜199和2000〜2699。 演习 条件  组成如图所示的网络并相互ping通 192.168.1.0所属的P">
-<meta name="keywords" content="network,cisco">
+<meta name="description" content="～得る 动ます形+得る ＝动词的可能形（表示可能性，不是能力） 常用形：ありうる">
+<meta name="keywords" content="日语,JLPT_N2,日语语法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="network学习笔记：标准ACL">
-<meta property="og:url" content="http://liuminxuan.github.io/2018/12/04/network学习笔记：标准ACL/index.html">
+<meta property="og:title" content="N2日语学习笔记（二）">
+<meta property="og:url" content="http://liuminxuan.github.io/2019/01/23/N2日语学习笔记（二）/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。   标准acl list的号码可以是1〜99和1300〜1999，扩张acl list号码为100〜199和2000〜2699。 演习 条件  组成如图所示的网络并相互ping通 192.168.1.0所属的P">
+<meta property="og:description" content="～得る 动ます形+得る ＝动词的可能形（表示可能性，不是能力） 常用形：ありうる">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://liuminxuan.github.io/images/标准ACL.jpg">
-<meta property="og:updated_time" content="2019-01-23T13:31:08.685Z">
+<meta property="og:updated_time" content="2019-01-24T12:09:20.765Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="network学习笔记：标准ACL">
-<meta name="twitter:description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。   标准acl list的号码可以是1〜99和1300〜1999，扩张acl list号码为100〜199和2000〜2699。 演习 条件  组成如图所示的网络并相互ping通 192.168.1.0所属的P">
-<meta name="twitter:image" content="http://liuminxuan.github.io/images/标准ACL.jpg">
+<meta name="twitter:title" content="N2日语学习笔记（二）">
+<meta name="twitter:description" content="～得る 动ます形+得る ＝动词的可能形（表示可能性，不是能力） 常用形：ありうる">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://liuminxuan.github.io/2018/12/04/network学习笔记：标准ACL/">
+  <link rel="canonical" href="http://liuminxuan.github.io/2019/01/23/N2日语学习笔记（二）/">
 
 
 
 
 
-  <title>network学习笔记：标准ACL | LIU的学习笔记</title>
+  <title>N2日语学习笔记（二） | LIU的学习笔记</title>
   
 
 
@@ -245,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2018/12/04/network学习笔记：标准ACL/">
+    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2019/01/23/N2日语学习笔记（二）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminxuan">
@@ -262,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">network学习笔记：标准ACL</h1>
+          <h1 class="post-title" itemprop="name headline">N2日语学习笔记（二）</h1>
         
 
         <div class="post-meta">
@@ -274,8 +272,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:59:05+09:00">
-                2018-12-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T18:09:35+09:00">
+                2019-01-23
               </time>
             
 
@@ -290,8 +288,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-23T22:31:08+09:00">
-                2019-01-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-24T21:09:20+09:00">
+                2019-01-24
               </time>
             
           </span>
@@ -324,33 +322,59 @@
       
 
       
-        <p>ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。  </p>
-<p>标准acl list的号码可以是1〜99和1300〜1999，扩张acl list号码为100〜199和2000〜2699。</p>
-<h2 id="演习"><a href="#演习" class="headerlink" title="演习"></a>演习</h2><p><img src="/images/标准ACL.jpg" alt=""></p>
-<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><blockquote>
-<ul>
-<li>组成如图所示的网络并相互ping通</li>
-<li>192.168.1.0所属的PC能够和192.168.2.1通信</li>
-<li>但是192.168.1.1拒绝通信</li>
+        <h2 id="～得る"><a href="#～得る" class="headerlink" title="～得る"></a>～得る</h2><ul>
+<li>动ます形+得る</li>
+<li>＝动词的可能形（表示可能性，不是能力）</li>
+<li>常用形：ありうる</li>
 </ul>
-</blockquote>
 <a id="more"></a>
-<p>配置路由器</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface 确认端口是否设置成功</span></span><br></pre></td></tr></table></figure></div>
-<p>配置ACL</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 1 deny host 192.168.1.1</span></span><br><span class="line">Router(config)<span class="meta">#access-list 1 permit any</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip access-group 1 in</span></span><br><span class="line">Router<span class="meta">#show access-lists  确认ACL创建成功</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
-<ul>
-<li>PC B,PC C,PC D之间可以相互ping</li>
-<li>PC A和PC D不能ping成功</li>
+<h2 id="～得ない"><a href="#～得ない" class="headerlink" title="～得ない"></a>～得ない</h2><ul>
+<li>动ます形+得ない</li>
+<li>没有这种客观上发生的可能性</li>
+<li>「(せ)ざるを得ない」不得不</li>
+<li>常用形：ありえない</li>
 </ul>
-</blockquote>
-<p>如果选择Fa 1端口配置ACL的话，就修改成如下代码</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip access-group 1 out</span></span><br><span class="line">Router<span class="meta">#show access-lists  确认ACL创建成功</span></span><br></pre></td></tr></table></figure></div>
-<p>如果不需要这个ACL的话</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#no access-list 1</span></span><br></pre></td></tr></table></figure></div>
-<p>就可以将ACL删去.</p>
-<p>ACL的对照顺序是自上向下并且默认是deny的，如果将实验中ACL的两行互换在本演习中理论上没有影响，但是具体实验并没有实施，“顺序因素对ACL的影响”是以后可以考虑的问题点之一。</p>
+<h2 id="～おかげで-おかげだ"><a href="#～おかげで-おかげだ" class="headerlink" title="～おかげで/おかげだ"></a>～おかげで/おかげだ</h2><ul>
+<li>汉字：お陰で/お陰だ</li>
+<li>“托…的福”“多亏了…”，表示原因</li>
+<li>常用于好的结果，有时也有反话</li>
+<li>「～せいだ」“都怪…”</li>
+</ul>
+<h2 id="～恐れがある"><a href="#～恐れがある" class="headerlink" title="～恐れがある"></a>～恐れがある</h2><ul>
+<li>有可能发生不好的结果</li>
+<li>「〜かねない」客观上的有可能</li>
+</ul>
+<h2 id="～甲斐がある-甲斐がない-甲斐もなく"><a href="#～甲斐がある-甲斐がない-甲斐もなく" class="headerlink" title="～甲斐がある/甲斐がない/甲斐もなく"></a>～甲斐がある/甲斐がない/甲斐もなく</h2><ul>
+<li>动た形/名の＋　〜</li>
+<li>“(没)有…的价值”</li>
+</ul>
+<h2 id="～がきっかけで-がきっかけになって-をきっかけに-して-をきっかけとして"><a href="#～がきっかけで-がきっかけになって-をきっかけに-して-をきっかけとして" class="headerlink" title="～がきっかけで/がきっかけになって/をきっかけに(して)/をきっかけとして"></a>～がきっかけで/がきっかけになって/をきっかけに(して)/をきっかけとして</h2><ul>
+<li>「〜がきっかけになって」自己成为契机　　　</li>
+<li>「をきっかけに(して)」 使…成为契机</li>
+<li>=「～が契機で/が契機になって/を契機に(して)/を契機にして」</li>
+</ul>
+<h2 id="～限り-は-限りでは-ない限り"><a href="#～限り-は-限りでは-ない限り" class="headerlink" title="～限り(は)/限りでは/ない限り"></a>～限り(は)/限りでは/ない限り</h2><ul>
+<li>「限り」在n2中只有三个意思<strong>熟记</strong><ul>
+<li>尽量，尽最大程度：できる限り＝できるだけ</li>
+<li>只要…就…：只要他不跟我道歉，我就不原谅他</li>
+<li>据…所知,据…所调查：調べる限り</li>
+</ul>
+</li>
+</ul>
+<h2 id="～が契機で-が契機になって-を契機に-して-を契機にして"><a href="#～が契機で-が契機になって-を契機に-して-を契機にして" class="headerlink" title="～が契機で/が契機になって/を契機に(して)/を契機にして"></a>～が契機で/が契機になって/を契機に(して)/を契機にして</h2><ul>
+<li>书面语</li>
+<li>=「～がきっかけで/がきっかけになって/をきっかけに(して)/をきっかけとして」</li>
+</ul>
+<h2 id="～かけだ-かけの-かける"><a href="#～かけだ-かけの-かける" class="headerlink" title="～かけだ/かけの/かける"></a>～かけだ/かけの/かける</h2><ul>
+<li>动ます形 + ～</li>
+<li>“…做到一半”</li>
+<li>「死にかけていた猫」差点死掉的猫。</li>
+</ul>
+<h2 id="～がたい"><a href="#～がたい" class="headerlink" title="～がたい"></a>～がたい</h2><ul>
+<li>表示主观上的“难以”，「难以忘却」「难以置信」「难以原谅」</li>
+<li>「動かしがたい事実」难以否认的事实</li>
+<li>「かねる」客观的难以，如“经理不在，我难以回答您的问题。”</li>
+</ul>
 
       
     </div>
@@ -371,7 +395,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2018/12/04/network学习笔记：标准ACL/" title="network学习笔记：标准ACL">http://liuminxuan.github.io/2018/12/04/network学习笔记：标准ACL/</a>
+    <a href="http://liuminxuan.github.io/2019/01/23/N2日语学习笔记（二）/" title="N2日语学习笔记（二）">http://liuminxuan.github.io/2019/01/23/N2日语学习笔记（二）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -386,9 +410,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/network/" rel="tag"># network</a>
+            <a href="/tags/日语/" rel="tag"># 日语</a>
           
-            <a href="/tags/cisco/" rel="tag"># cisco</a>
+            <a href="/tags/JLPT-N2/" rel="tag"># JLPT_N2</a>
+          
+            <a href="/tags/日语语法/" rel="tag"># 日语语法</a>
           
         </div>
       
@@ -401,8 +427,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/network学习笔记：扩展ACL（二）/" rel="next" title="network学习笔记：扩张ACL(二)">
-                <i class="fa fa-chevron-left"></i> network学习笔记：扩张ACL(二)
+              <a href="/2019/01/23/N2日语学习笔记（一）/" rel="next" title="N2日语学习笔记（一）">
+                <i class="fa fa-chevron-left"></i> N2日语学习笔记（一）
               </a>
             
           </div>
@@ -410,10 +436,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/05/network学习笔记：单臂路由的实现/" rel="prev" title="network学习笔记：单臂路由的实现">
-                network学习笔记：单臂路由的实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -550,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#演习"><span class="nav-number">1.</span> <span class="nav-text">演习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件"><span class="nav-number">1.1.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#～得る"><span class="nav-number">1.</span> <span class="nav-text">～得る</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～得ない"><span class="nav-number">2.</span> <span class="nav-text">～得ない</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～おかげで-おかげだ"><span class="nav-number">3.</span> <span class="nav-text">～おかげで/おかげだ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～恐れがある"><span class="nav-number">4.</span> <span class="nav-text">～恐れがある</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～甲斐がある-甲斐がない-甲斐もなく"><span class="nav-number">5.</span> <span class="nav-text">～甲斐がある/甲斐がない/甲斐もなく</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～がきっかけで-がきっかけになって-をきっかけに-して-をきっかけとして"><span class="nav-number">6.</span> <span class="nav-text">～がきっかけで/がきっかけになって/をきっかけに(して)/をきっかけとして</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～限り-は-限りでは-ない限り"><span class="nav-number">7.</span> <span class="nav-text">～限り(は)/限りでは/ない限り</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～が契機で-が契機になって-を契機に-して-を契機にして"><span class="nav-number">8.</span> <span class="nav-text">～が契機で/が契機になって/を契機に(して)/を契機にして</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～かけだ-かけの-かける"><span class="nav-number">9.</span> <span class="nav-text">～かけだ/かけの/かける</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#～がたい"><span class="nav-number">10.</span> <span class="nav-text">～がたい</span></a></li></ol></div>
             
 
           </div>
