@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="access当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题 ，比如192.168.1.1和192.168.2.1即使被access划分进了一个vla">
+<meta name="description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
 <meta name="keywords" content="network,cisco">
 <meta property="og:type" content="article">
-<meta property="og:title" content="network学习笔记：access和trunk配置">
-<meta property="og:url" content="http://liuminxuan.github.io/2018/12/06/network学习笔记：access和trunk配置/index.html">
+<meta property="og:title" content="network实践笔记：扩张ACL(一)">
+<meta property="og:url" content="http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="access当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题 ，比如192.168.1.1和192.168.2.1即使被access划分进了一个vla">
+<meta property="og:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-23T15:09:05.412Z">
+<meta property="og:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
+<meta property="og:updated_time" content="2019-01-26T03:02:51.828Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="network学习笔记：access和trunk配置">
-<meta name="twitter:description" content="access当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题 ，比如192.168.1.1和192.168.2.1即使被access划分进了一个vla">
+<meta name="twitter:title" content="network实践笔记：扩张ACL(一)">
+<meta name="twitter:description" content="与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
+<meta name="twitter:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://liuminxuan.github.io/2018/12/06/network学习笔记：access和trunk配置/">
+  <link rel="canonical" href="http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/">
 
 
 
 
 
-  <title>network学习笔记：access和trunk配置 | LIU的学习笔记</title>
+  <title>network实践笔记：扩张ACL(一) | LIU的学习笔记</title>
   
 
 
@@ -201,6 +203,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -243,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2018/12/06/network学习笔记：access和trunk配置/">
+    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminxuan">
@@ -260,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">network学习笔记：access和trunk配置</h1>
+          <h1 class="post-title" itemprop="name headline">network实践笔记：扩张ACL(一)</h1>
         
 
         <div class="post-meta">
@@ -272,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T09:26:01+09:00">
-                2018-12-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-03T20:59:01+09:00">
+                2018-12-03
               </time>
             
 
@@ -288,8 +300,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-24T00:09:05+09:00">
-                2019-01-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-26T12:02:51+09:00">
+                2019-01-26
               </time>
             
           </span>
@@ -322,36 +334,17 @@
       
 
       
-        <h1 id="access"><a href="#access" class="headerlink" title="access"></a>access</h1><p>当Switch划分成几个不同的vlan时，怎样解决不同vlan内部的通信问题呢？这时我们就需要access来帮助我们进行内部的通信，这样就可以在一台switch中划分出很多vlan，各个vlan之间相互隔离不能通信。<br><strong>access只能解决同网段同vlan的互通问题，不能解决不同网段的vlan互通问题</strong> ，比如192.168.1.1和192.168.2.1即使被access划分进了一个vlan也不能相互通信。</p>
+        <p> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
 <a id="more"></a>
-<h2 id="access演习"><a href="#access演习" class="headerlink" title="access演习"></a>access演习</h2><p>将switch进行如下设置：</p>
-<blockquote>
-<ul>
-<li>Fa 0/1 - 8 =&gt; VLAN 10</li>
-<li>Fa 0/9 - 16 =&gt; VLAN 20</li>
-<li>四台电脑之间通信确认</li>
-</ul>
-</blockquote>
-<h3 id="配置SWITCH"><a href="#配置SWITCH" class="headerlink" title="配置SWITCH"></a>配置SWITCH</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/1 - 8</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/9 - 16</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 20</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>至此access配置完成，结果是vlan10接口之间可以相互通信，vlan20接口之间可以相互通信，vlan10接口与vlan20接口即使切换成同一网段也无法实现通信。</p>
-<h1 id="trunk"><a href="#trunk" class="headerlink" title="trunk"></a>trunk</h1><p>第一章我们解决了同一台switch之间不同vlan的划分，然而两台甚至多台switch如何解决通信呢？这就需要trunk来解决问题，trunk可以解决两台switch设置成同一vlan之间的通信问题。</p>
-<h2 id="trunk演习"><a href="#trunk演习" class="headerlink" title="trunk演习"></a>trunk演习</h2><p>将两台switch进行如下设定：</p>
-<ul>
-<li>Fa 0/1 - 8 =&gt; VLAN 10</li>
-<li>Fa 0/9 - 16 =&gt; VLAN 20</li>
-<li>Fa 0/24 为trunk口</li>
-<li>vlan10的PC分为192.168.10.1和192.168.10.2</li>
-<li>vlan20的PC分为192.168.20.12和192.168.20.13</li>
-<li>switchport通信确认<ul>
-<li>switchport 1和switchport 2</li>
-<li>switchport 1和switchport 13</li>
-<li>switchport 12和switchport 13</li>
-</ul>
-</li>
-</ul>
-<h3 id="配置switch的access"><a href="#配置switch的access" class="headerlink" title="配置switch的access"></a>配置switch的access</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/1 - 8</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 10</span></span><br><span class="line">Switch(config)<span class="meta">#interface range fastethernet 0/9 - 16</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport mode access</span></span><br><span class="line">Switch(config-<span class="keyword">if</span>-range)<span class="meta">#switchport access vlan 20</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="配置trunk"><a href="#配置trunk" class="headerlink" title="配置trunk"></a>配置trunk</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SW1(config)<span class="meta">#interface range fastethernet 0/24</span></span><br><span class="line">SW1(config-<span class="keyword">if</span>-range)<span class="meta">#switchport trunk encapsulation dot1q</span></span><br><span class="line">SW1(config-<span class="keyword">if</span>-range)<span class="meta">#switchport nonegotiate</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p>两台switch之间vlan10和vlan20可以分别相互通信。</p>
+<h2 id="演习1"><a href="#演习1" class="headerlink" title="演习1"></a>演习1</h2><p><img src="/images/演习1拓扑图.jpg" alt="">  </p>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><ol>
+<li>整个网络要能互相ping通  </li>
+<li>设置番号为100的扩张ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</li>
+</ol>
+<p>首先配置路由器让其互相ping通<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure></div></p>
+<p>配置ACL<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span></span><br><span class="line">Router(config)<span class="meta">#access-list 100 permit ip any any</span></span><br><span class="line">Router(config)<span class="meta">#show access-lists 确认ACL是否建立成功</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 in</span></span><br></pre></td></tr></table></figure></div></p>
+<p>如果想设置Fa 1端口，就用<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1  </span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 out</span></span><br></pre></td></tr></table></figure></div></p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最后检查结果时，会出现PCA1到PCB1到达不能，PCB1到PCA1出现timeout，这是正常结果，因为tcp/ip的三次握手中，当PCA1到PCB1通路阻断时，PCA1不能回应PCB1发出的“问候”，从而出现timeout。  </p>
 
       
     </div>
@@ -372,7 +365,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2018/12/06/network学习笔记：access和trunk配置/" title="network学习笔记：access和trunk配置">http://liuminxuan.github.io/2018/12/06/network学习笔记：access和trunk配置/</a>
+    <a href="http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/" title="network实践笔记：扩张ACL(一)">http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -402,18 +395,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/05/network学习笔记：单臂路由的实现/" rel="next" title="network学习笔记：单臂路由的实现">
-                <i class="fa fa-chevron-left"></i> network学习笔记：单臂路由的实现
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/10/遗传算法学习笔记-用遗传算法求最大值/" rel="prev" title="遗传算法学习笔记(一):用遗传算法求最大值">
-                遗传算法学习笔记(一):用遗传算法求最大值 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/04/network实践笔记：扩展ACL（二）/" rel="prev" title="network实践笔记：扩张ACL(二)">
+                network实践笔记：扩张ACL(二) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -551,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#access"><span class="nav-number">1.</span> <span class="nav-text">access</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#access演习"><span class="nav-number">1.1.</span> <span class="nav-text">access演习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置SWITCH"><span class="nav-number">1.1.1.</span> <span class="nav-text">配置SWITCH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.1.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#trunk"><span class="nav-number">2.</span> <span class="nav-text">trunk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#trunk演习"><span class="nav-number">2.1.</span> <span class="nav-text">trunk演习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置switch的access"><span class="nav-number">2.1.1.</span> <span class="nav-text">配置switch的access</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置trunk"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置trunk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#演习1"><span class="nav-number">1.</span> <span class="nav-text">演习1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件"><span class="nav-number">1.1.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
             
 
           </div>

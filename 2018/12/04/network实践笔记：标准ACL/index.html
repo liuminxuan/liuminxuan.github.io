@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
+<meta name="description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。">
 <meta name="keywords" content="network,cisco">
 <meta property="og:type" content="article">
-<meta property="og:title" content="network学习笔记：扩张ACL(二)">
-<meta property="og:url" content="http://liuminxuan.github.io/2018/12/04/network学习笔记：扩展ACL（二）/index.html">
+<meta property="og:title" content="network实践笔记：标准ACL">
+<meta property="og:url" content="http://liuminxuan.github.io/2018/12/04/network实践笔记：标准ACL/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
+<meta property="og:description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
-<meta property="og:updated_time" content="2019-01-24T13:22:08.322Z">
+<meta property="og:image" content="http://liuminxuan.github.io/images/标准ACL.jpg">
+<meta property="og:updated_time" content="2019-01-26T03:02:19.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="network学习笔记：扩张ACL(二)">
-<meta name="twitter:description" content="演习2 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
-<meta name="twitter:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
+<meta name="twitter:title" content="network实践笔记：标准ACL">
+<meta name="twitter:description" content="ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。">
+<meta name="twitter:image" content="http://liuminxuan.github.io/images/标准ACL.jpg">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://liuminxuan.github.io/2018/12/04/network学习笔记：扩展ACL（二）/">
+  <link rel="canonical" href="http://liuminxuan.github.io/2018/12/04/network实践笔记：标准ACL/">
 
 
 
 
 
-  <title>network学习笔记：扩张ACL(二) | LIU的学习笔记</title>
+  <title>network实践笔记：标准ACL | LIU的学习笔记</title>
   
 
 
@@ -203,6 +203,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -245,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2018/12/04/network学习笔记：扩展ACL（二）/">
+    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2018/12/04/network实践笔记：标准ACL/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminxuan">
@@ -262,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">network学习笔记：扩张ACL(二)</h1>
+          <h1 class="post-title" itemprop="name headline">network实践笔记：标准ACL</h1>
         
 
         <div class="post-meta">
@@ -274,7 +284,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:06:38+09:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T15:59:05+09:00">
                 2018-12-04
               </time>
             
@@ -290,8 +300,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-24T22:22:08+09:00">
-                2019-01-24
+              <time title="更新于" itemprop="dateModified" datetime="2019-01-26T12:02:19+09:00">
+                2019-01-26
               </time>
             
           </span>
@@ -324,23 +334,33 @@
       
 
       
-        <h2 id="演习2"><a href="#演习2" class="headerlink" title="演习2"></a>演习2</h2><p> 与标准ACL不同，扩张ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。  </p>
+        <p>ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。  </p>
 <a id="more"></a>
-<p><img src="/images/演习1拓扑图.jpg" alt="">  </p>
-<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><ol>
-<li>网络拓扑图如图所示，首先PC之间互相ping通。  </li>
-<li>从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。</li>
-</ol>
+<p>标准acl list的号码可以是1〜99和1300〜1999，扩张acl list号码为100〜199和2000〜2699。</p>
+<h2 id="演习"><a href="#演习" class="headerlink" title="演习"></a>演习</h2><p><img src="/images/标准ACL.jpg" alt=""></p>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><blockquote>
+<ul>
+<li>组成如图所示的网络并相互ping通</li>
+<li>192.168.1.0所属的PC能够和192.168.2.1通信</li>
+<li>但是192.168.1.1拒绝通信</li>
+</ul>
+</blockquote>
 <p>配置路由器</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure></div>
-<p>配置ACL </p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 100 deny tcp host 192.168.1.1 host 192.168.2.1 eq 23  </span></span><br><span class="line">Router(config)<span class="meta">#access-list 100 permit ip any any</span></span><br><span class="line">Router(config)<span class="meta">#show access-lists 确认ACL是否建立成功</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 in</span></span><br></pre></td></tr></table></figure></div>
-<p>配置switch</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(config)<span class="meta">#interface vlan 1</span></span><br><span class="line"><span class="keyword">switch</span>(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.1.100 255.255.255.0</span></span><br><span class="line"><span class="keyword">switch</span>(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line"><span class="keyword">switch</span>(config-<span class="keyword">if</span>)<span class="meta">#exit</span></span><br><span class="line"><span class="keyword">switch</span>(config)<span class="meta">#ip default-gateway 192.168.1.254</span></span><br></pre></td></tr></table></figure></div>
-<p>switch有两台，根据上述代码可以配置另一台  </p>
-<p>配置router密码  </p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#<span class="meta-keyword">line</span> vty 0 4</span></span><br><span class="line">Router(config-line)<span class="meta">#password cisco</span></span><br><span class="line">Router(config-line)<span class="meta">#login</span></span><br><span class="line">Router(config-line)<span class="meta">#end</span></span><br><span class="line">Router<span class="meta">#show run 确认router密码是否配置成功</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最终结果为PCA无法telnet到PCB（显示访问拒绝），但是PCB可以telnet到PCA，电脑之间的互相ping正常。</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface 确认端口是否设置成功</span></span><br></pre></td></tr></table></figure></div>
+<p>配置ACL</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 1 deny host 192.168.1.1</span></span><br><span class="line">Router(config)<span class="meta">#access-list 1 permit any</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip access-group 1 in</span></span><br><span class="line">Router<span class="meta">#show access-lists  确认ACL创建成功</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
+<ul>
+<li>PC B,PC C,PC D之间可以相互ping</li>
+<li>PC A和PC D不能ping成功</li>
+</ul>
+</blockquote>
+<p>如果选择Fa 1端口配置ACL的话，就修改成如下代码</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config-<span class="keyword">if</span>)<span class="meta">#ip access-group 1 out</span></span><br><span class="line">Router<span class="meta">#show access-lists  确认ACL创建成功</span></span><br></pre></td></tr></table></figure></div>
+<p>如果不需要这个ACL的话</p>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#no access-list 1</span></span><br></pre></td></tr></table></figure></div>
+<p>就可以将ACL删去.</p>
+<p>ACL的对照顺序是自上向下并且默认是deny的，如果将实验中ACL的两行互换在本演习中理论上没有影响，但是具体实验并没有实施，“顺序因素对ACL的影响”是以后可以考虑的问题点之一。</p>
 
       
     </div>
@@ -361,7 +381,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2018/12/04/network学习笔记：扩展ACL（二）/" title="network学习笔记：扩张ACL(二)">http://liuminxuan.github.io/2018/12/04/network学习笔记：扩展ACL（二）/</a>
+    <a href="http://liuminxuan.github.io/2018/12/04/network实践笔记：标准ACL/" title="network实践笔记：标准ACL">http://liuminxuan.github.io/2018/12/04/network实践笔记：标准ACL/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -391,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/03/network学习笔记：扩展ACL（一）/" rel="next" title="network学习笔记：扩张ACL(一)">
-                <i class="fa fa-chevron-left"></i> network学习笔记：扩张ACL(一)
+              <a href="/2018/12/04/network实践笔记：扩展ACL（二）/" rel="next" title="network实践笔记：扩张ACL(二)">
+                <i class="fa fa-chevron-left"></i> network实践笔记：扩张ACL(二)
               </a>
             
           </div>
@@ -401,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/network学习笔记：标准ACL/" rel="prev" title="network学习笔记：标准ACL">
-                network学习笔记：标准ACL <i class="fa fa-chevron-right"></i>
+              <a href="/2018/12/05/network实践笔记：单臂路由的实现/" rel="prev" title="network实践笔记：单臂路由的实现">
+                network实践笔记：单臂路由的实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -540,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#演习2"><span class="nav-number">1.</span> <span class="nav-text">演习2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件"><span class="nav-number">1.1.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#演习"><span class="nav-number">1.</span> <span class="nav-text">演习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件"><span class="nav-number">1.1.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
             
 
           </div>
