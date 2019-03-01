@@ -279,6 +279,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2019/03/01/算法图解学习笔记-递归和栈/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuminxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIU的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/算法图解学习笔记-递归和栈/" itemprop="url">算法图解学习笔记:递归和栈</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T11:07:49+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-01T13:31:41+08:00">
+                2019-03-01
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法图解学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">算法图解学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><p>如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？</p>
+<p><strong>方法一</strong>  </p>
+<ol>
+<li>创建一个要找的盒子堆。</li>
+<li>从盒子里找出一个盒子，打开。</li>
+<li>如果是盒子，就放入盒子堆，以后再查找。</li>
+<li>如果是钥匙，结束返回。</li>
+<li>回到第二步。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">look_for_key</span><span class="params">(main_box)</span>:</span></span><br><span class="line">    pile = main_box.make_a_pile_to_look_through()</span><br><span class="line">    <span class="keyword">while</span> pile <span class="keyword">is</span> <span class="keyword">not</span> empty:</span><br><span class="line">        box = pile.grab_a_box()</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> box:</span><br><span class="line">            <span class="keyword">if</span> item.is_a_box():</span><br><span class="line">                pile.append(item)</span><br><span class="line">            <span class="keyword">elif</span> item.is_a_key():</span><br><span class="line">                <span class="keyword">print</span> <span class="string">"find the key!"</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/01/算法图解学习笔记-递归和栈/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2019/02/28/算法图解学习笔记：选择排序/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -326,7 +493,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-28T10:41:08+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-02-28T18:34:51+08:00">
                 2019-02-28
               </time>
             
@@ -385,8 +552,8 @@
         
           <h1 id="算法表现"><a href="#算法表现" class="headerlink" title="算法表现"></a>算法表现</h1><p>选择排序是基础排序算法，运行时间较长，具体算法表现如下：</p>
 <ol>
-<li><strong>遍历整个数组</strong>，找出最大（最小）值，将其放入新数组中。</li>
-<li><strong>遍历剩余元素</strong>，找出最大（最小）值，放入新数组中前一个数之后。</li>
+<li><strong>遍历整个数组</strong>，找出最大（最小）值，弹出原数组并将其放入新数组中。</li>
+<li><strong>遍历剩余元素</strong>，找出最大（最小）值，弹出原数组并放入新数组中前一个数之后。</li>
 <li>重复第二步，得到新数组，排序完成。</li>
 </ol>
           <!--noindex-->
@@ -1723,164 +1890,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2018/12/05/network实践笔记：单臂路由的实现/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuminxuan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIU的学习笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/05/network实践笔记：单臂路由的实现/" itemprop="url">network实践笔记：单臂路由的实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T18:12:36+08:00">
-                2018-12-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-28T22:33:50+08:00">
-                2019-01-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/network实践笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">network实践笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>vlan間ルーティング（ROUTER ON A STICK,单臂路由）在很多博客上都有记录，物理上的要实现两个不同网段的互联的拓扑图如下<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/05/network实践笔记：单臂路由的实现/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1935,7 +1944,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
