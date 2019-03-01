@@ -105,18 +105,18 @@
 
 
 
-<meta name="description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。  123456789def look_for_key(main_box):    pile = main_box.make_a_pile_to_look_thro">
+<meta name="description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。">
 <meta name="keywords" content="算法,基础算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法图解学习笔记:递归和栈">
+<meta property="og:title" content="算法图解学习笔记：递归和栈">
 <meta property="og:url" content="http://liuminxuan.github.io/2019/03/01/算法图解学习笔记-递归和栈/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。  123456789def look_for_key(main_box):    pile = main_box.make_a_pile_to_look_thro">
+<meta property="og:description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-01T05:31:41.264Z">
+<meta property="og:updated_time" content="2019-03-01T05:35:21.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法图解学习笔记:递归和栈">
-<meta name="twitter:description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。  123456789def look_for_key(main_box):    pile = main_box.make_a_pile_to_look_thro">
+<meta name="twitter:title" content="算法图解学习笔记：递归和栈">
+<meta name="twitter:description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。">
 
 
 
@@ -152,7 +152,7 @@
 
 
 
-  <title>算法图解学习笔记:递归和栈 | LIU的学习笔记</title>
+  <title>算法图解学习笔记：递归和栈 | LIU的学习笔记</title>
   
 
 
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法图解学习笔记:递归和栈</h1>
+          <h1 class="post-title" itemprop="name headline">算法图解学习笔记：递归和栈</h1>
         
 
         <div class="post-meta">
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-01T13:31:41+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-01T13:35:21+08:00">
                 2019-03-01
               </time>
             
@@ -389,8 +389,8 @@
 <li>如果是钥匙，结束返回。</li>
 <li>回到第二步。</li>
 </ol>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">look_for_key</span><span class="params">(main_box)</span>:</span></span><br><span class="line">    pile = main_box.make_a_pile_to_look_through()</span><br><span class="line">    <span class="keyword">while</span> pile <span class="keyword">is</span> <span class="keyword">not</span> empty:</span><br><span class="line">        box = pile.grab_a_box()</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> box:</span><br><span class="line">            <span class="keyword">if</span> item.is_a_box():</span><br><span class="line">                pile.append(item)</span><br><span class="line">            <span class="keyword">elif</span> item.is_a_key():</span><br><span class="line">                <span class="keyword">print</span> <span class="string">"find the key!"</span></span><br></pre></td></tr></table></figure></div>
 <a id="more"></a>
+<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">look_for_key</span><span class="params">(main_box)</span>:</span></span><br><span class="line">    pile = main_box.make_a_pile_to_look_through()</span><br><span class="line">    <span class="keyword">while</span> pile <span class="keyword">is</span> <span class="keyword">not</span> empty:</span><br><span class="line">        box = pile.grab_a_box()</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> box:</span><br><span class="line">            <span class="keyword">if</span> item.is_a_box():</span><br><span class="line">                pile.append(item)</span><br><span class="line">            <span class="keyword">elif</span> item.is_a_key():</span><br><span class="line">                <span class="keyword">print</span> <span class="string">"find the key!"</span></span><br></pre></td></tr></table></figure></div>
 <p><strong>方法二</strong></p>
 <ol>
 <li>检查盒子里面东西。</li>
@@ -444,7 +444,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2019/03/01/算法图解学习笔记-递归和栈/" title="算法图解学习笔记:递归和栈">http://liuminxuan.github.io/2019/03/01/算法图解学习笔记-递归和栈/</a>
+    <a href="http://liuminxuan.github.io/2019/03/01/算法图解学习笔记-递归和栈/" title="算法图解学习笔记：递归和栈">http://liuminxuan.github.io/2019/03/01/算法图解学习笔记-递归和栈/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
