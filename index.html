@@ -326,7 +326,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-02T21:27:26+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-02T21:31:27+08:00">
                 2019-03-02
               </time>
             
@@ -383,8 +383,7 @@
 
       
         
-          
-            <h1 id="分而治之"><a href="#分而治之" class="headerlink" title="分而治之"></a>分而治之</h1><p>假如有一块长方形土地，要将土地均匀分成方块，而且方块要尽可能大，如何分呢？</p>
+          <h1 id="分而治之"><a href="#分而治之" class="headerlink" title="分而治之"></a>分而治之</h1><p>假如有一块长方形土地，要将土地均匀分成方块，而且方块要尽可能大，如何分呢？</p>
 <p><strong>D&amp;C策略</strong></p>
 <ol>
 <li>找出长方形地块的宽作为分割出正方形的边长，分割出正方形。</li>
@@ -393,33 +392,13 @@
 <li>返回结果，结束程序。</li>
 </ol>
 <p>此问题中基线条件为<strong>一条边长度是另一条边的整数倍</strong>。</p>
-<p><strong>D&amp;C原理</strong></p>
-<ol>
-<li>找出简单的基线条件</li>
-<li>确定如何缩小问题规模，使其符合基线条件。</li>
-</ol>
-<p>再来看一个问题，<strong>求2+4+6的和</strong>。</p>
-<ol>
-<li>找出基线条件。此问题的基线条件是<strong>数组中只包含一个数字</strong>，则计算容易许多。</li>
-<li>将sum([2,4,6])的第一个数拆分出来，变为2+sum([4,6])</li>
-<li>重复第二步，直到sum()中只有一个元素。</li>
-<li>在调用栈中返回结果。</li>
-<li>结束。</li>
-</ol>
-<p>代码表现为：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> x == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> x + sum(x - <span class="number">2</span>)</span><br><span class="line"><span class="keyword">print</span> sum(<span class="number">6</span>)</span><br></pre></td></tr></table></figure></div>
-<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序也运用了D&amp;C，其原理如下：</p>
-<ol>
-<li>找出其中一个数，拿左右相邻数与这个数比较，把所有小于基准值的放到左边，大于基准值的放到右边。</li>
-<li>左边和右边同时重复第一步。</li>
-<li>直到数组长度为1</li>
-<li>调用栈返回值。</li>
-<li>结束程序。</li>
-</ol>
-<p>代码表现如下：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(array)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(array) &lt; <span class="number">2</span>: <span class="comment">#基线条件</span></span><br><span class="line">        <span class="keyword">return</span> array</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pivot = array[<span class="number">0</span>]</span><br><span class="line">        less = [i <span class="keyword">for</span> i <span class="keyword">in</span> array[<span class="number">1</span>:] <span class="keyword">if</span> i &lt;= pivot] <span class="comment">#由所有小于等于基准值组成的子数组</span></span><br><span class="line">        greater = [i <span class="keyword">for</span> i <span class="keyword">in</span> array[<span class="number">1</span>:] <span class="keyword">if</span> i &gt; pivot] <span class="comment">#由所有大于基准值组成的子数组</span></span><br><span class="line">        <span class="keyword">return</span> quicksort(less) + [pivot] + quicksort(greater)</span><br><span class="line"><span class="keyword">print</span> quicksort([<span class="number">10</span>,<span class="number">5</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br></pre></td></tr></table></figure></div>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/02/算法图解学习笔记：快速排序/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
