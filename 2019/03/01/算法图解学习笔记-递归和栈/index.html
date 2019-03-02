@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="LIU的学习笔记">
 <meta property="og:description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-01T05:39:32.367Z">
+<meta property="og:updated_time" content="2019-03-01T07:13:57.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法图解学习笔记：递归和栈">
 <meta name="twitter:description" content="递归如果有一个盒子，盒子里有盒子，盒子里的盒子也有盒子，那么，怎样在一堆盒子里找出钥匙呢？ 方法一    创建一个要找的盒子堆。 从盒子里找出一个盒子，打开。 如果是盒子，就放入盒子堆，以后再查找。 如果是钥匙，结束返回。 回到第二步。">
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-01T13:39:32+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-03-01T15:13:57+08:00">
                 2019-03-01
               </time>
             
@@ -414,7 +414,7 @@
 <li>greet()返回。</li>
 </ol>
 <p>这个栈用于存储多个函数的变量，被称为<strong>调用栈</strong>。所有函数调用都进入调用栈。</p>
-<h1 id="递归调用栈"><a href="#递归调用栈" class="headerlink" title="递归调用栈"></a>递归调用栈</h1><p>给定函数factorial(5)写做5!=5<em>4\</em>3*2*1，那么：</p>
+<h1 id="递归调用栈"><a href="#递归调用栈" class="headerlink" title="递归调用栈"></a>递归调用栈</h1><p>给定函数factorial(5)写做5!=5*4*3*2*1，那么：</p>
 <div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fact</span><span class="params">(x)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> x == <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> x*fact(x<span class="number">-1</span>)</span><br></pre></td></tr></table></figure></div>
 <p>fact(3)的调用栈变化如下：</p>
 <ol>
@@ -483,6 +483,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/02/算法图解学习笔记：快速排序/" rel="prev" title="算法图解学习笔记：快速排序">
+                算法图解学习笔记：快速排序 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -563,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
