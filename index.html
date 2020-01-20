@@ -326,7 +326,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-20T17:49:05+09:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-20T18:20:57+09:00">
                 2020-01-20
               </time>
             
@@ -361,16 +361,17 @@
 
       
         
-          
-            <h1 id="关于位运算（一）"><a href="#关于位运算（一）" class="headerlink" title="关于位运算（一）"></a>关于位运算（一）</h1><p>这几天重温Java，发现一个比较有意思的运算，位运算。</p>
+          <p>这几天重温Java，发现一个比较有意思的运算，位运算。</p>
 <p>以前只在计算机组成原理这门课中学过位运算，一直以为学习位运算只是为了了解计算机的运算过程以及组成原理。没想到位运算在Java语言中也有很大的作用。</p>
 <h2 id="位运算基础"><a href="#位运算基础" class="headerlink" title="位运算基础"></a>位运算基础</h2><p>位运算主要有三种运算，分别为“与(AND)”，“或(OR)”，“异或(XOR)”。</p>
 <p>另外还有一个移位。</p>
-<h2 id="位运算的应用"><a href="#位运算的应用" class="headerlink" title="位运算的应用"></a>位运算的应用</h2><p>位运算因为只有1和0，所以可以用于身份认证，这里举出一个判断身份的Java程序。</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BitChoose</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] arg)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> base = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> is_student_mask = base; <span class="comment">//0001</span></span><br><span class="line">        <span class="keyword">int</span> is_teacher_mask = base &lt;&lt; <span class="number">1</span>; <span class="comment">//0010</span></span><br><span class="line">        <span class="keyword">int</span> is_police_mask = base &lt;&lt; <span class="number">2</span>; <span class="comment">//0100</span></span><br><span class="line">        <span class="keyword">int</span> is_doctor_mask = base &lt;&lt; <span class="number">3</span>; <span class="comment">//1000</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> data = <span class="number">3</span>; <span class="comment">//0011</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> is_student = (data &amp; is_student_mask) != <span class="number">0</span>;</span><br><span class="line">        System.out.println(is_student);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> is_teacher = (data &amp; is_teacher_mask) != <span class="number">0</span>;</span><br><span class="line">        System.out.println(is_teacher);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> is_police = (data &amp; is_police_mask) != <span class="number">0</span>;</span><br><span class="line">        System.out.println(is_police);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span> is_doctor = (data &amp; is_police_mask) != <span class="number">0</span>;</span><br><span class="line">        System.out.println(is_doctor);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p>可以看出位运算可以通过”掩码“和“与”运算实现身份识别功能。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/20/关于位运算/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
