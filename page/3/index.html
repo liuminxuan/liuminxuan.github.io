@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="network,cisco,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -105,20 +105,17 @@
 
 
 
-<meta name="description" content="与标准ACL不同，扩展ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
-<meta name="keywords" content="network,cisco">
-<meta property="og:type" content="article">
-<meta property="og:title" content="network实践笔记：扩展ACL(一)">
-<meta property="og:url" content="http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/index.html">
+<meta name="description" content="计算机和日语学习笔记">
+<meta name="keywords" content="计算机 日语">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LIU的学习笔记">
+<meta property="og:url" content="http://liuminxuan.github.io/page/3/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="与标准ACL不同，扩展ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
+<meta property="og:description" content="计算机和日语学习笔记">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
-<meta property="og:updated_time" content="2019-02-28T01:37:00.856Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="network实践笔记：扩展ACL(一)">
-<meta name="twitter:description" content="与标准ACL不同，扩展ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。">
-<meta name="twitter:image" content="http://liuminxuan.github.io/images/演习1拓扑图.jpg">
+<meta name="twitter:title" content="LIU的学习笔记">
+<meta name="twitter:description" content="计算机和日语学习笔记">
 
 
 
@@ -148,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/">
+  <link rel="canonical" href="http://liuminxuan.github.io/page/3/">
 
 
 
 
 
-  <title>network实践笔记：扩展ACL(一) | LIU的学习笔记</title>
+  <title>LIU的学习笔记 - 计算机和日语学习笔记</title>
   
 
 
@@ -173,7 +170,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -266,9 +264,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -298,7 +296,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">network实践笔记：扩展ACL(一)</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/03/network实践笔记：扩展ACL（一）/" itemprop="url">network实践笔记：扩展ACL(一)</a></h1>
         
 
         <div class="post-meta">
@@ -382,18 +382,16 @@
       
 
       
-        <p> 与标准ACL不同，扩展ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
-<a id="more"></a>
-<h2 id="演习1"><a href="#演习1" class="headerlink" title="演习1"></a>演习1</h2><p><img src="/images/演习1拓扑图.jpg" alt="">  </p>
-<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><ol>
-<li>整个网络要能互相ping通  </li>
-<li>设置番号为100的扩展ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</li>
-</ol>
-<p>首先配置路由器让其互相ping通<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.1.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 1</span></span><br><span class="line">Router(config)<span class="meta">#ip address 192.168.2.254 255.255.255.0</span></span><br><span class="line">Router(config)<span class="meta">#no shutdown</span></span><br><span class="line">Router<span class="meta">#show interface   确认端口是否配置成功</span></span><br></pre></td></tr></table></figure></div></p>
-<p>配置ACL<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span></span><br><span class="line">Router(config)<span class="meta">#access-list 100 permit ip any any</span></span><br><span class="line">Router(config)<span class="meta">#show access-lists 确认ACL是否建立成功</span></span><br><span class="line">Router(config)<span class="meta">#interface fastethernet 0</span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 in</span></span><br></pre></td></tr></table></figure></div></p>
-<p>如果想设置Fa 1端口，就用<br><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="C"><figure class="iseeu highlight /c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Router(config)<span class="meta">#interface fastethernet 1  </span></span><br><span class="line">Router(config)<span class="meta">#ip access-group 100 out</span></span><br></pre></td></tr></table></figure></div></p>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最后检查结果时，会出现PCA1到PCB1到达不能，PCB1到PCA1出现timeout，这是正常结果，因为tcp/ip的三次握手中，当PCA1到PCB1通路阻断时，PCA1不能回应PCB1发出的“问候”，从而出现timeout。  </p>
-
+        
+          <p> 与标准ACL不同，扩展ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/03/network实践笔记：扩展ACL（一）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -405,59 +403,17 @@
     
 
     
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    liuminxuan
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/" title="network实践笔记：扩展ACL(一)">http://liuminxuan.github.io/2018/12/03/network实践笔记：扩展ACL（一）/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
-    
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/network/" rel="tag"># network</a>
-          
-            <a href="/tags/cisco/" rel="tag"># cisco</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/04/network实践笔记：扩展ACL（二）/" rel="prev" title="network实践笔记：扩展ACL(二)">
-                network实践笔记：扩展ACL(二) <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -467,11 +423,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -479,10 +438,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -505,17 +460,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -593,22 +539,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#演习1"><span class="nav-number">1.</span> <span class="nav-text">演习1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件"><span class="nav-number">1.1.</span> <span class="nav-text">条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.2.</span> <span class="nav-text">结果</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -742,10 +672,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
