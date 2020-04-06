@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="算法,基础算法,">
+  <meta name="keywords" content="Java,">
 
 
 
@@ -105,18 +105,18 @@
 
 
 
-<meta name="description" content="算法表现选择排序是基础排序算法，运行时间较长，具体算法表现如下：  遍历整个数组，找出最大（最小）值，弹出原数组并将其放入新数组中。 遍历剩余元素，找出最大（最小）值，弹出原数组并放入新数组中前一个数之后。 重复第二步，得到新数组，排序完成。">
-<meta name="keywords" content="算法,基础算法">
+<meta name="description" content="1.封装用访问限制符(private)保护成员变量，用public将方法写在类里，在主函数中调用类中的方法，为封装。 2.继承子类继承父类的成员变量和方法，并且可以在此基础上扩展出自己的成员变量和方法。父类中的private子类不可访问。 3.多态子类可以用相同的方法名去覆盖父类的方法，同一种方法用覆盖实现不同的结果就是多态。继承关系是必须的。">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法图解学习笔记：选择排序">
-<meta property="og:url" content="http://liuminxuan.github.io/2019/02/28/算法图解学习笔记：选择排序/index.html">
+<meta property="og:title" content="Java学习笔记：面向对象三要素">
+<meta property="og:url" content="http://liuminxuan.github.io/2020/04/06/Java学习笔记：面向对象三要素/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="算法表现选择排序是基础排序算法，运行时间较长，具体算法表现如下：  遍历整个数组，找出最大（最小）值，弹出原数组并将其放入新数组中。 遍历剩余元素，找出最大（最小）值，弹出原数组并放入新数组中前一个数之后。 重复第二步，得到新数组，排序完成。">
+<meta property="og:description" content="1.封装用访问限制符(private)保护成员变量，用public将方法写在类里，在主函数中调用类中的方法，为封装。 2.继承子类继承父类的成员变量和方法，并且可以在此基础上扩展出自己的成员变量和方法。父类中的private子类不可访问。 3.多态子类可以用相同的方法名去覆盖父类的方法，同一种方法用覆盖实现不同的结果就是多态。继承关系是必须的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-28T10:34:51.560Z">
+<meta property="og:updated_time" content="2020-04-06T12:48:52.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法图解学习笔记：选择排序">
-<meta name="twitter:description" content="算法表现选择排序是基础排序算法，运行时间较长，具体算法表现如下：  遍历整个数组，找出最大（最小）值，弹出原数组并将其放入新数组中。 遍历剩余元素，找出最大（最小）值，弹出原数组并放入新数组中前一个数之后。 重复第二步，得到新数组，排序完成。">
+<meta name="twitter:title" content="Java学习笔记：面向对象三要素">
+<meta name="twitter:description" content="1.封装用访问限制符(private)保护成员变量，用public将方法写在类里，在主函数中调用类中的方法，为封装。 2.继承子类继承父类的成员变量和方法，并且可以在此基础上扩展出自己的成员变量和方法。父类中的private子类不可访问。 3.多态子类可以用相同的方法名去覆盖父类的方法，同一种方法用覆盖实现不同的结果就是多态。继承关系是必须的。">
 
 
 
@@ -146,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://liuminxuan.github.io/2019/02/28/算法图解学习笔记：选择排序/">
+  <link rel="canonical" href="http://liuminxuan.github.io/2020/04/06/Java学习笔记：面向对象三要素/">
 
 
 
 
 
-  <title>算法图解学习笔记：选择排序 | LIU的学习笔记</title>
+  <title>Java学习笔记：面向对象三要素 | LIU的学习笔记</title>
   
 
 
@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2019/02/28/算法图解学习笔记：选择排序/">
+    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2020/04/06/Java学习笔记：面向对象三要素/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminxuan">
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法图解学习笔记：选择排序</h1>
+          <h1 class="post-title" itemprop="name headline">Java学习笔记：面向对象三要素</h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T10:02:49+09:00">
-                2019-02-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-06T21:37:31+09:00">
+                2020-04-06
               </time>
             
 
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-02-28T19:34:51+09:00">
-                2019-02-28
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-06T21:48:52+09:00">
+                2020-04-06
               </time>
             
           </span>
@@ -343,8 +343,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法图解学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">算法图解学习笔记</span>
+                  <a href="/categories/Java学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Java学习笔记</span>
                   </a>
                 </span>
 
@@ -380,15 +380,9 @@
       
 
       
-        <h1 id="算法表现"><a href="#算法表现" class="headerlink" title="算法表现"></a>算法表现</h1><p>选择排序是基础排序算法，运行时间较长，具体算法表现如下：</p>
-<ol>
-<li><strong>遍历整个数组</strong>，找出最大（最小）值，弹出原数组并将其放入新数组中。</li>
-<li><strong>遍历剩余元素</strong>，找出最大（最小）值，弹出原数组并放入新数组中前一个数之后。</li>
-<li>重复第二步，得到新数组，排序完成。</li>
-</ol>
-<a id="more"></a>
-<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findSmallest</span><span class="params">(arr)</span>:</span></span><br><span class="line">    Smallest = arr[<span class="number">0</span>]</span><br><span class="line">    Smallest_index = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(arr)):</span><br><span class="line">        <span class="keyword">if</span> arr[i] &lt; Smallest:</span><br><span class="line">            Smallest = arr[i]</span><br><span class="line">            Smallest_index = i</span><br><span class="line">    <span class="keyword">return</span> Smallest_index</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectionSort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    newArr = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr)):</span><br><span class="line">        smallest = findSmallest(arr)</span><br><span class="line">        newArr.append(arr.pop(smallest))<span class="comment">#append()给新数组添加元素，pop()将该元素弹出原数组</span></span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> selectionSort([<span class="number">5</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">2</span>,<span class="number">10</span>])</span><br></pre></td></tr></table></figure></div>
-<h1 id="算法运行时间"><a href="#算法运行时间" class="headerlink" title="算法运行时间"></a>算法运行时间</h1><p>第一次需要检查n个元素，随后依次是n-1，n-2，···，2和1。因此运行时间为O(n*1/2*n)，但是大O表示法常常省略1/2这样的常数，所以选择排序的算法运行时间为O(n^2).</p>
+        <h1 id="1-封装"><a href="#1-封装" class="headerlink" title="1.封装"></a>1.封装</h1><p>用访问限制符(private)保护成员变量，用public将方法写在类里，在主函数中调用类中的方法，为封装。</p>
+<h1 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h1><p>子类继承父类的成员变量和方法，并且可以在此基础上扩展出自己的成员变量和方法。父类中的private子类不可访问。</p>
+<h1 id="3-多态"><a href="#3-多态" class="headerlink" title="3.多态"></a>3.多态</h1><p>子类可以用相同的方法名去覆盖父类的方法，同一种方法用覆盖实现不同的结果就是多态。继承关系是必须的。</p>
 
       
     </div>
@@ -409,7 +403,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2019/02/28/算法图解学习笔记：选择排序/" title="算法图解学习笔记：选择排序">http://liuminxuan.github.io/2019/02/28/算法图解学习笔记：选择排序/</a>
+    <a href="http://liuminxuan.github.io/2020/04/06/Java学习笔记：面向对象三要素/" title="Java学习笔记：面向对象三要素">http://liuminxuan.github.io/2020/04/06/Java学习笔记：面向对象三要素/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -424,9 +418,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-            <a href="/tags/基础算法/" rel="tag"># 基础算法</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -439,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/27/算法图解学习笔记：二分查找/" rel="next" title="算法图解学习笔记：二分查找">
-                <i class="fa fa-chevron-left"></i> 算法图解学习笔记：二分查找
+              <a href="/2020/04/03/Java学习笔记：方法的重载及参数的匹配规则/" rel="next" title="Java学习笔记：方法的重载及参数的匹配规则">
+                <i class="fa fa-chevron-left"></i> Java学习笔记：方法的重载及参数的匹配规则
               </a>
             
           </div>
@@ -448,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/01/算法图解学习笔记-递归和栈/" rel="prev" title="算法图解学习笔记：递归和栈">
-                算法图解学习笔记：递归和栈 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法表现"><span class="nav-number">1.</span> <span class="nav-text">算法表现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码表现"><span class="nav-number">2.</span> <span class="nav-text">代码表现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法运行时间"><span class="nav-number">3.</span> <span class="nav-text">算法运行时间</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-封装"><span class="nav-number">1.</span> <span class="nav-text">1.封装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-继承"><span class="nav-number">2.</span> <span class="nav-text">2.继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-多态"><span class="nav-number">3.</span> <span class="nav-text">3.多态</span></a></li></ol></div>
             
 
           </div>
