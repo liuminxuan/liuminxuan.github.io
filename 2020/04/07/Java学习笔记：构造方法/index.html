@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="基础算法,数据结构,">
+  <meta name="keywords" content="Java,">
 
 
 
@@ -105,18 +105,18 @@
 
 
 
-<meta name="description" content="散列表当要快速查找一样水果的价格时，可以用前面所学的二分查找来进行查找，但是二分查找的运行时间虽然为O(log n)但是总归会随着元素数量增加而拖慢查找速度。 所以数据结构中引入了散列表,散列表的运行时间始终为O(1)，是比较理想的数据存储方式。">
-<meta name="keywords" content="基础算法,数据结构">
+<meta name="description" content="构造方法构造方法是类里的一个特殊的方法，他不能有返回值（包括void）。所谓构造方法，就是这个类在被实例化时（创建对象时）就要执行的方法，方法名为类的名字，一般的目的是为了给类进行一些初始化值。 举例12345678public MerchandiseV2WithConstructor(String name, String id, int count,">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法图解学习笔记：散列表">
-<meta property="og:url" content="http://liuminxuan.github.io/2019/03/03/算法图解学习笔记：散列表/index.html">
+<meta property="og:title" content="Java学习笔记：构造方法">
+<meta property="og:url" content="http://liuminxuan.github.io/2020/04/07/Java学习笔记：构造方法/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="散列表当要快速查找一样水果的价格时，可以用前面所学的二分查找来进行查找，但是二分查找的运行时间虽然为O(log n)但是总归会随着元素数量增加而拖慢查找速度。 所以数据结构中引入了散列表,散列表的运行时间始终为O(1)，是比较理想的数据存储方式。">
+<meta property="og:description" content="构造方法构造方法是类里的一个特殊的方法，他不能有返回值（包括void）。所谓构造方法，就是这个类在被实例化时（创建对象时）就要执行的方法，方法名为类的名字，一般的目的是为了给类进行一些初始化值。 举例12345678public MerchandiseV2WithConstructor(String name, String id, int count,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-03T06:37:38.692Z">
+<meta property="og:updated_time" content="2020-04-07T14:21:08.154Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法图解学习笔记：散列表">
-<meta name="twitter:description" content="散列表当要快速查找一样水果的价格时，可以用前面所学的二分查找来进行查找，但是二分查找的运行时间虽然为O(log n)但是总归会随着元素数量增加而拖慢查找速度。 所以数据结构中引入了散列表,散列表的运行时间始终为O(1)，是比较理想的数据存储方式。">
+<meta name="twitter:title" content="Java学习笔记：构造方法">
+<meta name="twitter:description" content="构造方法构造方法是类里的一个特殊的方法，他不能有返回值（包括void）。所谓构造方法，就是这个类在被实例化时（创建对象时）就要执行的方法，方法名为类的名字，一般的目的是为了给类进行一些初始化值。 举例12345678public MerchandiseV2WithConstructor(String name, String id, int count,">
 
 
 
@@ -146,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://liuminxuan.github.io/2019/03/03/算法图解学习笔记：散列表/">
+  <link rel="canonical" href="http://liuminxuan.github.io/2020/04/07/Java学习笔记：构造方法/">
 
 
 
 
 
-  <title>算法图解学习笔记：散列表 | LIU的学习笔记</title>
+  <title>Java学习笔记：构造方法 | LIU的学习笔记</title>
   
 
 
@@ -279,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2019/03/03/算法图解学习笔记：散列表/">
+    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2020/04/07/Java学习笔记：构造方法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminxuan">
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法图解学习笔记：散列表</h1>
+          <h1 class="post-title" itemprop="name headline">Java学习笔记：构造方法</h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-03T10:32:31+09:00">
-                2019-03-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-07T23:14:37+09:00">
+                2020-04-07
               </time>
             
 
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-03-03T15:37:38+09:00">
-                2019-03-03
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-07T23:21:08+09:00">
+                2020-04-07
               </time>
             
           </span>
@@ -343,8 +343,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法图解学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">算法图解学习笔记</span>
+                  <a href="/categories/Java学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Java学习笔记</span>
                   </a>
                 </span>
 
@@ -380,34 +380,9 @@
       
 
       
-        <h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>当要快速查找一样水果的价格时，可以用前面所学的二分查找来进行查找，但是二分查找的运行时间虽然为O(log n)但是总归会随着元素数量增加而拖慢查找速度。</p>
-<p>所以数据结构中引入了<strong>散列表</strong>,散列表的运行时间始终为O(1)，是比较理想的数据存储方式。</p>
-<a id="more"></a>
-<p>散列表的数据存储原理如下：</p>
-<ol>
-<li>创建一个合适的空数组。</li>
-<li>将输入的值用链表的方式加入数组中。</li>
-<li>如果散列表中<strong>填装因子</strong>过大，则扩大数组（一般扩大两倍）。</li>
-</ol>
-<p>以上所说的<strong>填装因子</strong>为：（散列表包含的元素数/位置总数）一般填装因子临界值设置为0.7。</p>
-<p>回到一开始的问题，假如苹果价钱是0.67，牛奶的价格是1.49，鳄梨价格是1.49，要快速查找各个水果价格可以用散列表。</p>
-<p>虽然散列表自己实现比较难，但是任何主流语言都提供了散列表的实现，python提供的散列表实现为<strong>字典</strong>。</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;book = dict()</span><br><span class="line">&gt;&gt;&gt;book[<span class="string">"apple"</span>] = <span class="number">0.67</span></span><br><span class="line">&gt;&gt;&gt;book[<span class="string">"milk"</span>] = <span class="number">1.49</span></span><br><span class="line">&gt;&gt;&gt;book[<span class="string">"avocado"</span>] + <span class="number">1.49</span></span><br><span class="line">&gt;&gt;&gt;<span class="keyword">print</span> book</span><br></pre></td></tr></table></figure></div>
-<p>如果要查询鳄梨的价格，我们只需输入<code>print book[&quot;avocado&quot;]</code>即可。</p>
-<h1 id="散列表的应用"><a href="#散列表的应用" class="headerlink" title="散列表的应用"></a>散列表的应用</h1><h2 id="用于查找"><a href="#用于查找" class="headerlink" title="用于查找"></a>用于查找</h2><p>手机内置电话簿就可使用散列表实现，具体实现代码如下：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;phone_book = dict() <span class="comment">#亦可使用phone_book = &#123;&#125;</span></span><br><span class="line">&gt;&gt;&gt;phone_book[<span class="string">"jenny"</span>] = <span class="number">8675309</span></span><br><span class="line">&gt;&gt;&gt;phone_book[<span class="string">"emergency"</span>] = <span class="number">110</span></span><br></pre></td></tr></table></figure></div>
-<p>现在要查找jenny的电话号码，只需输入<code>print phone_book[&quot;jenny&quot;]</code>即可得出jenny的电话号。</p>
-<p>还有DNS解析也使用了散列表。</p>
-<h2 id="防止重复"><a href="#防止重复" class="headerlink" title="防止重复"></a>防止重复</h2><p>投票中，要知道一个人是否已经投过票需要查找一串长长的名单，但是运用散列表就可以很快的查处一个人是否已经投过票。</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">voted = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check_voter</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> voted.get(name):</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"kick him out!"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        voted[name] = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"let him vote!"</span></span><br><span class="line"></span><br><span class="line">check_voter(<span class="string">"tom"</span>)</span><br><span class="line">check_voter(<span class="string">"mike"</span>)</span><br><span class="line">check_voter(<span class="string">"tom"</span>)</span><br></pre></td></tr></table></figure></div>
-<p>输出结果为：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let him vote!</span><br><span class="line">let him vote!</span><br><span class="line">kick him out!</span><br></pre></td></tr></table></figure></div>
-<p>如果存储在列表中，运用简单查找速度将非常慢，存储在散列表中，查询速度非常快。</p>
-<h2 id="用于缓存"><a href="#用于缓存" class="headerlink" title="用于缓存"></a>用于缓存</h2><p>当你第一次进入网页时，服务器需要做大量的查找工作，如果每次进网页都交由服务器处理，那么服务器将不堪重负，所以当你第一次进入网页中时，服务器处理后会生成一个散列表在缓存上，当你再次进入相同的页面时，就不用通过服务器处理，直接调用散列表中的缓存的数据就可以快速访问网页，大大提高了服务器的运行效率。</p>
-<p>具体代码如下：</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cache = &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page</span><span class="params">(url)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> cache.get(url):</span><br><span class="line">		<span class="keyword">return</span> cache[url]</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		data = get_data_from_server(url)</span><br><span class="line">		cache[url] = data</span><br><span class="line">		<span class="keyword">return</span> data</span><br></pre></td></tr></table></figure></div>
-<h1 id="散列表性能"><a href="#散列表性能" class="headerlink" title="散列表性能"></a>散列表性能</h1><p>根据散列表特性，最好的情况为O(1),最坏的情况为O(n),所以当填装因子过大时，为了防止<strong>冲突</strong>，我们需要对散列表进行扩容，虽然调整散列表长度开销很大，但是就整体而言，散列表的整体运行时间依然是O(1)。</p>
-<h1 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h1><p>散列函数作为非基础模块，本章不做解释，具体可以了解SHA函数和MD5算法。</p>
+        <h1 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h1><p>构造方法是类里的一个特殊的方法，他不能有返回值（包括void）。所谓构造方法，就是这个类在被实例化时（创建对象时）就要执行的方法，方法名为类的名字，一般的目的是为了给类进行一些初始化值。</p>
+<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MerchandiseV2WithConstructor</span><span class="params">(String name, String id, <span class="keyword">int</span> count,</span></span></span><br><span class="line"><span class="function"><span class="params">                                        <span class="keyword">double</span> soldPrice, <span class="keyword">double</span> purchasePrice)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.count = count;</span><br><span class="line">        <span class="keyword">this</span>.soldPrice = soldPrice;</span><br><span class="line">        <span class="keyword">this</span>.purchasePrice = purchasePrice;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+<h1 id="构造方法的继承"><a href="#构造方法的继承" class="headerlink" title="构造方法的继承"></a>构造方法的继承</h1><p>子类创建构造方法中一定会创建一个父类的构造方法，所以this和super不可以共存。</p>
 
       
     </div>
@@ -428,7 +403,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2019/03/03/算法图解学习笔记：散列表/" title="算法图解学习笔记：散列表">http://liuminxuan.github.io/2019/03/03/算法图解学习笔记：散列表/</a>
+    <a href="http://liuminxuan.github.io/2020/04/07/Java学习笔记：构造方法/" title="Java学习笔记：构造方法">http://liuminxuan.github.io/2020/04/07/Java学习笔记：构造方法/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -443,9 +418,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基础算法/" rel="tag"># 基础算法</a>
-          
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+            <a href="/tags/Java/" rel="tag"># Java</a>
           
         </div>
       
@@ -458,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/02/算法图解学习笔记：快速排序/" rel="next" title="算法图解学习笔记：快速排序">
-                <i class="fa fa-chevron-left"></i> 算法图解学习笔记：快速排序
+              <a href="/2020/04/06/Java学习笔记：面向对象三要素/" rel="next" title="Java学习笔记：面向对象三要素">
+                <i class="fa fa-chevron-left"></i> Java学习笔记：面向对象三要素
               </a>
             
           </div>
@@ -467,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/06/算法图解学习笔记：广度优先搜索/" rel="prev" title="算法图解学习笔记：广度优先搜索">
-                算法图解学习笔记：广度优先搜索 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -622,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表"><span class="nav-number">1.</span> <span class="nav-text">散列表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表的应用"><span class="nav-number">2.</span> <span class="nav-text">散列表的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用于查找"><span class="nav-number">2.1.</span> <span class="nav-text">用于查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防止重复"><span class="nav-number">2.2.</span> <span class="nav-text">防止重复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用于缓存"><span class="nav-number">2.3.</span> <span class="nav-text">用于缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列表性能"><span class="nav-number">3.</span> <span class="nav-text">散列表性能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列函数"><span class="nav-number">4.</span> <span class="nav-text">散列函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构造方法"><span class="nav-number">1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#举例"><span class="nav-number">2.</span> <span class="nav-text">举例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造方法的继承"><span class="nav-number">3.</span> <span class="nav-text">构造方法的继承</span></a></li></ol></div>
             
 
           </div>
