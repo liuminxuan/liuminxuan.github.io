@@ -105,18 +105,18 @@
 
 
 
-<meta name="description" content="方法重载如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。 参数匹配规则依次使用byte, short, int, long, float, double 类型的参数调用方法。实参可以自动类型转换成高精度的形参，但是高精度不能转换成低精度。">
+<meta name="description" content="重载 overload同一个类中如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。 覆盖 override继承中如果子类出现与父类相同的方法名与参数，则子类方法可以覆盖(overload)父类方法。调用的方法是对象所存在的那个引用中的方法 重载的参数匹配规则依次使用byte, short, int, long, float, double 类型的参">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java学习笔记：方法的重载及参数的匹配规则">
+<meta property="og:title" content="Java学习笔记：方法的重载和覆盖及参数的匹配规则">
 <meta property="og:url" content="http://liuminxuan.github.io/2020/04/03/Java学习笔记：方法的重载及参数的匹配规则/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="方法重载如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。 参数匹配规则依次使用byte, short, int, long, float, double 类型的参数调用方法。实参可以自动类型转换成高精度的形参，但是高精度不能转换成低精度。">
+<meta property="og:description" content="重载 overload同一个类中如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。 覆盖 override继承中如果子类出现与父类相同的方法名与参数，则子类方法可以覆盖(overload)父类方法。调用的方法是对象所存在的那个引用中的方法 重载的参数匹配规则依次使用byte, short, int, long, float, double 类型的参">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-03T04:57:33.535Z">
+<meta property="og:updated_time" content="2020-04-19T07:48:41.675Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java学习笔记：方法的重载及参数的匹配规则">
-<meta name="twitter:description" content="方法重载如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。 参数匹配规则依次使用byte, short, int, long, float, double 类型的参数调用方法。实参可以自动类型转换成高精度的形参，但是高精度不能转换成低精度。">
+<meta name="twitter:title" content="Java学习笔记：方法的重载和覆盖及参数的匹配规则">
+<meta name="twitter:description" content="重载 overload同一个类中如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。 覆盖 override继承中如果子类出现与父类相同的方法名与参数，则子类方法可以覆盖(overload)父类方法。调用的方法是对象所存在的那个引用中的方法 重载的参数匹配规则依次使用byte, short, int, long, float, double 类型的参">
 
 
 
@@ -152,7 +152,7 @@
 
 
 
-  <title>Java学习笔记：方法的重载及参数的匹配规则 | LIU的学习笔记</title>
+  <title>Java学习笔记：方法的重载和覆盖及参数的匹配规则 | LIU的学习笔记</title>
   
 
 
@@ -296,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java学习笔记：方法的重载及参数的匹配规则</h1>
+          <h1 class="post-title" itemprop="name headline">Java学习笔记：方法的重载和覆盖及参数的匹配规则</h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-03T13:57:33+09:00">
-                2020-04-03
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-19T16:48:41+09:00">
+                2020-04-19
               </time>
             
           </span>
@@ -380,8 +380,9 @@
       
 
       
-        <h1 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h1><p>如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。</p>
-<h1 id="参数匹配规则"><a href="#参数匹配规则" class="headerlink" title="参数匹配规则"></a>参数匹配规则</h1><p>依次使用byte, short, int, long, float, double 类型的参数调用方法。实参可以自动类型转换成高精度的形参，但是高精度不能转换成低精度。</p>
+        <h1 id="重载-overload"><a href="#重载-overload" class="headerlink" title="重载 overload"></a>重载 overload</h1><p>同一个类中如果有两个方法的方法名相同，但参数不一致，那么可以说一个方法是另一个方法的重载(overload)。</p>
+<h1 id="覆盖-override"><a href="#覆盖-override" class="headerlink" title="覆盖 override"></a>覆盖 override</h1><p>继承中如果子类出现与父类相同的方法名与参数，则子类方法可以覆盖(overload)父类方法。调用的方法是对象所存在的那个引用中的方法</p>
+<h1 id="重载的参数匹配规则"><a href="#重载的参数匹配规则" class="headerlink" title="重载的参数匹配规则"></a>重载的参数匹配规则</h1><p>依次使用byte, short, int, long, float, double 类型的参数调用方法。实参可以自动类型转换成高精度的形参，但是高精度不能转换成低精度。</p>
 
       
     </div>
@@ -402,7 +403,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2020/04/03/Java学习笔记：方法的重载及参数的匹配规则/" title="Java学习笔记：方法的重载及参数的匹配规则">http://liuminxuan.github.io/2020/04/03/Java学习笔记：方法的重载及参数的匹配规则/</a>
+    <a href="http://liuminxuan.github.io/2020/04/03/Java学习笔记：方法的重载及参数的匹配规则/" title="Java学习笔记：方法的重载和覆盖及参数的匹配规则">http://liuminxuan.github.io/2020/04/03/Java学习笔记：方法的重载及参数的匹配规则/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -594,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法重载"><span class="nav-number">1.</span> <span class="nav-text">方法重载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数匹配规则"><span class="nav-number">2.</span> <span class="nav-text">参数匹配规则</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重载-overload"><span class="nav-number">1.</span> <span class="nav-text">重载 overload</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#覆盖-override"><span class="nav-number">2.</span> <span class="nav-text">覆盖 override</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重载的参数匹配规则"><span class="nav-number">3.</span> <span class="nav-text">重载的参数匹配规则</span></a></li></ol></div>
             
 
           </div>
