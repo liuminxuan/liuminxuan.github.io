@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="LIU的学习笔记">
 <meta property="og:description" content="题目编号3 209 3. 无重复字符的最长子串解题思路一开始以子串的长度为基准，发现循环中的代码非常复杂，一不注意就出错，后来看了评论才知道应该以左边的数字为基准，外层循环遍历整个字符串，内层循环遍历当前子串是否有相同的字符。 代码123456789101112131415161718class Solution &amp;#123;    public int lengthOfLongestSubstr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-03T02:58:39.417Z">
+<meta property="og:updated_time" content="2020-05-03T04:15:49.556Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode刷题笔记：滑动窗口">
 <meta name="twitter:description" content="题目编号3 209 3. 无重复字符的最长子串解题思路一开始以子串的长度为基准，发现循环中的代码非常复杂，一不注意就出错，后来看了评论才知道应该以左边的数字为基准，外层循环遍历整个字符串，内层循环遍历当前子串是否有相同的字符。 代码123456789101112131415161718class Solution &amp;#123;    public int lengthOfLongestSubstr">
@@ -324,7 +324,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-05-03T11:58:39+09:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-03T13:15:49+09:00">
                 2020-05-03
               </time>
             
@@ -383,7 +383,7 @@
         <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>3 209</p>
 <h2 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a>3. 无重复字符的最长子串</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>一开始以子串的长度为基准，发现循环中的代码非常复杂，一不注意就出错，后来看了评论才知道应该以左边的数字为基准，外层循环遍历整个字符串，内层循环遍历当前子串是否有相同的字符。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxCount = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>; <span class="comment">// 左边的那个数</span></span><br><span class="line">        <span class="keyword">char</span>[] sToChar = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> in = left; in &lt; i; in++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (sToChar[in] == sToChar[i]) &#123;</span><br><span class="line">                    maxCount = Math.max(maxCount, i - left);</span><br><span class="line">                    left = in + <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxCount = Math.max(maxCount, sToChar.length - left);</span><br><span class="line">        <span class="keyword">return</span> maxCount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<!-- moer -->
+<a id="more"></a>
 <h2 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209. 长度最小的子数组"></a>209. 长度最小的子数组</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>暴力破解法：</p>
 <ul>
 <li>从第一个数开始往后加，加到满足条件看有几个元素，</li>
@@ -450,6 +450,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/08/Java学习笔记：equals方法/" rel="prev" title="Java学习笔记：equals方法">
+                Java学习笔记：equals方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -530,7 +534,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
