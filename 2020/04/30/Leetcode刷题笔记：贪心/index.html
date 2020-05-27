@@ -105,18 +105,18 @@
 
 
 
-<meta name="description" content="题目编号53 53. 最大子序和解题思路因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。 代码123456789101112131415public int maxSubArray(int[] nums) &amp;#123;        int[] dt = new int[nums.length];        dt[0] = nums[0];        int m">
+<meta name="description" content="题目编号53 121 53. 最大子序和解题思路因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。 代码123456789101112131415public int maxSubArray(int[] nums) &amp;#123;        int[] dt = new int[nums.length];        dt[0] = nums[0];        i">
 <meta name="keywords" content="Java,Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode刷题笔记：贪心">
 <meta property="og:url" content="http://liuminxuan.github.io/2020/04/30/Leetcode刷题笔记：贪心/index.html">
 <meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="题目编号53 53. 最大子序和解题思路因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。 代码123456789101112131415public int maxSubArray(int[] nums) &amp;#123;        int[] dt = new int[nums.length];        dt[0] = nums[0];        int m">
+<meta property="og:description" content="题目编号53 121 53. 最大子序和解题思路因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。 代码123456789101112131415public int maxSubArray(int[] nums) &amp;#123;        int[] dt = new int[nums.length];        dt[0] = nums[0];        i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-30T09:46:47.875Z">
+<meta property="og:updated_time" content="2020-05-10T11:17:48.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode刷题笔记：贪心">
-<meta name="twitter:description" content="题目编号53 53. 最大子序和解题思路因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。 代码123456789101112131415public int maxSubArray(int[] nums) &amp;#123;        int[] dt = new int[nums.length];        dt[0] = nums[0];        int m">
+<meta name="twitter:description" content="题目编号53 121 53. 最大子序和解题思路因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。 代码123456789101112131415public int maxSubArray(int[] nums) &amp;#123;        int[] dt = new int[nums.length];        dt[0] = nums[0];        i">
 
 
 
@@ -324,8 +324,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-30T18:46:47+09:00">
-                2020-04-30
+              <time title="更新于" itemprop="dateModified" datetime="2020-05-10T20:17:48+09:00">
+                2020-05-10
               </time>
             
           </span>
@@ -380,9 +380,12 @@
       
 
       
-        <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>53</p>
+        <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>53 121</p>
 <h2 id="53-最大子序和"><a href="#53-最大子序和" class="headerlink" title="53. 最大子序和"></a>53. 最大子序和</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dt = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</span><br><span class="line">        dt[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> maxSum = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="comment">// 找出正数最多的子序列</span></span><br><span class="line">            <span class="comment">// 负数相加只会越来越小，所以当总和小于零时遇上负数直接把前面舍弃</span></span><br><span class="line">            dt[i] = Math.max(dt[i - <span class="number">1</span>],<span class="number">0</span>) + nums[i];</span><br><span class="line">            <span class="keyword">if</span> (dt[i] &gt; maxSum) &#123;</span><br><span class="line">                <span class="comment">//因为会遍历到底，所以要记录遍历途中最大的数</span></span><br><span class="line">                maxSum = dt[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxSum;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+<a id="more"></a>
+<h2 id="121-买卖股票的最佳时机"><a href="#121-买卖股票的最佳时机" class="headerlink" title="121. 买卖股票的最佳时机"></a>121. 买卖股票的最佳时机</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>因为只买卖一次，所以只要找到最大值前面的最小值就行了，每次模拟买入卖出情况，找出最大差值，解决问题。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="JAVA"><figure class="iseeu highlight /java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 输入为空时，返回0</span></span><br><span class="line">        <span class="keyword">if</span> (prices.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> buy = prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> profit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prices[i] &lt; buy) &#123;</span><br><span class="line">                <span class="comment">// 模拟买入，如果买入价格比之前低，就买入备选</span></span><br><span class="line">                buy = prices[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (prices[i] &gt; buy) &#123;</span><br><span class="line">                <span class="comment">// 每次模拟卖出的情况</span></span><br><span class="line">                profit = prices[i] - buy;</span><br><span class="line">                <span class="keyword">if</span> (profit &gt; maxProfit) &#123;</span><br><span class="line">                    <span class="comment">// 如果利润大于最大利润，就卖出备选</span></span><br><span class="line">                    maxProfit = profit;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxProfit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
       
     </div>
     
@@ -525,7 +528,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -536,7 +539,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -596,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目编号"><span class="nav-number">1.</span> <span class="nav-text">题目编号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53-最大子序和"><span class="nav-number">2.</span> <span class="nav-text">53. 最大子序和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目编号"><span class="nav-number">1.</span> <span class="nav-text">题目编号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53-最大子序和"><span class="nav-number">2.</span> <span class="nav-text">53. 最大子序和</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">2.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#121-买卖股票的最佳时机"><span class="nav-number">3.</span> <span class="nav-text">121. 买卖股票的最佳时机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路-1"><span class="nav-number">3.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">3.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
 
           </div>
