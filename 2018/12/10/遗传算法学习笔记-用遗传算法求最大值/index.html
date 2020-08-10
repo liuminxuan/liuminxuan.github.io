@@ -1,386 +1,210 @@
 <!DOCTYPE html>
+<html lang="zh-Hans">
 
 
 
-  
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="代码 日语">
+  <meta name="author" content="熊猫不靠谱">
+  <meta name="keywords" content="代码 日语">
+  <title>遗传算法学习笔记(一):用遗传算法求最大值 - LIU的学习笔记</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
 
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
   
 
   
 
-  
 
-  
+<!-- 主题依赖的图标库，不要自行修改 -->
 
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
 
 
 
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
 
 
+<link  rel="stylesheet" href="/css/main.css" />
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<!-- 自定义样式保持在最底部 -->
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 5.0.2"></head>
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
 
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="算法,遗传算法,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="遗传算法简介遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：  将要解决的问题主体进行编码，形成初始种群。 用选择函数对种群中的个体进行选择。 将生存的个体进行交叉，生成子代。 交叉中设置一定的变异率，防止陷入局部最优解。 将2.3.4.循环操作最终的到最优种群集合，在其中找到最优解">
-<meta name="keywords" content="算法,遗传算法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="遗传算法学习笔记(一):用遗传算法求最大值">
-<meta property="og:url" content="http://liuminxuan.github.io/2018/12/10/遗传算法学习笔记-用遗传算法求最大值/index.html">
-<meta property="og:site_name" content="LIU的学习笔记">
-<meta property="og:description" content="遗传算法简介遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：  将要解决的问题主体进行编码，形成初始种群。 用选择函数对种群中的个体进行选择。 将生存的个体进行交叉，生成子代。 交叉中设置一定的变异率，防止陷入局部最优解。 将2.3.4.循环操作最终的到最优种群集合，在其中找到最优解">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-28T14:35:20.956Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="遗传算法学习笔记(一):用遗传算法求最大值">
-<meta name="twitter:description" content="遗传算法简介遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：  将要解决的问题主体进行编码，形成初始种群。 用选择函数对种群中的个体进行选择。 将生存的个体进行交叉，生成子代。 交叉中设置一定的变异率，防止陷入局部最优解。 将2.3.4.循环操作最终的到最优种群集合，在其中找到最优解">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://liuminxuan.github.io/2018/12/10/遗传算法学习笔记-用遗传算法求最大值/">
-
-
-
-
-
-  <title>遗传算法学习笔记(一):用遗传算法求最大值 | LIU的学习笔记</title>
-  
-
-
-
-
-
-
-
-
-</head>
-
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">LIU的学习笔记</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">记录学习过程</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
   </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
 </nav>
 
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liuminxuan.github.io/2018/12/10/遗传算法学习笔记-用遗传算法求最大值/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="熊猫不靠谱">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIU的学习笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">遗传算法学习笔记(一):用遗传算法求最大值</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-10T13:26:04+09:00">
-                2018-12-10
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-01-28T23:35:20+09:00">
-                2019-01-28
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/遗传算法学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">遗传算法学习笔记</span>
-                  </a>
-                </span>
-
-                
-                
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
               
             </span>
-          
 
-          
             
-          
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2018-12-10 13:26">
+      December 10, 2018 pm
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      23
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
 
           
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
-        <h1 id="遗传算法简介"><a href="#遗传算法简介" class="headerlink" title="遗传算法简介"></a>遗传算法简介</h1><p>遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="遗传算法简介"><a href="#遗传算法简介" class="headerlink" title="遗传算法简介"></a>遗传算法简介</h1><p>遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：</p>
 <ol>
 <li>将要解决的问题主体进行编码，形成初始种群。</li>
 <li>用选择函数对种群中的个体进行选择。</li>
@@ -389,26 +213,189 @@
 <li>将2.3.4.循环操作最终的到最优种群集合，在其中找到最优解</li>
 </ol>
 <a id="more"></a>
+
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><blockquote>
-<p>求解函数 2 <em> math.sin( 2 </em> x ) + math.cos( 3 * x )在区间[0,9]的最大值。(保留)</p>
+<p>求解函数 2 * math.sin( 2 * x ) + math.cos( 3 * x )在区间[0,9]的最大值。(保留)</p>
 </blockquote>
 <h1 id="遗传算法解决策"><a href="#遗传算法解决策" class="headerlink" title="遗传算法解决策"></a>遗传算法解决策</h1><p>假定需要保留四位小数，那么就一共有90000个可能性，那么</p>
-<center>2^16 &lt; 90000 &lt; 2^17 </center>
+<center>2^16 < 90000 < 2^17 </center>
 
 <p><strong>可以将所有可能性都包含在内，下面将其进行二进制的转换</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_chromosome</span><span class="params">(self, length)</span>:</span></span><br><span class="line">	<span class="comment">#随机生成染色体变量</span></span><br><span class="line">    <span class="comment">#a bit ( 0, 1 ) represent a gene</span></span><br><span class="line">    chromosome = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i  <span class="keyword">in</span> range(length):</span><br><span class="line">		chromosome |= ( <span class="number">1</span> &lt;&lt; i ) * random.randint(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">   <span class="keyword">return</span> chromosome</span><br></pre></td></tr></table></figure></div>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chromosome</span>(<span class="hljs-params">self, length</span>):</span>
+    <span class="hljs-comment">#随机生成染色体变量</span>
+    <span class="hljs-comment">#a bit ( 0, 1 ) represent a gene</span>
+    chromosome = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i  <span class="hljs-keyword">in</span> range(length):
+        chromosome |= ( <span class="hljs-number">1</span> &lt;&lt; i ) * random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
+   <span class="hljs-keyword">return</span> chromosome</code></pre>
 <p><strong>将字符二进制编码后还需进行解码，解码我们用</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">(self, chromosome)</span>:</span></span><br><span class="line">	<span class="comment">#将二进制还原成十进制</span></span><br><span class="line">    <span class="keyword">return</span> chromosome * <span class="number">9.0</span>/ (<span class="number">2</span>**(self.length)<span class="number">-1</span>)</span><br></pre></td></tr></table></figure></div>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decode</span>(<span class="hljs-params">self, chromosome</span>):</span>
+    <span class="hljs-comment">#将二进制还原成十进制</span>
+    <span class="hljs-keyword">return</span> chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>)</code></pre>
 <p><strong>将得到的种群进行选择，我们要用到题目中所给的选择条件</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fitness</span><span class="params">(self, chromosome)</span>:</span></span><br><span class="line">	<span class="comment"># 解码和适应性函数</span></span><br><span class="line">    x = self.decode(chromosome)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * math.sin( <span class="number">2</span> * x ) + math.cos( <span class="number">3</span> * x )</span><br></pre></td></tr></table></figure></div>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fitness</span>(<span class="hljs-params">self, chromosome</span>):</span>
+    <span class="hljs-comment"># 解码和适应性函数</span>
+    x = self.decode(chromosome)
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x )</code></pre>
 <p><strong>然后进行编写选择模块</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection</span><span class="params">(self, retain_rate, random_select_rate)</span>:</span></span><br><span class="line">	<span class="comment">#通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span></span><br><span class="line">    graded = [(self.fitness(chromosome), chromosome) <span class="keyword">for</span> chromosome <span class="keyword">in</span> self.population]</span><br><span class="line">    graded = [x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> sorted(graded, reverse=<span class="keyword">True</span>)]</span><br><span class="line">    <span class="comment"># 选出适应性强的染色体,挑选20%作为父类</span></span><br><span class="line">    retain_length = int(len(graded) * retain_rate)</span><br><span class="line">    parents = graded[:retain_length]</span><br><span class="line">    <span class="comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span></span><br><span class="line">    <span class="keyword">for</span> chromosome <span class="keyword">in</span> graded[retain_length:]:</span><br><span class="line">    	<span class="keyword">if</span> random.random() &lt; random_select_rate:</span><br><span class="line">            parents.append(chromosome)</span><br><span class="line">    <span class="keyword">return</span> parents</span><br></pre></td></tr></table></figure></div>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selection</span>(<span class="hljs-params">self, retain_rate, random_select_rate</span>):</span>
+    <span class="hljs-comment">#通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span>
+    graded = [(self.fitness(chromosome), chromosome) <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> self.population]
+    graded = [x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> sorted(graded, reverse=<span class="hljs-literal">True</span>)]
+    <span class="hljs-comment"># 选出适应性强的染色体,挑选20%作为父类</span>
+    retain_length = int(len(graded) * retain_rate)
+    parents = graded[:retain_length]
+    <span class="hljs-comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span>
+    <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> graded[retain_length:]:
+        <span class="hljs-keyword">if</span> random.random() &lt; random_select_rate:
+            parents.append(chromosome)
+    <span class="hljs-keyword">return</span> parents</code></pre>
 <p><strong>编写交叉模块</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">crossover</span><span class="params">(self, parents)</span>:</span></span><br><span class="line">    <span class="comment">#交叉产生后代</span></span><br><span class="line">    <span class="comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span></span><br><span class="line">    children = []</span><br><span class="line">    <span class="comment">#需要繁殖的数量</span></span><br><span class="line">    target_count = len(self.population) - len(parents)</span><br><span class="line">    <span class="keyword">while</span> len(children) &lt; target_count:</span><br><span class="line">        malelocation = random.randint(<span class="number">0</span>, len(parents) - <span class="number">1</span>)</span><br><span class="line">        femalelocation = random.randint(<span class="number">0</span>, len(parents) - <span class="number">1</span>)</span><br><span class="line">        male = parents[malelocation]</span><br><span class="line">        female = parents[femalelocation]</span><br><span class="line">        <span class="keyword">if</span> malelocation != femalelocation:</span><br><span class="line">            <span class="comment">#随机选择交叉点</span></span><br><span class="line">            cross_pos = random.randint(<span class="number">0</span>, self.length)</span><br><span class="line">            <span class="comment">#生成掩码，方便位运算</span></span><br><span class="line">            mask = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(cross_pos):</span><br><span class="line">                mask |= (<span class="number">1</span> &lt;&lt; i )</span><br><span class="line">            <span class="comment">#孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span></span><br><span class="line">            child = (male &amp; mask) | (female &amp; ~mask)</span><br><span class="line">            children.append(child)</span><br><span class="line">    <span class="comment">#经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span></span><br><span class="line">    self.population = parents + children</span><br></pre></td></tr></table></figure></div>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crossover</span>(<span class="hljs-params">self, parents</span>):</span>
+    <span class="hljs-comment">#交叉产生后代</span>
+    <span class="hljs-comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span>
+    children = []
+    <span class="hljs-comment">#需要繁殖的数量</span>
+    target_count = len(self.population) - len(parents)
+    <span class="hljs-keyword">while</span> len(children) &lt; target_count:
+        malelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
+        femalelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
+        male = parents[malelocation]
+        female = parents[femalelocation]
+        <span class="hljs-keyword">if</span> malelocation != femalelocation:
+            <span class="hljs-comment">#随机选择交叉点</span>
+            cross_pos = random.randint(<span class="hljs-number">0</span>, self.length)
+            <span class="hljs-comment">#生成掩码，方便位运算</span>
+            mask = <span class="hljs-number">0</span>
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(cross_pos):
+                mask |= (<span class="hljs-number">1</span> &lt;&lt; i )
+            <span class="hljs-comment">#孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span>
+            child = (male &amp; mask) | (female &amp; ~mask)
+            children.append(child)
+    <span class="hljs-comment">#经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span>
+    self.population = parents + children</code></pre>
 <p><strong>编写变异模块</strong></p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mutation</span><span class="params">(self, rate)</span>:</span></span><br><span class="line">    <span class="comment">#对种群中的所有个体，随机改变某个个体中的某个基因</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.population)):</span><br><span class="line">        <span class="keyword">if</span> random.random() &lt; rate:</span><br><span class="line">            j = random.randint(<span class="number">0</span>, self.length - <span class="number">1</span>)</span><br><span class="line">            <span class="comment">#随机取得一个数j对变异基因1进行随机移动</span></span><br><span class="line">            self.population[i] = self.population[i] ^ ( <span class="number">1</span> &lt;&lt; j )  <span class="comment"># ^是异或运算</span></span><br></pre></td></tr></table></figure></div>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mutation</span>(<span class="hljs-params">self, rate</span>):</span>
+    <span class="hljs-comment">#对种群中的所有个体，随机改变某个个体中的某个基因</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(self.population)):
+        <span class="hljs-keyword">if</span> random.random() &lt; rate:
+            j = random.randint(<span class="hljs-number">0</span>, self.length - <span class="hljs-number">1</span>)
+            <span class="hljs-comment">#随机取得一个数j对变异基因1进行随机移动</span>
+            self.population[i] = self.population[i] ^ ( <span class="hljs-number">1</span> &lt;&lt; j )  <span class="hljs-comment"># ^是异或运算</span></code></pre>
+
 <p>遗传算法求最大值的总体思路就是这样，思想上还是相当简单的，下面我们把所有代码组合起来，加上框架，就可以做成一个完整的<strong>遗传算法求最大值</strong>的程序</p>
-<div class="highlight-wrap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PYTHON"><figure class="iseeu highlight /python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment">#求解函数 2 * math.sin( 2 * x ) + math.cos( 3 * x )在区间[0,9]的最大值。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GA</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment">#initalise</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, length, count)</span>:</span></span><br><span class="line">        <span class="comment">#染色体长度</span></span><br><span class="line">        self.length = length</span><br><span class="line">        <span class="comment">#染色体数量</span></span><br><span class="line">        self.count = count</span><br><span class="line">        <span class="comment"># 形成原始种群</span></span><br><span class="line">        self.population = self.get_population(length, count)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_population</span><span class="params">(self, length, count)</span>:</span></span><br><span class="line">        <span class="comment"># get a list of count numbers chromosome (length : length)</span></span><br><span class="line">        <span class="keyword">return</span> [self.get_chromosome(length) <span class="keyword">for</span> i <span class="keyword">in</span> range(count)]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_chromosome</span><span class="params">(self, length)</span>:</span></span><br><span class="line">        <span class="comment">#随机生成染色体变量</span></span><br><span class="line">        <span class="comment"># a bit ( 0, 1 ) represent a gene</span></span><br><span class="line">        chromosome = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i  <span class="keyword">in</span> range(length):</span><br><span class="line">            chromosome |= ( <span class="number">1</span> &lt;&lt; i ) * random.randint(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">        print(chromosome)</span><br><span class="line">        print(chromosome * <span class="number">9.0</span>/ (<span class="number">2</span>**(self.length)<span class="number">-1</span>))</span><br><span class="line">        <span class="keyword">return</span> chromosome</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evolve</span><span class="params">(self, retain_rate = <span class="number">0.2</span>, random_select_rate = <span class="number">0.5</span>, mutation_rate = <span class="number">0.01</span> )</span>:</span></span><br><span class="line">        </span><br><span class="line">        parents = self.selection(retain_rate, random_select_rate)</span><br><span class="line">        self.crossover(parents)</span><br><span class="line">        self.mutation(mutation_rate)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fitness</span><span class="params">(self, chromosome)</span>:</span></span><br><span class="line">        <span class="comment"># 解码和适应性函数</span></span><br><span class="line">        x = self.decode(chromosome)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span> * math.sin( <span class="number">2</span> * x ) + math.cos( <span class="number">3</span> * x )</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">selection</span><span class="params">(self, retain_rate, random_select_rate)</span>:</span></span><br><span class="line">        <span class="comment">#通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span></span><br><span class="line">        graded = [(self.fitness(chromosome), chromosome) <span class="keyword">for</span> chromosome <span class="keyword">in</span> self.population]</span><br><span class="line">        graded = [x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> sorted(graded, reverse=<span class="keyword">True</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 选出适应性强的染色体,挑选20%作为父类</span></span><br><span class="line">        retain_length = int(len(graded) * retain_rate)</span><br><span class="line">        parents = graded[:retain_length]</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span></span><br><span class="line">        <span class="keyword">for</span> chromosome <span class="keyword">in</span> graded[retain_length:]:</span><br><span class="line">            <span class="keyword">if</span> random.random() &lt; random_select_rate:</span><br><span class="line">                parents.append(chromosome)</span><br><span class="line">        <span class="keyword">return</span> parents</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">crossover</span><span class="params">(self, parents)</span>:</span></span><br><span class="line">        <span class="comment">#交叉产生后代</span></span><br><span class="line">        <span class="comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span></span><br><span class="line">        children = []</span><br><span class="line">        <span class="comment">#需要繁殖的数量</span></span><br><span class="line">        target_count = len(self.population) - len(parents)</span><br><span class="line">        <span class="keyword">while</span> len(children) &lt; target_count:</span><br><span class="line">            malelocation = random.randint(<span class="number">0</span>, len(parents) - <span class="number">1</span>)</span><br><span class="line">            femalelocation = random.randint(<span class="number">0</span>, len(parents) - <span class="number">1</span>)</span><br><span class="line">            male = parents[malelocation]</span><br><span class="line">            female = parents[femalelocation]</span><br><span class="line">            <span class="keyword">if</span> malelocation != femalelocation:</span><br><span class="line">                <span class="comment">#随机选择交叉点</span></span><br><span class="line">                cross_pos = random.randint(<span class="number">0</span>, self.length)</span><br><span class="line">                <span class="comment">#生成掩码，方便位运算</span></span><br><span class="line">                mask = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(cross_pos):</span><br><span class="line">                    mask |= (<span class="number">1</span> &lt;&lt; i )</span><br><span class="line">                <span class="comment">#孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span></span><br><span class="line">                child = (male &amp; mask) | (female &amp; ~mask)</span><br><span class="line">                children.append(child)</span><br><span class="line">        <span class="comment">#经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span></span><br><span class="line">        self.population = parents + children</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mutation</span><span class="params">(self, rate)</span>:</span></span><br><span class="line">        <span class="comment">#对种群中的所有个体，随机改变某个个体中的某个基因</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.population)):</span><br><span class="line">            <span class="keyword">if</span> random.random() &lt; rate:</span><br><span class="line">                j = random.randint(<span class="number">0</span>, self.length - <span class="number">1</span>)</span><br><span class="line">                <span class="comment">#随机取得一个数j对变异基因1进行随机移动</span></span><br><span class="line">                self.population[i] = self.population[i] ^ ( <span class="number">1</span> &lt;&lt; j )  <span class="comment">#^是异或运算</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">(self, chromosome)</span>:</span></span><br><span class="line">        <span class="comment">#将二进制还原成十进制</span></span><br><span class="line">        <span class="keyword">return</span> chromosome * <span class="number">9.0</span>/ (<span class="number">2</span>**(self.length)<span class="number">-1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">result</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment">#获得当前最优的个体值</span></span><br><span class="line">        graded = [(self.fitness(chromosome), chromosome) <span class="keyword">for</span> chromosome <span class="keyword">in</span> self.population]</span><br><span class="line">        graded = [ x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> sorted(graded, reverse = <span class="keyword">True</span>)]</span><br><span class="line">        X1 = [i / float(<span class="number">10</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>, <span class="number">1</span>)]</span><br><span class="line">        Y1 = [<span class="number">2</span> * math.sin( <span class="number">2</span> * x ) + math.cos( <span class="number">3</span> * x ) <span class="keyword">for</span> x <span class="keyword">in</span> X1]</span><br><span class="line">        plt.plot(X1, Y1)</span><br><span class="line">        plt.show()</span><br><span class="line">        <span class="keyword">return</span> ga.decode(graded[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="comment">#染色体长度为17，群落数量是300</span></span><br><span class="line">    ga = GA(<span class="number">17</span>, <span class="number">300</span>)</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">200</span>):</span><br><span class="line">        ga.evolve()</span><br><span class="line">    print(<span class="string">'x = %f'</span> %(ga.result()))</span><br></pre></td></tr></table></figure></div>
+<pre><code class="hljs python"><span class="hljs-comment"># !/usr/bin/env python</span>
+<span class="hljs-comment"># -*- coding:utf-8 -*-</span>
+<span class="hljs-comment">#求解函数 2 * math.sin( 2 * x ) + math.cos( 3 * x )在区间[0,9]的最大值。</span>
+
+<span class="hljs-keyword">import</span> math
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GA</span>():</span>
+    <span class="hljs-comment">#initalise</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, length, count</span>):</span>
+        <span class="hljs-comment">#染色体长度</span>
+        self.length = length
+        <span class="hljs-comment">#染色体数量</span>
+        self.count = count
+        <span class="hljs-comment"># 形成原始种群</span>
+        self.population = self.get_population(length, count)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_population</span>(<span class="hljs-params">self, length, count</span>):</span>
+        <span class="hljs-comment"># get a list of count numbers chromosome (length : length)</span>
+        <span class="hljs-keyword">return</span> [self.get_chromosome(length) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(count)]
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chromosome</span>(<span class="hljs-params">self, length</span>):</span>
+        <span class="hljs-comment">#随机生成染色体变量</span>
+        <span class="hljs-comment"># a bit ( 0, 1 ) represent a gene</span>
+        chromosome = <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> i  <span class="hljs-keyword">in</span> range(length):
+            chromosome |= ( <span class="hljs-number">1</span> &lt;&lt; i ) * random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
+        print(chromosome)
+        print(chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>))
+        <span class="hljs-keyword">return</span> chromosome
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">evolve</span>(<span class="hljs-params">self, retain_rate = <span class="hljs-number">0.2</span>, random_select_rate = <span class="hljs-number">0.5</span>, mutation_rate = <span class="hljs-number">0.01</span> </span>):</span>
+
+        parents = self.selection(retain_rate, random_select_rate)
+        self.crossover(parents)
+        self.mutation(mutation_rate)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fitness</span>(<span class="hljs-params">self, chromosome</span>):</span>
+        <span class="hljs-comment"># 解码和适应性函数</span>
+        x = self.decode(chromosome)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x )
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selection</span>(<span class="hljs-params">self, retain_rate, random_select_rate</span>):</span>
+        <span class="hljs-comment">#通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span>
+        graded = [(self.fitness(chromosome), chromosome) <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> self.population]
+        graded = [x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> sorted(graded, reverse=<span class="hljs-literal">True</span>)]
+
+        <span class="hljs-comment"># 选出适应性强的染色体,挑选20%作为父类</span>
+        retain_length = int(len(graded) * retain_rate)
+        parents = graded[:retain_length]
+
+        <span class="hljs-comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span>
+        <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> graded[retain_length:]:
+            <span class="hljs-keyword">if</span> random.random() &lt; random_select_rate:
+                parents.append(chromosome)
+        <span class="hljs-keyword">return</span> parents
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crossover</span>(<span class="hljs-params">self, parents</span>):</span>
+        <span class="hljs-comment">#交叉产生后代</span>
+        <span class="hljs-comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span>
+        children = []
+        <span class="hljs-comment">#需要繁殖的数量</span>
+        target_count = len(self.population) - len(parents)
+        <span class="hljs-keyword">while</span> len(children) &lt; target_count:
+            malelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
+            femalelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
+            male = parents[malelocation]
+            female = parents[femalelocation]
+            <span class="hljs-keyword">if</span> malelocation != femalelocation:
+                <span class="hljs-comment">#随机选择交叉点</span>
+                cross_pos = random.randint(<span class="hljs-number">0</span>, self.length)
+                <span class="hljs-comment">#生成掩码，方便位运算</span>
+                mask = <span class="hljs-number">0</span>
+                <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(cross_pos):
+                    mask |= (<span class="hljs-number">1</span> &lt;&lt; i )
+                <span class="hljs-comment">#孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span>
+                child = (male &amp; mask) | (female &amp; ~mask)
+                children.append(child)
+        <span class="hljs-comment">#经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span>
+        self.population = parents + children
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mutation</span>(<span class="hljs-params">self, rate</span>):</span>
+        <span class="hljs-comment">#对种群中的所有个体，随机改变某个个体中的某个基因</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(self.population)):
+            <span class="hljs-keyword">if</span> random.random() &lt; rate:
+                j = random.randint(<span class="hljs-number">0</span>, self.length - <span class="hljs-number">1</span>)
+                <span class="hljs-comment">#随机取得一个数j对变异基因1进行随机移动</span>
+                self.population[i] = self.population[i] ^ ( <span class="hljs-number">1</span> &lt;&lt; j )  <span class="hljs-comment">#^是异或运算</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decode</span>(<span class="hljs-params">self, chromosome</span>):</span>
+        <span class="hljs-comment">#将二进制还原成十进制</span>
+        <span class="hljs-keyword">return</span> chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">result</span>(<span class="hljs-params">self</span>):</span>
+        <span class="hljs-comment">#获得当前最优的个体值</span>
+        graded = [(self.fitness(chromosome), chromosome) <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> self.population]
+        graded = [ x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> sorted(graded, reverse = <span class="hljs-literal">True</span>)]
+        X1 = [i / float(<span class="hljs-number">10</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">1</span>)]
+        Y1 = [<span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x ) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> X1]
+        plt.plot(X1, Y1)
+        plt.show()
+        <span class="hljs-keyword">return</span> ga.decode(graded[<span class="hljs-number">0</span>])
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
+    <span class="hljs-comment">#染色体长度为17，群落数量是300</span>
+    ga = GA(<span class="hljs-number">17</span>, <span class="hljs-number">300</span>)
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">200</span>):
+        ga.evolve()
+    print(<span class="hljs-string">&#x27;x = %f&#x27;</span> %(ga.result()))</code></pre>
+
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li><p>遗传算法在思想上还是很简单的存在，并且可以通过变异避免陷入局部最优解，但是缺点也很明显，因为要通过不停迭代不停选择，所以运行时间比较长，而且种群数量变大的话，对于电脑的资源消耗也变高。  </p>
 </li>
@@ -416,423 +403,263 @@
 </li>
 </ul>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    熊猫不靠谱
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://liuminxuan.github.io/2018/12/10/遗传算法学习笔记-用遗传算法求最大值/" title="遗传算法学习笔记(一):用遗传算法求最大值">http://liuminxuan.github.io/2018/12/10/遗传算法学习笔记-用遗传算法求最大值/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-            <a href="/tags/遗传算法/" rel="tag"># 遗传算法</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/12/06/network实践笔记：access和trunk配置/" rel="next" title="network实践笔记：access和trunk配置">
-                <i class="fa fa-chevron-left"></i> network实践笔记：access和trunk配置
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/17/network实践笔记：DHCP和NAT/" rel="prev" title="network实践笔记：DHCP和NAT">
-                network实践笔记：DHCP和NAT <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-      <div id="sidebar-dimmer"></div>
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="熊猫不靠谱">
-            
-              <p class="site-author-name" itemprop="name">熊猫不靠谱</p>
-              <p class="site-description motion-element" itemprop="description">代码 日语</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">29</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
                 
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/liuminxuan" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">遗传算法学习笔记</a>
+                    
+                  </div>
                 
-                  <span class="links-of-author-item">
-                    <a href="mailto:liuminxuan123@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
                 
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">遗传算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/12/17/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9ADHCP%E5%92%8CNAT/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">network实践笔记：DHCP和NAT</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/06/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9Aaccess%E5%92%8Ctrunk%E9%85%8D%E7%BD%AE/">
+                        <span class="hidden-mobile">network实践笔记：access和trunk配置</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
             </div>
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
 
             
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#遗传算法简介"><span class="nav-number">1.</span> <span class="nav-text">遗传算法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗传算法解决策"><span class="nav-number">3.</span> <span class="nav-text">遗传算法解决策</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
           </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
+        </div>
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">熊猫不靠谱</span>
-
-  
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
 </div>
 
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
       </div>
     
-
-    
-
   </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
   
 
   
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
   
 
   
 
   
 
-  
-  
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
 
   
-
+    <script  src="/js/lazyload.js" ></script>
   
 
-  
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "遗传算法学习笔记(一):用遗传算法求最大值&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
