@@ -168,18 +168,19 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/18/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/">Leetcode刷题笔记：相交链表</a>
+      <a class="index-header" href="/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">Leetcodes刷题笔记：字符串</a>
 
-      <a href="/2020/08/18/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/" class="index-excerpt">
+      <a href="/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="index-excerpt">
         
         
           
         
-        <div>160.相交链表解题思路
-首先初始化pA，pB开始遍历。当pA到尾巴的时候，回到pB开始遍历。pB同理。这样pA的路线a+c+b，pB的路线b+c+a，可知他们如果有交点，一定在遍历的尾巴处。
-如果两个链表没有相交，那么就变成了pA为a+b，pB为b+a，最终他们一定会遍历到null，所以返回其中一个即可。
-代码public class Solution &#123;
-    public Lis</div>
+        <div>题目编号38
+38.外观数列解题思路因为后一项是前一项决定的，所以用循环来做。选取第一个数，然后数后面有多少相同，最后用appned加上去。
+代码class Solution &#123;
+    public String countAndSay(int n) &#123;
+        String str = &quot;1&quot;; // 第一个数
+        for (int </div>
       </a>
 
       <div class="index-btm post-metas">
@@ -538,7 +539,7 @@ String类型比较每次创建一个String对象都是创建一个新的对象�
         
           
         
-        <div>题目编号206 141 21 19 876
+        <div>题目编号206 141 21 19 876 160
 编写链表public class ListNode &#123;
         int val;
         ListNode next;

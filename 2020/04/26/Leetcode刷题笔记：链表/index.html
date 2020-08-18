@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      581 字
+      736 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      11
        分钟
     </span>
   
@@ -204,7 +204,7 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>206 141 21 19 876</p>
+              <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>206 141 21 19 876 160</p>
 <h3 id="编写链表"><a href="#编写链表" class="headerlink" title="编写链表"></a>编写链表</h3><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>&#123;
         <span class="hljs-keyword">int</span> val;
         ListNode next;
@@ -308,6 +308,22 @@
        &#125;
        <span class="hljs-keyword">return</span> low.next;
    &#125;</code></pre>
+
+<h2 id="160-相交链表"><a href="#160-相交链表" class="headerlink" title="160.相交链表"></a>160.相交链表</h2><h3 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://pic.leetcode-cn.com/e0efdd908a8941e3c53a68a6049d88c437b8299e48540a772ab091b86695d981-image.png" srcset="/img/loading.gif" alt="avatar"></p>
+<p>首先初始化pA，pB开始遍历。当pA到尾巴的时候，回到pB开始遍历。pB同理。<br>这样pA的路线a+c+b，pB的路线b+c+a，可知他们如果有交点，一定在遍历的尾巴处。</p>
+<p>如果两个链表没有相交，那么就变成了pA为a+b，pB为b+a，最终他们一定会遍历到null，所以返回其中一个即可。</p>
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> </span>&#123;
+        ListNode pA = headA;
+        ListNode pB = headB;
+
+        <span class="hljs-keyword">while</span>(pA != pB)&#123;
+            pA = pA == <span class="hljs-keyword">null</span> ? headB : pA.next;
+            pB = pB == <span class="hljs-keyword">null</span> ? headA : pB.next;
+        &#125;
+        <span class="hljs-keyword">return</span> pA;
+    &#125;
+&#125;</code></pre>
 
 
             </article>

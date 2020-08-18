@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Leetcode刷题笔记：相交链表 - LIU的学习笔记</title>
+  <title>Leetcodes刷题笔记：字符串 - LIU的学习笔记</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-18 11:40">
-      2020年8月18日 中午
+    <time datetime="2020-08-18 15:19">
+      2020年8月18日 下午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      154 字
+      224 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      3
        分钟
     </span>
   
@@ -204,19 +204,31 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="160-相交链表"><a href="#160-相交链表" class="headerlink" title="160.相交链表"></a>160.相交链表</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://pic.leetcode-cn.com/e0efdd908a8941e3c53a68a6049d88c437b8299e48540a772ab091b86695d981-image.png" srcset="/img/loading.gif" alt="avatar"></p>
-<p>首先初始化pA，pB开始遍历。当pA到尾巴的时候，回到pB开始遍历。pB同理。<br>这样pA的路线a+c+b，pB的路线b+c+a，可知他们如果有交点，一定在遍历的尾巴处。</p>
-<p>如果两个链表没有相交，那么就变成了pA为a+b，pB为b+a，最终他们一定会遍历到null，所以返回其中一个即可。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> </span>&#123;
-        ListNode pA = headA;
-        ListNode pB = headB;
-
-        <span class="hljs-keyword">while</span>(pA != pB)&#123;
-            pA = pA == <span class="hljs-keyword">null</span> ? headB : pA.next;
-            pB = pB == <span class="hljs-keyword">null</span> ? headA : pB.next;
+              <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>38</p>
+<h2 id="38-外观数列"><a href="#38-外观数列" class="headerlink" title="38.外观数列"></a>38.外观数列</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>因为后一项是前一项决定的，所以用循环来做。<br>选取第一个数，然后数后面有多少相同，最后用appned加上去。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">countAndSay</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
+        String str = <span class="hljs-string">&quot;1&quot;</span>; <span class="hljs-comment">// 第一个数</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;
+            StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
+            <span class="hljs-keyword">char</span> pre = str.charAt(<span class="hljs-number">0</span>); <span class="hljs-comment">// 取出头部的数字</span>
+            <span class="hljs-keyword">int</span> count = <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; str.length(); j++) &#123;
+                <span class="hljs-comment">// 如果后面的数与第一个相同，则count++</span>
+                <span class="hljs-comment">// 否则用append方法将头部数字的个数和头部数字加入字符串中</span>
+                <span class="hljs-keyword">if</span>(pre == str.charAt(j))&#123;
+                    count++;
+                &#125;<span class="hljs-keyword">else</span>&#123;
+                    sb.append(count).append(pre);
+                    pre = str.charAt(j); <span class="hljs-comment">// 选取下一个头部数字</span>
+                    count = <span class="hljs-number">1</span>; <span class="hljs-comment">// count归1</span>
+                &#125;
+            &#125;
+            <span class="hljs-comment">// 最后跳出循环时未处理最后一个头部数字，在此在此处理</span>
+            sb.append(count).append(pre);
+            str = sb.toString();
         &#125;
-        <span class="hljs-keyword">return</span> pA;
+        <span class="hljs-keyword">return</span> str;
     &#125;
 &#125;</code></pre>
             </article>
@@ -394,7 +406,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Leetcode刷题笔记：相交链表&nbsp;",
+        "Leetcodes刷题笔记：字符串&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,
