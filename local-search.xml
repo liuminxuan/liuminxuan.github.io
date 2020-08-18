@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>Leetcode刷题笔记：相交链表</title>
+    <link href="/2020/08/18/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/"/>
+    <url>/2020/08/18/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="160-相交链表"><a href="#160-相交链表" class="headerlink" title="160.相交链表"></a>160.相交链表</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://pic.leetcode-cn.com/e0efdd908a8941e3c53a68a6049d88c437b8299e48540a772ab091b86695d981-image.png" alt="avatar"></p><p>首先初始化pA，pB开始遍历。当pA到尾巴的时候，回到pB开始遍历。pB同理。<br>这样pA的路线a+c+b，pB的路线b+c+a，可知他们如果有交点，一定在遍历的尾巴处。</p><p>如果两个链表没有相交，那么就变成了pA为a+b，pB为b+a，最终他们一定会遍历到null，所以返回其中一个即可。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> </span>&#123;        ListNode pA = headA;        ListNode pB = headB;        <span class="hljs-keyword">while</span>(pA != pB)&#123;            pA = pA == <span class="hljs-keyword">null</span> ? headB : pA.next;            pB = pB == <span class="hljs-keyword">null</span> ? headA : pB.next;        &#125;        <span class="hljs-keyword">return</span> pA;    &#125;&#125;</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode刷题笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+      <tag>Leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Leetcode刷题笔记：有效的数独</title>
     <link href="/2020/08/17/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/"/>
     <url>/2020/08/17/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/</url>
