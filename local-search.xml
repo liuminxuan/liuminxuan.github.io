@@ -8,7 +8,7 @@
     <link href="/2020/08/19/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A50/"/>
     <url>/2020/08/19/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A50/</url>
     
-    <content type="html"><![CDATA[<h2 id="剑指-Offer-50-第一个只出现一次的字符"><a href="#剑指-Offer-50-第一个只出现一次的字符" class="headerlink" title="剑指 Offer 50. 第一个只出现一次的字符"></a>剑指 Offer 50. 第一个只出现一次的字符</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>跟leetcode387差不多，只是返回值不一样，稍加修改就可以提交了。<br>用数组自创哈希表，因为只有小写字母，所以设置一个26长度的数组，字符串中出现一次，数组里对应的字母就+1，然后再对字符串的字母一一对照，如果值为1就输出，找不到1则无解。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(String s)</span> </span>&#123;       <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>]; <span class="hljs-comment">// 因为都是小写字母，所以数组取26</span>        <span class="hljs-keyword">char</span>[] chars = s.toCharArray();         <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c : chars)&#123;            count[c-<span class="hljs-string">&#x27;a&#x27;</span>]++; <span class="hljs-comment">// 因为是ASCII码字母出现一次+1</span>        &#125;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;            <span class="hljs-keyword">if</span>(count[s.charAt(i)-<span class="hljs-string">&#x27;a&#x27;</span>] == <span class="hljs-number">1</span>)&#123;                <span class="hljs-keyword">return</span> s.charAt(i); <span class="hljs-comment">// 找出只出现一次的字母</span>            &#125;        &#125;        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>; <span class="hljs-comment">// 无解</span>    &#125;&#125;</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="剑指-Offer-50-第一个只出现一次的字符"><a href="#剑指-Offer-50-第一个只出现一次的字符" class="headerlink" title="剑指 Offer 50. 第一个只出现一次的字符"></a>剑指 Offer 50. 第一个只出现一次的字符</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>跟<a href="https://liuminxuan.github.io/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">leetcode387</a>差不多，只是返回值不一样，稍加修改就可以提交了。<br>用数组自创哈希表，因为只有小写字母，所以设置一个26长度的数组，字符串中出现一次，数组里对应的字母就+1，然后再对字符串的字母一一对照，如果值为1就输出，找不到1则无解。</p><h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(String s)</span> </span>&#123;       <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>]; <span class="hljs-comment">// 因为都是小写字母，所以数组取26</span>        <span class="hljs-keyword">char</span>[] chars = s.toCharArray();         <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c : chars)&#123;            count[c-<span class="hljs-string">&#x27;a&#x27;</span>]++; <span class="hljs-comment">// 因为是ASCII码字母出现一次+1</span>        &#125;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;            <span class="hljs-keyword">if</span>(count[s.charAt(i)-<span class="hljs-string">&#x27;a&#x27;</span>] == <span class="hljs-number">1</span>)&#123;                <span class="hljs-keyword">return</span> s.charAt(i); <span class="hljs-comment">// 找出只出现一次的字母</span>            &#125;        &#125;        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>; <span class="hljs-comment">// 无解</span>    &#125;&#125;</code></pre>]]></content>
     
     
     
@@ -27,7 +27,7 @@
   
   
   <entry>
-    <title>Leetcodes刷题笔记：字符串</title>
+    <title>Leetcode刷题笔记：字符串</title>
     <link href="/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     <url>/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     
@@ -75,33 +75,6 @@
       <tag>Java</tag>
       
       <tag>Leetcode</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>杂谈：互联网的开放与封闭</title>
-    <link href="/2020/08/14/%E6%9D%82%E8%B0%88%EF%BC%9A%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E5%BC%80%E6%94%BE%E4%B8%8E%E5%B0%81%E9%97%AD/"/>
-    <url>/2020/08/14/%E6%9D%82%E8%B0%88%EF%BC%9A%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E5%BC%80%E6%94%BE%E4%B8%8E%E5%B0%81%E9%97%AD/</url>
-    
-    <content type="html"><![CDATA[<p>最近互联网掀起了一股封闭的风潮，各个公司甚至是国家之间开始打造自己的技术壁垒。不管原因是什么，这种做法确实与互联网最初的理想背道而驰。</p><p>我生于90年代，真正记事儿应该是2000年那会儿，那时候计算机虽然没有那么普及，但是已经开始影响我们的生活，我记得妈妈办公已经用上了iMac G5来做表格处理，准确说我也没有经历过磁带听歌的时代，所以对walkman的情怀远不如80后，因为那时候mp3已经是可以买到的普通电子产品，记得我的第一个mp3就是纽曼的一款，那时候喜欢把它连上电脑，从百度搜索一些“土味歌曲”听。甚至那时候还有不为什么会有图书管理这种专业，因为那时候谷歌已经可以满足很多信息检索需求了。</p><p>我记得非常清楚，小时候互联网带给人们未来的无限憧憬，那时候还“地球村”这个词非常流行，因为互联网拉近了全世界人的距离，让我们在家就可以通过e-mail联系自己的penfriend，英语课老师还鼓励我们去寻找自己的penfriend。后来谷歌推出了谷歌地球时，我在家可以坐电脑前一天，欣赏尼加拉瓜瀑布还有纽约的摩天大楼。那些社交产品比如Google+，Facebook，人人我都注册过，也在上面联系同学看看动态啥的。</p><p>Facebook我记得iPhone5发布的时候还能用，我还发了一些关于iPhone5的感想。</p><p>后来的事情大家都知道了，“地球村”这个词也越来越少见。现在想起来，还些许有些难过。</p><p>举这么多例子并不是怀念过去，而是想表达一下互联网的初衷就是拥抱开放，一根网线就可以缩短人与人之间的距离，让人们在家就可以看世界任何地方的美景甚至买全世界各地的东西，所以刚看《孤独的美食家》的时候我甚至不能理解五郎的职业。后来上了大学，可以说对电子产品的痴迷让我选择了计算机专业，因为那时候计算机还不如现在这样火，大家还是喜欢学土木金融这样的专业。</p><p>前面说到开放是互联网的精髓，读了计算机后更能理解为什么开放这么重要。就如Linux，开源的特性以及非常高的社区活力让它成为了全世界广受欢迎的操作系统，可能有人会说Windows这种不开源的系统不也成功了么？Windows与各个电脑厂商的授权合作其实也是一种变相开放。可以说完全闭门造车的互联网企业是不存在的，特别是一个编程语言想要编程主流，就必须要拥抱开放，不开放的编程语言是没有出路的。</p><p>这里就要说到一个异类公司，那就是Apple公司。Apple的生态以封闭著称，虽然在对待开发者一直处于相对开放的态度，但是从整个系统设计到硬件设计再到供应链都是极尽可能地掌控在自己手中，甚至可以为了摆脱英特尔而去自研Apple silicon。</p><p>Apple有自己的成功密码，但是成功密码绝不是封闭，要不然黑莓也不至于沦落到今天。事实上Apple也是因为拥抱了开放才获得了后来的腾飞。至于Apple为什么可以这么成功，我想可以放到另一篇进行讨论。</p><p>纵使Apple这么强大的公司，要推行一门语言也是非常难的，比如在2014年推出的swift，其语法与python极为相似，Apple甚至宣称swift的编译运行速度远远快于python，但是直到今天也不算太火，主要还是Apple的封闭基因导致。2014年发布swift的时候甚至开源两字都没提，直到2015年才开放了编译器和标准库的源代码，可以看见，swift虽然也能在人工智能方面发挥作用，但除非swift可以在某些人工智能实例上打败python，否则在未来相当一段长的时间里，swift都只会在Apple开发者的圈子里打转，并不能取代python。</p><p>回到封闭问题上，因为互联网的基因就是开放，所以各种手段是根本阻止不了互联网开放的本质的，互联网自会找到自己的方法去维持它自己的特性。想通过封闭来获得技术壁垒的各位也不必再做无用功了。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>杂谈</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>互联网</tag>
-      
-      <tag>杂谈</tag>
       
     </tags>
     
