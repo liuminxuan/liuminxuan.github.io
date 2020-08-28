@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      736 字
+      746 字
     </span>
   
 
@@ -269,6 +269,8 @@
             <span class="hljs-comment">// 与l1同理</span>
             curr.next = l2;
         &#125;
+        <span class="hljs-comment">// 装逼写法</span>
+        <span class="hljs-comment">// cur.next = l1 == null ? l2 : l1;</span>
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;</code></pre>
 <h2 id="19-删除链表的倒数第N个节点"><a href="#19-删除链表的倒数第N个节点" class="headerlink" title="19. 删除链表的倒数第N个节点"></a>19. 删除链表的倒数第N个节点</h2><h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><p>用快慢指针，中间相隔n个数，快指针到末尾时，慢指针指向的下一个元素就是要删除的节点。</p>
