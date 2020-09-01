@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Leetcode刷题笔记：二叉树 - LIU的学习笔记</title>
+  <title>剑指offer刷题笔记：57.和为s的两个数字 - LIU的学习笔记</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-26 18:30">
-      2020年8月26日 晚上
+    <time datetime="2020-09-01 10:28">
+      2020年9月1日 上午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      523 字
+      459 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      6
        分钟
     </span>
   
@@ -204,75 +204,54 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="编写二叉树"><a href="#编写二叉树" class="headerlink" title="编写二叉树"></a>编写二叉树</h2><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeNode</span> </span>&#123;
-    <span class="hljs-keyword">int</span> val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(<span class="hljs-keyword">int</span> x) &#123; val = x; &#125;
- &#125;</code></pre>
+              <h1 id="57-和为s的两个数字"><a href="#57-和为s的两个数字" class="headerlink" title="57. 和为s的两个数字"></a>57. 和为s的两个数字</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。</p>
+<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><pre><code class="hljs angelscript">输入：nums = [<span class="hljs-number">2</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">15</span>], target = <span class="hljs-number">9</span>
+输出：[<span class="hljs-number">2</span>,<span class="hljs-number">7</span>] 或者 [<span class="hljs-number">7</span>,<span class="hljs-number">2</span>]</code></pre>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><pre><code class="hljs angelscript">输入：nums = [<span class="hljs-number">10</span>,<span class="hljs-number">26</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">47</span>,<span class="hljs-number">60</span>], target = <span class="hljs-number">40</span>
+输出：[<span class="hljs-number">10</span>,<span class="hljs-number">30</span>] 或者 [<span class="hljs-number">30</span>,<span class="hljs-number">10</span>]</code></pre>
 
-
-<h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>226 101</p>
-<h2 id="226-翻转二叉树"><a href="#226-翻转二叉树" class="headerlink" title="226. 翻转二叉树"></a>226. 翻转二叉树</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左右子节点。结束条件是节点为null</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
-        <span class="hljs-comment">// 递归</span>
-        <span class="hljs-keyword">if</span>(root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
-
-        <span class="hljs-comment">// 创建交换的中间媒介</span>
-        TreeNode tmp = root.right;
-
-        <span class="hljs-comment">// 左右子树交换</span>
-        root.right = root.left;
-        root.left = tmp;
-
-        <span class="hljs-comment">// 继续递归</span>
-        invertTree(root.right);
-        invertTree(root.left);
-
-        <span class="hljs-keyword">return</span> root;
-    &#125;
-&#125;</code></pre>
-
-<h2 id="101-对称二叉树"><a href="#101-对称二叉树" class="headerlink" title="101. 对称二叉树"></a>101. 对称二叉树</h2><h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><p>一开始我理解错了，以为就是一个判断根节点的左右子节点是否相等的问题。所以一开始的代码如下：</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>看似简单，因为是升序数组，所以一开始用暴力求解，代码如下：</p>
 <pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-        <span class="hljs-keyword">while</span>(root != <span class="hljs-keyword">null</span>)&#123;
-            <span class="hljs-keyword">if</span>(root.left != root.right)&#123;
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-            &#125;<span class="hljs-keyword">else</span>&#123;
-                isSymmetric(root.left);
-                isSymmetric(root.right);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
+        <span class="hljs-keyword">int</span> s = target;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length - <span class="hljs-number">1</span>; i++)&#123;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; nums.length; j++)&#123;
+                <span class="hljs-keyword">if</span>(nums[i] + nums[j] &lt; s)&#123;
+                    <span class="hljs-keyword">continue</span>;
+                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[i] + nums[j] &gt; s)&#123;
+                    <span class="hljs-keyword">break</span>;
+                &#125;<span class="hljs-keyword">else</span>&#123;
+                    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">2</span>];
+                    res[<span class="hljs-number">0</span>] = nums[i];
+                    res[<span class="hljs-number">1</span>] = nums[j];
+                    <span class="hljs-keyword">return</span> res;
+                &#125;
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
     &#125;
 &#125;</code></pre>
-<p>结果带入测试用例答案不对，才发现此题是判断右子节点的右节点和左子节点的左节点还有右子节点的左节点和左子节点的右节点是否相等。<br>这是一个典型递归问题,因为涉及到左子树的子节点和右子树的子节点，所以要另立一个函数isSub(TreeNode L, TreeNode R)来解决。<br>如果左右都为空，则返回true。如果只有其中一个为空或者两个值不相等，则返回false。其他情况则继续向下探索。</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(root == <span class="hljs-keyword">null</span>)&#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// 根节点为空则返回true</span>
-        &#125;<span class="hljs-keyword">else</span>&#123;
-            <span class="hljs-keyword">return</span> isSub(root.left, root.right); <span class="hljs-comment">// 不为空则探索子节点</span>
+<p>结果超时了，转用HashMap求解。<br>首先当目标数组为空或只有一个值的时候，返回空。然后创建HashMap，遍历数组，将值放入HashMap，如果其中两个值相加可以得到目标值，则返回这两个值的结果。<br>遍历完依旧没有找到目标值，则返回空。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
+        <span class="hljs-comment">// 当数组为空或只有一个元素的时候，返回空</span>
+        <span class="hljs-keyword">if</span>(nums.length &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+
+        <span class="hljs-comment">// 创建HashMap</span>
+        HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+        <span class="hljs-comment">// 遍历数组，如果找到一个值可以与target - nums[i]对应，则返回结果</span>
+        <span class="hljs-comment">// 如果找不到对应，则把此值放入HashMap</span>
+        <span class="hljs-comment">// 遍历完成后如果没有返回结果则返回空</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++)&#123;
+            <span class="hljs-keyword">int</span> cur = target - nums[i];
+            <span class="hljs-keyword">if</span>(map.containsKey(cur))&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] &#123;cur, nums[i]&#125;;
+            &#125;
+            map.put(nums[i], i);
         &#125;
-    &#125;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSub</span><span class="hljs-params">(TreeNode L, TreeNode R)</span></span>&#123;
-        <span class="hljs-keyword">if</span>(L == <span class="hljs-keyword">null</span> &amp;&amp; R == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// 如果左右都为空，则返回true</span>
-        <span class="hljs-keyword">if</span>(L == <span class="hljs-keyword">null</span> || R == <span class="hljs-keyword">null</span> || L.val != R.val)&#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <span class="hljs-comment">// 如果只有其中一个为空或者两个值不相等，则返回false</span>
-        &#125;<span class="hljs-keyword">else</span>&#123;
-            <span class="hljs-keyword">return</span> isSub(L.left, R.right) &amp;&amp; isSub(L.right, R.left); <span class="hljs-comment">// 其他情况则继续向下探索</span>
-        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
     &#125;
 &#125;</code></pre>
-
-
-
-
-
-
             </article>
             <hr>
             <div>
@@ -286,7 +265,7 @@
                     
                       <a class="hover-with-bg" href="/tags/Leetcode/">Leetcode</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+                      <a class="hover-with-bg" href="/tags/HashMap/">HashMap</a>
                     
                   </div>
                 
@@ -299,9 +278,9 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/">
+                      <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java学习笔记：instanceof</span>
+                        <span class="hidden-mobile">Java学习笔记：内部类</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -309,8 +288,8 @@
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/19/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A50/">
-                        <span class="hidden-mobile">剑指offer刷题笔记：50.第一个只出现一次的字符</span>
+                      <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">
+                        <span class="hidden-mobile">Java学习笔记：接口</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -449,7 +428,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Leetcode刷题笔记：二叉树&nbsp;",
+        "剑指offer刷题笔记：57.和为s的两个数字&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

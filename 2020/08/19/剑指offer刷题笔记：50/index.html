@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>剑指offer刷题笔记：50 - LIU的学习笔记</title>
+  <title>剑指offer刷题笔记：50.第一个只出现一次的字符 - LIU的学习笔记</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      217 字
+      513 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      7
        分钟
     </span>
   
@@ -204,8 +204,15 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="剑指-Offer-50-第一个只出现一次的字符"><a href="#剑指-Offer-50-第一个只出现一次的字符" class="headerlink" title="剑指 Offer 50. 第一个只出现一次的字符"></a>剑指 Offer 50. 第一个只出现一次的字符</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>跟<a href="https://liuminxuan.github.io/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">leetcode387</a>差不多，只是返回值不一样，稍加修改就可以提交了。<br>用数组自创哈希表，因为只有小写字母，所以设置一个26长度的数组，字符串中出现一次，数组里对应的字母就+1，然后再对字符串的字母一一对照，如果值为1就输出，找不到1则无解。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+              <h1 id="剑指-Offer-50-第一个只出现一次的字符"><a href="#剑指-Offer-50-第一个只出现一次的字符" class="headerlink" title="剑指 Offer 50. 第一个只出现一次的字符"></a>剑指 Offer 50. 第一个只出现一次的字符</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code class="hljs abnf"><span class="hljs-attribute">s</span> = <span class="hljs-string">&quot;abaccdeff&quot;</span>
+返回 <span class="hljs-string">&quot;b&quot;</span>
+
+<span class="hljs-attribute">s</span> = <span class="hljs-string">&quot;&quot;</span> 
+返回 <span class="hljs-string">&quot; &quot;</span></code></pre>
+
+<h2 id="解题思路1"><a href="#解题思路1" class="headerlink" title="解题思路1"></a>解题思路1</h2><p>跟<a href="https://liuminxuan.github.io/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">leetcode387</a>差不多，只是返回值不一样，稍加修改就可以提交了。<br>用数组自创哈希表，因为只有小写字母，所以设置一个26长度的数组，字符串中出现一次，数组里对应的字母就+1，然后再对字符串的字母一一对照，如果值为1就输出，找不到1则无解。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(String s)</span> </span>&#123;
        <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>]; <span class="hljs-comment">// 因为都是小写字母，所以数组取26</span>
         <span class="hljs-keyword">char</span>[] chars = s.toCharArray(); 
@@ -218,6 +225,38 @@
             &#125;
         &#125;
         <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>; <span class="hljs-comment">// 无解</span>
+    &#125;
+&#125;</code></pre>
+
+<h2 id="解题思路2"><a href="#解题思路2" class="headerlink" title="解题思路2"></a>解题思路2</h2><p>除去用数组做，第一印象肯定是HashMap，但是其结果却不尽人意。<br>究其原因，HashMap是由一个链表组成，其查找速度必然不如O(1)的数组，但是在插入和删除操作的时候，其查找速度比数组快。</p>
+<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(String s)</span> </span>&#123;
+        <span class="hljs-comment">// 数组为空，返回空</span>
+        <span class="hljs-keyword">if</span>(s.isEmpty()) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>;
+        HashMap&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+        <span class="hljs-keyword">char</span> c = <span class="hljs-string">&#x27; &#x27;</span>;
+        <span class="hljs-comment">// 遍历字符串，分别放入HashMap，第一次放入则值为0</span>
+        <span class="hljs-comment">// 而后出现相同的时候取出Key对应的value，然后将value+1，放回Key对应的value中</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; s.length(); i++)&#123;
+            c = s.charAt(i);
+            <span class="hljs-keyword">if</span>(!map.containsKey(c))&#123;
+                map.put(c, <span class="hljs-number">0</span>);
+            &#125;<span class="hljs-keyword">else</span>&#123;
+                <span class="hljs-comment">// map.put(c, 1);</span>
+                <span class="hljs-keyword">int</span> v = map.get(c);
+                <span class="hljs-comment">// map.remove(c);</span>
+                v++;
+                map.put(c, v);
+            &#125;
+        &#125;
+        <span class="hljs-comment">// </span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; s.length(); i++)&#123;
+            c = s.charAt(i);
+            <span class="hljs-keyword">if</span> (map.get(c) == <span class="hljs-number">0</span>) &#123;
+                <span class="hljs-keyword">return</span> c;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>;
     &#125;
 &#125;</code></pre>
             </article>
@@ -396,7 +435,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "剑指offer刷题笔记：50&nbsp;",
+        "剑指offer刷题笔记：50.第一个只出现一次的字符&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,

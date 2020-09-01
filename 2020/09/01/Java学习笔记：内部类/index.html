@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>Java学习笔记：内部类 - LIU的学习笔记</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LIU的学习笔记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/index.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-09-01 14:12">
+      2020年9月1日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="关于内部类"><a href="#关于内部类" class="headerlink" title="关于内部类"></a>关于内部类</h1><blockquote>
+<p>内部类(inner class) : 定义在另一个类重的类</p>
+</blockquote>
+<p>为什么需要内部类？</p>
+<ul>
+<li>内部类方法可以访问该类定义所在作用域中的数据，包括被 private 修饰的私有数据</li>
+<li>内部类可以对同一包中的其他类隐藏起来</li>
+<li>内部类可以一定程度修复 java 单继承的缺陷</li>
+<li>当我们想要定义一个回调函数却不想写大量代码的时候我们可以选择使用匿名内部类来实现</li>
+</ul>
+<h1 id="内部类的分类"><a href="#内部类的分类" class="headerlink" title="内部类的分类"></a>内部类的分类</h1><p>内部类可以分为：静态内部类（嵌套类）和非静态内部类。非静态内部类又可以分为：成员内部类、方法内部类、匿名内部类。</p>
+<h2 id="静态内部类和非静态内部类的区别"><a href="#静态内部类和非静态内部类的区别" class="headerlink" title="静态内部类和非静态内部类的区别"></a>静态内部类和非静态内部类的区别</h2><ol>
+<li>静态内部类可以有静态成员，而非静态内部类则不能有静态成员。</li>
+<li>静态内部类可以访问外部类的静态变量，而不可访问外部类的非静态变量；</li>
+<li>非静态内部类的非静态成员可以访问外部类的非静态变量。</li>
+<li>静态内部类的创建不依赖于外部类，而非静态内部类必须依赖于外部类的创建而创建。</li>
+</ol>
+<p><strong>静态内部类</strong></p>
+<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassOuter</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> noStaticInt = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> STATIC_INT = <span class="hljs-number">2</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span> </span>&#123;
+        System.out.println(<span class="hljs-string">&quot;外部类方法&quot;</span>);
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InnerClass</span> </span>&#123;
+        <span class="hljs-comment">//static int num = 1; 此时编辑器会报错 非静态内部类则不能有静态成员</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;
+            <span class="hljs-comment">//非静态内部类的非静态成员可以访问外部类的非静态变量。</span>
+            System.out.println(STATIC_INT);
+            System.out.println(noStaticInt);
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StaticInnerClass</span> </span>&#123;
+        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> NUM = <span class="hljs-number">1</span>;<span class="hljs-comment">//静态内部类可以有静态成员</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;
+            System.out.println(STATIC_INT);
+            <span class="hljs-comment">//System.out.println(noStaticInt); 此时编辑器会报 不可访问外部类的非静态变量错</span>
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestInnerClass</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-comment">//非静态内部类 创建方式1</span>
+        ClassOuter.InnerClass innerClass = <span class="hljs-keyword">new</span> ClassOuter().<span class="hljs-function">new <span class="hljs-title">InnerClass</span><span class="hljs-params">()</span></span>;
+        <span class="hljs-comment">//非静态内部类 创建方式2</span>
+        ClassOuter outer = <span class="hljs-keyword">new</span> ClassOuter();
+        ClassOuter.InnerClass inner = outer.<span class="hljs-function">new <span class="hljs-title">InnerClass</span><span class="hljs-params">()</span></span>;
+        <span class="hljs-comment">//静态内部类的创建方式</span>
+        ClassOuter.StaticInnerClass staticInnerClass = <span class="hljs-keyword">new</span> ClassOuter.StaticInnerClass();
+    &#125;
+&#125;</code></pre>
+
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><p>成员内部类也是最普通的内部类，它是外围类的一个成员，所以他是可以无限制的访问外围类的所有 成员属性和方法，尽管是private的，但是外围类要访问内部类的成员属性和方法则需要通过内部类实例来访问。<br>在成员内部类中要注意两点：</p>
+<ol>
+<li>成员内部类中不能存在任何static的变量和方法，成员内部类里不能有静态内部类</li>
+<li>成员内部类是依附于外围类的，所以只有先创建了外围类才能够创建内部类</li>
+</ol>
+<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OuterClass</span> </span>&#123;
+    <span class="hljs-keyword">private</span> String str;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">outerDisplay</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">&quot;outerClass...&quot;</span>);
+    &#125;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InnerClass</span></span>&#123;
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">innerDisplay</span><span class="hljs-params">()</span></span>&#123;
+            <span class="hljs-comment">//使用外围内的属性</span>
+            str = <span class="hljs-string">&quot;inner...&quot;</span>;
+            System.out.println(str);
+            <span class="hljs-comment">//使用外围内的方法</span>
+            outerDisplay();
+        &#125;
+    &#125;
+
+    <span class="hljs-comment">/*推荐使用getxxx()来获取成员内部类，尤其是该内部类的构造函数无参数时 */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> InnerClass <span class="hljs-title">getInnerClass</span><span class="hljs-params">()</span></span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> InnerClass();
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        OuterClass outer = <span class="hljs-keyword">new</span> OuterClass();
+        OuterClass.InnerClass inner = outer.getInnerClass();
+        inner.innerDisplay();
+    &#125;
+&#125;
+--------------------
+innner...
+outerClass...</code></pre>
+
+<h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><p>定义在方法或作用域中的内部类，出了该方法，类就会失效。<br><strong>定义在方法中</strong></p>
+<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parcel5</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Destionation <span class="hljs-title">destionation</span><span class="hljs-params">(String str)</span></span>&#123;
+        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PDestionation</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Destionation</span></span>&#123;
+            <span class="hljs-keyword">private</span> String label;
+            <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">PDestionation</span><span class="hljs-params">(String whereTo)</span></span>&#123;
+                label = whereTo;
+            &#125;
+            <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">readLabel</span><span class="hljs-params">()</span></span>&#123;
+                <span class="hljs-keyword">return</span> label;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PDestionation(str);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        Parcel5 parcel5 = <span class="hljs-keyword">new</span> Parcel5();
+        Destionation d = parcel5.destionation(<span class="hljs-string">&quot;chenssy&quot;</span>);
+    &#125;
+&#125;</code></pre>
+<p><strong>定义在作用域中</strong></p>
+<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parcel6</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">internalTracking</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> b)</span></span>&#123;
+        <span class="hljs-keyword">if</span>(b)&#123;
+            <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TrackingSlip</span></span>&#123;
+                <span class="hljs-keyword">private</span> String id;
+                TrackingSlip(String s) &#123;
+                    id = s;
+                &#125;
+                <span class="hljs-function">String <span class="hljs-title">getSlip</span><span class="hljs-params">()</span></span>&#123;
+                    <span class="hljs-keyword">return</span> id;
+                &#125;
+            &#125;
+            TrackingSlip ts = <span class="hljs-keyword">new</span> TrackingSlip(<span class="hljs-string">&quot;chenssy&quot;</span>);
+            String string = ts.getSlip();
+        &#125;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">track</span><span class="hljs-params">()</span></span>&#123;
+        internalTracking(<span class="hljs-keyword">true</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        Parcel6 parcel6 = <span class="hljs-keyword">new</span> Parcel6();
+        parcel6.track();
+    &#125;
+&#125;</code></pre>
+
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><ol>
+<li>匿名内部类是没有访问修饰符的。</li>
+<li>匿名内部类必须继承一个抽象类或者实现一个接口</li>
+<li>匿名内部类中不能存在任何静态成员或方法</li>
+<li>匿名内部类是没有构造方法的，因为它没有类名。</li>
+<li><strong>与局部内部相同匿名内部类也可以引用局部变量。此变量也必须声明为 final</strong></li>
+</ol>
+<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OuterClass</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> InnerClass <span class="hljs-title">getInnerClass</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> num,String str2)</span></span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> InnerClass()&#123;
+            <span class="hljs-keyword">int</span> number = num + <span class="hljs-number">3</span>;
+            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNumber</span><span class="hljs-params">()</span></span>&#123;
+                <span class="hljs-keyword">return</span> number;
+            &#125;
+        &#125;;        <span class="hljs-comment">/* 注意：分号不能省 */</span>
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        OuterClass out = <span class="hljs-keyword">new</span> OuterClass();
+        InnerClass inner = out.getInnerClass(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;chenssy&quot;</span>);
+        System.out.println(inner.getNumber());
+    &#125;
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">InnerClass</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getNumber</span><span class="hljs-params">()</span></span>;
+&#125;
+
+----------------
+Output:
+<span class="hljs-number">5</span></code></pre>
+<h3 id="为什么局部变量需要final修饰呢"><a href="#为什么局部变量需要final修饰呢" class="headerlink" title="为什么局部变量需要final修饰呢"></a>为什么局部变量需要final修饰呢</h3><p>原因是：因为局部变量和匿名内部类的生命周期不同。<br>匿名内部类是创建后是存储在堆中的，而方法中的局部变量是存储在Java栈中，当方法执行完毕后，就进行退栈，同时局部变量也会消失。那么此时匿名内部类还有可能在堆中存储着，那么匿名内部类要到哪里去找这个局部变量呢？<br>为了解决这个问题编译器为自动地帮我们在匿名内部类中创建了一个局部变量的备份，也就是说即使方法执结束，匿名内部类中还有一个备份，自然就不怕找不到了。<br>但是问题又来了。如果局部变量中的a不停的在变化。那么岂不是也要让备份的a变量无时无刻的变化。为了保持局部变量与匿名内部类中备份域保持一致。编译器不得不规定死这些局部域必须是常量，一旦赋值不能再发生变化了。所以为什么匿名内部类应用外部方法的域必须是常量域的原因所在了。</p>
+<p><strong>特别注意：在Java8中已经去掉要对final的修饰限制，但其实只要在匿名内部类使用了，该变量还是会自动变为final类型（只能使用，不能赋值）。</strong></p>
+<h1 id="内部类会引起的问题"><a href="#内部类会引起的问题" class="headerlink" title="内部类会引起的问题"></a>内部类会引起的问题</h1><ol>
+<li>如果一个匿名内部类没有被任何引用持有，那么匿名内部类对象用完就有机会被回收。</li>
+<li>如果内部类仅仅只是在外部类中被引用，当外部类的不再被引用时，外部类和内部类就可以都被GC回收。</li>
+<li>如果当内部类的引用被外部类以外的其他类引用时，就会造成内部类和外部类无法被GC回收的情况，即使外部类没有被引用，因为内部类持有指向外部类的引用）。</li>
+</ol>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903566293860366">https://juejin.im/post/6844903566293860366</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenssy/p/3388487.html">https://www.cnblogs.com/chenssy/p/3388487.html</a></li>
+</ul>
+</blockquote>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/">
+                        <span class="hidden-mobile">剑指offer刷题笔记：57.和为s的两个数字</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Java学习笔记：内部类&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 120,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
