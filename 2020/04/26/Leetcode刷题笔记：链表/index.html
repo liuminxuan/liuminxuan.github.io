@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      746 字
+      824 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      12
        分钟
     </span>
   
@@ -204,8 +204,8 @@
           <div class="post-content mx-auto" id="post">
             
             <article class="markdown-body">
-              <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>206 141 21 19 876 160</p>
-<h3 id="编写链表"><a href="#编写链表" class="headerlink" title="编写链表"></a>编写链表</h3><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>&#123;
+              <h1 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h1><p>206 141 21 19 876 160</p>
+<h2 id="编写链表"><a href="#编写链表" class="headerlink" title="编写链表"></a>编写链表</h2><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>&#123;
         <span class="hljs-keyword">int</span> val;
         ListNode next;
 
@@ -215,7 +215,17 @@
     &#125;</code></pre>
 <a id="more"></a>
 
-<h2 id="206-反转链表"><a href="#206-反转链表" class="headerlink" title="206. 反转链表"></a>206. 反转链表</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>类似于选择排序中交换两个数的位置。借助一个tmp完成交换</p>
+<h1 id="易犯错误"><a href="#易犯错误" class="headerlink" title="易犯错误"></a>易犯错误</h1><ul>
+<li>最近遇到一个问题：</li>
+</ul>
+<hr>
+<p> head   –&gt; val = 6 –&gt; val = 13 –&gt; val = 17 –&gt; val = 21</p>
+<hr>
+<p>求head.next.next.val = ?</p>
+<ul>
+<li>解题思路：<br>因为头指针head只指向头节点所在的地址，并不包含数据，所以不能把头指针看作一个节点，所以head.next.next.val = 17.</li>
+</ul>
+<h1 id="206-反转链表"><a href="#206-反转链表" class="headerlink" title="206. 反转链表"></a>206. 反转链表</h1><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>类似于选择排序中交换两个数的位置。借助一个tmp完成交换</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
         ListNode pre = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// 前元素</span>
         ListNode cur = head; <span class="hljs-comment">// 正在操作的元素</span>
@@ -229,7 +239,7 @@
         <span class="hljs-keyword">return</span> pre;
     &#125;
 </code></pre>
-<h2 id="141-环形链表"><a href="#141-环形链表" class="headerlink" title="141. 环形链表"></a>141. 环形链表</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>因为如果是环形链表，一定会陷入无限循环。所以用快慢指针解决。</p>
+<h1 id="141-环形链表"><a href="#141-环形链表" class="headerlink" title="141. 环形链表"></a>141. 环形链表</h1><h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><p>因为如果是环形链表，一定会陷入无限循环。所以用快慢指针解决。</p>
 <h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasCycle</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
         <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>) &#123;
             <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
@@ -246,7 +256,7 @@
         &#125;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
     &#125;</code></pre>
-<h2 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21. 合并两个有序链表"></a>21. 合并两个有序链表</h2><h3 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h3><p>创建一个新链表，比较l1、l2两个链表的大小，将小的放进新链表。最后将剩余的接在新链表后面。</p>
+<h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21. 合并两个有序链表"></a>21. 合并两个有序链表</h1><h2 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h2><p>创建一个新链表，比较l1、l2两个链表的大小，将小的放进新链表。最后将剩余的接在新链表后面。</p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(-<span class="hljs-number">1</span>);
         ListNode curr = dummy;
@@ -273,7 +283,7 @@
         <span class="hljs-comment">// cur.next = l1 == null ? l2 : l1;</span>
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;</code></pre>
-<h2 id="19-删除链表的倒数第N个节点"><a href="#19-删除链表的倒数第N个节点" class="headerlink" title="19. 删除链表的倒数第N个节点"></a>19. 删除链表的倒数第N个节点</h2><h3 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h3><p>用快慢指针，中间相隔n个数，快指针到末尾时，慢指针指向的下一个元素就是要删除的节点。</p>
+<h1 id="19-删除链表的倒数第N个节点"><a href="#19-删除链表的倒数第N个节点" class="headerlink" title="19. 删除链表的倒数第N个节点"></a>19. 删除链表的倒数第N个节点</h1><h2 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h2><p>用快慢指针，中间相隔n个数，快指针到末尾时，慢指针指向的下一个元素就是要删除的节点。</p>
 <h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> n)</span> </span>&#123;
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
         dummy.next = head;
@@ -294,7 +304,7 @@
         <span class="hljs-keyword">return</span> dummy.next;
 
     &#125;</code></pre>
-<h2 id="876-链表的中间节点"><a href="#876-链表的中间节点" class="headerlink" title="876. 链表的中间节点"></a>876. 链表的中间节点</h2><h3 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h3><p>先遍历链表数出有多少个元素，第（k/2+1）个元素就是中间元素。</p>
+<h1 id="876-链表的中间节点"><a href="#876-链表的中间节点" class="headerlink" title="876. 链表的中间节点"></a>876. 链表的中间节点</h1><h2 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h2><p>先遍历链表数出有多少个元素，第（k/2+1）个元素就是中间元素。</p>
 <h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">middleNode</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
        dummy.next = head;
@@ -311,7 +321,7 @@
        <span class="hljs-keyword">return</span> low.next;
    &#125;</code></pre>
 
-<h2 id="160-相交链表"><a href="#160-相交链表" class="headerlink" title="160.相交链表"></a>160.相交链表</h2><h3 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h3><p><img src="https://pic.leetcode-cn.com/e0efdd908a8941e3c53a68a6049d88c437b8299e48540a772ab091b86695d981-image.png" srcset="/img/loading.gif" alt="avatar"></p>
+<h1 id="160-相交链表"><a href="#160-相交链表" class="headerlink" title="160.相交链表"></a>160.相交链表</h1><h2 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h2><p><img src="https://pic.leetcode-cn.com/e0efdd908a8941e3c53a68a6049d88c437b8299e48540a772ab091b86695d981-image.png" srcset="/img/loading.gif" alt="avatar"></p>
 <p>首先初始化pA，pB开始遍历。当pA到尾巴的时候，回到pB开始遍历。pB同理。<br>这样pA的路线a+c+b，pB的路线b+c+a，可知他们如果有交点，一定在遍历的尾巴处。</p>
 <p>如果两个链表没有相交，那么就变成了pA为a+b，pB为b+a，最终他们一定会遍历到null，所以返回其中一个即可。</p>
 <h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
