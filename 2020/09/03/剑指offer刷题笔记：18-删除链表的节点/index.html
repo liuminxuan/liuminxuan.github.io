@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>Java学习笔记：instanceof - LIU的学习笔记</title>
+  <title>剑指offer刷题笔记：18. 删除链表的节点 - LIU的学习笔记</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -152,8 +152,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-27 22:07">
-      2020年8月27日 晚上
+    <time datetime="2020-09-03 10:21">
+      2020年9月3日 上午
     </time>
   </div>
 
@@ -163,7 +163,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      114 字
+      531 字
     </span>
   
 
@@ -173,7 +173,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      6
        分钟
     </span>
   
@@ -205,33 +205,72 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年8月28日 上午
+                  本文最后更新于：2020年9月3日 上午
                 
               </p>
             
             <article class="markdown-body">
-              <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>因为Java是一个面向对象的语言，需要通过创建实例来实现算法，所以Java中有一个instanceof操作符，用来判断实例是否属于某一个类。</p>
-<p>instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，返回boolean数据类型。</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><pre><code class="hljs coffeescript">result = object <span class="hljs-keyword">instanceof</span> <span class="hljs-class"><span class="hljs-keyword">class</span>;</span></code></pre>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>Result：布尔类型。<br>Object：必选项。任意对象表达式。<br>Class：必选项。任意已定义的对象类。</p>
+              <h1 id="剑指-Offer-18-删除链表的节点"><a href="#剑指-Offer-18-删除链表的节点" class="headerlink" title="剑指 Offer 18. 删除链表的节点"></a>剑指 Offer 18. 删除链表的节点</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。<br>返回删除后的链表的头节点。<br><strong>注意</strong>：此题对比原题有改动</p>
+<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><pre><code class="hljs angelscript">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], val = <span class="hljs-number">5</span>
+输出: [<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>]
+解释: 给定你链表中值为 <span class="hljs-number">5</span> 的第二个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">1</span> -&gt; <span class="hljs-number">9.</span></code></pre>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><pre><code class="hljs angelscript">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], val = <span class="hljs-number">1</span>
+输出: [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>]
+解释: 给定你链表中值为 <span class="hljs-number">1</span> 的第三个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">5</span> -&gt; <span class="hljs-number">9.</span></code></pre>
 
+<h2 id="解题思路1-双指针"><a href="#解题思路1-双指针" class="headerlink" title="解题思路1 双指针"></a>解题思路1 双指针</h2><p>Leetcode上大多数关于链表的题目都可以用双指针来解决，此题也不例外。<br>前指针记录前一个节点，现指针记录现在的节点，这样当现指针找到对应节点时直接让前指针指向现指针之后的节点。<br>注意当第一个节点为要找的节点时直接返回第二个节点。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(head.val == val) <span class="hljs-keyword">return</span> head.next; <span class="hljs-comment">// 如果头节点的值等于val，直接返回头节点的下一个</span>
+        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(-<span class="hljs-number">1</span>); <span class="hljs-comment">// 取出头节点，最后好直接返回</span>
+        dummy.next = head;
+
+        <span class="hljs-comment">// 双指针法，俩指针一前一后</span>
+        ListNode pre = head;
+        ListNode cur = head.next;
+        <span class="hljs-keyword">while</span>(cur != <span class="hljs-keyword">null</span>)&#123;
+            <span class="hljs-keyword">if</span>(cur.val == val)&#123;
+                pre.next = cur.next;
+                <span class="hljs-keyword">break</span>;
+            &#125;
+            cur = cur.next;
+            pre = pre.next;
+        &#125;
+        <span class="hljs-keyword">return</span> dummy.next;
+    &#125;
+&#125;</code></pre>
+
+<h2 id="解题思路2-单指针"><a href="#解题思路2-单指针" class="headerlink" title="解题思路2 单指针"></a>解题思路2 单指针</h2><p>因为此题如果使用双指针，两个指针永远是一前一后，所以可以用head和head.next来代替双指针。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(head.val == val) <span class="hljs-keyword">return</span> head.next; <span class="hljs-comment">// 如果头节点的值等于val，直接返回头节点的下一个</span>
+        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(-<span class="hljs-number">1</span>); <span class="hljs-comment">// 取出头节点，最后好直接返回</span>
+        dummy.next = head;
+
+        <span class="hljs-keyword">while</span>(head.next != <span class="hljs-keyword">null</span>)&#123;
+            <span class="hljs-keyword">if</span>(head.next.val == val)&#123;
+                head.next = head.next.next;
+                <span class="hljs-keyword">break</span>;
+            &#125;
+            head = head.next;
+        &#125;
+        <span class="hljs-keyword">return</span> dummy.next;
+    &#125;
+&#125;</code></pre>
             </article>
             <hr>
             <div>
               <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-                    
-                  </div>
                 
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
                       <a class="hover-with-bg" href="/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Leetcode/">Leetcode</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
                     
                   </div>
                 
@@ -244,18 +283,12 @@
                   <div class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java学习笔记：抽象类和抽象方法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-6">
                     
                     
-                      <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/">
-                        <span class="hidden-mobile">Leetcode刷题笔记：二叉树</span>
+                      <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/">
+                        <span class="hidden-mobile">剑指offer刷题笔记：39. 数组中出现次数超过一半的数字</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -400,7 +433,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Java学习笔记：instanceof&nbsp;",
+        "剑指offer刷题笔记：18. 删除链表的节点&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,
