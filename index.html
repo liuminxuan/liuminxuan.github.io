@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.0.2"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -167,25 +174,32 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/">【剑指offer】21. 调整数组顺序使奇数位于偶数前面</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/">【剑指offer】21. 调整数组顺序使奇数位于偶数前面</a>
+      </h1>
 
-      <a href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/">
           
-        
-        <div>剑指offer刷题笔记：21. 调整数组顺序使奇数位于偶数前面题目描述输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
+          
+            
+          
+          剑指offer刷题笔记：21. 调整数组顺序使奇数位于偶数前面题目描述输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
 示例输入：nums = [1,2,3,4]
 输出：[1,3,2,4] 
 注：[3,1,2,4] 也是正确的答案之一。
-解题思路1 头尾指针记录这题是因为这是最近leetcode第一道没有出现错误一气呵成的题目，算</div>
-      </a>
+解题思路1 头尾指针记录这题是因为这是最近leetcode第一道没有出现错误一气呵成的题目，算
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-04
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-04 11:06" pubdate>
+              2020-09-04
+            </time>
           </div>
         
         
@@ -209,31 +223,38 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">【剑指offer】18. 删除链表的节点</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">【剑指offer】18. 删除链表的节点</a>
+      </h1>
 
-      <a href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">
           
-        
-        <div>剑指 Offer 18. 删除链表的节点题目描述给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。返回删除后的链表的头节点。注意：此题对比原题有改动
+          
+            
+          
+          剑指 Offer 18. 删除链表的节点题目描述给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。返回删除后的链表的头节点。注意：此题对比原题有改动
 示例1输入: head = [4,5,1,9], val = 5
 输出: [4,1,9]
 解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
-示例2输入: hea</div>
-      </a>
+示例2输入: hea
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-03 10:21" pubdate>
+              2020-09-03
+            </time>
           </div>
         
         
@@ -257,34 +278,41 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/">【剑指offer】39. 数组中出现次数超过一半的数字</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/">【剑指offer】39. 数组中出现次数超过一半的数字</a>
+      </h1>
 
-      <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/">
           
-        
-        <div>39. 数组中出现次数超过一半的数字题目描述数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+          
+            
+          
+          39. 数组中出现次数超过一半的数字题目描述数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
 示例输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
 输出: 2
 
 解题思路1 排序因为需要的数字出现次数多于一半，那么排序后必定在中间。
 代码class Solution &#123;
-    public int m</div>
-      </a>
+    public int m
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-02
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-02 10:42" pubdate>
+              2020-09-02
+            </time>
           </div>
         
         
@@ -304,21 +332,24 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/">【Java学习】内部类</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/">【Java学习】内部类</a>
+      </h1>
 
-      <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/">
           
-        
-        <div>关于内部类
+          
+            
+          
+          关于内部类
 内部类(inner class) : 定义在另一个类重的类
 
 为什么需要内部类？
@@ -328,13 +359,17 @@
 内部类可以一定程度修复 java 单继承的缺陷
 当我们想要定义一个回调函数却不想写大量代码的时候我们可以选择使用匿名内部类来实现
 
-内部类的分类内部类可以分为：静态内部类（嵌套类）</div>
-      </a>
+内部类的分类内部类可以分为：静态内部类（嵌套类）
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-01
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-01 14:12" pubdate>
+              2020-09-01
+            </time>
           </div>
         
         
@@ -354,31 +389,38 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/">【剑指offer】57. 和为s的两个数字</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/">【剑指offer】57. 和为s的两个数字</a>
+      </h1>
 
-      <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/">
           
-        
-        <div>57. 和为s的两个数字题目描述输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。
+          
+            
+          
+          57. 和为s的两个数字题目描述输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。
 示例1输入：nums = [2,7,11,15], target = 9
 输出：[2,7] 或者 [7,2]
 示例2输入：nums = [10,26,30,31,47,60], target = 40
-输出：[10,30] 或者 [30,10</div>
-      </a>
+输出：[10,30] 或者 [30,10
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-09-01
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-01 10:28" pubdate>
+              2020-09-01
+            </time>
           </div>
         
         
@@ -402,27 +444,34 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">【Java学习】接口</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">【Java学习】接口</a>
+      </h1>
 
-      <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">
           
-        
-        <div>关于接口接口是Java语言中的一个抽象类，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式来继承接口的抽象方法。接口不是类，编写接口的方式和类很相似，但是他们属于不同的概念。类描述对象的属性和方法，接口则包含类要实现的方法。除非实现接口的类是抽象类，否则该类要定义接口中的所有方法。接口无法被实例化，但是可以被实现。一个实现接口的类，必须实现接口内所描述的所有方法，否则</div>
-      </a>
+          
+            
+          
+          关于接口接口是Java语言中的一个抽象类，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式来继承接口的抽象方法。接口不是类，编写接口的方式和类很相似，但是他们属于不同的概念。类描述对象的属性和方法，接口则包含类要实现的方法。除非实现接口的类是抽象类，否则该类要定义接口中的所有方法。接口无法被实例化，但是可以被实现。一个实现接口的类，必须实现接口内所描述的所有方法，否则
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-28
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-28 14:43" pubdate>
+              2020-08-28
+            </time>
           </div>
         
         
@@ -442,27 +491,34 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">【Java学习】抽象类和抽象方法</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">【Java学习】抽象类和抽象方法</a>
+      </h1>
 
-      <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">
           
-        
-        <div>关于Java是面向对象的语言，通过类来描述对象，但是如果一个类中没有足够的信息来描述对象，那么这个类就是抽象类。抽象类不能被实例化,但是其他功能照常，成员变量、成员方法和构造方法和普通类一样。由于抽象类不能被实例化，所以抽象类必须被继承后才能使用。父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。在Java中抽象类表示的是一种继承关系，一个类只能继承一个抽象类，而一个</div>
-      </a>
+          
+            
+          
+          关于Java是面向对象的语言，通过类来描述对象，但是如果一个类中没有足够的信息来描述对象，那么这个类就是抽象类。抽象类不能被实例化,但是其他功能照常，成员变量、成员方法和构造方法和普通类一样。由于抽象类不能被实例化，所以抽象类必须被继承后才能使用。父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。在Java中抽象类表示的是一种继承关系，一个类只能继承一个抽象类，而一个
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-28
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-28 10:48" pubdate>
+              2020-08-28
+            </time>
           </div>
         
         
@@ -482,30 +538,37 @@
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/">【Java学习】instanceof</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/">【Java学习】instanceof</a>
+      </h1>
 
-      <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/">
           
-        
-        <div>关于因为Java是一个面向对象的语言，需要通过创建实例来实现算法，所以Java中有一个instanceof操作符，用来判断实例是否属于某一个类。
+          
+            
+          
+          关于因为Java是一个面向对象的语言，需要通过创建实例来实现算法，所以Java中有一个instanceof操作符，用来判断实例是否属于某一个类。
 instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，返回boolean数据类型。
 用法result = object instanceof class;
-参数Result：布尔类型。Object：必选项。任意对象表达式。Cl</div>
-      </a>
+参数Result：布尔类型。Object：必选项。任意对象表达式。Cl
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-27
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-27 22:07" pubdate>
+              2020-08-27
+            </time>
           </div>
         
         
@@ -525,21 +588,24 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/">【Leetcode】二叉树</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/">【Leetcode】二叉树</a>
+      </h1>
 
-      <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/">
           
-        
-        <div>编写二叉树public class TreeNode &#123;
+          
+            
+          
+          编写二叉树public class TreeNode &#123;
     int val;
     TreeNode left;
     TreeNode right;
@@ -548,13 +614,17 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
 
 
 题目编号226 101
-226. 翻转二叉树解题思路二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左右</div>
-      </a>
+226. 翻转二叉树解题思路二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左右
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-26
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-26 18:30" pubdate>
+              2020-08-26
+            </time>
           </div>
         
         
@@ -578,34 +648,41 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">谈谈遗传算法：用遗传算法求最大值</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">谈谈遗传算法：用遗传算法求最大值</a>
+      </h1>
 
-      <a href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">
           
-        
-        <div>遗传算法简介遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：
+          
+            
+          
+          遗传算法简介遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：
 
 将要解决的问题主体进行编码，形成初始种群。
 用选择函数对种群中的个体进行选择。
 将生存的个体进行交叉，生成子代。
 交叉中设置一定的变异率，防止陷入局部最优解。
 将2.3.4.循环操作最终的到最优种群集合，在其中找到最优解
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-20
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-20 13:26" pubdate>
+              2020-08-20
+            </time>
           </div>
         
         
@@ -629,7 +706,7 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 

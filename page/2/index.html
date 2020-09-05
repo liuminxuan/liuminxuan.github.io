@@ -1,7 +1,7 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
-
-
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
@@ -25,7 +25,7 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
 
 
 
@@ -38,6 +38,7 @@
 
 
   <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.0.2"></head>
 
 
@@ -120,8 +121,14 @@
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
@@ -129,12 +136,12 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="banner intro-2" id="background" parallax=true
          style="background: url('/img/index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
-          <div class="container text-center white-text fadeInUp">
+          <div class="container page-header text-center fade-in-up">
             <span class="h2" id="subtitle">
               
             </span>
@@ -167,28 +174,35 @@
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/19/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A50/">【剑指offer】50. 第一个只出现一次的字符</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/19/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A50/">【剑指offer】50. 第一个只出现一次的字符</a>
+      </h1>
 
-      <a href="/2020/08/19/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A50/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/19/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A50/">
           
-        
-        <div>剑指 Offer 50. 第一个只出现一次的字符题目描述在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
+          
+            
+          
+          剑指 Offer 50. 第一个只出现一次的字符题目描述在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
 示例s = &quot;abaccdeff&quot;
 返回 &quot;b&quot;
 
 s = &quot;&quot; 
 返回 &quot; &quot;
 
-解题思路1跟leetcode387差不多，只是返回值不一样，稍加修改就可以提交了。用数</div>
-      </a>
+解题思路1跟leetcode387差不多，只是返回值不一样，稍加修改就可以提交了。用数
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-19
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-19 12:03" pubdate>
+              2020-08-19
+            </time>
           </div>
         
         
@@ -212,32 +226,39 @@ s = &quot;&quot;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">【Leetcode】字符串</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">【Leetcode】字符串</a>
+      </h1>
 
-      <a href="/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">
           
-        
-        <div>题目编号38 387
+          
+            
+          
+          题目编号38 387
 38.外观数列解题思路因为后一项是前一项决定的，所以用循环来做。选取第一个数，然后数后面有多少相同，最后用appned加上去。
 代码class Solution &#123;
     public String countAndSay(int n) &#123;
         String str = &quot;1&quot;; // 第一个数
-        for (</div>
-      </a>
+        for (
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-18
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-18 15:19" pubdate>
+              2020-08-18
+            </time>
           </div>
         
         
@@ -261,27 +282,34 @@ s = &quot;&quot;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/08/17/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/">【Leetcode】36. 有效的数独</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/08/17/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/">【Leetcode】36. 有效的数独</a>
+      </h1>
 
-      <a href="/2020/08/17/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/08/17/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/">
           
-        
-        <div>36.有效的数独解题思路第一想到的是哈希表，所以给每一行每一列每个九宫格设置一个哈希表，出现数字则标记，如果查询到被标记过的数字，则数独不成立。每行每列比较简单，设置一个9*10的数组就可以解决，9是数独的行和列，10是数独里面所填的值。比较数独里九宫格里的数就比较复杂，我们可以利用int做除法只能取整的特性求解。比如第一第二个九宫格(0,0) -&gt; 0(0,1) -&gt; 0(0,2) </div>
-      </a>
+          
+            
+          
+          36.有效的数独解题思路第一想到的是哈希表，所以给每一行每一列每个九宫格设置一个哈希表，出现数字则标记，如果查询到被标记过的数字，则数独不成立。每行每列比较简单，设置一个9*10的数组就可以解决，9是数独的行和列，10是数独里面所填的值。比较数独里九宫格里的数就比较复杂，我们可以利用int做除法只能取整的特性求解。比如第一第二个九宫格(0,0) -&gt; 0(0,1) -&gt; 0(0,2) 
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-08-17
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-08-17 09:24" pubdate>
+              2020-08-17
+            </time>
           </div>
         
         
@@ -303,30 +331,37 @@ s = &quot;&quot;
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/08/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Aequals%E6%96%B9%E6%B3%95/">【Java学习】equals方法</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/05/08/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Aequals%E6%96%B9%E6%B3%95/">【Java学习】equals方法</a>
+      </h1>
 
-      <a href="/2020/05/08/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Aequals%E6%96%B9%E6%B3%95/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/05/08/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Aequals%E6%96%B9%E6%B3%95/">
           
-        
-        <div>equalsequals方法可以比较两个对象是否相等。
+          
+            
+          
+          equalsequals方法可以比较两个对象是否相等。
 String类型比较每次创建一个String对象都是创建一个新的对象，但是创建的时候如果String不是很长，Java会在已创建的String对象里寻找相同的对象然后指向它。
 但是当String非常长的时候，Java会直接创建对象，所以比较两个String对象的时候，不要用”==”,要用equals方法。
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-08
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-08 21:42" pubdate>
+              2020-05-08
+            </time>
           </div>
         
         
@@ -346,31 +381,38 @@ String类型比较每次创建一个String对象都是创建一个新的对象�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">【Leetcode】滑动窗口</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">【Leetcode】滑动窗口</a>
+      </h1>
 
-      <a href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
           
-        
-        <div>题目编号3 209
+          
+            
+          
+          题目编号3 209
 3. 无重复字符的最长子串解题思路一开始以子串的长度为基准，发现循环中的代码非常复杂，一不注意就出错，后来看了评论才知道应该以左边的数字为基准，外层循环遍历整个字符串，内层循环遍历当前子串是否有相同的字符。
 代码class Solution &#123;
     public int lengthOfLongestSubstring(String s) &#123;
-     </div>
-      </a>
+     
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-03 11:20" pubdate>
+              2020-05-03
+            </time>
           </div>
         
         
@@ -392,31 +434,38 @@ String类型比较每次创建一个String对象都是创建一个新的对象�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E2%80%9C/">【Leetcode】67. 二进制求和</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E2%80%9C/">【Leetcode】67. 二进制求和</a>
+      </h1>
 
-      <a href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E2%80%9C/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/05/03/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E2%80%9C/">
           
-        
-        <div>题目编号67
+          
+            
+          
+          题目编号67
 67. 二进制求和解题思路之前在Java学习笔记中写到过位运算，这次在Leetcode中也遇到了，二进制只有1和0，所以将位运算加入其中，计算完一位后就将进位数移位，进行下一轮计算。
 代码class Solution &#123;
     public String addBinary(String a, String b) &#123;
-      if(a == null || </div>
-      </a>
+      if(a == null || 
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-05-03
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-03 11:07" pubdate>
+              2020-05-03
+            </time>
           </div>
         
         
@@ -438,32 +487,39 @@ String类型比较每次创建一个String对象都是创建一个新的对象�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/30/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%B4%AA%E5%BF%83/">【Leetcode】贪心</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/04/30/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%B4%AA%E5%BF%83/">【Leetcode】贪心</a>
+      </h1>
 
-      <a href="/2020/04/30/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%B4%AA%E5%BF%83/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/04/30/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%B4%AA%E5%BF%83/">
           
-        
-        <div>题目编号53 121
+          
+            
+          
+          题目编号53 121
 53. 最大子序和解题思路因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。
 代码public int maxSubArray(int[] nums) &#123;
         int[] dt = new int[nums.length];
         dt[0] = nums[0];
-        int maxSum = nums[0</div>
-      </a>
+        int maxSum = nums[0
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-30
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-30 18:22" pubdate>
+              2020-04-30
+            </time>
           </div>
         
         
@@ -485,21 +541,24 @@ String类型比较每次创建一个String对象都是创建一个新的对象�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%93%BE%E8%A1%A8/">【Leetcode】链表</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/04/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%93%BE%E8%A1%A8/">【Leetcode】链表</a>
+      </h1>
 
-      <a href="/2020/04/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%93%BE%E8%A1%A8/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/04/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E9%93%BE%E8%A1%A8/">
           
-        
-        <div>题目编号206 141 21 19 876 160
+          
+            
+          
+          题目编号206 141 21 19 876 160
 编写链表public class ListNode &#123;
         int val;
         ListNode next;
@@ -507,13 +566,17 @@ String类型比较每次创建一个String对象都是创建一个新的对象�
         ListNode(int x) &#123;
             val = x;
         &#125;
-    &#125;</div>
-      </a>
+    &#125;
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-26
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-26 20:55" pubdate>
+              2020-04-26
+            </time>
           </div>
         
         
@@ -535,30 +598,37 @@ String类型比较每次创建一个String对象都是创建一个新的对象�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6/">【Java学习】访问限制修饰符</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/04/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6/">【Java学习】访问限制修饰符</a>
+      </h1>
 
-      <a href="/2020/04/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/04/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
           
-        
-        <div>public范围最广，可以访问任何一个在CLASSPATH下的类，接口，异常等。它往往对于对外的情况，也就是对象或类对外的一种接口的形式。
+          
+            
+          
+          public范围最广，可以访问任何一个在CLASSPATH下的类，接口，异常等。它往往对于对外的情况，也就是对象或类对外的一种接口的形式。
 protected对本包可见，同时也是为继承设计的访问修饰符，即使子类在包外也可访问父类的protect变量或方法。
 defult可以供类内部和本包中使用，任何处于本包下的类，接口，异常等，都可以互相访问，即使是父类没有用protected修饰的成员也可以。
-</div>
-      </a>
+
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-14
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-14 18:53" pubdate>
+              2020-04-14
+            </time>
           </div>
         
         
@@ -578,29 +648,36 @@ defult可以供类内部和本包中使用，任何处于本包下的类，接�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
   <div class="row mx-auto index-card">
     
     
-    <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/04/07/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">【Java学习】构造方法</a>
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/04/07/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">【Java学习】构造方法</a>
+      </h1>
 
-      <a href="/2020/04/07/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" class="index-excerpt">
-        
-        
+      <p class="index-excerpt">
+        <a href="/2020/04/07/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">
           
-        
-        <div>构造方法构造方法是类里的一个特殊的方法，他不能有返回值（包括void）。所谓构造方法，就是这个类在被实例化时（创建对象时）就要执行的方法，方法名为类的名字，一般的目的是为了给类进行一些初始化值。
+          
+            
+          
+          构造方法构造方法是类里的一个特殊的方法，他不能有返回值（包括void）。所谓构造方法，就是这个类在被实例化时（创建对象时）就要执行的方法，方法名为类的名字，一般的目的是为了给类进行一些初始化值。
 举例public MerchandiseV2WithConstructor(String name, String id, int count,
-                             </div>
-      </a>
+                             
+        </a>
+      </p>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-04-07
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-07 23:14" pubdate>
+              2020-04-07
+            </time>
           </div>
         
         
@@ -620,7 +697,7 @@ defult可以供类内部和本包中使用，任何处于本包下的类，接�
           </div>
         
       </div>
-    </div>
+    </article>
   </div>
 
 
