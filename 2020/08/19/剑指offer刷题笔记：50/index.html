@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -183,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      549 字
+      513 字
     </span>
   
 
@@ -233,60 +227,60 @@
             
             <div class="markdown-body" id="post-body">
               <h1 id="剑指-Offer-50-第一个只出现一次的字符"><a href="#剑指-Offer-50-第一个只出现一次的字符" class="headerlink" title="剑指 Offer 50. 第一个只出现一次的字符"></a>剑指 Offer 50. 第一个只出现一次的字符</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre class="language-none"><code class="language-none">s &#x3D; &quot;abaccdeff&quot;
-返回 &quot;b&quot;
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><div class="hljs"><pre><code class="hljs abnf"><span class="hljs-attribute">s</span> = <span class="hljs-string">&quot;abaccdeff&quot;</span>
+返回 <span class="hljs-string">&quot;b&quot;</span>
 
-s &#x3D; &quot;&quot; 
-返回 &quot; &quot;</code></pre>
+<span class="hljs-attribute">s</span> = <span class="hljs-string">&quot;&quot;</span> 
+返回 <span class="hljs-string">&quot; &quot;</span></code></pre></div>
 
 <h2 id="解题思路1"><a href="#解题思路1" class="headerlink" title="解题思路1"></a>解题思路1</h2><p>跟<a href="https://liuminxuan.github.io/2020/08/18/Leetcodes%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2/">leetcode387</a>差不多，只是返回值不一样，稍加修改就可以提交了。<br>用数组自创哈希表，因为只有小写字母，所以设置一个26长度的数组，字符串中出现一次，数组里对应的字母就+1，然后再对字符串的字母一一对照，如果值为1就输出，找不到1则无解。</p>
-<h3 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
-    public char firstUniqChar(String s) &#123;
-       int[] count &#x3D; new int[26]; &#x2F;&#x2F; 因为都是小写字母，所以数组取26
-        char[] chars &#x3D; s.toCharArray(); 
-        for(char c : chars)&#123;
-            count[c-&#39;a&#39;]++; &#x2F;&#x2F; 因为是ASCII码字母出现一次+1
+<h3 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(String s)</span> </span>&#123;
+       <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>]; <span class="hljs-comment">// 因为都是小写字母，所以数组取26</span>
+        <span class="hljs-keyword">char</span>[] chars = s.toCharArray(); 
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c : chars)&#123;
+            count[c-<span class="hljs-string">&#x27;a&#x27;</span>]++; <span class="hljs-comment">// 因为是ASCII码字母出现一次+1</span>
         &#125;
-        for(int i &#x3D; 0;i&lt;s.length();i++)&#123;
-            if(count[s.charAt(i)-&#39;a&#39;] &#x3D;&#x3D; 1)&#123;
-                return s.charAt(i); &#x2F;&#x2F; 找出只出现一次的字母
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;
+            <span class="hljs-keyword">if</span>(count[s.charAt(i)-<span class="hljs-string">&#x27;a&#x27;</span>] == <span class="hljs-number">1</span>)&#123;
+                <span class="hljs-keyword">return</span> s.charAt(i); <span class="hljs-comment">// 找出只出现一次的字母</span>
             &#125;
         &#125;
-        return &#39; &#39;; &#x2F;&#x2F; 无解
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>; <span class="hljs-comment">// 无解</span>
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h2 id="解题思路2"><a href="#解题思路2" class="headerlink" title="解题思路2"></a>解题思路2</h2><p>除去用数组做，第一印象肯定是HashMap，但是其结果却不尽人意。<br>究其原因，HashMap是由一个链表组成，其查找速度必然不如O(1)的数组，但是在插入和删除操作的时候，其查找速度比数组快。</p>
-<h3 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
-    public char firstUniqChar(String s) &#123;
-        &#x2F;&#x2F; 数组为空，返回空
-        if(s.isEmpty()) return &#39; &#39;;
-        HashMap&lt;Character, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
-        char c &#x3D; &#39; &#39;;
-        &#x2F;&#x2F; 遍历字符串，分别放入HashMap，第一次放入则值为0
-        &#x2F;&#x2F; 而后出现相同的时候取出Key对应的value，然后将value+1，放回Key对应的value中
-        for(int i &#x3D; 0;i &lt; s.length(); i++)&#123;
-            c &#x3D; s.charAt(i);
-            if(!map.containsKey(c))&#123;
-                map.put(c, 0);
-            &#125;else&#123;
-                &#x2F;&#x2F; map.put(c, 1);
-                int v &#x3D; map.get(c);
-                &#x2F;&#x2F; map.remove(c);
+<h3 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">char</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(String s)</span> </span>&#123;
+        <span class="hljs-comment">// 数组为空，返回空</span>
+        <span class="hljs-keyword">if</span>(s.isEmpty()) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>;
+        HashMap&lt;Character, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+        <span class="hljs-keyword">char</span> c = <span class="hljs-string">&#x27; &#x27;</span>;
+        <span class="hljs-comment">// 遍历字符串，分别放入HashMap，第一次放入则值为0</span>
+        <span class="hljs-comment">// 而后出现相同的时候取出Key对应的value，然后将value+1，放回Key对应的value中</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; s.length(); i++)&#123;
+            c = s.charAt(i);
+            <span class="hljs-keyword">if</span>(!map.containsKey(c))&#123;
+                map.put(c, <span class="hljs-number">0</span>);
+            &#125;<span class="hljs-keyword">else</span>&#123;
+                <span class="hljs-comment">// map.put(c, 1);</span>
+                <span class="hljs-keyword">int</span> v = map.get(c);
+                <span class="hljs-comment">// map.remove(c);</span>
                 v++;
                 map.put(c, v);
             &#125;
         &#125;
-        &#x2F;&#x2F; 
-        for(int i &#x3D; 0;i &lt; s.length(); i++)&#123;
-            c &#x3D; s.charAt(i);
-            if (map.get(c) &#x3D;&#x3D; 0) &#123;
-                return c;
+        <span class="hljs-comment">// </span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i &lt; s.length(); i++)&#123;
+            c = s.charAt(i);
+            <span class="hljs-keyword">if</span> (map.get(c) == <span class="hljs-number">0</span>) &#123;
+                <span class="hljs-keyword">return</span> c;
             &#125;
         &#125;
-        return &#39; &#39;;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27; &#x27;</span>;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>
@@ -429,8 +423,6 @@ s &#x3D; &quot;&quot;
 
 
 
-  
-    
   
 
 

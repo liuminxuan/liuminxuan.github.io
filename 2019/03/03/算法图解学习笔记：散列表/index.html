@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -183,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      852 字
+      896 字
     </span>
   
 
@@ -193,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      10
        分钟
     </span>
   
@@ -245,48 +239,48 @@
 <p>以上所说的<strong>填装因子</strong>为：（散列表包含的元素数/位置总数）一般填装因子临界值设置为0.7。</p>
 <p>回到一开始的问题，假如苹果价钱是0.67，牛奶的价格是1.49，鳄梨价格是1.49，要快速查找各个水果价格可以用散列表。</p>
 <p>虽然散列表自己实现比较难，但是任何主流语言都提供了散列表的实现，python提供的散列表实现为<strong>字典</strong>。</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span>book <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span>book<span class="token punctuation">[</span><span class="token string">"apple"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0.67</span>
-<span class="token operator">>></span><span class="token operator">></span>book<span class="token punctuation">[</span><span class="token string">"milk"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1.49</span>
-<span class="token operator">>></span><span class="token operator">></span>book<span class="token punctuation">[</span><span class="token string">"avocado"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1.49</span>
-<span class="token operator">>></span><span class="token operator">></span><span class="token keyword">print</span> book</code></pre>
+<div class="hljs"><pre><code class="hljs python">&gt;&gt;&gt;book = dict()
+&gt;&gt;&gt;book[<span class="hljs-string">&quot;apple&quot;</span>] = <span class="hljs-number">0.67</span>
+&gt;&gt;&gt;book[<span class="hljs-string">&quot;milk&quot;</span>] = <span class="hljs-number">1.49</span>
+&gt;&gt;&gt;book[<span class="hljs-string">&quot;avocado&quot;</span>] + <span class="hljs-number">1.49</span>
+&gt;&gt;&gt;<span class="hljs-keyword">print</span> book</code></pre></div>
 
 <p>如果要查询鳄梨的价格，我们只需输入<code>print book[&quot;avocado&quot;]</code>即可。</p>
 <h1 id="散列表的应用"><a href="#散列表的应用" class="headerlink" title="散列表的应用"></a>散列表的应用</h1><h2 id="用于查找"><a href="#用于查找" class="headerlink" title="用于查找"></a>用于查找</h2><p>手机内置电话簿就可使用散列表实现，具体实现代码如下：</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span>phone_book <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#亦可使用phone_book = &#123;&#125;</span>
-<span class="token operator">>></span><span class="token operator">></span>phone_book<span class="token punctuation">[</span><span class="token string">"jenny"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">8675309</span>
-<span class="token operator">>></span><span class="token operator">></span>phone_book<span class="token punctuation">[</span><span class="token string">"emergency"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">110</span></code></pre>
+<div class="hljs"><pre><code class="hljs python">&gt;&gt;&gt;phone_book = dict() <span class="hljs-comment">#亦可使用phone_book = &#123;&#125;</span>
+&gt;&gt;&gt;phone_book[<span class="hljs-string">&quot;jenny&quot;</span>] = <span class="hljs-number">8675309</span>
+&gt;&gt;&gt;phone_book[<span class="hljs-string">&quot;emergency&quot;</span>] = <span class="hljs-number">110</span></code></pre></div>
 
 <p>现在要查找jenny的电话号码，只需输入<code>print phone_book[&quot;jenny&quot;]</code>即可得出jenny的电话号。</p>
 <p>还有DNS解析也使用了散列表。</p>
 <h2 id="防止重复"><a href="#防止重复" class="headerlink" title="防止重复"></a>防止重复</h2><p>投票中，要知道一个人是否已经投过票需要查找一串长长的名单，但是运用散列表就可以很快的查处一个人是否已经投过票。</p>
-<pre class="language-python" data-language="python"><code class="language-python">voted <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<div class="hljs"><pre><code class="hljs python">voted = &#123;&#125;
 
-<span class="token keyword">def</span> <span class="token function">check_voter</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> voted<span class="token punctuation">.</span>get<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">"kick him out!"</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        voted<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-        <span class="token keyword">print</span> <span class="token string">"let him vote!"</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_voter</span>(<span class="hljs-params">name</span>):</span>
+    <span class="hljs-keyword">if</span> voted.get(name):
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;kick him out!&quot;</span>
+    <span class="hljs-keyword">else</span>:
+        voted[name] = <span class="hljs-literal">True</span>
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;let him vote!&quot;</span>
 
-check_voter<span class="token punctuation">(</span><span class="token string">"tom"</span><span class="token punctuation">)</span>
-check_voter<span class="token punctuation">(</span><span class="token string">"mike"</span><span class="token punctuation">)</span>
-check_voter<span class="token punctuation">(</span><span class="token string">"tom"</span><span class="token punctuation">)</span></code></pre>
+check_voter(<span class="hljs-string">&quot;tom&quot;</span>)
+check_voter(<span class="hljs-string">&quot;mike&quot;</span>)
+check_voter(<span class="hljs-string">&quot;tom&quot;</span>)</code></pre></div>
 <p>输出结果为：</p>
-<pre class="language-result" data-language="result"><code class="language-result">let him vote!
+<div class="hljs"><pre><code class="hljs result">let him vote!
 let him vote!
-kick him out!</code></pre>
+kick him out!</code></pre></div>
 <p>如果存储在列表中，运用简单查找速度将非常慢，存储在散列表中，查询速度非常快。</p>
 <h2 id="用于缓存"><a href="#用于缓存" class="headerlink" title="用于缓存"></a>用于缓存</h2><p>当你第一次进入网页时，服务器需要做大量的查找工作，如果每次进网页都交由服务器处理，那么服务器将不堪重负，所以当你第一次进入网页中时，服务器处理后会生成一个散列表在缓存上，当你再次进入相同的页面时，就不用通过服务器处理，直接调用散列表中的缓存的数据就可以快速访问网页，大大提高了服务器的运行效率。</p>
 <p>具体代码如下：</p>
-<pre class="language-python" data-language="python"><code class="language-python">cache <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-<span class="token keyword">def</span> <span class="token function">get_page</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">if</span> cache<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">:</span>
-		<span class="token keyword">return</span> cache<span class="token punctuation">[</span>url<span class="token punctuation">]</span>
-	<span class="token keyword">else</span><span class="token punctuation">:</span>
-		data <span class="token operator">=</span> get_data_from_server<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
-		cache<span class="token punctuation">[</span>url<span class="token punctuation">]</span> <span class="token operator">=</span> data
-		<span class="token keyword">return</span> data</code></pre>
+<div class="hljs"><pre><code class="hljs python">cache = &#123;&#125;
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_page</span>(<span class="hljs-params">url</span>):</span>
+	<span class="hljs-keyword">if</span> cache.get(url):
+		<span class="hljs-keyword">return</span> cache[url]
+	<span class="hljs-keyword">else</span>:
+		data = get_data_from_server(url)
+		cache[url] = data
+		<span class="hljs-keyword">return</span> data</code></pre></div>
 
 <h1 id="散列表性能"><a href="#散列表性能" class="headerlink" title="散列表性能"></a>散列表性能</h1><p>根据散列表特性，最好的情况为O(1),最坏的情况为O(n),所以当填装因子过大时，为了防止<strong>冲突</strong>，我们需要对散列表进行扩容，虽然调整散列表长度开销很大，但是就整体而言，散列表的整体运行时间依然是O(1)。</p>
 <h1 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h1><p>散列函数作为非基础模块，本章不做解释，具体可以了解SHA函数和MD5算法。</p>
@@ -431,8 +425,6 @@ kick him out!</code></pre>
 
 
 
-  
-    
   
 
 

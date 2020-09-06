@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -241,33 +235,33 @@
 <li>从NW_A（192.168.1.0）到NW_B（192.168.2.0）的telnet拒绝，其他的数据包都可正常传输。</li>
 </ol>
 <p>配置路由器</p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#interface fastethernet 0
-Router(config-if)#ip address 192.168.1.254 255.255.255.0
-Router(config-if)#no shutdown
-Router(config)#interface fastethernet 1
-Router(config-if)#ip address 192.168.2.254 255.255.255.0
-Router(config-if)#no shutdown
-Router#show interface   确认端口是否配置成功</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.1.254 255.255.255.0</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
+Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.2.254 255.255.255.0</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
+Router<span class="hljs-meta">#show interface   确认端口是否配置成功</span></code></pre></div>
 
 <p>配置ACL </p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#access-list 100 deny tcp host 192.168.1.1 host 192.168.2.1 eq 23  
-Router(config)#access-list 100 permit ip any any
-Router(config)#show access-lists 确认ACL是否建立成功
-Router(config)#interface fastethernet 0
-Router(config)#ip access-group 100 in</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 100 deny tcp host 192.168.1.1 host 192.168.2.1 eq 23  </span>
+Router(config)<span class="hljs-meta">#access-list 100 permit ip any any</span>
+Router(config)<span class="hljs-meta">#show access-lists 确认ACL是否建立成功</span>
+Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+Router(config)<span class="hljs-meta">#ip access-group 100 in</span></code></pre></div>
 <p>配置switch</p>
-<pre class="language-C" data-language="C"><code class="language-C">switch(config)#interface vlan 1
-switch(config-if)#ip address 192.168.1.100 255.255.255.0
-switch(config-if)#no shutdown
-switch(config-if)#exit
-switch(config)#ip default-gateway 192.168.1.254</code></pre>
+<div class="hljs"><pre><code class="hljs C"><span class="hljs-keyword">switch</span>(config)<span class="hljs-meta">#interface vlan 1</span>
+<span class="hljs-keyword">switch</span>(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.1.100 255.255.255.0</span>
+<span class="hljs-keyword">switch</span>(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
+<span class="hljs-keyword">switch</span>(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#exit</span>
+<span class="hljs-keyword">switch</span>(config)<span class="hljs-meta">#ip default-gateway 192.168.1.254</span></code></pre></div>
 <p>switch有两台，根据上述代码可以配置另一台  </p>
 <p>配置router密码  </p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#line vty 0 4
-Router(config-line)#password cisco
-Router(config-line)#login
-Router(config-line)#end
-Router#show run 确认router密码是否配置成功</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#<span class="hljs-meta-keyword">line</span> vty 0 4</span>
+Router(config-line)<span class="hljs-meta">#password cisco</span>
+Router(config-line)<span class="hljs-meta">#login</span>
+Router(config-line)<span class="hljs-meta">#end</span>
+Router<span class="hljs-meta">#show run 确认router密码是否配置成功</span></code></pre></div>
 
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最终结果为PCA无法telnet到PCB（显示访问拒绝），但是PCB可以telnet到PCA，电脑之间的互相ping正常。</p>
 
@@ -411,8 +405,6 @@ Router#show run 确认router密码是否配置成功</code></pre>
 
 
 
-  
-    
   
 
 

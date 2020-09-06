@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -183,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      666 字
+      715 字
     </span>
   
 
@@ -193,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      9
        分钟
     </span>
   
@@ -244,63 +238,63 @@
 <a id="more"></a>
 <h1 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h1><p>解决这个问题需要三个散列表，一个保存图的结构，一个保存最小开销，一个保存父节点。</p>
 <p>具体代码如下：</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># coding: utf-8</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># coding: utf-8</span>
 
-<span class="token comment"># 将图用散列表表示</span>
-graph <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-graph<span class="token punctuation">[</span><span class="token string">"start"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-graph<span class="token punctuation">[</span><span class="token string">"start"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6</span>
-graph<span class="token punctuation">[</span><span class="token string">"start"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
-graph<span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-graph<span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"fin"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-graph<span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-graph<span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
-graph<span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"fin"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span>
-graph<span class="token punctuation">[</span><span class="token string">"fin"</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="hljs-comment"># 将图用散列表表示</span>
+graph = &#123;&#125;
+graph[<span class="hljs-string">&quot;start&quot;</span>] = &#123;&#125;
+graph[<span class="hljs-string">&quot;start&quot;</span>][<span class="hljs-string">&quot;a&quot;</span>] = <span class="hljs-number">6</span>
+graph[<span class="hljs-string">&quot;start&quot;</span>][<span class="hljs-string">&quot;b&quot;</span>] = <span class="hljs-number">2</span>
+graph[<span class="hljs-string">&quot;a&quot;</span>] = &#123;&#125;
+graph[<span class="hljs-string">&quot;a&quot;</span>][<span class="hljs-string">&quot;fin&quot;</span>] = <span class="hljs-number">1</span>
+graph[<span class="hljs-string">&quot;b&quot;</span>] = &#123;&#125;
+graph[<span class="hljs-string">&quot;b&quot;</span>][<span class="hljs-string">&quot;a&quot;</span>] = <span class="hljs-number">3</span>
+graph[<span class="hljs-string">&quot;b&quot;</span>][<span class="hljs-string">&quot;fin&quot;</span>] = <span class="hljs-number">5</span>
+graph[<span class="hljs-string">&quot;fin&quot;</span>] =&#123;&#125;
 
-<span class="token comment">#将最小开销用散列表表示</span>
-infinity <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">"inf"</span><span class="token punctuation">)</span>
-costs <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-costs<span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6</span>
-costs<span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
-costs<span class="token punctuation">[</span><span class="token string">"fin"</span><span class="token punctuation">]</span> <span class="token operator">=</span> infinity
+<span class="hljs-comment">#将最小开销用散列表表示</span>
+infinity = float(<span class="hljs-string">&quot;inf&quot;</span>)
+costs = &#123;&#125;
+costs[<span class="hljs-string">&quot;a&quot;</span>] = <span class="hljs-number">6</span>
+costs[<span class="hljs-string">&quot;b&quot;</span>] = <span class="hljs-number">2</span>
+costs[<span class="hljs-string">&quot;fin&quot;</span>] = infinity
 
-<span class="token comment">#将父节点用散列表表示</span>
-parents <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-parents<span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"start"</span>
-parents<span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"start"</span>
-parents<span class="token punctuation">[</span><span class="token string">"fin"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
+<span class="hljs-comment">#将父节点用散列表表示</span>
+parents = &#123;&#125;
+parents[<span class="hljs-string">&quot;a&quot;</span>] = <span class="hljs-string">&quot;start&quot;</span>
+parents[<span class="hljs-string">&quot;b&quot;</span>] = <span class="hljs-string">&quot;start&quot;</span>
+parents[<span class="hljs-string">&quot;fin&quot;</span>] = <span class="hljs-literal">None</span>
 
-processed <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">#标记处理过的节点</span>
+processed = [] <span class="hljs-comment">#标记处理过的节点</span>
 
-<span class="token keyword">def</span> <span class="token function">find_lowest_cost_node</span><span class="token punctuation">(</span>costs<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    lowest_cost <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token string">"inf"</span><span class="token punctuation">)</span>
-    lowest_cost_node <span class="token operator">=</span> <span class="token boolean">None</span>
-    <span class="token keyword">for</span> node <span class="token keyword">in</span> costs<span class="token punctuation">:</span> <span class="token comment"># 遍历所有节点</span>
-        cost <span class="token operator">=</span> costs<span class="token punctuation">[</span>node<span class="token punctuation">]</span>
-        <span class="token keyword">if</span> cost <span class="token operator">&lt;</span> lowest_cost <span class="token keyword">and</span> node <span class="token keyword">not</span> <span class="token keyword">in</span> processed<span class="token punctuation">:</span> <span class="token comment">#如果该节点开销更低且没处理过</span>
-            lowest_cost <span class="token operator">=</span> cost <span class="token comment"># 将其作为开销最低的节点</span>
-            lowest_cost_node <span class="token operator">=</span> node
-    <span class="token keyword">return</span> lowest_cost_node
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">find_lowest_cost_node</span>(<span class="hljs-params">costs</span>):</span>
+    lowest_cost = float(<span class="hljs-string">&quot;inf&quot;</span>)
+    lowest_cost_node = <span class="hljs-literal">None</span>
+    <span class="hljs-keyword">for</span> node <span class="hljs-keyword">in</span> costs: <span class="hljs-comment"># 遍历所有节点</span>
+        cost = costs[node]
+        <span class="hljs-keyword">if</span> cost &lt; lowest_cost <span class="hljs-keyword">and</span> node <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> processed: <span class="hljs-comment">#如果该节点开销更低且没处理过</span>
+            lowest_cost = cost <span class="hljs-comment"># 将其作为开销最低的节点</span>
+            lowest_cost_node = node
+    <span class="hljs-keyword">return</span> lowest_cost_node
 
-node <span class="token operator">=</span> find_lowest_cost_node<span class="token punctuation">(</span>costs<span class="token punctuation">)</span><span class="token comment">#在未处理的节点中找到开销最小的节点</span>
-<span class="token keyword">while</span> node <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span> <span class="token comment"># 循环在所有节点被处理后结束</span>
-    cost <span class="token operator">=</span> costs<span class="token punctuation">[</span>node<span class="token punctuation">]</span>
-    neighbors <span class="token operator">=</span> graph<span class="token punctuation">[</span>node<span class="token punctuation">]</span>
-    <span class="token keyword">for</span> n <span class="token keyword">in</span> neighbors<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment"># 遍历当前节点的所有邻居</span>
-        new_cost <span class="token operator">=</span> cost <span class="token operator">+</span> neighbors<span class="token punctuation">[</span>n<span class="token punctuation">]</span>
-        <span class="token keyword">if</span> costs<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">></span> new_cost<span class="token punctuation">:</span> <span class="token comment"># 如果当前节点开销更小</span>
-            costs<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> new_cost <span class="token comment"># 更新邻居开销</span>
-            parents<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> node <span class="token comment"># 将该邻居父节点设为当前节点</span>
-    processed<span class="token punctuation">.</span>append<span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token comment"># 标记用过的节点</span>
-    node <span class="token operator">=</span> find_lowest_cost_node<span class="token punctuation">(</span>costs<span class="token punctuation">)</span>
-<span class="token keyword">print</span> parents
-<span class="token keyword">print</span> costs
-</code></pre>
+node = find_lowest_cost_node(costs)<span class="hljs-comment">#在未处理的节点中找到开销最小的节点</span>
+<span class="hljs-keyword">while</span> node <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>: <span class="hljs-comment"># 循环在所有节点被处理后结束</span>
+    cost = costs[node]
+    neighbors = graph[node]
+    <span class="hljs-keyword">for</span> n <span class="hljs-keyword">in</span> neighbors.keys(): <span class="hljs-comment"># 遍历当前节点的所有邻居</span>
+        new_cost = cost + neighbors[n]
+        <span class="hljs-keyword">if</span> costs[n] &gt; new_cost: <span class="hljs-comment"># 如果当前节点开销更小</span>
+            costs[n] = new_cost <span class="hljs-comment"># 更新邻居开销</span>
+            parents[n] = node <span class="hljs-comment"># 将该邻居父节点设为当前节点</span>
+    processed.append(node) <span class="hljs-comment"># 标记用过的节点</span>
+    node = find_lowest_cost_node(costs)
+<span class="hljs-keyword">print</span> parents
+<span class="hljs-keyword">print</span> costs
+</code></pre></div>
 
 <p>得到结果：</p>
-<pre class="language-none"><code class="language-none">&#123;&#39;a&#39;: &#39;b&#39;, &#39;b&#39;: &#39;start&#39;, &#39;fin&#39;: &#39;a&#39;&#125;
-&#123;&#39;a&#39;: 5, &#39;b&#39;: 2, &#39;fin&#39;: 6&#125;</code></pre>
+<div class="hljs"><pre><code class="hljs 1c">&#123;&#x27;a&#x27;: &#x27;b&#x27;, &#x27;b&#x27;: &#x27;start&#x27;, &#x27;fin&#x27;: &#x27;a&#x27;&#125;
+&#123;&#x27;a&#x27;: <span class="hljs-number">5</span>, &#x27;b&#x27;: <span class="hljs-number">2</span>, &#x27;fin&#x27;: <span class="hljs-number">6</span>&#125;</code></pre></div>
 
 <table>
 <thead>
@@ -469,8 +463,6 @@ node <span class="token operator">=</span> find_lowest_cost_node<span class="tok
 
 
 
-  
-    
   
 
 

@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -241,23 +235,23 @@
 <li>设置番号为100的扩展ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</li>
 </ol>
 <p>首先配置路由器让其互相ping通  </p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#interface fastethernet 0
-Router(config)#ip address 192.168.1.254 255.255.255.0
-Router(config)#no shutdown
-Router(config)#interface fastethernet 1
-Router(config)#ip address 192.168.2.254 255.255.255.0
-Router(config)#no shutdown
-Router#show interface   确认端口是否配置成功</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+Router(config)<span class="hljs-meta">#ip address 192.168.1.254 255.255.255.0</span>
+Router(config)<span class="hljs-meta">#no shutdown</span>
+Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
+Router(config)<span class="hljs-meta">#ip address 192.168.2.254 255.255.255.0</span>
+Router(config)<span class="hljs-meta">#no shutdown</span>
+Router<span class="hljs-meta">#show interface   确认端口是否配置成功</span></code></pre></div>
 
 <p>配置ACL</p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1
-Router(config)#access-list 100 permit ip any any
-Router(config)#show access-lists 确认ACL是否建立成功
-Router(config)#interface fastethernet 0
-Router(config)#ip access-group 100 in</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span>
+Router(config)<span class="hljs-meta">#access-list 100 permit ip any any</span>
+Router(config)<span class="hljs-meta">#show access-lists 确认ACL是否建立成功</span>
+Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+Router(config)<span class="hljs-meta">#ip access-group 100 in</span></code></pre></div>
 <p>如果想设置Fa 1端口，就用</p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#interface fastethernet 1  
-Router(config)#ip access-group 100 out</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1  </span>
+Router(config)<span class="hljs-meta">#ip access-group 100 out</span></code></pre></div>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最后检查结果时，会出现PCA1到PCB1到达不能，PCB1到PCA1出现timeout，这是正常结果，因为tcp/ip的三次握手中，当PCA1到PCB1通路阻断时，PCA1不能回应PCB1发出的“问候”，从而出现timeout。  </p>
 
             </div>
@@ -394,8 +388,6 @@ Router(config)#ip access-group 100 out</code></pre>
 
 
 
-  
-    
   
 
 

@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -183,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      466 字
+      482 字
     </span>
   
 
@@ -193,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      6
        分钟
     </span>
   
@@ -243,15 +237,15 @@
 </ol>
 <a id="more"></a>
 
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">look_for_key</span><span class="token punctuation">(</span>main_box<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    pile <span class="token operator">=</span> main_box<span class="token punctuation">.</span>make_a_pile_to_look_through<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">while</span> pile <span class="token keyword">is</span> <span class="token keyword">not</span> empty<span class="token punctuation">:</span>
-        box <span class="token operator">=</span> pile<span class="token punctuation">.</span>grab_a_box<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> item <span class="token keyword">in</span> box<span class="token punctuation">:</span>
-            <span class="token keyword">if</span> item<span class="token punctuation">.</span>is_a_box<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                pile<span class="token punctuation">.</span>append<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-            <span class="token keyword">elif</span> item<span class="token punctuation">.</span>is_a_key<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">print</span> <span class="token string">"find the key!"</span></code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">look_for_key</span>(<span class="hljs-params">main_box</span>):</span>
+    pile = main_box.make_a_pile_to_look_through()
+    <span class="hljs-keyword">while</span> pile <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty:
+        box = pile.grab_a_box()
+        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> box:
+            <span class="hljs-keyword">if</span> item.is_a_box():
+                pile.append(item)
+            <span class="hljs-keyword">elif</span> item.is_a_key():
+                <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;find the key!&quot;</span></code></pre></div>
 
 
 <p><strong>方法二</strong></p>
@@ -260,25 +254,25 @@
 <li>如果是盒子，返回第一步。</li>
 <li>如果是钥匙，结束返回。</li>
 </ol>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">look_for_key</span><span class="token punctuation">(</span>box<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> item <span class="token keyword">in</span> box<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> item<span class="token punctuation">.</span>is_a_box<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment">#递归条件</span>
-            look_for_key<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> item<span class="token punctuation">.</span>is_a_key<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment">#基线条件</span>
-            <span class="token keyword">print</span> <span class="token string">"find the key!"</span>
-</code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">look_for_key</span>(<span class="hljs-params">box</span>):</span>
+    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> box:
+        <span class="hljs-keyword">if</span> item.is_a_box(): <span class="hljs-comment">#递归条件</span>
+            look_for_key(item)
+        <span class="hljs-keyword">elif</span> item.is_a_key(): <span class="hljs-comment">#基线条件</span>
+            <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;find the key!&quot;</span>
+</code></pre></div>
 <p>第二种方法就使用了递归，自己调用自己。</p>
 <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>一个简单函数：</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">greet</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">print</span> <span class="token string">"hello,"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"!"</span>
-	greet2<span class="token punctuation">(</span>name<span class="token punctuation">)</span>
-	<span class="token keyword">print</span> <span class="token string">"greeting ready to say bye..."</span>
-	bye<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span>(<span class="hljs-params">name</span>):</span>
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;hello,&quot;</span> + name + <span class="hljs-string">&quot;!&quot;</span>
+	greet2(name)
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;greeting ready to say bye...&quot;</span>
+	bye()</code></pre></div>
 <p>这个函数调用了两个函数，两个函数代码如下：</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">greeet2</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">print</span> <span class="token string">"how are you,"</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"?"</span>
-<span class="token keyword">def</span> <span class="token function">bye</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">print</span> <span class="token string">"ok bye!"</span></code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greeet2</span>(<span class="hljs-params">name</span>):</span>
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;how are you,&quot;</span> + name + <span class="hljs-string">&quot;?&quot;</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bye</span>():</span>
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;ok bye!&quot;</span></code></pre></div>
 
 <p>在内存中，这个函数运行过程如下：</p>
 <ol>
@@ -292,11 +286,11 @@
 </ol>
 <p>这个栈用于存储多个函数的变量，被称为<strong>调用栈</strong>。所有函数调用都进入调用栈。</p>
 <h1 id="递归调用栈"><a href="#递归调用栈" class="headerlink" title="递归调用栈"></a>递归调用栈</h1><p>给定函数factorial(5)写做5!=5*4*3*2*1，那么：</p>
-<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fact</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-	<span class="token keyword">if</span> x <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-		<span class="token keyword">return</span> <span class="token number">1</span>
-	<span class="token keyword">else</span><span class="token punctuation">:</span>
-		<span class="token keyword">return</span> x<span class="token operator">*</span>fact<span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fact</span>(<span class="hljs-params">x</span>):</span>
+	<span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:
+		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+	<span class="hljs-keyword">else</span>:
+		<span class="hljs-keyword">return</span> x*fact(x<span class="hljs-number">-1</span>)</code></pre></div>
 
 <p>fact(3)的调用栈变化如下：</p>
 <ol>
@@ -447,8 +441,6 @@
 
 
 
-  
-    
   
 
 

@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -183,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      378 字
+      349 字
     </span>
   
 
@@ -193,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -234,46 +228,46 @@
             <div class="markdown-body" id="post-body">
               <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>53 121</p>
 <h2 id="53-最大子序和"><a href="#53-最大子序和" class="headerlink" title="53. 最大子序和"></a>53. 最大子序和</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>因为负数加负数更小，所以当目前总和为负数时，跟下一个负数只取一个较大的负数。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">public int maxSubArray(int[] nums) &#123;
-        int[] dt &#x3D; new int[nums.length];
-        dt[0] &#x3D; nums[0];
-        int maxSum &#x3D; nums[0];
-        for (int i &#x3D; 1; i &lt; nums.length; i++) &#123;
-            &#x2F;&#x2F; 找出正数最多的子序列
-            &#x2F;&#x2F; 负数相加只会越来越小，所以当总和小于零时遇上负数直接把前面舍弃
-            dt[i] &#x3D; Math.max(dt[i - 1],0) + nums[i];
-            if (dt[i] &gt; maxSum) &#123;
-                &#x2F;&#x2F;因为会遍历到底，所以要记录遍历途中最大的数
-                maxSum &#x3D; dt[i];
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        <span class="hljs-keyword">int</span>[] dt = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums.length];
+        dt[<span class="hljs-number">0</span>] = nums[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">int</span> maxSum = nums[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.length; i++) &#123;
+            <span class="hljs-comment">// 找出正数最多的子序列</span>
+            <span class="hljs-comment">// 负数相加只会越来越小，所以当总和小于零时遇上负数直接把前面舍弃</span>
+            dt[i] = Math.max(dt[i - <span class="hljs-number">1</span>],<span class="hljs-number">0</span>) + nums[i];
+            <span class="hljs-keyword">if</span> (dt[i] &gt; maxSum) &#123;
+                <span class="hljs-comment">//因为会遍历到底，所以要记录遍历途中最大的数</span>
+                maxSum = dt[i];
             &#125;
         &#125;
-        return maxSum;
-    &#125;</code></pre>
+        <span class="hljs-keyword">return</span> maxSum;
+    &#125;</code></pre></div>
 <a id="more"></a>
 <h2 id="121-买卖股票的最佳时机"><a href="#121-买卖股票的最佳时机" class="headerlink" title="121. 买卖股票的最佳时机"></a>121. 买卖股票的最佳时机</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>因为只买卖一次，所以只要找到最大值前面的最小值就行了，每次模拟买入卖出情况，找出最大差值，解决问题。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
-    public int maxProfit(int[] prices) &#123;
-		&#x2F;&#x2F; 输入为空时，返回0
-        if (prices.length &#x3D;&#x3D; 0) return 0;
-        int buy &#x3D; prices[0];
-        int profit &#x3D; 0;
-        int maxProfit &#x3D; 0;
-        for (int i &#x3D; 1; i &lt; prices.length; i++) &#123;
-            if (prices[i] &lt; buy) &#123;
-                &#x2F;&#x2F; 模拟买入，如果买入价格比之前低，就买入备选
-                buy &#x3D; prices[i];
-            &#125; else if (prices[i] &gt; buy) &#123;
-                &#x2F;&#x2F; 每次模拟卖出的情况
-                profit &#x3D; prices[i] - buy;
-                if (profit &gt; maxProfit) &#123;
-                    &#x2F;&#x2F; 如果利润大于最大利润，就卖出备选
-                    maxProfit &#x3D; profit;
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices)</span> </span>&#123;
+		<span class="hljs-comment">// 输入为空时，返回0</span>
+        <span class="hljs-keyword">if</span> (prices.length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> buy = prices[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">int</span> profit = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> maxProfit = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; prices.length; i++) &#123;
+            <span class="hljs-keyword">if</span> (prices[i] &lt; buy) &#123;
+                <span class="hljs-comment">// 模拟买入，如果买入价格比之前低，就买入备选</span>
+                buy = prices[i];
+            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (prices[i] &gt; buy) &#123;
+                <span class="hljs-comment">// 每次模拟卖出的情况</span>
+                profit = prices[i] - buy;
+                <span class="hljs-keyword">if</span> (profit &gt; maxProfit) &#123;
+                    <span class="hljs-comment">// 如果利润大于最大利润，就卖出备选</span>
+                    maxProfit = profit;
                 &#125;
             &#125;
         &#125;
-        return maxProfit;
+        <span class="hljs-keyword">return</span> maxProfit;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>
@@ -414,8 +408,6 @@
 
 
 
-  
-    
   
 
 

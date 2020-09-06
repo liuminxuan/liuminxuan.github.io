@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -240,23 +234,23 @@
 </ol>
 <a id="more"></a>
 
-<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">findSmallest</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    Smallest <span class="token operator">=</span> arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    Smallest_index <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> Smallest<span class="token punctuation">:</span>
-            Smallest <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-            Smallest_index <span class="token operator">=</span> i
-    <span class="token keyword">return</span> Smallest_index
-<span class="token keyword">def</span> <span class="token function">selectionSort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    newArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        smallest <span class="token operator">=</span> findSmallest<span class="token punctuation">(</span>arr<span class="token punctuation">)</span>
-        newArr<span class="token punctuation">.</span>append<span class="token punctuation">(</span>arr<span class="token punctuation">.</span>pop<span class="token punctuation">(</span>smallest<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">#append()给新数组添加元素，pop()将该元素弹出原数组</span>
-    <span class="token keyword">return</span> newArr
+<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findSmallest</span>(<span class="hljs-params">arr</span>):</span>
+    Smallest = arr[<span class="hljs-number">0</span>]
+    Smallest_index = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(arr)):
+        <span class="hljs-keyword">if</span> arr[i] &lt; Smallest:
+            Smallest = arr[i]
+            Smallest_index = i
+    <span class="hljs-keyword">return</span> Smallest_index
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selectionSort</span>(<span class="hljs-params">arr</span>):</span>
+    newArr = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(arr)):
+        smallest = findSmallest(arr)
+        newArr.append(arr.pop(smallest))<span class="hljs-comment">#append()给新数组添加元素，pop()将该元素弹出原数组</span>
+    <span class="hljs-keyword">return</span> newArr
 
-<span class="token keyword">print</span> selectionSort<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="hljs-keyword">print</span> selectionSort([<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">10</span>])
+</code></pre></div>
 
 <h1 id="算法运行时间"><a href="#算法运行时间" class="headerlink" title="算法运行时间"></a>算法运行时间</h1><p>第一次需要检查n个元素，随后依次是n-1，n-2，···，2和1。因此运行时间为O(n*1/2*n)，但是大O表示法常常省略1/2这样的常数，所以选择排序的算法运行时间为O(n^2).</p>
 
@@ -400,8 +394,6 @@
 
 
 
-  
-    
   
 
 

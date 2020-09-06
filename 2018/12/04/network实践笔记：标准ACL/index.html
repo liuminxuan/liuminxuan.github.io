@@ -29,13 +29,7 @@
     
     
       
-      
-        
-        
-        
-      
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism-default.min.css" />
-      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/xcode.min.css" />
     
   
 
@@ -247,19 +241,19 @@
 <li>但是192.168.1.1拒绝通信</li>
 </ul>
 <p>配置路由器</p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#interface fastethernet 0
-Router(config-if)#ip address 192.168.1.254 255.255.255.0
-Router(config-if)#no shutdown
-Router(config)#interface fastethernet 1
-Router(config-if)#ip address 192.168.2.254 255.255.255.0
-Router(config-if)#no shutdown
-Router#show interface 确认端口是否设置成功</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.1.254 255.255.255.0</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
+Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.2.254 255.255.255.0</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
+Router<span class="hljs-meta">#show interface 确认端口是否设置成功</span></code></pre></div>
 <p>配置ACL</p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#access-list 1 deny host 192.168.1.1
-Router(config)#access-list 1 permit any
-Router(config)#interface fastethernet 0
-Router(config-if)#ip access-group 1 in
-Router#show access-lists  确认ACL创建成功</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 1 deny host 192.168.1.1</span>
+Router(config)<span class="hljs-meta">#access-list 1 permit any</span>
+Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip access-group 1 in</span>
+Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre></div>
 
 
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
@@ -271,12 +265,12 @@ Router#show access-lists  确认ACL创建成功</code></pre>
 <li>PC A和PC D不能ping成功</li>
 </ul>
 <p>如果选择Fa 1端口配置ACL的话，就修改成如下代码</p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#interface fastethernet 1
-Router(config-if)#ip access-group 1 out
-Router#show access-lists  确认ACL创建成功</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
+Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip access-group 1 out</span>
+Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre></div>
 
 <p>如果不需要这个ACL的话</p>
-<pre class="language-C" data-language="C"><code class="language-C">Router(config)#no access-list 1</code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#no access-list 1</span></code></pre></div>
 
 <p>就可以将ACL删去.</p>
 <p>ACL的对照顺序是自上向下并且默认是deny的，如果将实验中ACL的两行互换在本演习中理论上没有影响，但是具体实验并没有实施，“顺序因素对ACL的影响”是以后可以考虑的问题点之一。</p>
@@ -421,8 +415,6 @@ Router#show access-lists  确认ACL创建成功</code></pre>
 
 
 
-  
-    
   
 
 
