@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      824 字
+      909 字
     </span>
   
 
@@ -187,7 +191,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      14
        分钟
     </span>
   
@@ -227,14 +231,14 @@
             
             <div class="markdown-body" id="post-body">
               <h1 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h1><p>206 141 21 19 876 160</p>
-<h2 id="编写链表"><a href="#编写链表" class="headerlink" title="编写链表"></a>编写链表</h2><div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>&#123;
-        <span class="hljs-keyword">int</span> val;
+<h2 id="编写链表"><a href="#编写链表" class="headerlink" title="编写链表"></a>编写链表</h2><pre class="language-Java" data-language="Java"><code class="language-Java">public class ListNode &#123;
+        int val;
         ListNode next;
 
-        ListNode(<span class="hljs-keyword">int</span> x) &#123;
-            val = x;
+        ListNode(int x) &#123;
+            val &#x3D; x;
         &#125;
-    &#125;</code></pre></div>
+    &#125;</code></pre>
 <a id="more"></a>
 
 <h1 id="易犯错误"><a href="#易犯错误" class="headerlink" title="易犯错误"></a>易犯错误</h1><ul>
@@ -248,116 +252,116 @@
 <li>解题思路：<br>因为头指针head只指向头节点所在的地址，并不包含数据，所以不能把头指针看作一个节点，所以head.next.next.val = 17.</li>
 </ul>
 <h1 id="206-反转链表"><a href="#206-反转链表" class="headerlink" title="206. 反转链表"></a>206. 反转链表</h1><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>类似于选择排序中交换两个数的位置。借助一个tmp完成交换</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseList</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
-        ListNode pre = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// 前元素</span>
-        ListNode cur = head; <span class="hljs-comment">// 正在操作的元素</span>
-        ListNode tmp = <span class="hljs-keyword">null</span>; <span class="hljs-comment">// 临时元素</span>
-        <span class="hljs-keyword">while</span> (cur != <span class="hljs-keyword">null</span>) &#123;
-            tmp = cur.next; 
-            cur.next = pre;
-            pre = cur;
-            cur = tmp;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">public ListNode reverseList(ListNode head) &#123;
+        ListNode pre &#x3D; null; &#x2F;&#x2F; 前元素
+        ListNode cur &#x3D; head; &#x2F;&#x2F; 正在操作的元素
+        ListNode tmp &#x3D; null; &#x2F;&#x2F; 临时元素
+        while (cur !&#x3D; null) &#123;
+            tmp &#x3D; cur.next; 
+            cur.next &#x3D; pre;
+            pre &#x3D; cur;
+            cur &#x3D; tmp;
         &#125;
-        <span class="hljs-keyword">return</span> pre;
+        return pre;
     &#125;
-</code></pre></div>
+</code></pre>
 <h1 id="141-环形链表"><a href="#141-环形链表" class="headerlink" title="141. 环形链表"></a>141. 环形链表</h1><h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><p>因为如果是环形链表，一定会陷入无限循环。所以用快慢指针解决。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">hasCycle</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
-        <span class="hljs-keyword">if</span> (head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>) &#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">public boolean hasCycle(ListNode head) &#123;
+        if (head &#x3D;&#x3D; null || head.next &#x3D;&#x3D; null) &#123;
+            return false;
         &#125;
-        ListNode low = head;
-        ListNode fast = head.next;
-        <span class="hljs-keyword">while</span> (fast != <span class="hljs-keyword">null</span> &amp;&amp; fast.next != <span class="hljs-keyword">null</span>) &#123;
-            <span class="hljs-keyword">if</span>(fast.equals(low))&#123;
-                <span class="hljs-comment">// 慢指针追上了快指针</span>
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        ListNode low &#x3D; head;
+        ListNode fast &#x3D; head.next;
+        while (fast !&#x3D; null &amp;&amp; fast.next !&#x3D; null) &#123;
+            if(fast.equals(low))&#123;
+                &#x2F;&#x2F; 慢指针追上了快指针
+                return true;
             &#125;
-            low = low.next;
-            fast = fast.next.next;
+            low &#x3D; low.next;
+            fast &#x3D; fast.next.next;
         &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-    &#125;</code></pre></div>
+        return false;
+    &#125;</code></pre>
 <h1 id="21-合并两个有序链表"><a href="#21-合并两个有序链表" class="headerlink" title="21. 合并两个有序链表"></a>21. 合并两个有序链表</h1><h2 id="解题思路-2"><a href="#解题思路-2" class="headerlink" title="解题思路"></a>解题思路</h2><p>创建一个新链表，比较l1、l2两个链表的大小，将小的放进新链表。最后将剩余的接在新链表后面。</p>
-<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;
-        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(-<span class="hljs-number">1</span>);
-        ListNode curr = dummy;
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">public ListNode mergeTwoLists(ListNode l1, ListNode l2) &#123;
+        ListNode dummy &#x3D; new ListNode(-1);
+        ListNode curr &#x3D; dummy;
 
-        <span class="hljs-keyword">while</span> (l1 != <span class="hljs-keyword">null</span> &amp;&amp; l2 != <span class="hljs-keyword">null</span>) &#123;
-            <span class="hljs-keyword">if</span> (l1.val &lt; l2.val) &#123;
-                curr.next = l1;
-                curr = curr.next;
-                l1 = l1.next;
-            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l1.val &gt;= l2.val) &#123;
-                curr.next = l2;
-                curr = curr.next;
-                l2 = l2.next;
+        while (l1 !&#x3D; null &amp;&amp; l2 !&#x3D; null) &#123;
+            if (l1.val &lt; l2.val) &#123;
+                curr.next &#x3D; l1;
+                curr &#x3D; curr.next;
+                l1 &#x3D; l1.next;
+            &#125; else if (l1.val &gt;&#x3D; l2.val) &#123;
+                curr.next &#x3D; l2;
+                curr &#x3D; curr.next;
+                l2 &#x3D; l2.next;
             &#125;
         &#125;
-        <span class="hljs-keyword">if</span> (l1 != <span class="hljs-keyword">null</span>) &#123;
-            <span class="hljs-comment">// 如果l1有剩余，将剩余元素接上去</span>
-            curr.next = l1;
-        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (l2 != <span class="hljs-keyword">null</span>) &#123;
-            <span class="hljs-comment">// 与l1同理</span>
-            curr.next = l2;
+        if (l1 !&#x3D; null) &#123;
+            &#x2F;&#x2F; 如果l1有剩余，将剩余元素接上去
+            curr.next &#x3D; l1;
+        &#125; else if (l2 !&#x3D; null) &#123;
+            &#x2F;&#x2F; 与l1同理
+            curr.next &#x3D; l2;
         &#125;
-        <span class="hljs-comment">// 装逼写法</span>
-        <span class="hljs-comment">// cur.next = l1 == null ? l2 : l1;</span>
-        <span class="hljs-keyword">return</span> dummy.next;
-    &#125;</code></pre></div>
+        &#x2F;&#x2F; 装逼写法
+        &#x2F;&#x2F; cur.next &#x3D; l1 &#x3D;&#x3D; null ? l2 : l1;
+        return dummy.next;
+    &#125;</code></pre>
 <h1 id="19-删除链表的倒数第N个节点"><a href="#19-删除链表的倒数第N个节点" class="headerlink" title="19. 删除链表的倒数第N个节点"></a>19. 删除链表的倒数第N个节点</h1><h2 id="解题思路-3"><a href="#解题思路-3" class="headerlink" title="解题思路"></a>解题思路</h2><p>用快慢指针，中间相隔n个数，快指针到末尾时，慢指针指向的下一个元素就是要删除的节点。</p>
-<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">removeNthFromEnd</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> n)</span> </span>&#123;
-        ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-        dummy.next = head;
-        ListNode low = dummy;
-        ListNode fast = dummy;
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;
-            fast = fast.next;
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">public ListNode removeNthFromEnd(ListNode head, int n) &#123;
+        ListNode dummy &#x3D; new ListNode(0);
+        dummy.next &#x3D; head;
+        ListNode low &#x3D; dummy;
+        ListNode fast &#x3D; dummy;
+        for (int i &#x3D; 0; i &lt; n; i++) &#123;
+            fast &#x3D; fast.next;
         &#125;
-        <span class="hljs-keyword">while</span> (fast.next != <span class="hljs-keyword">null</span>) &#123;
-            fast = fast.next;
-            low = low.next;
+        while (fast.next !&#x3D; null) &#123;
+            fast &#x3D; fast.next;
+            low &#x3D; low.next;
         &#125;
-        <span class="hljs-keyword">if</span> (low.next.next == <span class="hljs-keyword">null</span>) &#123;
-            low.next = <span class="hljs-keyword">null</span>;
-        &#125; <span class="hljs-keyword">else</span> &#123;
-            low.next = low.next.next;
+        if (low.next.next &#x3D;&#x3D; null) &#123;
+            low.next &#x3D; null;
+        &#125; else &#123;
+            low.next &#x3D; low.next.next;
         &#125;
-        <span class="hljs-keyword">return</span> dummy.next;
+        return dummy.next;
 
-    &#125;</code></pre></div>
+    &#125;</code></pre>
 <h1 id="876-链表的中间节点"><a href="#876-链表的中间节点" class="headerlink" title="876. 链表的中间节点"></a>876. 链表的中间节点</h1><h2 id="解题思路-4"><a href="#解题思路-4" class="headerlink" title="解题思路"></a>解题思路</h2><p>先遍历链表数出有多少个元素，第（k/2+1）个元素就是中间元素。</p>
-<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">middleNode</span><span class="hljs-params">(ListNode head)</span> </span>&#123;
-       ListNode dummy = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
-       dummy.next = head;
-       ListNode low = dummy;
-       ListNode fast = dummy;
-       <span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;
-       <span class="hljs-keyword">while</span> (fast.next != <span class="hljs-keyword">null</span>) &#123;
-           fast = fast.next;
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">public ListNode middleNode(ListNode head) &#123;
+       ListNode dummy &#x3D; new ListNode(0);
+       dummy.next &#x3D; head;
+       ListNode low &#x3D; dummy;
+       ListNode fast &#x3D; dummy;
+       int k &#x3D; 0;
+       while (fast.next !&#x3D; null) &#123;
+           fast &#x3D; fast.next;
            k++;
        &#125;
-       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; k / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>; i++) &#123;
-           low = low.next;
+       for (int i &#x3D; 0; i &lt; k &#x2F; 2 + 1; i++) &#123;
+           low &#x3D; low.next;
        &#125;
-       <span class="hljs-keyword">return</span> low.next;
-   &#125;</code></pre></div>
+       return low.next;
+   &#125;</code></pre>
 
 <h1 id="160-相交链表"><a href="#160-相交链表" class="headerlink" title="160.相交链表"></a>160.相交链表</h1><h2 id="解题思路-5"><a href="#解题思路-5" class="headerlink" title="解题思路"></a>解题思路</h2><p><img src="https://pic.leetcode-cn.com/e0efdd908a8941e3c53a68a6049d88c437b8299e48540a772ab091b86695d981-image.png" srcset="/img/loading.gif" alt="avatar"></p>
 <p>首先初始化pA，pB开始遍历。当pA到尾巴的时候，回到pB开始遍历。pB同理。<br>这样pA的路线a+c+b，pB的路线b+c+a，可知他们如果有交点，一定在遍历的尾巴处。</p>
 <p>如果两个链表没有相交，那么就变成了pA为a+b，pB为b+a，最终他们一定会遍历到null，所以返回其中一个即可。</p>
-<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> </span>&#123;
-        ListNode pA = headA;
-        ListNode pB = headB;
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">public class Solution &#123;
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;
+        ListNode pA &#x3D; headA;
+        ListNode pB &#x3D; headB;
 
-        <span class="hljs-keyword">while</span>(pA != pB)&#123;
-            pA = pA == <span class="hljs-keyword">null</span> ? headB : pA.next;
-            pB = pB == <span class="hljs-keyword">null</span> ? headA : pB.next;
+        while(pA !&#x3D; pB)&#123;
+            pA &#x3D; pA &#x3D;&#x3D; null ? headB : pA.next;
+            pB &#x3D; pB &#x3D;&#x3D; null ? headA : pB.next;
         &#125;
-        <span class="hljs-keyword">return</span> pA;
+        return pA;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 
             </div>
@@ -500,6 +504,8 @@
 
 
 
+  
+    
   
 
 

@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      623 字
+      658 字
     </span>
   
 
@@ -228,67 +232,67 @@
             <div class="markdown-body" id="post-body">
               <h1 id="39-数组中出现次数超过一半的数字"><a href="#39-数组中出现次数超过一半的数字" class="headerlink" title="39. 数组中出现次数超过一半的数字"></a>39. 数组中出现次数超过一半的数字</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。</p>
 <p>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><div class="hljs"><pre><code class="hljs angelscript">输入: [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>]
-输出: <span class="hljs-number">2</span></code></pre></div>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre class="language-none"><code class="language-none">输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
+输出: 2</code></pre>
 
 <h2 id="解题思路1-排序"><a href="#解题思路1-排序" class="headerlink" title="解题思路1 排序"></a>解题思路1 排序</h2><p>因为需要的数字出现次数多于一半，那么排序后必定在中间。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public int majorityElement(int[] nums) &#123;
         Arrays.sort(nums);
-        <span class="hljs-keyword">return</span> nums[nums.length/<span class="hljs-number">2</span>];
+        return nums[nums.length&#x2F;2];
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <h2 id="解题思路2-HashMap"><a href="#解题思路2-HashMap" class="headerlink" title="解题思路2 HashMap"></a>解题思路2 HashMap</h2><p>数数然后查找这种问题一定会想到HashMap，虽然执行效率不高，但是也算能出结果</p>
-<h3 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(nums.length == <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];
-        <span class="hljs-comment">// 移位运算高级写法</span>
-        <span class="hljs-comment">// int half = nums.length &gt;&gt; 1;</span>
-        <span class="hljs-keyword">int</span> half = nums.length / <span class="hljs-number">2</span>;
+<h3 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public int majorityElement(int[] nums) &#123;
+        if(nums.length &#x3D;&#x3D; 1) return nums[0];
+        &#x2F;&#x2F; 移位运算高级写法
+        &#x2F;&#x2F; int half &#x3D; nums.length &gt;&gt; 1;
+        int half &#x3D; nums.length &#x2F; 2;
 
-        HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++)&#123;
-            <span class="hljs-comment">// 如果HashMap包含数组中的值，则先判断数量是否过半，如无过半，则数量加1</span>
-            <span class="hljs-comment">// 不包含则创建一个新的Key和值为1的count</span>
-            <span class="hljs-keyword">if</span>(map.containsKey(nums[i]))&#123;
-                <span class="hljs-keyword">int</span> count = map.get(nums[i]);
-                <span class="hljs-keyword">if</span>(++count &gt; half)&#123;
-                    <span class="hljs-keyword">return</span> nums[i];
+        HashMap&lt;Integer, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
+        for(int i &#x3D; 0; i &lt; nums.length; i++)&#123;
+            &#x2F;&#x2F; 如果HashMap包含数组中的值，则先判断数量是否过半，如无过半，则数量加1
+            &#x2F;&#x2F; 不包含则创建一个新的Key和值为1的count
+            if(map.containsKey(nums[i]))&#123;
+                int count &#x3D; map.get(nums[i]);
+                if(++count &gt; half)&#123;
+                    return nums[i];
                 &#125;
-                <span class="hljs-comment">// map.remove(nums[i]);</span>
+                &#x2F;&#x2F; map.remove(nums[i]);
                 map.put(nums[i], count);
-            &#125;<span class="hljs-keyword">else</span>&#123;
-                map.put(nums[i], <span class="hljs-number">1</span>);
+            &#125;else&#123;
+                map.put(nums[i], 1);
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+        return -1;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <h2 id="解题思路3-摩尔投票法"><a href="#解题思路3-摩尔投票法" class="headerlink" title="解题思路3 摩尔投票法"></a>解题思路3 摩尔投票法</h2><p>思想是将不同的数字互相消解，那最后余下的数字就是相同的数字。</p>
 <blockquote>
 <p>用target记录上一次访问的值，count表明当前值出现的次数，如果下一个值和当前值相同那么count++；如果不同count–，减到0的时候就要更换新的target值了，因为如果存在超过数组长度一半的值，那么最后target一定会是该值。可以这样理解，count的自加和自减就是在描述一种抵消关系，由于超过一半的出现次数，导致最后的target一定会是该值。（这种方法的时间复杂度自然会小些）</p>
 </blockquote>
-<h3 id="代码3"><a href="#代码3" class="headerlink" title="代码3"></a>代码3</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
-        <span class="hljs-keyword">int</span> target = nums[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 初始化为数组的第一个元素，接下来用于记录上一次访问的值</span>
-        <span class="hljs-keyword">int</span> count = <span class="hljs-number">1</span>; <span class="hljs-comment">// 用于记录出现次数</span>
+<h3 id="代码3"><a href="#代码3" class="headerlink" title="代码3"></a>代码3</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public int majorityElement(int[] nums) &#123;
+        int target &#x3D; nums[0]; &#x2F;&#x2F; 初始化为数组的第一个元素，接下来用于记录上一次访问的值
+        int count &#x3D; 1; &#x2F;&#x2F; 用于记录出现次数
 
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++)&#123;
-            <span class="hljs-keyword">if</span>(nums[i] == target)&#123;
+        for(int i &#x3D; 0; i &lt; nums.length; i++)&#123;
+            if(nums[i] &#x3D;&#x3D; target)&#123;
                 count++;
-            &#125;<span class="hljs-keyword">else</span>&#123;
+            &#125;else&#123;
                 count--;
             &#125;
-            <span class="hljs-comment">// 当count=0时，更换target的值为当前访问的数组元素的值，次数设为1</span>
-            <span class="hljs-keyword">if</span>(count == <span class="hljs-number">0</span>)&#123;
-                target = nums[i];
-                count = <span class="hljs-number">1</span>;
+            &#x2F;&#x2F; 当count&#x3D;0时，更换target的值为当前访问的数组元素的值，次数设为1
+            if(count &#x3D;&#x3D; 0)&#123;
+                target &#x3D; nums[i];
+                count &#x3D; 1;
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> target;
+        return target;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
             </div>
             <hr>
@@ -428,6 +432,8 @@
 
 
 
+  
+    
   
 
 

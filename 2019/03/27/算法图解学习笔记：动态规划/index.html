@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      907 字
+      892 字
     </span>
   
 
@@ -187,7 +191,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      11
        分钟
     </span>
   
@@ -285,43 +289,43 @@
 <p><strong>答案：将吉他和笔记本电脑装入背包时价值最高，为3500美元。</strong></p>
 <p>计算每个单元格价值时，运用如下公式：</p>
 <p>cell[i][j] =<br>max{ 上一个单元格的值(cell[i-1][j]) ，当前商品价值(cell[i][j-1])+剩余空间价值(cell[i-1][j-当前物品重量])</p>
-<h2 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bag</span>(<span class="hljs-params">n,c,w,p</span>):</span>
-    res=[[<span class="hljs-number">-1</span> <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(c+<span class="hljs-number">1</span>)]<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n+<span class="hljs-number">1</span>)]
-    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(c+<span class="hljs-number">1</span>):
-        <span class="hljs-comment">#第0行全部赋值为0，物品编号从1开始.为了下面赋值方便</span>
-        res[<span class="hljs-number">0</span>][j]=<span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,n+<span class="hljs-number">1</span>):
-        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,c+<span class="hljs-number">1</span>):
-            res[i][j]=res[i<span class="hljs-number">-1</span>][j]
-            <span class="hljs-keyword">print</span> res
-            <span class="hljs-comment">#生成了n*c有效矩阵，以下公式w[i-1],p[i-1]代表从第一个元素w[0],p[0]开始取。</span>
-            <span class="hljs-keyword">if</span>(j&gt;=w[i<span class="hljs-number">-1</span>]) <span class="hljs-keyword">and</span> res[i<span class="hljs-number">-1</span>][j-w[i<span class="hljs-number">-1</span>]]+p[i<span class="hljs-number">-1</span>]&gt;res[i][j]:
-                res[i][j]=res[i<span class="hljs-number">-1</span>][j-w[i<span class="hljs-number">-1</span>]]+p[i<span class="hljs-number">-1</span>]
-    <span class="hljs-keyword">return</span> res
-<span class="hljs-comment">#以下代码功能：标记出有放入背包的物品</span>
-<span class="hljs-comment">#反过来标记，在相同价值情况下，后一件物品比前一件物品的最大价值大，则表示物品i#有被加入到背包，x数组设置为True。设初始为j=c。</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show</span>(<span class="hljs-params">n,c,w,res</span>):</span>
-    <span class="hljs-keyword">print</span> <span class="hljs-string">&#x27;最大价值为:&#x27;</span>,res[n][c]
-    x=[<span class="hljs-literal">False</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n)]
-    j=c
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,n+<span class="hljs-number">1</span>):
-        <span class="hljs-keyword">if</span> res[i][j]&gt;res[i<span class="hljs-number">-1</span>][j]:
-            x[i<span class="hljs-number">-1</span>]=<span class="hljs-literal">True</span>
-            j-=w[i<span class="hljs-number">-1</span>]
-    <span class="hljs-keyword">print</span> <span class="hljs-string">&#x27;选择的物品为:&#x27;</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):
-        <span class="hljs-keyword">if</span> x[i]:
-            <span class="hljs-keyword">print</span> <span class="hljs-string">&#x27;第&#x27;</span>,i,<span class="hljs-string">&#x27;个,&#x27;</span>
-    <span class="hljs-keyword">print</span><span class="hljs-string">&#x27;&#x27;</span>
-<span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:
-    n=<span class="hljs-number">3</span>
-    c=<span class="hljs-number">4</span>
-    w=[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>] <span class="hljs-comment">#这里重量要按从小到大排序</span>
-    p=[<span class="hljs-number">1500</span>,<span class="hljs-number">2000</span>,<span class="hljs-number">3000</span>]
-    res=bag(n,c,w,p)
-    show(n,c,w,res)
-</code></pre></div>
+<h2 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h2><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">def</span> <span class="token function">bag</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>c<span class="token punctuation">,</span>w<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    res<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>c<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>c<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment">#第0行全部赋值为0，物品编号从1开始.为了下面赋值方便</span>
+        res<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>c<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>res<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            <span class="token keyword">print</span> res
+            <span class="token comment">#生成了n*c有效矩阵，以下公式w[i-1],p[i-1]代表从第一个元素w[0],p[0]开始取。</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">>=</span>w<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">and</span> res<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span>w<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span>p<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">></span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>res<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span>w<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">+</span>p<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> res
+<span class="token comment">#以下代码功能：标记出有放入背包的物品</span>
+<span class="token comment">#反过来标记，在相同价值情况下，后一件物品比前一件物品的最大价值大，则表示物品i#有被加入到背包，x数组设置为True。设初始为j=c。</span>
+<span class="token keyword">def</span> <span class="token function">show</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>c<span class="token punctuation">,</span>w<span class="token punctuation">,</span>res<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">'最大价值为:'</span><span class="token punctuation">,</span>res<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span>
+    x<span class="token operator">=</span><span class="token punctuation">[</span><span class="token boolean">False</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
+    j<span class="token operator">=</span>c
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">></span>res<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            x<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token boolean">True</span>
+            j<span class="token operator">-=</span>w<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">print</span> <span class="token string">'选择的物品为:'</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span> <span class="token string">'第'</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token string">'个,'</span>
+    <span class="token keyword">print</span><span class="token string">''</span>
+<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    n<span class="token operator">=</span><span class="token number">3</span>
+    c<span class="token operator">=</span><span class="token number">4</span>
+    w<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token comment">#这里重量要按从小到大排序</span>
+    p<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1500</span><span class="token punctuation">,</span><span class="token number">2000</span><span class="token punctuation">,</span><span class="token number">3000</span><span class="token punctuation">]</span>
+    res<span class="token operator">=</span>bag<span class="token punctuation">(</span>n<span class="token punctuation">,</span>c<span class="token punctuation">,</span>w<span class="token punctuation">,</span>p<span class="token punctuation">)</span>
+    show<span class="token punctuation">(</span>n<span class="token punctuation">,</span>c<span class="token punctuation">,</span>w<span class="token punctuation">,</span>res<span class="token punctuation">)</span>
+</code></pre>
 <p>理论上来说，第33行的重量无所谓顺序，但是此算法转化为代码时，因为代码的一些缺陷，导致必须要按从小到大排序才能使程序顺利运行。</p>
 <h1 id="旅行行程最优化"><a href="#旅行行程最优化" class="headerlink" title="旅行行程最优化"></a>旅行行程最优化</h1><p>假设你要去伦敦度假，假期两天，你想去浏览的地方很多，但是没法全部浏览到，因此有如下的单子：</p>
 <table>
@@ -551,6 +555,8 @@
 
 
 
+  
+    
   
 
 

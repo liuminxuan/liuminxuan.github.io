@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -187,7 +191,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      21
+      22
        分钟
     </span>
   
@@ -244,128 +248,128 @@
 <li>静态内部类的创建不依赖于外部类，而非静态内部类必须依赖于外部类的创建而创建。</li>
 </ol>
 <p><strong>静态内部类</strong></p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassOuter</span> </span>&#123;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> noStaticInt = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> STATIC_INT = <span class="hljs-number">2</span>;
+<pre class="language-Java" data-language="Java"><code class="language-Java">public class ClassOuter &#123;
+    private int noStaticInt &#x3D; 1;
+    private static int STATIC_INT &#x3D; 2;
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span> </span>&#123;
-        System.out.println(<span class="hljs-string">&quot;外部类方法&quot;</span>);
+    public void fun() &#123;
+        System.out.println(&quot;外部类方法&quot;);
     &#125;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InnerClass</span> </span>&#123;
-        <span class="hljs-comment">//static int num = 1; 此时编辑器会报错 非静态内部类则不能有静态成员</span>
-        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;
-            <span class="hljs-comment">//非静态内部类的非静态成员可以访问外部类的非静态变量。</span>
+    public class InnerClass &#123;
+        &#x2F;&#x2F;static int num &#x3D; 1; 此时编辑器会报错 非静态内部类则不能有静态成员
+        public void fun()&#123;
+            &#x2F;&#x2F;非静态内部类的非静态成员可以访问外部类的非静态变量。
             System.out.println(STATIC_INT);
             System.out.println(noStaticInt);
         &#125;
     &#125;
 
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StaticInnerClass</span> </span>&#123;
-        <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> NUM = <span class="hljs-number">1</span>;<span class="hljs-comment">//静态内部类可以有静态成员</span>
-        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;
+    public static class StaticInnerClass &#123;
+        static int NUM &#x3D; 1;&#x2F;&#x2F;静态内部类可以有静态成员
+        public void fun()&#123;
             System.out.println(STATIC_INT);
-            <span class="hljs-comment">//System.out.println(noStaticInt); 此时编辑器会报 不可访问外部类的非静态变量错</span>
+            &#x2F;&#x2F;System.out.println(noStaticInt); 此时编辑器会报 不可访问外部类的非静态变量错
         &#125;
     &#125;
 &#125;
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestInnerClass</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
-        <span class="hljs-comment">//非静态内部类 创建方式1</span>
-        ClassOuter.InnerClass innerClass = <span class="hljs-keyword">new</span> ClassOuter().<span class="hljs-function">new <span class="hljs-title">InnerClass</span><span class="hljs-params">()</span></span>;
-        <span class="hljs-comment">//非静态内部类 创建方式2</span>
-        ClassOuter outer = <span class="hljs-keyword">new</span> ClassOuter();
-        ClassOuter.InnerClass inner = outer.<span class="hljs-function">new <span class="hljs-title">InnerClass</span><span class="hljs-params">()</span></span>;
-        <span class="hljs-comment">//静态内部类的创建方式</span>
-        ClassOuter.StaticInnerClass staticInnerClass = <span class="hljs-keyword">new</span> ClassOuter.StaticInnerClass();
+public class TestInnerClass &#123;
+    public static void main(String[] args) &#123;
+        &#x2F;&#x2F;非静态内部类 创建方式1
+        ClassOuter.InnerClass innerClass &#x3D; new ClassOuter().new InnerClass();
+        &#x2F;&#x2F;非静态内部类 创建方式2
+        ClassOuter outer &#x3D; new ClassOuter();
+        ClassOuter.InnerClass inner &#x3D; outer.new InnerClass();
+        &#x2F;&#x2F;静态内部类的创建方式
+        ClassOuter.StaticInnerClass staticInnerClass &#x3D; new ClassOuter.StaticInnerClass();
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><p>成员内部类也是最普通的内部类，它是外围类的一个成员，所以他是可以无限制的访问外围类的所有 成员属性和方法，尽管是private的，但是外围类要访问内部类的成员属性和方法则需要通过内部类实例来访问。<br>在成员内部类中要注意两点：</p>
 <ol>
 <li>成员内部类中不能存在任何static的变量和方法，成员内部类里不能有静态内部类</li>
 <li>成员内部类是依附于外围类的，所以只有先创建了外围类才能够创建内部类</li>
 </ol>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OuterClass</span> </span>&#123;
-    <span class="hljs-keyword">private</span> String str;
+<pre class="language-Java" data-language="Java"><code class="language-Java">public class OuterClass &#123;
+    private String str;
     
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">outerDisplay</span><span class="hljs-params">()</span></span>&#123;
-        System.out.println(<span class="hljs-string">&quot;outerClass...&quot;</span>);
+    public void outerDisplay()&#123;
+        System.out.println(&quot;outerClass...&quot;);
     &#125;
     
-    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InnerClass</span></span>&#123;
-        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">innerDisplay</span><span class="hljs-params">()</span></span>&#123;
-            <span class="hljs-comment">//使用外围内的属性</span>
-            str = <span class="hljs-string">&quot;inner...&quot;</span>;
+    public class InnerClass&#123;
+        public void innerDisplay()&#123;
+            &#x2F;&#x2F;使用外围内的属性
+            str &#x3D; &quot;inner...&quot;;
             System.out.println(str);
-            <span class="hljs-comment">//使用外围内的方法</span>
+            &#x2F;&#x2F;使用外围内的方法
             outerDisplay();
         &#125;
     &#125;
     
-    <span class="hljs-comment">/*推荐使用getxxx()来获取成员内部类，尤其是该内部类的构造函数无参数时 */</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> InnerClass <span class="hljs-title">getInnerClass</span><span class="hljs-params">()</span></span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> InnerClass();
+    &#x2F;*推荐使用getxxx()来获取成员内部类，尤其是该内部类的构造函数无参数时 *&#x2F;
+    public InnerClass getInnerClass()&#123;
+        return new InnerClass();
     &#125;
     
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
-        OuterClass outer = <span class="hljs-keyword">new</span> OuterClass();
-        OuterClass.InnerClass inner = outer.getInnerClass();
+    public static void main(String[] args) &#123;
+        OuterClass outer &#x3D; new OuterClass();
+        OuterClass.InnerClass inner &#x3D; outer.getInnerClass();
         inner.innerDisplay();
     &#125;
 &#125;
 --------------------
 innner...
-outerClass...</code></pre></div>
+outerClass...</code></pre>
 
 <h2 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h2><p>定义在方法或作用域中的内部类，出了该方法，类就会失效。<br><strong>定义在方法中</strong></p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parcel5</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Destionation <span class="hljs-title">destionation</span><span class="hljs-params">(String str)</span></span>&#123;
-        <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PDestionation</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Destionation</span></span>&#123;
-            <span class="hljs-keyword">private</span> String label;
-            <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">PDestionation</span><span class="hljs-params">(String whereTo)</span></span>&#123;
-                label = whereTo;
+<pre class="language-Java" data-language="Java"><code class="language-Java">public class Parcel5 &#123;
+    public Destionation destionation(String str)&#123;
+        class PDestionation implements Destionation&#123;
+            private String label;
+            private PDestionation(String whereTo)&#123;
+                label &#x3D; whereTo;
             &#125;
-            <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">readLabel</span><span class="hljs-params">()</span></span>&#123;
-                <span class="hljs-keyword">return</span> label;
+            public String readLabel()&#123;
+                return label;
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PDestionation(str);
+        return new PDestionation(str);
     &#125;
     
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
-        Parcel5 parcel5 = <span class="hljs-keyword">new</span> Parcel5();
-        Destionation d = parcel5.destionation(<span class="hljs-string">&quot;chenssy&quot;</span>);
+    public static void main(String[] args) &#123;
+        Parcel5 parcel5 &#x3D; new Parcel5();
+        Destionation d &#x3D; parcel5.destionation(&quot;chenssy&quot;);
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p><strong>定义在作用域中</strong></p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parcel6</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">internalTracking</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> b)</span></span>&#123;
-        <span class="hljs-keyword">if</span>(b)&#123;
-            <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TrackingSlip</span></span>&#123;
-                <span class="hljs-keyword">private</span> String id;
+<pre class="language-Java" data-language="Java"><code class="language-Java">public class Parcel6 &#123;
+    private void internalTracking(boolean b)&#123;
+        if(b)&#123;
+            class TrackingSlip&#123;
+                private String id;
                 TrackingSlip(String s) &#123;
-                    id = s;
+                    id &#x3D; s;
                 &#125;
-                <span class="hljs-function">String <span class="hljs-title">getSlip</span><span class="hljs-params">()</span></span>&#123;
-                    <span class="hljs-keyword">return</span> id;
+                String getSlip()&#123;
+                    return id;
                 &#125;
             &#125;
-            TrackingSlip ts = <span class="hljs-keyword">new</span> TrackingSlip(<span class="hljs-string">&quot;chenssy&quot;</span>);
-            String string = ts.getSlip();
+            TrackingSlip ts &#x3D; new TrackingSlip(&quot;chenssy&quot;);
+            String string &#x3D; ts.getSlip();
         &#125;
     &#125;
     
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">track</span><span class="hljs-params">()</span></span>&#123;
-        internalTracking(<span class="hljs-keyword">true</span>);
+    public void track()&#123;
+        internalTracking(true);
     &#125;
     
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
-        Parcel6 parcel6 = <span class="hljs-keyword">new</span> Parcel6();
+    public static void main(String[] args) &#123;
+        Parcel6 parcel6 &#x3D; new Parcel6();
         parcel6.track();
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>匿名类实现接口和抽象类定义的抽象方法，快速创建一个抽象类的实例，可以出现在任何有代码的地方。</p>
 <ol>
@@ -375,30 +379,30 @@ outerClass...</code></pre></div>
 <li>匿名内部类是没有构造方法的，因为它没有类名。</li>
 <li><strong>与局部内部相同匿名内部类也可以引用局部变量。此变量也必须声明为 final</strong></li>
 </ol>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OuterClass</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> InnerClass <span class="hljs-title">getInnerClass</span><span class="hljs-params">(<span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> num,String str2)</span></span>&#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> InnerClass()&#123;
-            <span class="hljs-keyword">int</span> number = num + <span class="hljs-number">3</span>;
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNumber</span><span class="hljs-params">()</span></span>&#123;
-                <span class="hljs-keyword">return</span> number;
+<pre class="language-Java" data-language="Java"><code class="language-Java">public class OuterClass &#123;
+    public InnerClass getInnerClass(final int num,String str2)&#123;
+        return new InnerClass()&#123;
+            int number &#x3D; num + 3;
+            public int getNumber()&#123;
+                return number;
             &#125;
-        &#125;;        <span class="hljs-comment">/* 注意：分号不能省 */</span>
+        &#125;;        &#x2F;* 注意：分号不能省 *&#x2F;
     &#125;
     
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
-        OuterClass out = <span class="hljs-keyword">new</span> OuterClass();
-        InnerClass inner = out.getInnerClass(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;chenssy&quot;</span>);
+    public static void main(String[] args) &#123;
+        OuterClass out &#x3D; new OuterClass();
+        InnerClass inner &#x3D; out.getInnerClass(2, &quot;chenssy&quot;);
         System.out.println(inner.getNumber());
     &#125;
 &#125;
 
-<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">InnerClass</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getNumber</span><span class="hljs-params">()</span></span>;
+interface InnerClass &#123;
+    int getNumber();
 &#125;
 
 ----------------
 Output:
-<span class="hljs-number">5</span></code></pre></div>
+5</code></pre>
 <h3 id="为什么局部变量需要final修饰呢"><a href="#为什么局部变量需要final修饰呢" class="headerlink" title="为什么局部变量需要final修饰呢"></a>为什么局部变量需要final修饰呢</h3><p>原因是：因为局部变量和匿名内部类的生命周期不同。<br>匿名内部类是创建后是存储在堆中的，而方法中的局部变量是存储在Java栈中，当方法执行完毕后，就进行退栈，同时局部变量也会消失。那么此时匿名内部类还有可能在堆中存储着，那么匿名内部类要到哪里去找这个局部变量呢？<br>为了解决这个问题编译器为自动地帮我们在匿名内部类中创建了一个局部变量的备份，也就是说即使方法执结束，匿名内部类中还有一个备份，自然就不怕找不到了。<br>但是问题又来了。如果局部变量中的a不停的在变化。那么岂不是也要让备份的a变量无时无刻的变化。为了保持局部变量与匿名内部类中备份域保持一致。编译器不得不规定死这些局部域必须是常量，一旦赋值不能再发生变化了。所以为什么匿名内部类应用外部方法的域必须是常量域的原因所在了。</p>
 <p><strong>特别注意：在Java8中已经去掉要对final的修饰限制，但其实只要在匿名内部类使用了，该变量还是会自动变为final类型（只能使用，不能赋值）。</strong></p>
 <h1 id="内部类会引起的问题"><a href="#内部类会引起的问题" class="headerlink" title="内部类会引起的问题"></a>内部类会引起的问题</h1><ol>
@@ -551,6 +555,8 @@ Output:
 
 
 
+  
+    
   
 
 

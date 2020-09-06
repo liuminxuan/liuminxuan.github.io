@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.4k 字
     </span>
   
 
@@ -187,7 +191,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17
+      18
        分钟
     </span>
   
@@ -228,156 +232,156 @@
             <div class="markdown-body" id="post-body">
               <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>Java是面向对象的语言，通过类来描述对象，但是如果一个类中没有足够的信息来描述对象，那么这个类就是抽象类。<br>抽象类<strong>不能被实例化</strong>,但是其他功能照常，成员变量、成员方法和构造方法和普通类一样。<br>由于抽象类不能被实例化，所以抽象类必须被继承后才能使用。<br>父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。<br><strong>在Java中抽象类表示的是一种继承关系，一个类只能继承一个抽象类，而一个类却可以实现多个接口。</strong></p>
 <h2 id="定义抽象类"><a href="#定义抽象类" class="headerlink" title="定义抽象类"></a>定义抽象类</h2><p>在Java语言中使用abstract class来定义抽象类。如下代码：</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Employee.java */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>
-<span class="hljs-class"></span>&#123;
-   <span class="hljs-keyword">private</span> String name;
-   <span class="hljs-keyword">private</span> String address;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> number;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Employee</span><span class="hljs-params">(String name, String address, <span class="hljs-keyword">int</span> number)</span></span>
-<span class="hljs-function">   </span>&#123;
-      System.out.println(<span class="hljs-string">&quot;Constructing an Employee&quot;</span>);
-      <span class="hljs-keyword">this</span>.name = name;
-      <span class="hljs-keyword">this</span>.address = address;
-      <span class="hljs-keyword">this</span>.number = number;
+<pre class="language-Java" data-language="Java"><code class="language-Java">&#x2F;* 文件名 : Employee.java *&#x2F;
+public abstract class Employee
+&#123;
+   private String name;
+   private String address;
+   private int number;
+   public Employee(String name, String address, int number)
+   &#123;
+      System.out.println(&quot;Constructing an Employee&quot;);
+      this.name &#x3D; name;
+      this.address &#x3D; address;
+      this.number &#x3D; number;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-     System.out.println(<span class="hljs-string">&quot;Inside Employee computePay&quot;</span>);
-     <span class="hljs-keyword">return</span> <span class="hljs-number">0.0</span>;
+   public double computePay()
+   &#123;
+     System.out.println(&quot;Inside Employee computePay&quot;);
+     return 0.0;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mailCheck</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-      System.out.println(<span class="hljs-string">&quot;Mailing a check to &quot;</span> + <span class="hljs-keyword">this</span>.name
-       + <span class="hljs-string">&quot; &quot;</span> + <span class="hljs-keyword">this</span>.address);
+   public void mailCheck()
+   &#123;
+      System.out.println(&quot;Mailing a check to &quot; + this.name
+       + &quot; &quot; + this.address);
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-      <span class="hljs-keyword">return</span> name + <span class="hljs-string">&quot; &quot;</span> + address + <span class="hljs-string">&quot; &quot;</span> + number;
+   public String toString()
+   &#123;
+      return name + &quot; &quot; + address + &quot; &quot; + number;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-      <span class="hljs-keyword">return</span> name;
+   public String getName()
+   &#123;
+      return name;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAddress</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-      <span class="hljs-keyword">return</span> address;
+   public String getAddress()
+   &#123;
+      return address;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAddress</span><span class="hljs-params">(String newAddress)</span></span>
-<span class="hljs-function">   </span>&#123;
-      address = newAddress;
+   public void setAddress(String newAddress)
+   &#123;
+      address &#x3D; newAddress;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNumber</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-     <span class="hljs-keyword">return</span> number;
+   public int getNumber()
+   &#123;
+     return number;
    &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>注意到该 Employee 类没有什么不同，尽管该类是抽象类，但是它仍然有 3 个成员变量，7 个成员方法和 1 个构造方法。 现在如果你尝试如下的例子：</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : AbstractDemo.java */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractDemo</span></span>
-<span class="hljs-class"></span>&#123;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>
-<span class="hljs-function">   </span>&#123;
-      <span class="hljs-comment">/* 以下是不允许的，会引发错误 */</span>
-      Employee e = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;George W.&quot;</span>, <span class="hljs-string">&quot;Houston, TX&quot;</span>, <span class="hljs-number">43</span>);
+<pre class="language-Java" data-language="Java"><code class="language-Java">&#x2F;* 文件名 : AbstractDemo.java *&#x2F;
+public class AbstractDemo
+&#123;
+   public static void main(String [] args)
+   &#123;
+      &#x2F;* 以下是不允许的，会引发错误 *&#x2F;
+      Employee e &#x3D; new Employee(&quot;George W.&quot;, &quot;Houston, TX&quot;, 43);
  
-      System.out.println(<span class="hljs-string">&quot;\n Call mailCheck using Employee reference--&quot;</span>);
+      System.out.println(&quot;\n Call mailCheck using Employee reference--&quot;);
       e.mailCheck();
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>当你尝试编译AbstractDemo类时，会产生如下错误：</p>
-<div class="hljs"><pre><code class="hljs pony"><span class="hljs-type">Employee</span>.java:<span class="hljs-number">46</span>: <span class="hljs-type">Employee</span> <span class="hljs-keyword">is</span> abstract; cannot <span class="hljs-keyword">be</span> instantiated
-      <span class="hljs-type">Employee</span> e = <span class="hljs-keyword">new</span> <span class="hljs-type">Employee</span>(<span class="hljs-string">&quot;George W.&quot;</span>, <span class="hljs-string">&quot;Houston, TX&quot;</span>, <span class="hljs-number">43</span>);
+<pre class="language-none"><code class="language-none">Employee.java:46: Employee is abstract; cannot be instantiated
+      Employee e &#x3D; new Employee(&quot;George W.&quot;, &quot;Houston, TX&quot;, 43);
                    ^
-<span class="hljs-number">1</span> <span class="hljs-keyword">error</span></code></pre></div>
+1 error</code></pre>
 <h2 id="继承抽象类"><a href="#继承抽象类" class="headerlink" title="继承抽象类"></a>继承抽象类</h2><p>我们能通过一般的方法继承Employee类：</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Salary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>
-<span class="hljs-class"></span>&#123;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary; <span class="hljs-comment">//Annual salary</span>
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Salary</span><span class="hljs-params">(String name, String address, <span class="hljs-keyword">int</span> number, <span class="hljs-keyword">double</span></span></span>
-<span class="hljs-function"><span class="hljs-params">      salary)</span></span>
-<span class="hljs-function">   </span>&#123;
-       <span class="hljs-keyword">super</span>(name, address, number);
+<pre class="language-Java" data-language="Java"><code class="language-Java">&#x2F;* 文件名 : Salary.java *&#x2F;
+public class Salary extends Employee
+&#123;
+   private double salary; &#x2F;&#x2F;Annual salary
+   public Salary(String name, String address, int number, double
+      salary)
+   &#123;
+       super(name, address, number);
        setSalary(salary);
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mailCheck</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-       System.out.println(<span class="hljs-string">&quot;Within mailCheck of Salary class &quot;</span>);
-       System.out.println(<span class="hljs-string">&quot;Mailing check to &quot;</span> + getName()
-       + <span class="hljs-string">&quot; with salary &quot;</span> + salary);
+   public void mailCheck()
+   &#123;
+       System.out.println(&quot;Within mailCheck of Salary class &quot;);
+       System.out.println(&quot;Mailing check to &quot; + getName()
+       + &quot; with salary &quot; + salary);
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">getSalary</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-       <span class="hljs-keyword">return</span> salary;
+   public double getSalary()
+   &#123;
+       return salary;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSalary</span><span class="hljs-params">(<span class="hljs-keyword">double</span> newSalary)</span></span>
-<span class="hljs-function">   </span>&#123;
-       <span class="hljs-keyword">if</span>(newSalary &gt;= <span class="hljs-number">0.0</span>)
+   public void setSalary(double newSalary)
+   &#123;
+       if(newSalary &gt;&#x3D; 0.0)
        &#123;
-          salary = newSalary;
+          salary &#x3D; newSalary;
        &#125;
    &#125;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-      System.out.println(<span class="hljs-string">&quot;Computing salary pay for &quot;</span> + getName());
-      <span class="hljs-keyword">return</span> salary/<span class="hljs-number">52</span>;
+   public double computePay()
+   &#123;
+      System.out.println(&quot;Computing salary pay for &quot; + getName());
+      return salary&#x2F;52;
    &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>尽管我们不能实例化一个 Employee 类的对象，但是如果我们实例化一个 Salary 类对象，该对象将从 Employee 类继承 7 个成员方法，且通过该方法可以设置或获取三个成员变量。</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : AbstractDemo.java */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractDemo</span></span>
-<span class="hljs-class"></span>&#123;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>
-<span class="hljs-function">   </span>&#123;
-      Salary s = <span class="hljs-keyword">new</span> Salary(<span class="hljs-string">&quot;Mohd Mohtashim&quot;</span>, <span class="hljs-string">&quot;Ambehta, UP&quot;</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3600.00</span>);
-      Employee e = <span class="hljs-keyword">new</span> Salary(<span class="hljs-string">&quot;John Adams&quot;</span>, <span class="hljs-string">&quot;Boston, MA&quot;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2400.00</span>);
+<pre class="language-Java" data-language="Java"><code class="language-Java">&#x2F;* 文件名 : AbstractDemo.java *&#x2F;
+public class AbstractDemo
+&#123;
+   public static void main(String [] args)
+   &#123;
+      Salary s &#x3D; new Salary(&quot;Mohd Mohtashim&quot;, &quot;Ambehta, UP&quot;, 3, 3600.00);
+      Employee e &#x3D; new Salary(&quot;John Adams&quot;, &quot;Boston, MA&quot;, 2, 2400.00);
  
-      System.out.println(<span class="hljs-string">&quot;Call mailCheck using Salary reference --&quot;</span>);
+      System.out.println(&quot;Call mailCheck using Salary reference --&quot;);
       s.mailCheck();
  
-      System.out.println(<span class="hljs-string">&quot;\n Call mailCheck using Employee reference--&quot;</span>);
+      System.out.println(&quot;\n Call mailCheck using Employee reference--&quot;);
       e.mailCheck();
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>以上程序编译运行结果如下：</p>
-<div class="hljs"><pre><code class="hljs smali">Constructing an Employee
+<pre class="language-none"><code class="language-none">Constructing an Employee
 Constructing an Employee
 Call mailCheck using  Salary reference --
 Within mailCheck of Salary class
-Mailing<span class="hljs-built_in"> check </span>to Mohd Mohtashim with salary 3600.0
+Mailing check to Mohd Mohtashim with salary 3600.0
 
 Call mailCheck using Employee reference--
 Within mailCheck of Salary class
-Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.</code></pre></div>
+Mailing check to John Adams with salary 2400.</code></pre>
 
 <h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><p>如果你想设计这样一个类，该类包含一个特别的成员方法，该方法的具体实现由它的子类确定，那么你可以在父类中声明该方法为抽象方法。<br>Abstract 关键字同样可以用来声明抽象方法，抽象方法只包含一个方法名，而没有方法体。<br>抽象方法没有定义，方法名后面直接跟一个分号，而不是花括号。</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>
-<span class="hljs-class"></span>&#123;
-   <span class="hljs-keyword">private</span> String name;
-   <span class="hljs-keyword">private</span> String address;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> number;
+<pre class="language-Java" data-language="Java"><code class="language-Java">public abstract class Employee
+&#123;
+   private String name;
+   private String address;
+   private int number;
    
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>;
+   public abstract double computePay();
    
-   <span class="hljs-comment">//其余代码</span>
-&#125;</code></pre></div>
+   &#x2F;&#x2F;其余代码
+&#125;</code></pre>
 <p>声明抽象方法会造成以下两个结果：</p>
 <ul>
 <li>如果一个类包含抽象方法，那么该类必须是抽象类。</li>
-<li>任何子类必须重写父类的抽象方法，或者声明自身为抽象类。<br>继承抽象方法的子类必须重写该方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该抽象方法，否则，从最初的父类到最终的子类都不能用来实例化对象。<br>如果Salary类继承了Employee类，那么它必须实现computePay()方法：<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Salary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>
-<span class="hljs-class"></span>&#123;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary; <span class="hljs-comment">// Annual salary</span>
+<li>任何子类必须重写父类的抽象方法，或者声明自身为抽象类。<br>继承抽象方法的子类必须重写该方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该抽象方法，否则，从最初的父类到最终的子类都不能用来实例化对象。<br>如果Salary类继承了Employee类，那么它必须实现computePay()方法：<pre class="language-Java" data-language="Java"><code class="language-Java">&#x2F;* 文件名 : Salary.java *&#x2F;
+public class Salary extends Employee
+&#123;
+   private double salary; &#x2F;&#x2F; Annual salary
   
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>
-<span class="hljs-function">   </span>&#123;
-      System.out.println(<span class="hljs-string">&quot;Computing salary pay for &quot;</span> + getName());
-      <span class="hljs-keyword">return</span> salary/<span class="hljs-number">52</span>;
+   public double computePay()
+   &#123;
+      System.out.println(&quot;Computing salary pay for &quot; + getName());
+      return salary&#x2F;52;
    &#125;
  
-   <span class="hljs-comment">//其余代码</span>
-&#125;</code></pre></div>
+   &#x2F;&#x2F;其余代码
+&#125;</code></pre>
 
 </li>
 </ul>
@@ -532,6 +536,8 @@ Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.
 
 
 
+  
+    
   
 
 

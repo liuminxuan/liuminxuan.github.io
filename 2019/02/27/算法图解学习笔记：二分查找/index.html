@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      253 字
+      252 字
     </span>
   
 
@@ -234,27 +238,27 @@
 </ol>
 <a id="more"></a>
 
-<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">binary_search</span>(<span class="hljs-params">list, item</span>):</span>
-    list.sort()
-    <span class="hljs-keyword">print</span> list
-    low = <span class="hljs-number">0</span>
-    high = len(list) - <span class="hljs-number">1</span>
+<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">binary_search</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">,</span> item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token builtin">list</span><span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span> <span class="token builtin">list</span>
+    low <span class="token operator">=</span> <span class="token number">0</span>
+    high <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
 
-    <span class="hljs-keyword">while</span> low &lt;= high:
-        mid = (low + high) / <span class="hljs-number">2</span>
-        guess = list[mid]
-        <span class="hljs-keyword">if</span>  guess == item:
-            <span class="hljs-keyword">return</span> mid
-        <span class="hljs-keyword">if</span> guess &gt; item:
-            high = mid - <span class="hljs-number">1</span>
-        <span class="hljs-keyword">else</span>:
-            low = mid + <span class="hljs-number">1</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+    <span class="token keyword">while</span> low <span class="token operator">&lt;=</span> high<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>low <span class="token operator">+</span> high<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span>
+        guess <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">[</span>mid<span class="token punctuation">]</span>
+        <span class="token keyword">if</span>  guess <span class="token operator">==</span> item<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> mid
+        <span class="token keyword">if</span> guess <span class="token operator">></span> item<span class="token punctuation">:</span>
+            high <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            low <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token boolean">None</span>
 
-my_list = [<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>,<span class="hljs-number">7</span>,<span class="hljs-number">19</span>,<span class="hljs-number">15</span>,<span class="hljs-number">13</span>,<span class="hljs-number">17</span>,<span class="hljs-number">11</span>]
+my_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">19</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token number">17</span><span class="token punctuation">,</span><span class="token number">11</span><span class="token punctuation">]</span>
 
-<span class="hljs-keyword">print</span> binary_search(my_list,<span class="hljs-number">3</span>)
-<span class="hljs-keyword">print</span> binary_search(my_list,<span class="hljs-number">-1</span>)</code></pre></div>
+<span class="token keyword">print</span> binary_search<span class="token punctuation">(</span>my_list<span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> binary_search<span class="token punctuation">(</span>my_list<span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 
 <h1 id="算法运行时间"><a href="#算法运行时间" class="headerlink" title="算法运行时间"></a>算法运行时间</h1><p><strong>大O表示法</strong>，O表示的是操作数</p>
 <ul>
@@ -405,6 +409,8 @@ my_list = [<span class="hljs-number">3</span>,<span class="hljs-number">1</span>
 
 
 
+  
+    
   
 
 

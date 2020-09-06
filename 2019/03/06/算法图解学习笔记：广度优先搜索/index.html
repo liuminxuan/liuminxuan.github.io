@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      331 字
+      293 字
     </span>
   
 
@@ -187,7 +191,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      3
        分钟
     </span>
   
@@ -240,40 +244,40 @@
 <li>从第一层邻居关系开始搜索，直到所有邻居都搜索完。</li>
 <li>返回结果</li>
 </ol>
-<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># coding: utf-8</span>
-<span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
+<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># coding: utf-8</span>
+<span class="token keyword">from</span> collections <span class="token keyword">import</span> deque
 
-graph = &#123;&#125;
-graph[<span class="hljs-string">&quot;you&quot;</span>] = [<span class="hljs-string">&quot;alice&quot;</span>,<span class="hljs-string">&quot;bob&quot;</span>,<span class="hljs-string">&quot;claire&quot;</span>]
-graph[<span class="hljs-string">&quot;bob&quot;</span>] = [<span class="hljs-string">&quot;anuj&quot;</span>,<span class="hljs-string">&quot;peggy&quot;</span>]
-graph[<span class="hljs-string">&quot;alice&quot;</span>] = [<span class="hljs-string">&quot;peggy&quot;</span>]
-graph[<span class="hljs-string">&quot;claire&quot;</span>] = [<span class="hljs-string">&quot;thom&quot;</span>,<span class="hljs-string">&quot;jonny&quot;</span>]
-graph[<span class="hljs-string">&quot;anuj&quot;</span>] = []
-graph[<span class="hljs-string">&quot;peggy&quot;</span>] = []
-graph[<span class="hljs-string">&quot;thom&quot;</span>] = []
-graph[<span class="hljs-string">&quot;jonny&quot;</span>] = []
+graph <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+graph<span class="token punctuation">[</span><span class="token string">"you"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"alice"</span><span class="token punctuation">,</span><span class="token string">"bob"</span><span class="token punctuation">,</span><span class="token string">"claire"</span><span class="token punctuation">]</span>
+graph<span class="token punctuation">[</span><span class="token string">"bob"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"anuj"</span><span class="token punctuation">,</span><span class="token string">"peggy"</span><span class="token punctuation">]</span>
+graph<span class="token punctuation">[</span><span class="token string">"alice"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"peggy"</span><span class="token punctuation">]</span>
+graph<span class="token punctuation">[</span><span class="token string">"claire"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"thom"</span><span class="token punctuation">,</span><span class="token string">"jonny"</span><span class="token punctuation">]</span>
+graph<span class="token punctuation">[</span><span class="token string">"anuj"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+graph<span class="token punctuation">[</span><span class="token string">"peggy"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+graph<span class="token punctuation">[</span><span class="token string">"thom"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+graph<span class="token punctuation">[</span><span class="token string">"jonny"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">search</span>(<span class="hljs-params">name</span>):</span>
-    search_queue = deque()
-    search_queue += graph[name]
-    searched = []  <span class="hljs-comment">#用于记录已经观察过的人</span>
-    <span class="hljs-keyword">while</span> search_queue:
-        person = search_queue.popleft()
-        <span class="hljs-keyword">if</span> person <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> searched:
-            <span class="hljs-keyword">if</span> person_is_seller(person):
-                <span class="hljs-keyword">print</span> person + <span class="hljs-string">&quot;is a mango seller&quot;</span>
-                <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
-            <span class="hljs-keyword">else</span>:
-                search_queue += graph[person]
-                searched.append(person)  <span class="hljs-comment">#标记这个人已经检查过</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+<span class="token keyword">def</span> <span class="token function">search</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    search_queue <span class="token operator">=</span> deque<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    search_queue <span class="token operator">+=</span> graph<span class="token punctuation">[</span>name<span class="token punctuation">]</span>
+    searched <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment">#用于记录已经观察过的人</span>
+    <span class="token keyword">while</span> search_queue<span class="token punctuation">:</span>
+        person <span class="token operator">=</span> search_queue<span class="token punctuation">.</span>popleft<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> person <span class="token keyword">not</span> <span class="token keyword">in</span> searched<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> person_is_seller<span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span> person <span class="token operator">+</span> <span class="token string">"is a mango seller"</span>
+                <span class="token keyword">return</span> <span class="token boolean">True</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                search_queue <span class="token operator">+=</span> graph<span class="token punctuation">[</span>person<span class="token punctuation">]</span>
+                searched<span class="token punctuation">.</span>append<span class="token punctuation">(</span>person<span class="token punctuation">)</span>  <span class="token comment">#标记这个人已经检查过</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">person_is_seller</span>(<span class="hljs-params">name</span>):</span>
-    <span class="hljs-keyword">return</span> name[<span class="hljs-number">-1</span>] == <span class="hljs-string">&#x27;m&#x27;</span>
+<span class="token keyword">def</span> <span class="token function">person_is_seller</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> name<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'m'</span>
 
-search(<span class="hljs-string">&quot;you&quot;</span>)
+search<span class="token punctuation">(</span><span class="token string">"you"</span><span class="token punctuation">)</span>
 
-</code></pre></div>
+</code></pre>
 <h1 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h1><p>广度优先沿着每条边前行，然后将每个人加入队列中检查，所以运行时间为O(边数+人数)，通常写做O(V+E)。</p>
 
             </div>
@@ -418,6 +422,8 @@ search(<span class="hljs-string">&quot;you&quot;</span>)
 
 
 
+  
+    
   
 
 

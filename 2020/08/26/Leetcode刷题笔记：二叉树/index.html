@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      523 字
+      562 字
     </span>
   
 
@@ -226,69 +230,69 @@
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="编写二叉树"><a href="#编写二叉树" class="headerlink" title="编写二叉树"></a>编写二叉树</h2><div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeNode</span> </span>&#123;
-    <span class="hljs-keyword">int</span> val;
+              <h2 id="编写二叉树"><a href="#编写二叉树" class="headerlink" title="编写二叉树"></a>编写二叉树</h2><pre class="language-Java" data-language="Java"><code class="language-Java">public class TreeNode &#123;
+    int val;
     TreeNode left;
     TreeNode right;
-    TreeNode(<span class="hljs-keyword">int</span> x) &#123; val = x; &#125;
- &#125;</code></pre></div>
+    TreeNode(int x) &#123; val &#x3D; x; &#125;
+ &#125;</code></pre>
 
 
 <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>226 101</p>
 <h2 id="226-翻转二叉树"><a href="#226-翻转二叉树" class="headerlink" title="226. 翻转二叉树"></a>226. 翻转二叉树</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左右子节点。结束条件是节点为null</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">invertTree</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
-        <span class="hljs-comment">// 递归</span>
-        <span class="hljs-keyword">if</span>(root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public TreeNode invertTree(TreeNode root) &#123;
+        &#x2F;&#x2F; 递归
+        if(root &#x3D;&#x3D; null) return null;
 
-        <span class="hljs-comment">// 创建交换的中间媒介</span>
-        TreeNode tmp = root.right;
+        &#x2F;&#x2F; 创建交换的中间媒介
+        TreeNode tmp &#x3D; root.right;
 
-        <span class="hljs-comment">// 左右子树交换</span>
-        root.right = root.left;
-        root.left = tmp;
+        &#x2F;&#x2F; 左右子树交换
+        root.right &#x3D; root.left;
+        root.left &#x3D; tmp;
 
-        <span class="hljs-comment">// 继续递归</span>
+        &#x2F;&#x2F; 继续递归
         invertTree(root.right);
         invertTree(root.left);
 
-        <span class="hljs-keyword">return</span> root;
+        return root;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <h2 id="101-对称二叉树"><a href="#101-对称二叉树" class="headerlink" title="101. 对称二叉树"></a>101. 对称二叉树</h2><h2 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h2><p>一开始我理解错了，以为就是一个判断根节点的左右子节点是否相等的问题。所以一开始的代码如下：</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(root == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-        <span class="hljs-keyword">while</span>(root != <span class="hljs-keyword">null</span>)&#123;
-            <span class="hljs-keyword">if</span>(root.left != root.right)&#123;
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-            &#125;<span class="hljs-keyword">else</span>&#123;
+<pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public boolean isSymmetric(TreeNode root) &#123;
+        if(root &#x3D;&#x3D; null) return true;
+        while(root !&#x3D; null)&#123;
+            if(root.left !&#x3D; root.right)&#123;
+                return false;
+            &#125;else&#123;
                 isSymmetric(root.left);
                 isSymmetric(root.right);
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        return true;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>结果带入测试用例答案不对，才发现此题是判断右子节点的右节点和左子节点的左节点还有右子节点的左节点和左子节点的右节点是否相等。<br>这是一个典型递归问题,因为涉及到左子树的子节点和右子树的子节点，所以要另立一个函数isSub(TreeNode L, TreeNode R)来解决。<br>如果左右都为空，则返回true。如果只有其中一个为空或者两个值不相等，则返回false。其他情况则继续向下探索。</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSymmetric</span><span class="hljs-params">(TreeNode root)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(root == <span class="hljs-keyword">null</span>)&#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// 根节点为空则返回true</span>
-        &#125;<span class="hljs-keyword">else</span>&#123;
-            <span class="hljs-keyword">return</span> isSub(root.left, root.right); <span class="hljs-comment">// 不为空则探索子节点</span>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public boolean isSymmetric(TreeNode root) &#123;
+        if(root &#x3D;&#x3D; null)&#123;
+            return true; &#x2F;&#x2F; 根节点为空则返回true
+        &#125;else&#123;
+            return isSub(root.left, root.right); &#x2F;&#x2F; 不为空则探索子节点
         &#125;
     &#125;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSub</span><span class="hljs-params">(TreeNode L, TreeNode R)</span></span>&#123;
-        <span class="hljs-keyword">if</span>(L == <span class="hljs-keyword">null</span> &amp;&amp; R == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>; <span class="hljs-comment">// 如果左右都为空，则返回true</span>
-        <span class="hljs-keyword">if</span>(L == <span class="hljs-keyword">null</span> || R == <span class="hljs-keyword">null</span> || L.val != R.val)&#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; <span class="hljs-comment">// 如果只有其中一个为空或者两个值不相等，则返回false</span>
-        &#125;<span class="hljs-keyword">else</span>&#123;
-            <span class="hljs-keyword">return</span> isSub(L.left, R.right) &amp;&amp; isSub(L.right, R.left); <span class="hljs-comment">// 其他情况则继续向下探索</span>
+    public boolean isSub(TreeNode L, TreeNode R)&#123;
+        if(L &#x3D;&#x3D; null &amp;&amp; R &#x3D;&#x3D; null) return true; &#x2F;&#x2F; 如果左右都为空，则返回true
+        if(L &#x3D;&#x3D; null || R &#x3D;&#x3D; null || L.val !&#x3D; R.val)&#123;
+            return false; &#x2F;&#x2F; 如果只有其中一个为空或者两个值不相等，则返回false
+        &#125;else&#123;
+            return isSub(L.left, R.right) &amp;&amp; isSub(L.right, R.left); &#x2F;&#x2F; 其他情况则继续向下探索
         &#125;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 
 
@@ -437,6 +441,8 @@
 
 
 
+  
+    
   
 
 

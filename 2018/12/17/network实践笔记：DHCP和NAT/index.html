@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      911 字
+      923 字
     </span>
   
 
@@ -265,35 +269,35 @@
 <h1 id="演习"><a href="#演习" class="headerlink" title="演习"></a>演习</h1><p>network拓扑图如下,要求用两台router，一台switch完成实验，从ISP路由器出发分割出的global地址是209.165.200.224/29，利用此global地址设定GW路由器的PAT，内部IP地址根据192.168.32.0/24的范围进行DHCP分配地址,PC取得适当的ip地址后，模拟网络服务(loopback)能完成通信的话就是成功。</p>
 <p><img src="/images/DHCP.jpg" srcset="/img/loading.gif">  </p>
 <p><strong>首先配置GW的路由器NAT：</strong></p>
-<div class="hljs"><pre><code class="hljs C">GW_Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
-GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.32.254 255.255.255.0</span>
-GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip nat inside</span>
-GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
-GW_Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
-GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 209.165.201.18 255.255.255.0</span>
-GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip nat outside</span>
-GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
-GW_Router(config)<span class="hljs-meta">#ip nat pool DPAT 209.165.201.209 209.165.201.230 netmask 255.255.255.0</span>
-GW_Router(config)<span class="hljs-meta">#access-list 1 permit host 192.168.32.0  <span class="hljs-comment">//设置ACL</span></span>
-GW_Router(config)<span class="hljs-meta">#ip nat inside source list 1 pool DPAT overload <span class="hljs-comment">//PAT定义</span></span></code></pre></div>
+<pre class="language-C" data-language="C"><code class="language-C">GW_Router(config)#interface fastethernet 0
+GW_Router(config-if)#ip address 192.168.32.254 255.255.255.0
+GW_Router(config-if)#ip nat inside
+GW_Router(config-if)#no shutdown
+GW_Router(config)#interface fastethernet 1
+GW_Router(config-if)#ip address 209.165.201.18 255.255.255.0
+GW_Router(config-if)#ip nat outside
+GW_Router(config-if)#no shutdown
+GW_Router(config)#ip nat pool DPAT 209.165.201.209 209.165.201.230 netmask 255.255.255.0
+GW_Router(config)#access-list 1 permit host 192.168.32.0  &#x2F;&#x2F;设置ACL
+GW_Router(config)#ip nat inside source list 1 pool DPAT overload &#x2F;&#x2F;PAT定义</code></pre>
 
 <p><strong>其次配置GW路由器DHCP：</strong></p>
-<div class="hljs"><pre><code class="hljs C">GW_Router(config)<span class="hljs-meta">#ip dhcp excluded-address 192.168.32.10 192.168.32.254<span class="hljs-comment">//192.168.32.10-254除外</span></span>
-GW_Router(config)<span class="hljs-meta">#ip dhcp pool LANUser</span>
-GW_Router(dhcp-config)<span class="hljs-meta">#network 192.168.32.0 255.255.255.0</span>
-GW_Router(dhcp-config)<span class="hljs-meta">#default-router 192.168.32.254</span>
-GW_Router(dhcp-config)<span class="hljs-meta">#domain-name google.com</span>
-GW_Router(dhcp-config)<span class="hljs-meta">#dns-server 8.8.8.8 <span class="hljs-comment">//设定dns服务器</span></span>
-GW_Router(dhcp-config)<span class="hljs-meta">#lease 0 12 <span class="hljs-comment">//释放时间设置为12小时</span></span>
-GW_Router(config)<span class="hljs-meta">#ip route 0.0.0.0 0.0.0.0 209.165.201.17<span class="hljs-comment">//设定GW路由到ISP路由的默认路由通路</span></span></code></pre></div>
+<pre class="language-C" data-language="C"><code class="language-C">GW_Router(config)#ip dhcp excluded-address 192.168.32.10 192.168.32.254&#x2F;&#x2F;192.168.32.10-254除外
+GW_Router(config)#ip dhcp pool LANUser
+GW_Router(dhcp-config)#network 192.168.32.0 255.255.255.0
+GW_Router(dhcp-config)#default-router 192.168.32.254
+GW_Router(dhcp-config)#domain-name google.com
+GW_Router(dhcp-config)#dns-server 8.8.8.8 &#x2F;&#x2F;设定dns服务器
+GW_Router(dhcp-config)#lease 0 12 &#x2F;&#x2F;释放时间设置为12小时
+GW_Router(config)#ip route 0.0.0.0 0.0.0.0 209.165.201.17&#x2F;&#x2F;设定GW路由到ISP路由的默认路由通路</code></pre>
 <p><strong>接着配置ISP服务器：</strong></p>
-<div class="hljs"><pre><code class="hljs C">ISP_Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
-ISP_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 209.165.201.17 255.255.255.0</span>
-ISP_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
-ISP_Router(config)<span class="hljs-meta">#interface loopback 0</span>
-ISP_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 8.8.8.8 255.255.255.0</span>
-ISP_Router(config)<span class="hljs-meta">#ip route 209.165.200.224 255.255.255.248 209.165.201.18</span>
-ISP_Router<span class="hljs-meta">#show ip route</span></code></pre></div>
+<pre class="language-C" data-language="C"><code class="language-C">ISP_Router(config)#interface fastethernet 0
+ISP_Router(config-if)#ip address 209.165.201.17 255.255.255.0
+ISP_Router(config-if)#no shutdown
+ISP_Router(config)#interface loopback 0
+ISP_Router(config-if)#ip address 8.8.8.8 255.255.255.0
+ISP_Router(config)#ip route 209.165.200.224 255.255.255.248 209.165.201.18
+ISP_Router#show ip route</code></pre>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>至此所有NAT配置完成，但是最终<code>show ip nat translations</code>什么也不显示，原因是设置完后没有运行，这时用PC<code>ping 8.8.8.8</code>就可以查看设置是否成功，<code>show ip nat translations</code>也会显示内容。  </p>
 <p>有一个小疑问<code>GW_Router(config)#ip route 0.0.0.0 0.0.0.0 209.165.201.17</code>这个语句为什么是从default gateway出发？</p>
@@ -438,6 +442,8 @@ ISP_Router<span class="hljs-meta">#show ip route</span></code></pre></div>
 
 
 
+  
+    
   
 
 

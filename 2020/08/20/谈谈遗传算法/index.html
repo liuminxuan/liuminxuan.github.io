@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -243,180 +247,180 @@
 <center>2^16 < 90000 < 2^17 </center>
 
 <p><strong>可以将所有可能性都包含在内，下面将其进行二进制的转换</strong></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chromosome</span>(<span class="hljs-params">self, length</span>):</span>
-	<span class="hljs-comment"># 随机生成染色体变量</span>
-    <span class="hljs-comment"># a bit ( 0, 1 ) represent a gene</span>
-    chromosome = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> i  <span class="hljs-keyword">in</span> range(length):
-		chromosome |= ( <span class="hljs-number">1</span> &lt;&lt; i ) * random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
-   <span class="hljs-keyword">return</span> chromosome</code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_chromosome</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token comment"># 随机生成染色体变量</span>
+    <span class="token comment"># a bit ( 0, 1 ) represent a gene</span>
+    chromosome <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i  <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+		chromosome <span class="token operator">|</span><span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> i <span class="token punctuation">)</span> <span class="token operator">*</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+   <span class="token keyword">return</span> chromosome</code></pre>
 <p><strong>将字符二进制编码后还需进行解码，解码我们用</strong></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decode</span>(<span class="hljs-params">self, chromosome</span>):</span>
-	<span class="hljs-comment"># 将二进制还原成十进制</span>
-    <span class="hljs-keyword">return</span> chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>)</code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">decode</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chromosome<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token comment"># 将二进制还原成十进制</span>
+    <span class="token keyword">return</span> chromosome <span class="token operator">*</span> <span class="token number">9.0</span><span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <p><strong>将得到的种群进行选择，我们要用到题目中所给的选择条件</strong></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fitness</span>(<span class="hljs-params">self, chromosome</span>):</span>
-	<span class="hljs-comment"># 解码和适应性函数</span>
-    x = self.decode(chromosome)
-    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x )</code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fitness</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chromosome<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token comment"># 解码和适应性函数</span>
+    x <span class="token operator">=</span> self<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token number">2</span> <span class="token operator">*</span> math<span class="token punctuation">.</span>sin<span class="token punctuation">(</span> <span class="token number">2</span> <span class="token operator">*</span> x <span class="token punctuation">)</span> <span class="token operator">+</span> math<span class="token punctuation">.</span>cos<span class="token punctuation">(</span> <span class="token number">3</span> <span class="token operator">*</span> x <span class="token punctuation">)</span></code></pre>
 <p><strong>然后进行编写选择模块</strong></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selection</span>(<span class="hljs-params">self, retain_rate, random_select_rate</span>):</span>
-	<span class="hljs-comment"># 通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span>
-    graded = [(self.fitness(chromosome), chromosome) <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> self.population]
-    graded = [x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> sorted(graded, reverse=<span class="hljs-literal">True</span>)]
-    <span class="hljs-comment"># 选出适应性强的染色体,挑选20%作为父类</span>
-    retain_length = int(len(graded) * retain_rate)
-    parents = graded[:retain_length]
-    <span class="hljs-comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span>
-    <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> graded[retain_length:]:
-    	<span class="hljs-keyword">if</span> random.random() &lt; random_select_rate:
-            parents.append(chromosome)
-    <span class="hljs-keyword">return</span> parents</code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">selection</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> retain_rate<span class="token punctuation">,</span> random_select_rate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token comment"># 通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span>
+    graded <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>fitness<span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span><span class="token punctuation">,</span> chromosome<span class="token punctuation">)</span> <span class="token keyword">for</span> chromosome <span class="token keyword">in</span> self<span class="token punctuation">.</span>population<span class="token punctuation">]</span>
+    graded <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>graded<span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token comment"># 选出适应性强的染色体,挑选20%作为父类</span>
+    retain_length <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>graded<span class="token punctuation">)</span> <span class="token operator">*</span> retain_rate<span class="token punctuation">)</span>
+    parents <span class="token operator">=</span> graded<span class="token punctuation">[</span><span class="token punctuation">:</span>retain_length<span class="token punctuation">]</span>
+    <span class="token comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span>
+    <span class="token keyword">for</span> chromosome <span class="token keyword">in</span> graded<span class="token punctuation">[</span>retain_length<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    	<span class="token keyword">if</span> random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> random_select_rate<span class="token punctuation">:</span>
+            parents<span class="token punctuation">.</span>append<span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> parents</code></pre>
 <p><strong>编写交叉模块</strong></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crossover</span>(<span class="hljs-params">self, parents</span>):</span>
-    <span class="hljs-comment"># 交叉产生后代</span>
-    <span class="hljs-comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span>
-    children = []
-    <span class="hljs-comment"># 需要繁殖的数量</span>
-    target_count = len(self.population) - len(parents)
-    <span class="hljs-keyword">while</span> len(children) &lt; target_count:
-        malelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
-        femalelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
-        male = parents[malelocation]
-        female = parents[femalelocation]
-        <span class="hljs-keyword">if</span> malelocation != femalelocation:
-            <span class="hljs-comment"># 随机选择交叉点</span>
-            cross_pos = random.randint(<span class="hljs-number">0</span>, self.length)
-            <span class="hljs-comment"># 生成掩码，方便位运算</span>
-            mask = <span class="hljs-number">0</span>
-            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(cross_pos):
-                mask |= (<span class="hljs-number">1</span> &lt;&lt; i )
-            <span class="hljs-comment"># 孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span>
-            child = (male &amp; mask) | (female &amp; ~mask)
-            children.append(child)
-    <span class="hljs-comment"># 经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span>
-    self.population = parents + children</code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">crossover</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> parents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 交叉产生后代</span>
+    <span class="token comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span>
+    children <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token comment"># 需要繁殖的数量</span>
+    target_count <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>population<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parents<span class="token punctuation">)</span>
+    <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span> <span class="token operator">&lt;</span> target_count<span class="token punctuation">:</span>
+        malelocation <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parents<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        femalelocation <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parents<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        male <span class="token operator">=</span> parents<span class="token punctuation">[</span>malelocation<span class="token punctuation">]</span>
+        female <span class="token operator">=</span> parents<span class="token punctuation">[</span>femalelocation<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> malelocation <span class="token operator">!=</span> femalelocation<span class="token punctuation">:</span>
+            <span class="token comment"># 随机选择交叉点</span>
+            cross_pos <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+            <span class="token comment"># 生成掩码，方便位运算</span>
+            mask <span class="token operator">=</span> <span class="token number">0</span>
+            <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>cross_pos<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                mask <span class="token operator">|</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> i <span class="token punctuation">)</span>
+            <span class="token comment"># 孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span>
+            child <span class="token operator">=</span> <span class="token punctuation">(</span>male <span class="token operator">&amp;</span> mask<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>female <span class="token operator">&amp;</span> <span class="token operator">~</span>mask<span class="token punctuation">)</span>
+            children<span class="token punctuation">.</span>append<span class="token punctuation">(</span>child<span class="token punctuation">)</span>
+    <span class="token comment"># 经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span>
+    self<span class="token punctuation">.</span>population <span class="token operator">=</span> parents <span class="token operator">+</span> children</code></pre>
 <p><strong>编写变异模块</strong></p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mutation</span>(<span class="hljs-params">self, rate</span>):</span>
-    <span class="hljs-comment"># 对种群中的所有个体，随机改变某个个体中的某个基因</span>
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(self.population)):
-        <span class="hljs-keyword">if</span> random.random() &lt; rate:
-            j = random.randint(<span class="hljs-number">0</span>, self.length - <span class="hljs-number">1</span>)
-            <span class="hljs-comment"># 随机取得一个数j对变异基因1进行随机移动</span>
-            self.population[i] = self.population[i] ^ ( <span class="hljs-number">1</span> &lt;&lt; j )  <span class="hljs-comment"># ^是异或运算</span></code></pre></div>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">mutation</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> rate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 对种群中的所有个体，随机改变某个个体中的某个基因</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>population<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> rate<span class="token punctuation">:</span>
+            j <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token comment"># 随机取得一个数j对变异基因1进行随机移动</span>
+            self<span class="token punctuation">.</span>population<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>population<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">^</span> <span class="token punctuation">(</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> j <span class="token punctuation">)</span>  <span class="token comment"># ^是异或运算</span></code></pre>
 
 <p>遗传算法求最大值的总体思路就是这样，思想上还是相当简单的，下面我们把所有代码组合起来，加上框架，就可以做成一个完整的<strong>遗传算法求最大值</strong>的程序</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># !/usr/bin/env python</span>
-<span class="hljs-comment"># -*- coding:utf-8 -*-</span>
-<span class="hljs-comment"># 求解函数 2 * math.sin( 2 * x ) + math.cos( 3 * x )在区间[0,9]的最大值。</span>
+<pre class="language-python" data-language="python"><code class="language-python"><span class="token comment"># !/usr/bin/env python</span>
+<span class="token comment"># -*- coding:utf-8 -*-</span>
+<span class="token comment"># 求解函数 2 * math.sin( 2 * x ) + math.cos( 3 * x )在区间[0,9]的最大值。</span>
 
-<span class="hljs-keyword">import</span> math
-<span class="hljs-keyword">import</span> random
-<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="token keyword">import</span> math
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GA</span>():</span>
-    <span class="hljs-comment"># initalise</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, length, count</span>):</span>
-        <span class="hljs-comment"># 染色体长度</span>
-        self.length = length
-        <span class="hljs-comment"># 染色体数量</span>
-        self.count = count
-        <span class="hljs-comment"># 形成原始种群</span>
-        self.population = self.get_population(length, count)
+<span class="token keyword">class</span> <span class="token class-name">GA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># initalise</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> length<span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 染色体长度</span>
+        self<span class="token punctuation">.</span>length <span class="token operator">=</span> length
+        <span class="token comment"># 染色体数量</span>
+        self<span class="token punctuation">.</span>count <span class="token operator">=</span> count
+        <span class="token comment"># 形成原始种群</span>
+        self<span class="token punctuation">.</span>population <span class="token operator">=</span> self<span class="token punctuation">.</span>get_population<span class="token punctuation">(</span>length<span class="token punctuation">,</span> count<span class="token punctuation">)</span>
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_population</span>(<span class="hljs-params">self, length, count</span>):</span>
-        <span class="hljs-comment"># get a list of count numbers chromosome (length : length)</span>
-        <span class="hljs-keyword">return</span> [self.get_chromosome(length) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(count)]
+    <span class="token keyword">def</span> <span class="token function">get_population</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> length<span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># get a list of count numbers chromosome (length : length)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>self<span class="token punctuation">.</span>get_chromosome<span class="token punctuation">(</span>length<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">]</span>
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chromosome</span>(<span class="hljs-params">self, length</span>):</span>
-        <span class="hljs-comment"># 随机生成染色体变量</span>
-        <span class="hljs-comment"># a bit ( 0, 1 ) represent a gene</span>
-        chromosome = <span class="hljs-number">0</span>
-        <span class="hljs-keyword">for</span> i  <span class="hljs-keyword">in</span> range(length):
-            chromosome |= ( <span class="hljs-number">1</span> &lt;&lt; i ) * random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
-        print(chromosome)
-        print(chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>))
-        <span class="hljs-keyword">return</span> chromosome
+    <span class="token keyword">def</span> <span class="token function">get_chromosome</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 随机生成染色体变量</span>
+        <span class="token comment"># a bit ( 0, 1 ) represent a gene</span>
+        chromosome <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">for</span> i  <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            chromosome <span class="token operator">|</span><span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> i <span class="token punctuation">)</span> <span class="token operator">*</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>chromosome <span class="token operator">*</span> <span class="token number">9.0</span><span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> chromosome
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">evolve</span>(<span class="hljs-params">self, retain_rate = <span class="hljs-number">0.2</span>, random_select_rate = <span class="hljs-number">0.5</span>, mutation_rate = <span class="hljs-number">0.01</span> </span>):</span>
+    <span class="token keyword">def</span> <span class="token function">evolve</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> retain_rate <span class="token operator">=</span> <span class="token number">0.2</span><span class="token punctuation">,</span> random_select_rate <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> mutation_rate <span class="token operator">=</span> <span class="token number">0.01</span> <span class="token punctuation">)</span><span class="token punctuation">:</span>
         
-        parents = self.selection(retain_rate, random_select_rate)
-        self.crossover(parents)
-        self.mutation(mutation_rate)
+        parents <span class="token operator">=</span> self<span class="token punctuation">.</span>selection<span class="token punctuation">(</span>retain_rate<span class="token punctuation">,</span> random_select_rate<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>crossover<span class="token punctuation">(</span>parents<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>mutation<span class="token punctuation">(</span>mutation_rate<span class="token punctuation">)</span>
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fitness</span>(<span class="hljs-params">self, chromosome</span>):</span>
-        <span class="hljs-comment"># 解码和适应性函数</span>
-        x = self.decode(chromosome)
-        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x )
+    <span class="token keyword">def</span> <span class="token function">fitness</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chromosome<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 解码和适应性函数</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">2</span> <span class="token operator">*</span> math<span class="token punctuation">.</span>sin<span class="token punctuation">(</span> <span class="token number">2</span> <span class="token operator">*</span> x <span class="token punctuation">)</span> <span class="token operator">+</span> math<span class="token punctuation">.</span>cos<span class="token punctuation">(</span> <span class="token number">3</span> <span class="token operator">*</span> x <span class="token punctuation">)</span>
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selection</span>(<span class="hljs-params">self, retain_rate, random_select_rate</span>):</span>
-        <span class="hljs-comment"># 通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span>
-        graded = [(self.fitness(chromosome), chromosome) <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> self.population]
-        graded = [x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> sorted(graded, reverse=<span class="hljs-literal">True</span>)]
+    <span class="token keyword">def</span> <span class="token function">selection</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> retain_rate<span class="token punctuation">,</span> random_select_rate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span>
+        graded <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>fitness<span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span><span class="token punctuation">,</span> chromosome<span class="token punctuation">)</span> <span class="token keyword">for</span> chromosome <span class="token keyword">in</span> self<span class="token punctuation">.</span>population<span class="token punctuation">]</span>
+        graded <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>graded<span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
         
-        <span class="hljs-comment"># 选出适应性强的染色体,挑选20%作为父类</span>
-        retain_length = int(len(graded) * retain_rate)
-        parents = graded[:retain_length]
+        <span class="token comment"># 选出适应性强的染色体,挑选20%作为父类</span>
+        retain_length <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>graded<span class="token punctuation">)</span> <span class="token operator">*</span> retain_rate<span class="token punctuation">)</span>
+        parents <span class="token operator">=</span> graded<span class="token punctuation">[</span><span class="token punctuation">:</span>retain_length<span class="token punctuation">]</span>
         
-        <span class="hljs-comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span>
-        <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> graded[retain_length:]:
-            <span class="hljs-keyword">if</span> random.random() &lt; random_select_rate:
-                parents.append(chromosome)
-        <span class="hljs-keyword">return</span> parents
+        <span class="token comment"># 从剩余的80%里面选出适应性不强，但是幸存的染色体（概率0.5）</span>
+        <span class="token keyword">for</span> chromosome <span class="token keyword">in</span> graded<span class="token punctuation">[</span>retain_length<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> random_select_rate<span class="token punctuation">:</span>
+                parents<span class="token punctuation">.</span>append<span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> parents
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crossover</span>(<span class="hljs-params">self, parents</span>):</span>
-        <span class="hljs-comment"># 交叉产生后代</span>
-        <span class="hljs-comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span>
-        children = []
-        <span class="hljs-comment"># 需要繁殖的数量</span>
-        target_count = len(self.population) - len(parents)
-        <span class="hljs-keyword">while</span> len(children) &lt; target_count:
-            malelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
-            femalelocation = random.randint(<span class="hljs-number">0</span>, len(parents) - <span class="hljs-number">1</span>)
-            male = parents[malelocation]
-            female = parents[femalelocation]
-            <span class="hljs-keyword">if</span> malelocation != femalelocation:
-                <span class="hljs-comment"># 随机选择交叉点</span>
-                cross_pos = random.randint(<span class="hljs-number">0</span>, self.length)
-                <span class="hljs-comment"># 生成掩码，方便位运算</span>
-                mask = <span class="hljs-number">0</span>
-                <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(cross_pos):
-                    mask |= (<span class="hljs-number">1</span> &lt;&lt; i )
-                <span class="hljs-comment"># 孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span>
-                child = (male &amp; mask) | (female &amp; ~mask)
-                children.append(child)
-        <span class="hljs-comment"># 经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span>
-        self.population = parents + children
+    <span class="token keyword">def</span> <span class="token function">crossover</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> parents<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 交叉产生后代</span>
+        <span class="token comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span>
+        children <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token comment"># 需要繁殖的数量</span>
+        target_count <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>population<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parents<span class="token punctuation">)</span>
+        <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span> <span class="token operator">&lt;</span> target_count<span class="token punctuation">:</span>
+            malelocation <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parents<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            femalelocation <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>parents<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            male <span class="token operator">=</span> parents<span class="token punctuation">[</span>malelocation<span class="token punctuation">]</span>
+            female <span class="token operator">=</span> parents<span class="token punctuation">[</span>femalelocation<span class="token punctuation">]</span>
+            <span class="token keyword">if</span> malelocation <span class="token operator">!=</span> femalelocation<span class="token punctuation">:</span>
+                <span class="token comment"># 随机选择交叉点</span>
+                cross_pos <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+                <span class="token comment"># 生成掩码，方便位运算</span>
+                mask <span class="token operator">=</span> <span class="token number">0</span>
+                <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>cross_pos<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    mask <span class="token operator">|</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> i <span class="token punctuation">)</span>
+                <span class="token comment"># 孩子将获得父亲在交叉点前的基因和母亲在交叉点后（包括交叉点）的基因</span>
+                child <span class="token operator">=</span> <span class="token punctuation">(</span>male <span class="token operator">&amp;</span> mask<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token punctuation">(</span>female <span class="token operator">&amp;</span> <span class="token operator">~</span>mask<span class="token punctuation">)</span>
+                children<span class="token punctuation">.</span>append<span class="token punctuation">(</span>child<span class="token punctuation">)</span>
+        <span class="token comment"># 经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span>
+        self<span class="token punctuation">.</span>population <span class="token operator">=</span> parents <span class="token operator">+</span> children
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mutation</span>(<span class="hljs-params">self, rate</span>):</span>
-        <span class="hljs-comment"># 对种群中的所有个体，随机改变某个个体中的某个基因</span>
-        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(self.population)):
-            <span class="hljs-keyword">if</span> random.random() &lt; rate:
-                j = random.randint(<span class="hljs-number">0</span>, self.length - <span class="hljs-number">1</span>)
-                <span class="hljs-comment"># 随机取得一个数j对变异基因1进行随机移动</span>
-                self.population[i] = self.population[i] ^ ( <span class="hljs-number">1</span> &lt;&lt; j )  <span class="hljs-comment"># ^是异或运算</span>
+    <span class="token keyword">def</span> <span class="token function">mutation</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> rate<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 对种群中的所有个体，随机改变某个个体中的某个基因</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>population<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> rate<span class="token punctuation">:</span>
+                j <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                <span class="token comment"># 随机取得一个数j对变异基因1进行随机移动</span>
+                self<span class="token punctuation">.</span>population<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>population<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">^</span> <span class="token punctuation">(</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> j <span class="token punctuation">)</span>  <span class="token comment"># ^是异或运算</span>
 
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decode</span>(<span class="hljs-params">self, chromosome</span>):</span>
-        <span class="hljs-comment"># 将二进制还原成十进制</span>
-        <span class="hljs-keyword">return</span> chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>)
+    <span class="token keyword">def</span> <span class="token function">decode</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chromosome<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 将二进制还原成十进制</span>
+        <span class="token keyword">return</span> chromosome <span class="token operator">*</span> <span class="token number">9.0</span><span class="token operator">/</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
     
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">result</span>(<span class="hljs-params">self</span>):</span>
-        <span class="hljs-comment"># 获得当前最优的个体值</span>
-        graded = [(self.fitness(chromosome), chromosome) <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> self.population]
-        graded = [ x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> sorted(graded, reverse = <span class="hljs-literal">True</span>)]
-        X1 = [i / float(<span class="hljs-number">10</span>) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>, <span class="hljs-number">1</span>)]
-        Y1 = [<span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x ) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> X1]
-        plt.plot(X1, Y1)
-        plt.show()
-        <span class="hljs-keyword">return</span> ga.decode(graded[<span class="hljs-number">0</span>])
+    <span class="token keyword">def</span> <span class="token function">result</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 获得当前最优的个体值</span>
+        graded <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>fitness<span class="token punctuation">(</span>chromosome<span class="token punctuation">)</span><span class="token punctuation">,</span> chromosome<span class="token punctuation">)</span> <span class="token keyword">for</span> chromosome <span class="token keyword">in</span> self<span class="token punctuation">.</span>population<span class="token punctuation">]</span>
+        graded <span class="token operator">=</span> <span class="token punctuation">[</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>graded<span class="token punctuation">,</span> reverse <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        X1 <span class="token operator">=</span> <span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token builtin">float</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        Y1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span> <span class="token operator">*</span> math<span class="token punctuation">.</span>sin<span class="token punctuation">(</span> <span class="token number">2</span> <span class="token operator">*</span> x <span class="token punctuation">)</span> <span class="token operator">+</span> math<span class="token punctuation">.</span>cos<span class="token punctuation">(</span> <span class="token number">3</span> <span class="token operator">*</span> x <span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> X1<span class="token punctuation">]</span>
+        plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>X1<span class="token punctuation">,</span> Y1<span class="token punctuation">)</span>
+        plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> ga<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>graded<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    <span class="hljs-comment"># 染色体长度为17，群落数量是300</span>
-    ga = GA(<span class="hljs-number">17</span>, <span class="hljs-number">300</span>)
-    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">200</span>):
-        ga.evolve()
-    print(<span class="hljs-string">&#x27;x = %f&#x27;</span> %(ga.result()))</code></pre></div>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    <span class="token comment"># 染色体长度为17，群落数量是300</span>
+    ga <span class="token operator">=</span> GA<span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        ga<span class="token punctuation">.</span>evolve<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'x = %f'</span> <span class="token operator">%</span><span class="token punctuation">(</span>ga<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li><p>遗传算法在思想上还是很简单的存在，并且可以通过变异避免陷入局部最优解，但是缺点也很明显，因为要通过不停迭代不停选择，所以运行时间比较长，而且种群数量变大的话，对于电脑的资源消耗也变高。  </p>
@@ -567,6 +571,8 @@
 
 
 
+  
+    
   
 
 

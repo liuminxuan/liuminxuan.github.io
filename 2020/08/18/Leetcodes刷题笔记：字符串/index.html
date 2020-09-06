@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      379 字
+      410 字
     </span>
   
 
@@ -228,47 +232,47 @@
             <div class="markdown-body" id="post-body">
               <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>38 387</p>
 <h2 id="38-外观数列"><a href="#38-外观数列" class="headerlink" title="38.外观数列"></a>38.外观数列</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>因为后一项是前一项决定的，所以用循环来做。<br>选取第一个数，然后数后面有多少相同，最后用appned加上去。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">countAndSay</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;
-        String str = <span class="hljs-string">&quot;1&quot;</span>; <span class="hljs-comment">// 第一个数</span>
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;
-            StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();
-            <span class="hljs-keyword">char</span> pre = str.charAt(<span class="hljs-number">0</span>); <span class="hljs-comment">// 取出头部的数字</span>
-            <span class="hljs-keyword">int</span> count = <span class="hljs-number">1</span>;
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; str.length(); j++) &#123;
-                <span class="hljs-comment">// 如果后面的数与第一个相同，则count++</span>
-                <span class="hljs-comment">// 否则用append方法将头部数字的个数和头部数字加入字符串中</span>
-                <span class="hljs-keyword">if</span>(pre == str.charAt(j))&#123;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public String countAndSay(int n) &#123;
+        String str &#x3D; &quot;1&quot;; &#x2F;&#x2F; 第一个数
+        for (int i &#x3D; 2; i &lt;&#x3D; n; i++) &#123;
+            StringBuilder sb &#x3D; new StringBuilder();
+            char pre &#x3D; str.charAt(0); &#x2F;&#x2F; 取出头部的数字
+            int count &#x3D; 1;
+            for (int j &#x3D; 1; j &lt; str.length(); j++) &#123;
+                &#x2F;&#x2F; 如果后面的数与第一个相同，则count++
+                &#x2F;&#x2F; 否则用append方法将头部数字的个数和头部数字加入字符串中
+                if(pre &#x3D;&#x3D; str.charAt(j))&#123;
                     count++;
-                &#125;<span class="hljs-keyword">else</span>&#123;
+                &#125;else&#123;
                     sb.append(count).append(pre);
-                    pre = str.charAt(j); <span class="hljs-comment">// 选取下一个头部数字</span>
-                    count = <span class="hljs-number">1</span>; <span class="hljs-comment">// count归1</span>
+                    pre &#x3D; str.charAt(j); &#x2F;&#x2F; 选取下一个头部数字
+                    count &#x3D; 1; &#x2F;&#x2F; count归1
                 &#125;
             &#125;
-            <span class="hljs-comment">// 最后跳出循环时未处理最后一个头部数字，在此在此处理</span>
+            &#x2F;&#x2F; 最后跳出循环时未处理最后一个头部数字，在此在此处理
             sb.append(count).append(pre);
-            str = sb.toString();
+            str &#x3D; sb.toString();
         &#125;
-        <span class="hljs-keyword">return</span> str;
+        return str;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
 <h2 id="387-字符串中的第一个唯一字符"><a href="#387-字符串中的第一个唯一字符" class="headerlink" title="387. 字符串中的第一个唯一字符"></a>387. 字符串中的第一个唯一字符</h2><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>用数组自创哈希表，因为只有小写字母，所以设置一个26长度的数组，字符串中出现一次，数组里对应的字母就+1，然后再对字符串的字母一一对照，如果值为1就输出，找不到1则无解。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">firstUniqChar</span><span class="hljs-params">(String s)</span> </span>&#123;
-        <span class="hljs-keyword">int</span> count[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;
-            count[s.charAt(i)-<span class="hljs-string">&#x27;a&#x27;</span>]++;
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public int firstUniqChar(String s) &#123;
+        int count[] &#x3D; new int[26];
+        for(int i&#x3D;0;i&lt;s.length();i++)&#123;
+            count[s.charAt(i)-&#39;a&#39;]++;
         &#125;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;
-            <span class="hljs-keyword">if</span>(count[s.charAt(i)-<span class="hljs-string">&#x27;a&#x27;</span>] == <span class="hljs-number">1</span>)&#123;
-                <span class="hljs-keyword">return</span> i;
+        for(int i&#x3D;0;i&lt;s.length();i++)&#123;
+            if(count[s.charAt(i)-&#39;a&#39;] &#x3D;&#x3D; 1)&#123;
+                return i;
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+        return -1;
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 
             </div>
             <hr>
@@ -412,6 +416,8 @@
 
 
 
+  
+    
   
 
 

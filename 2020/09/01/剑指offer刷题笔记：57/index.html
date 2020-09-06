@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      459 字
+      482 字
     </span>
   
 
@@ -227,53 +231,53 @@
             
             <div class="markdown-body" id="post-body">
               <h1 id="57-和为s的两个数字"><a href="#57-和为s的两个数字" class="headerlink" title="57. 和为s的两个数字"></a>57. 和为s的两个数字</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。</p>
-<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><div class="hljs"><pre><code class="hljs angelscript">输入：nums = [<span class="hljs-number">2</span>,<span class="hljs-number">7</span>,<span class="hljs-number">11</span>,<span class="hljs-number">15</span>], target = <span class="hljs-number">9</span>
-输出：[<span class="hljs-number">2</span>,<span class="hljs-number">7</span>] 或者 [<span class="hljs-number">7</span>,<span class="hljs-number">2</span>]</code></pre></div>
-<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><div class="hljs"><pre><code class="hljs angelscript">输入：nums = [<span class="hljs-number">10</span>,<span class="hljs-number">26</span>,<span class="hljs-number">30</span>,<span class="hljs-number">31</span>,<span class="hljs-number">47</span>,<span class="hljs-number">60</span>], target = <span class="hljs-number">40</span>
-输出：[<span class="hljs-number">10</span>,<span class="hljs-number">30</span>] 或者 [<span class="hljs-number">30</span>,<span class="hljs-number">10</span>]</code></pre></div>
+<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><pre class="language-none"><code class="language-none">输入：nums &#x3D; [2,7,11,15], target &#x3D; 9
+输出：[2,7] 或者 [7,2]</code></pre>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><pre class="language-none"><code class="language-none">输入：nums &#x3D; [10,26,30,31,47,60], target &#x3D; 40
+输出：[10,30] 或者 [30,10]</code></pre>
 
 <h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>看似简单，因为是升序数组，所以一开始用暴力求解，代码如下：</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
-        <span class="hljs-keyword">int</span> s = target;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length - <span class="hljs-number">1</span>; i++)&#123;
-            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; nums.length; j++)&#123;
-                <span class="hljs-keyword">if</span>(nums[i] + nums[j] &lt; s)&#123;
-                    <span class="hljs-keyword">continue</span>;
-                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(nums[i] + nums[j] &gt; s)&#123;
-                    <span class="hljs-keyword">break</span>;
-                &#125;<span class="hljs-keyword">else</span>&#123;
-                    <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">2</span>];
-                    res[<span class="hljs-number">0</span>] = nums[i];
-                    res[<span class="hljs-number">1</span>] = nums[j];
-                    <span class="hljs-keyword">return</span> res;
+<pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public int[] twoSum(int[] nums, int target) &#123;
+        int s &#x3D; target;
+        for(int i &#x3D; 0; i &lt; nums.length - 1; i++)&#123;
+            for(int j &#x3D; i + 1; j &lt; nums.length; j++)&#123;
+                if(nums[i] + nums[j] &lt; s)&#123;
+                    continue;
+                &#125;else if(nums[i] + nums[j] &gt; s)&#123;
+                    break;
+                &#125;else&#123;
+                    int[] res &#x3D; new int[2];
+                    res[0] &#x3D; nums[i];
+                    res[1] &#x3D; nums[j];
+                    return res;
                 &#125;
             &#125;
         &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+        return new int[0];
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
 <p>结果超时了，转用HashMap求解。<br>首先当目标数组为空或只有一个值的时候，返回空。然后创建HashMap，遍历数组，将值放入HashMap，如果其中两个值相加可以得到目标值，则返回这两个值的结果。<br>遍历完依旧没有找到目标值，则返回空。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] twoSum(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target) &#123;
-        <span class="hljs-comment">// 当数组为空或只有一个元素的时候，返回空</span>
-        <span class="hljs-keyword">if</span>(nums.length &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class="language-Java" data-language="Java"><code class="language-Java">class Solution &#123;
+    public int[] twoSum(int[] nums, int target) &#123;
+        &#x2F;&#x2F; 当数组为空或只有一个元素的时候，返回空
+        if(nums.length &lt; 2) return new int[0];
 
-        <span class="hljs-comment">// 创建HashMap</span>
-        HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-        <span class="hljs-comment">// 遍历数组，如果找到一个值可以与target - nums[i]对应，则返回结果</span>
-        <span class="hljs-comment">// 如果找不到对应，则把此值放入HashMap</span>
-        <span class="hljs-comment">// 遍历完成后如果没有返回结果则返回空</span>
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.length; i++)&#123;
-            <span class="hljs-keyword">int</span> cur = target - nums[i];
-            <span class="hljs-keyword">if</span>(map.containsKey(cur))&#123;
-                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] &#123;cur, nums[i]&#125;;
+        &#x2F;&#x2F; 创建HashMap
+        HashMap&lt;Integer, Integer&gt; map &#x3D; new HashMap&lt;&gt;();
+        &#x2F;&#x2F; 遍历数组，如果找到一个值可以与target - nums[i]对应，则返回结果
+        &#x2F;&#x2F; 如果找不到对应，则把此值放入HashMap
+        &#x2F;&#x2F; 遍历完成后如果没有返回结果则返回空
+        for(int i &#x3D; 0; i &lt; nums.length; i++)&#123;
+            int cur &#x3D; target - nums[i];
+            if(map.containsKey(cur))&#123;
+                return new int[] &#123;cur, nums[i]&#125;;
             &#125;
             map.put(nums[i], i);
         &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
+        return new int[0];
     &#125;
-&#125;</code></pre></div>
+&#125;</code></pre>
             </div>
             <hr>
             <div>
@@ -416,6 +420,8 @@
 
 
 
+  
+    
   
 
 

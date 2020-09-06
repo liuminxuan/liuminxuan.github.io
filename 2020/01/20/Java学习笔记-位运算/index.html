@@ -29,7 +29,11 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/a11y-light.min.css" />
+      
+        
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/prism/1.21.0/themes/prism.min.css" />
+      
     
   
 
@@ -177,7 +181,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      270 字
+      294 字
     </span>
   
 
@@ -187,7 +191,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      4
        分钟
     </span>
   
@@ -233,32 +237,32 @@
 <a id="more"></a>
 
 <h2 id="位运算的应用"><a href="#位运算的应用" class="headerlink" title="位运算的应用"></a>位运算的应用</h2><p>位运算因为只有1和0，所以可以用于身份认证，这里举出一个判断身份的Java程序。</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BitChoose</span> </span>&#123;
+<pre class="language-Java" data-language="Java"><code class="language-Java">public class BitChoose &#123;
     
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] arg)</span></span>&#123;
-        <span class="hljs-keyword">int</span> base = <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">int</span> is_student_mask = base; <span class="hljs-comment">//0001</span>
-        <span class="hljs-keyword">int</span> is_teacher_mask = base &lt;&lt; <span class="hljs-number">1</span>; <span class="hljs-comment">//0010</span>
-        <span class="hljs-keyword">int</span> is_police_mask = base &lt;&lt; <span class="hljs-number">2</span>; <span class="hljs-comment">//0100</span>
-        <span class="hljs-keyword">int</span> is_doctor_mask = base &lt;&lt; <span class="hljs-number">3</span>; <span class="hljs-comment">//1000</span>
+    public static void main(String[] arg)&#123;
+        int base &#x3D; 1;
+        int is_student_mask &#x3D; base; &#x2F;&#x2F;0001
+        int is_teacher_mask &#x3D; base &lt;&lt; 1; &#x2F;&#x2F;0010
+        int is_police_mask &#x3D; base &lt;&lt; 2; &#x2F;&#x2F;0100
+        int is_doctor_mask &#x3D; base &lt;&lt; 3; &#x2F;&#x2F;1000
 
-        <span class="hljs-keyword">int</span> data = <span class="hljs-number">3</span>; <span class="hljs-comment">//0011</span>
+        int data &#x3D; 3; &#x2F;&#x2F;0011
 
-        <span class="hljs-keyword">boolean</span> is_student = (data &amp; is_student_mask) != <span class="hljs-number">0</span>;
+        boolean is_student &#x3D; (data &amp; is_student_mask) !&#x3D; 0;
         System.out.println(is_student);
 
-        <span class="hljs-keyword">boolean</span> is_teacher = (data &amp; is_teacher_mask) != <span class="hljs-number">0</span>;
+        boolean is_teacher &#x3D; (data &amp; is_teacher_mask) !&#x3D; 0;
         System.out.println(is_teacher);
 
-        <span class="hljs-keyword">boolean</span> is_police = (data &amp; is_police_mask) != <span class="hljs-number">0</span>;
+        boolean is_police &#x3D; (data &amp; is_police_mask) !&#x3D; 0;
         System.out.println(is_police);
 
-        <span class="hljs-keyword">boolean</span> is_doctor = (data &amp; is_police_mask) != <span class="hljs-number">0</span>;
+        boolean is_doctor &#x3D; (data &amp; is_police_mask) !&#x3D; 0;
         System.out.println(is_doctor);
 
     &#125;
 &#125;
-</code></pre></div>
+</code></pre>
 
 <p>可以看出位运算可以通过”掩码“和“与”运算实现身份识别功能。</p>
 
@@ -400,6 +404,8 @@
 
 
 
+  
+    
   
 
 
