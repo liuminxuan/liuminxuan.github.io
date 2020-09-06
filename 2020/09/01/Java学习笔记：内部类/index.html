@@ -52,7 +52,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.0.2"></head>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -289,11 +289,11 @@
 </ol>
 <div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OuterClass</span> </span>&#123;
     <span class="hljs-keyword">private</span> String str;
-
+    
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">outerDisplay</span><span class="hljs-params">()</span></span>&#123;
         System.out.println(<span class="hljs-string">&quot;outerClass...&quot;</span>);
     &#125;
-
+    
     <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InnerClass</span></span>&#123;
         <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">innerDisplay</span><span class="hljs-params">()</span></span>&#123;
             <span class="hljs-comment">//使用外围内的属性</span>
@@ -303,12 +303,12 @@
             outerDisplay();
         &#125;
     &#125;
-
+    
     <span class="hljs-comment">/*推荐使用getxxx()来获取成员内部类，尤其是该内部类的构造函数无参数时 */</span>
     <span class="hljs-function"><span class="hljs-keyword">public</span> InnerClass <span class="hljs-title">getInnerClass</span><span class="hljs-params">()</span></span>&#123;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> InnerClass();
     &#125;
-
+    
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         OuterClass outer = <span class="hljs-keyword">new</span> OuterClass();
         OuterClass.InnerClass inner = outer.getInnerClass();
@@ -333,7 +333,7 @@ outerClass...</code></pre></div>
         &#125;
         <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PDestionation(str);
     &#125;
-
+    
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         Parcel5 parcel5 = <span class="hljs-keyword">new</span> Parcel5();
         Destionation d = parcel5.destionation(<span class="hljs-string">&quot;chenssy&quot;</span>);
@@ -356,11 +356,11 @@ outerClass...</code></pre></div>
             String string = ts.getSlip();
         &#125;
     &#125;
-
+    
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">track</span><span class="hljs-params">()</span></span>&#123;
         internalTracking(<span class="hljs-keyword">true</span>);
     &#125;
-
+    
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         Parcel6 parcel6 = <span class="hljs-keyword">new</span> Parcel6();
         parcel6.track();
@@ -384,7 +384,7 @@ outerClass...</code></pre></div>
             &#125;
         &#125;;        <span class="hljs-comment">/* 注意：分号不能省 */</span>
     &#125;
-
+    
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
         OuterClass out = <span class="hljs-keyword">new</span> OuterClass();
         InnerClass inner = out.getInnerClass(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;chenssy&quot;</span>);

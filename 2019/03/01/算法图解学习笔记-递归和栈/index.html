@@ -52,7 +52,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.0.2"></head>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -264,15 +264,15 @@
 <p>第二种方法就使用了递归，自己调用自己。</p>
 <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>一个简单函数：</p>
 <div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span>(<span class="hljs-params">name</span>):</span>
-    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;hello,&quot;</span> + name + <span class="hljs-string">&quot;!&quot;</span>
-    greet2(name)
-    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;greeting ready to say bye...&quot;</span>
-    bye()</code></pre></div>
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;hello,&quot;</span> + name + <span class="hljs-string">&quot;!&quot;</span>
+	greet2(name)
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;greeting ready to say bye...&quot;</span>
+	bye()</code></pre></div>
 <p>这个函数调用了两个函数，两个函数代码如下：</p>
 <div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greeet2</span>(<span class="hljs-params">name</span>):</span>
-    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;how are you,&quot;</span> + name + <span class="hljs-string">&quot;?&quot;</span>
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;how are you,&quot;</span> + name + <span class="hljs-string">&quot;?&quot;</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bye</span>():</span>
-    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;ok bye!&quot;</span></code></pre></div>
+	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;ok bye!&quot;</span></code></pre></div>
 
 <p>在内存中，这个函数运行过程如下：</p>
 <ol>
@@ -287,10 +287,10 @@
 <p>这个栈用于存储多个函数的变量，被称为<strong>调用栈</strong>。所有函数调用都进入调用栈。</p>
 <h1 id="递归调用栈"><a href="#递归调用栈" class="headerlink" title="递归调用栈"></a>递归调用栈</h1><p>给定函数factorial(5)写做5!=5*4*3*2*1，那么：</p>
 <div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fact</span>(<span class="hljs-params">x</span>):</span>
-    <span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:
-        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
-    <span class="hljs-keyword">else</span>:
-        <span class="hljs-keyword">return</span> x*fact(x<span class="hljs-number">-1</span>)</code></pre></div>
+	<span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:
+		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+	<span class="hljs-keyword">else</span>:
+		<span class="hljs-keyword">return</span> x*fact(x<span class="hljs-number">-1</span>)</code></pre></div>
 
 <p>fact(3)的调用栈变化如下：</p>
 <ol>

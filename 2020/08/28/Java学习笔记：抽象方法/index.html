@@ -52,7 +52,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.0.2"></head>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -280,7 +280,7 @@
 <span class="hljs-function">   </span>&#123;
       <span class="hljs-comment">/* 以下是不允许的，会引发错误 */</span>
       Employee e = <span class="hljs-keyword">new</span> Employee(<span class="hljs-string">&quot;George W.&quot;</span>, <span class="hljs-string">&quot;Houston, TX&quot;</span>, <span class="hljs-number">43</span>);
-
+ 
       System.out.println(<span class="hljs-string">&quot;\n Call mailCheck using Employee reference--&quot;</span>);
       e.mailCheck();
     &#125;
@@ -332,10 +332,10 @@
 <span class="hljs-function">   </span>&#123;
       Salary s = <span class="hljs-keyword">new</span> Salary(<span class="hljs-string">&quot;Mohd Mohtashim&quot;</span>, <span class="hljs-string">&quot;Ambehta, UP&quot;</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3600.00</span>);
       Employee e = <span class="hljs-keyword">new</span> Salary(<span class="hljs-string">&quot;John Adams&quot;</span>, <span class="hljs-string">&quot;Boston, MA&quot;</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2400.00</span>);
-
+ 
       System.out.println(<span class="hljs-string">&quot;Call mailCheck using Salary reference --&quot;</span>);
       s.mailCheck();
-
+ 
       System.out.println(<span class="hljs-string">&quot;\n Call mailCheck using Employee reference--&quot;</span>);
       e.mailCheck();
     &#125;
@@ -357,28 +357,26 @@ Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.
    <span class="hljs-keyword">private</span> String name;
    <span class="hljs-keyword">private</span> String address;
    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> number;
-
+   
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>;
-
+   
    <span class="hljs-comment">//其余代码</span>
 &#125;</code></pre></div>
 <p>声明抽象方法会造成以下两个结果：</p>
 <ul>
-<li><p>如果一个类包含抽象方法，那么该类必须是抽象类。</p>
-</li>
-<li><p>任何子类必须重写父类的抽象方法，或者声明自身为抽象类。<br>继承抽象方法的子类必须重写该方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该抽象方法，否则，从最初的父类到最终的子类都不能用来实例化对象。<br>如果Salary类继承了Employee类，那么它必须实现computePay()方法：</p>
-<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
+<li>如果一个类包含抽象方法，那么该类必须是抽象类。</li>
+<li>任何子类必须重写父类的抽象方法，或者声明自身为抽象类。<br>继承抽象方法的子类必须重写该方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该抽象方法，否则，从最初的父类到最终的子类都不能用来实例化对象。<br>如果Salary类继承了Employee类，那么它必须实现computePay()方法：<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Salary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>
 <span class="hljs-class"></span>&#123;
- <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary; <span class="hljs-comment">// Annual salary</span>
-
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>
+   <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary; <span class="hljs-comment">// Annual salary</span>
+  
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>
 <span class="hljs-function">   </span>&#123;
-    System.out.println(<span class="hljs-string">&quot;Computing salary pay for &quot;</span> + getName());
-    <span class="hljs-keyword">return</span> salary/<span class="hljs-number">52</span>;
- &#125;
-
- <span class="hljs-comment">//其余代码</span>
+      System.out.println(<span class="hljs-string">&quot;Computing salary pay for &quot;</span> + getName());
+      <span class="hljs-keyword">return</span> salary/<span class="hljs-number">52</span>;
+   &#125;
+ 
+   <span class="hljs-comment">//其余代码</span>
 &#125;</code></pre></div>
 
 </li>

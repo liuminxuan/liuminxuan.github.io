@@ -52,7 +52,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.0.2"></head>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -267,19 +267,19 @@
 <h2 id="接口的实现"><a href="#接口的实现" class="headerlink" title="接口的实现"></a>接口的实现</h2><p>当类实现接口的时候，类要实现接口中所有的方法。否则，类必须声明为抽象的类。<br>类使用implements关键字实现接口。在类声明中，Implements关键字放在class声明后面。<br>实例：</p>
 <div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : MammalInt.java */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MammalInt</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Animal</span></span>&#123;
-
+ 
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">eat</span><span class="hljs-params">()</span></span>&#123;
       System.out.println(<span class="hljs-string">&quot;Mammal eats&quot;</span>);
    &#125;
-
+ 
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">travel</span><span class="hljs-params">()</span></span>&#123;
       System.out.println(<span class="hljs-string">&quot;Mammal travels&quot;</span>);
    &#125; 
-
+ 
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">noOfLegs</span><span class="hljs-params">()</span></span>&#123;
       <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
    &#125;
-
+ 
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String args[])</span></span>&#123;
       MammalInt m = <span class="hljs-keyword">new</span> MammalInt();
       m.eat();
@@ -305,7 +305,7 @@
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setHomeTeam</span><span class="hljs-params">(String name)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setVisitingTeam</span><span class="hljs-params">(String name)</span></span>;
 &#125;
-
+ 
 <span class="hljs-comment">// 文件名: Football.java</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Football</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Sports</span></span>
 <span class="hljs-class"></span>&#123;
@@ -313,7 +313,7 @@
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">visitingTeamScored</span><span class="hljs-params">(<span class="hljs-keyword">int</span> points)</span></span>;
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">endOfQuarter</span><span class="hljs-params">(<span class="hljs-keyword">int</span> quarter)</span></span>;
 &#125;
-
+ 
 <span class="hljs-comment">// 文件名: Hockey.java</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Hockey</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Sports</span></span>
 <span class="hljs-class"></span>&#123;

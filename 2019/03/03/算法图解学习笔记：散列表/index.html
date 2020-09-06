@@ -52,7 +52,7 @@
 
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.0.2"></head>
+<meta name="generator" content="Hexo 5.1.1"></head>
 
 
 <body>
@@ -275,12 +275,12 @@ kick him out!</code></pre></div>
 <p>具体代码如下：</p>
 <div class="hljs"><pre><code class="hljs python">cache = &#123;&#125;
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_page</span>(<span class="hljs-params">url</span>):</span>
-    <span class="hljs-keyword">if</span> cache.get(url):
-        <span class="hljs-keyword">return</span> cache[url]
-    <span class="hljs-keyword">else</span>:
-        data = get_data_from_server(url)
-        cache[url] = data
-        <span class="hljs-keyword">return</span> data</code></pre></div>
+	<span class="hljs-keyword">if</span> cache.get(url):
+		<span class="hljs-keyword">return</span> cache[url]
+	<span class="hljs-keyword">else</span>:
+		data = get_data_from_server(url)
+		cache[url] = data
+		<span class="hljs-keyword">return</span> data</code></pre></div>
 
 <h1 id="散列表性能"><a href="#散列表性能" class="headerlink" title="散列表性能"></a>散列表性能</h1><p>根据散列表特性，最好的情况为O(1),最坏的情况为O(n),所以当填装因子过大时，为了防止<strong>冲突</strong>，我们需要对散列表进行扩容，虽然调整散列表长度开销很大，但是就整体而言，散列表的整体运行时间依然是O(1)。</p>
 <h1 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h1><p>散列函数作为非基础模块，本章不做解释，具体可以了解SHA函数和MD5算法。</p>
