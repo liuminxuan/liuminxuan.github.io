@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2019-03-27 12:08" pubdate>
-      2019年3月27日 中午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-03-27 12:08" pubdate>
+        2019年3月27日 中午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,7 +221,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -279,7 +285,7 @@
 <p><strong>答案：将吉他和笔记本电脑装入背包时价值最高，为3500美元。</strong></p>
 <p>计算每个单元格价值时，运用如下公式：</p>
 <p>cell[i][j] =<br>max{ 上一个单元格的值(cell[i-1][j]) ，当前商品价值(cell[i][j-1])+剩余空间价值(cell[i-1][j-当前物品重量])</p>
-<h2 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h2><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
+<h2 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span>
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bag</span>(<span class="hljs-params">n,c,w,p</span>):</span>
     res=[[<span class="hljs-number">-1</span> <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(c+<span class="hljs-number">1</span>)]<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n+<span class="hljs-number">1</span>)]
     <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(c+<span class="hljs-number">1</span>):
@@ -315,7 +321,7 @@
     p=[<span class="hljs-number">1500</span>,<span class="hljs-number">2000</span>,<span class="hljs-number">3000</span>]
     res=bag(n,c,w,p)
     show(n,c,w,res)
-</code></pre>
+</code></pre></div>
 <p>理论上来说，第33行的重量无所谓顺序，但是此算法转化为代码时，因为代码的一些缺陷，导致必须要按从小到大排序才能使程序顺利运行。</p>
 <h1 id="旅行行程最优化"><a href="#旅行行程最优化" class="headerlink" title="旅行行程最优化"></a>旅行行程最优化</h1><p>假设你要去伦敦度假，假期两天，你想去浏览的地方很多，但是没法全部浏览到，因此有如下的单子：</p>
 <table>
@@ -541,6 +547,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

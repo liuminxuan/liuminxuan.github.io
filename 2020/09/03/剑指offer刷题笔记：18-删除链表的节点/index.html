@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-03 10:21" pubdate>
-      2020年9月3日 上午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-03 10:21" pubdate>
+        2020年9月3日 上午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,21 +221,21 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
               <h1 id="剑指-Offer-18-删除链表的节点"><a href="#剑指-Offer-18-删除链表的节点" class="headerlink" title="剑指 Offer 18. 删除链表的节点"></a>剑指 Offer 18. 删除链表的节点</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。<br>返回删除后的链表的头节点。<br><strong>注意</strong>：此题对比原题有改动</p>
-<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><pre><code class="hljs angelscript">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], val = <span class="hljs-number">5</span>
+<h3 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h3><div class="hljs"><pre><code class="hljs angelscript">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], val = <span class="hljs-number">5</span>
 输出: [<span class="hljs-number">4</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>]
-解释: 给定你链表中值为 <span class="hljs-number">5</span> 的第二个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">1</span> -&gt; <span class="hljs-number">9.</span></code></pre>
-<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><pre><code class="hljs angelscript">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], val = <span class="hljs-number">1</span>
+解释: 给定你链表中值为 <span class="hljs-number">5</span> 的第二个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">1</span> -&gt; <span class="hljs-number">9.</span></code></pre></div>
+<h3 id="示例2"><a href="#示例2" class="headerlink" title="示例2"></a>示例2</h3><div class="hljs"><pre><code class="hljs angelscript">输入: head = [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">1</span>,<span class="hljs-number">9</span>], val = <span class="hljs-number">1</span>
 输出: [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">9</span>]
-解释: 给定你链表中值为 <span class="hljs-number">1</span> 的第三个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">5</span> -&gt; <span class="hljs-number">9.</span></code></pre>
+解释: 给定你链表中值为 <span class="hljs-number">1</span> 的第三个节点，那么在调用了你的函数之后，该链表应变为 <span class="hljs-number">4</span> -&gt; <span class="hljs-number">5</span> -&gt; <span class="hljs-number">9.</span></code></pre></div>
 
 <h2 id="解题思路1-双指针"><a href="#解题思路1-双指针" class="headerlink" title="解题思路1 双指针"></a>解题思路1 双指针</h2><p>Leetcode上大多数关于链表的题目都可以用双指针来解决，此题也不例外。<br>前指针记录前一个节点，现指针记录现在的节点，这样当现指针找到对应节点时直接让前指针指向现指针之后的节点。<br>注意当第一个节点为要找的节点时直接返回第二个节点。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;
         <span class="hljs-keyword">if</span>(head.val == val) <span class="hljs-keyword">return</span> head.next; <span class="hljs-comment">// 如果头节点的值等于val，直接返回头节点的下一个</span>
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(-<span class="hljs-number">1</span>); <span class="hljs-comment">// 取出头节点，最后好直接返回</span>
@@ -248,10 +254,10 @@
         &#125;
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h2 id="解题思路2-单指针"><a href="#解题思路2-单指针" class="headerlink" title="解题思路2 单指针"></a>解题思路2 单指针</h2><p>因为此题如果使用双指针，两个指针永远是一前一后，所以可以用head和head.next来代替双指针。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> val)</span> </span>&#123;
         <span class="hljs-keyword">if</span>(head.val == val) <span class="hljs-keyword">return</span> head.next; <span class="hljs-comment">// 如果头节点的值等于val，直接返回头节点的下一个</span>
         ListNode dummy = <span class="hljs-keyword">new</span> ListNode(-<span class="hljs-number">1</span>); <span class="hljs-comment">// 取出头节点，最后好直接返回</span>
@@ -266,7 +272,7 @@
         &#125;
         <span class="hljs-keyword">return</span> dummy.next;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>
@@ -405,6 +411,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

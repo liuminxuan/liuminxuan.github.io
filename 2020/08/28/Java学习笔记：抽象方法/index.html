@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-28 10:48" pubdate>
-      2020年8月28日 上午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-28 10:48" pubdate>
+        2020年8月28日 上午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,14 +221,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
               <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>Java是面向对象的语言，通过类来描述对象，但是如果一个类中没有足够的信息来描述对象，那么这个类就是抽象类。<br>抽象类<strong>不能被实例化</strong>,但是其他功能照常，成员变量、成员方法和构造方法和普通类一样。<br>由于抽象类不能被实例化，所以抽象类必须被继承后才能使用。<br>父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。<br><strong>在Java中抽象类表示的是一种继承关系，一个类只能继承一个抽象类，而一个类却可以实现多个接口。</strong></p>
 <h2 id="定义抽象类"><a href="#定义抽象类" class="headerlink" title="定义抽象类"></a>定义抽象类</h2><p>在Java语言中使用abstract class来定义抽象类。如下代码：</p>
-<pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Employee.java */</span>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Employee.java */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>
 <span class="hljs-class"></span>&#123;
    <span class="hljs-keyword">private</span> String name;
@@ -265,9 +271,9 @@
 <span class="hljs-function">   </span>&#123;
      <span class="hljs-keyword">return</span> number;
    &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>注意到该 Employee 类没有什么不同，尽管该类是抽象类，但是它仍然有 3 个成员变量，7 个成员方法和 1 个构造方法。 现在如果你尝试如下的例子：</p>
-<pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : AbstractDemo.java */</span>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : AbstractDemo.java */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractDemo</span></span>
 <span class="hljs-class"></span>&#123;
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>
@@ -278,14 +284,14 @@
       System.out.println(<span class="hljs-string">&quot;\n Call mailCheck using Employee reference--&quot;</span>);
       e.mailCheck();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>当你尝试编译AbstractDemo类时，会产生如下错误：</p>
-<pre><code class="hljs pony"><span class="hljs-type">Employee</span>.java:<span class="hljs-number">46</span>: <span class="hljs-type">Employee</span> <span class="hljs-keyword">is</span> abstract; cannot <span class="hljs-keyword">be</span> instantiated
+<div class="hljs"><pre><code class="hljs pony"><span class="hljs-type">Employee</span>.java:<span class="hljs-number">46</span>: <span class="hljs-type">Employee</span> <span class="hljs-keyword">is</span> abstract; cannot <span class="hljs-keyword">be</span> instantiated
       <span class="hljs-type">Employee</span> e = <span class="hljs-keyword">new</span> <span class="hljs-type">Employee</span>(<span class="hljs-string">&quot;George W.&quot;</span>, <span class="hljs-string">&quot;Houston, TX&quot;</span>, <span class="hljs-number">43</span>);
                    ^
-<span class="hljs-number">1</span> <span class="hljs-keyword">error</span></code></pre>
+<span class="hljs-number">1</span> <span class="hljs-keyword">error</span></code></pre></div>
 <h2 id="继承抽象类"><a href="#继承抽象类" class="headerlink" title="继承抽象类"></a>继承抽象类</h2><p>我们能通过一般的方法继承Employee类：</p>
-<pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Salary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>
 <span class="hljs-class"></span>&#123;
    <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary; <span class="hljs-comment">//Annual salary</span>
@@ -317,9 +323,9 @@
       System.out.println(<span class="hljs-string">&quot;Computing salary pay for &quot;</span> + getName());
       <span class="hljs-keyword">return</span> salary/<span class="hljs-number">52</span>;
    &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>尽管我们不能实例化一个 Employee 类的对象，但是如果我们实例化一个 Salary 类对象，该对象将从 Employee 类继承 7 个成员方法，且通过该方法可以设置或获取三个成员变量。</p>
-<pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : AbstractDemo.java */</span>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : AbstractDemo.java */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AbstractDemo</span></span>
 <span class="hljs-class"></span>&#123;
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String [] args)</span></span>
@@ -333,9 +339,9 @@
       System.out.println(<span class="hljs-string">&quot;\n Call mailCheck using Employee reference--&quot;</span>);
       e.mailCheck();
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>以上程序编译运行结果如下：</p>
-<pre><code class="hljs smali">Constructing an Employee
+<div class="hljs"><pre><code class="hljs smali">Constructing an Employee
 Constructing an Employee
 Call mailCheck using  Salary reference --
 Within mailCheck of Salary class
@@ -343,10 +349,10 @@ Mailing<span class="hljs-built_in"> check </span>to Mohd Mohtashim with salary 3
 
 Call mailCheck using Employee reference--
 Within mailCheck of Salary class
-Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.</code></pre>
+Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.</code></pre></div>
 
 <h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><p>如果你想设计这样一个类，该类包含一个特别的成员方法，该方法的具体实现由它的子类确定，那么你可以在父类中声明该方法为抽象方法。<br>Abstract 关键字同样可以用来声明抽象方法，抽象方法只包含一个方法名，而没有方法体。<br>抽象方法没有定义，方法名后面直接跟一个分号，而不是花括号。</p>
-<pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Employee</span></span>
 <span class="hljs-class"></span>&#123;
    <span class="hljs-keyword">private</span> String name;
    <span class="hljs-keyword">private</span> String address;
@@ -355,13 +361,13 @@ Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">double</span> <span class="hljs-title">computePay</span><span class="hljs-params">()</span></span>;
 
    <span class="hljs-comment">//其余代码</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 <p>声明抽象方法会造成以下两个结果：</p>
 <ul>
 <li><p>如果一个类包含抽象方法，那么该类必须是抽象类。</p>
 </li>
 <li><p>任何子类必须重写父类的抽象方法，或者声明自身为抽象类。<br>继承抽象方法的子类必须重写该方法。否则，该子类也必须声明为抽象类。最终，必须有子类实现该抽象方法，否则，从最初的父类到最终的子类都不能用来实例化对象。<br>如果Salary类继承了Employee类，那么它必须实现computePay()方法：</p>
-<pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/* 文件名 : Salary.java */</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Salary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Employee</span></span>
 <span class="hljs-class"></span>&#123;
  <span class="hljs-keyword">private</span> <span class="hljs-keyword">double</span> salary; <span class="hljs-comment">// Annual salary</span>
@@ -373,7 +379,7 @@ Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.
  &#125;
 
  <span class="hljs-comment">//其余代码</span>
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 </li>
 </ul>
@@ -524,6 +530,10 @@ Mailing<span class="hljs-built_in"> check </span>to John Adams with salary 2400.
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

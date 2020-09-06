@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-09-04 11:06" pubdate>
-      2020年9月4日 上午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-04 11:06" pubdate>
+        2020年9月4日 上午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,17 +221,17 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
               <h1 id="剑指offer刷题笔记：21-调整数组顺序使奇数位于偶数前面"><a href="#剑指offer刷题笔记：21-调整数组顺序使奇数位于偶数前面" class="headerlink" title="剑指offer刷题笔记：21. 调整数组顺序使奇数位于偶数前面"></a>剑指offer刷题笔记：21. 调整数组顺序使奇数位于偶数前面</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code class="hljs angelscript">输入：nums = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><div class="hljs"><pre><code class="hljs angelscript">输入：nums = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]
 输出：[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>] 
-注：[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>] 也是正确的答案之一。</code></pre>
+注：[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>] 也是正确的答案之一。</code></pre></div>
 <h2 id="解题思路1-头尾指针"><a href="#解题思路1-头尾指针" class="headerlink" title="解题思路1 头尾指针"></a>解题思路1 头尾指针</h2><p>记录这题是因为这是最近leetcode第一道没有出现错误一气呵成的题目，算是一个小小的里程碑吧。虽然很简单，但是给了我信心哈哈。<br>算法很简单，首先创建一个新数组，然后遍历原数组，遇到奇数放到头上，遇到偶数放到尾巴上。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] exchange(<span class="hljs-keyword">int</span>[] nums) &#123;
         <span class="hljs-comment">// new一个新数组</span>
         <span class="hljs-keyword">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums.length];
@@ -246,10 +252,10 @@
         &#125;
         <span class="hljs-keyword">return</span> res;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <h2 id="解题思路2-原数组上交换"><a href="#解题思路2-原数组上交换" class="headerlink" title="解题思路2 原数组上交换"></a>解题思路2 原数组上交换</h2><p>因为解题思路1的内存消耗较大，所以想到在原数组上互换。<br>结果内存消耗从49.4MB变为47.6MB，超越人数从2%提升到90%。<br>但是执行用时从超越99%的2ms变为超越34.3%的3ms。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] exchange(<span class="hljs-keyword">int</span>[] nums) &#123;
         <span class="hljs-keyword">int</span> head = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">int</span> tail = nums.length - <span class="hljs-number">1</span>;
@@ -272,7 +278,7 @@
         &#125;
         <span class="hljs-keyword">return</span> nums;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>
@@ -405,6 +411,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

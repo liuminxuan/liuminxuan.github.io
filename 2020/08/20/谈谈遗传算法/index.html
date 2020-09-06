@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-20 13:26" pubdate>
-      2020年8月20日 下午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-08-20 13:26" pubdate>
+        2020年8月20日 下午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -237,24 +243,24 @@
 <center>2^16 < 90000 < 2^17 </center>
 
 <p><strong>可以将所有可能性都包含在内，下面将其进行二进制的转换</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chromosome</span>(<span class="hljs-params">self, length</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_chromosome</span>(<span class="hljs-params">self, length</span>):</span>
     <span class="hljs-comment"># 随机生成染色体变量</span>
     <span class="hljs-comment"># a bit ( 0, 1 ) represent a gene</span>
     chromosome = <span class="hljs-number">0</span>
     <span class="hljs-keyword">for</span> i  <span class="hljs-keyword">in</span> range(length):
         chromosome |= ( <span class="hljs-number">1</span> &lt;&lt; i ) * random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)
-   <span class="hljs-keyword">return</span> chromosome</code></pre>
+   <span class="hljs-keyword">return</span> chromosome</code></pre></div>
 <p><strong>将字符二进制编码后还需进行解码，解码我们用</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decode</span>(<span class="hljs-params">self, chromosome</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decode</span>(<span class="hljs-params">self, chromosome</span>):</span>
     <span class="hljs-comment"># 将二进制还原成十进制</span>
-    <span class="hljs-keyword">return</span> chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>)</code></pre>
+    <span class="hljs-keyword">return</span> chromosome * <span class="hljs-number">9.0</span>/ (<span class="hljs-number">2</span>**(self.length)<span class="hljs-number">-1</span>)</code></pre></div>
 <p><strong>将得到的种群进行选择，我们要用到题目中所给的选择条件</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fitness</span>(<span class="hljs-params">self, chromosome</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fitness</span>(<span class="hljs-params">self, chromosome</span>):</span>
     <span class="hljs-comment"># 解码和适应性函数</span>
     x = self.decode(chromosome)
-    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x )</code></pre>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * math.sin( <span class="hljs-number">2</span> * x ) + math.cos( <span class="hljs-number">3</span> * x )</code></pre></div>
 <p><strong>然后进行编写选择模块</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selection</span>(<span class="hljs-params">self, retain_rate, random_select_rate</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">selection</span>(<span class="hljs-params">self, retain_rate, random_select_rate</span>):</span>
     <span class="hljs-comment"># 通过适应度大小从大到小进行排序，最后生成的仍然是二进制的列表</span>
     graded = [(self.fitness(chromosome), chromosome) <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> self.population]
     graded = [x[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> sorted(graded, reverse=<span class="hljs-literal">True</span>)]
@@ -265,9 +271,9 @@
     <span class="hljs-keyword">for</span> chromosome <span class="hljs-keyword">in</span> graded[retain_length:]:
         <span class="hljs-keyword">if</span> random.random() &lt; random_select_rate:
             parents.append(chromosome)
-    <span class="hljs-keyword">return</span> parents</code></pre>
+    <span class="hljs-keyword">return</span> parents</code></pre></div>
 <p><strong>编写交叉模块</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crossover</span>(<span class="hljs-params">self, parents</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">crossover</span>(<span class="hljs-params">self, parents</span>):</span>
     <span class="hljs-comment"># 交叉产生后代</span>
     <span class="hljs-comment"># 新出生的孩子，最终会被加入存活下来的父母之中，形成新一代的种群。</span>
     children = []
@@ -289,18 +295,18 @@
             child = (male &amp; mask) | (female &amp; ~mask)
             children.append(child)
     <span class="hljs-comment"># 经过繁殖后，孩子和父母的数量与原始种群数量相等，在这里可以更新种群。</span>
-    self.population = parents + children</code></pre>
+    self.population = parents + children</code></pre></div>
 <p><strong>编写变异模块</strong></p>
-<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mutation</span>(<span class="hljs-params">self, rate</span>):</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mutation</span>(<span class="hljs-params">self, rate</span>):</span>
     <span class="hljs-comment"># 对种群中的所有个体，随机改变某个个体中的某个基因</span>
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(self.population)):
         <span class="hljs-keyword">if</span> random.random() &lt; rate:
             j = random.randint(<span class="hljs-number">0</span>, self.length - <span class="hljs-number">1</span>)
             <span class="hljs-comment"># 随机取得一个数j对变异基因1进行随机移动</span>
-            self.population[i] = self.population[i] ^ ( <span class="hljs-number">1</span> &lt;&lt; j )  <span class="hljs-comment"># ^是异或运算</span></code></pre>
+            self.population[i] = self.population[i] ^ ( <span class="hljs-number">1</span> &lt;&lt; j )  <span class="hljs-comment"># ^是异或运算</span></code></pre></div>
 
 <p>遗传算法求最大值的总体思路就是这样，思想上还是相当简单的，下面我们把所有代码组合起来，加上框架，就可以做成一个完整的<strong>遗传算法求最大值</strong>的程序</p>
-<pre><code class="hljs python"><span class="hljs-comment"># !/usr/bin/env python</span>
+<div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># !/usr/bin/env python</span>
 <span class="hljs-comment"># -*- coding:utf-8 -*-</span>
 <span class="hljs-comment"># 求解函数 2 * math.sin( 2 * x ) + math.cos( 3 * x )在区间[0,9]的最大值。</span>
 
@@ -410,7 +416,7 @@
     ga = GA(<span class="hljs-number">17</span>, <span class="hljs-number">300</span>)
     <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">200</span>):
         ga.evolve()
-    print(<span class="hljs-string">&#x27;x = %f&#x27;</span> %(ga.result()))</code></pre>
+    print(<span class="hljs-string">&#x27;x = %f&#x27;</span> %(ga.result()))</code></pre></div>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li><p>遗传算法在思想上还是很简单的存在，并且可以通过变异避免陷入局部最优解，但是缺点也很明显，因为要通过不停迭代不停选择，所以运行时间比较长，而且种群数量变大的话，对于电脑的资源消耗也变高。  </p>
@@ -557,6 +563,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2019-02-28 10:02" pubdate>
-      2019年2月28日 上午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-02-28 10:02" pubdate>
+        2019年2月28日 上午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,7 +221,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -228,7 +234,7 @@
 </ol>
 <a id="more"></a>
 
-<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findSmallest</span>(<span class="hljs-params">arr</span>):</span>
+<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">findSmallest</span>(<span class="hljs-params">arr</span>):</span>
     Smallest = arr[<span class="hljs-number">0</span>]
     Smallest_index = <span class="hljs-number">0</span>
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,len(arr)):
@@ -244,7 +250,7 @@
     <span class="hljs-keyword">return</span> newArr
 
 <span class="hljs-keyword">print</span> selectionSort([<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>,<span class="hljs-number">2</span>,<span class="hljs-number">10</span>])
-</code></pre>
+</code></pre></div>
 
 <h1 id="算法运行时间"><a href="#算法运行时间" class="headerlink" title="算法运行时间"></a>算法运行时间</h1><p>第一次需要检查n个元素，随后依次是n-1，n-2，···，2和1。因此运行时间为O(n*1/2*n)，但是大O表示法常常省略1/2这样的常数，所以选择排序的算法运行时间为O(n^2).</p>
 
@@ -384,6 +390,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

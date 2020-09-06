@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-04-07 23:14" pubdate>
-      2020年4月7日 晚上
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-07 23:14" pubdate>
+        2020年4月7日 晚上
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,20 +221,20 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
               <h1 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h1><p>构造方法是类里的一个特殊的方法，他不能有返回值（包括void）。所谓构造方法，就是这个类在被实例化时（创建对象时）就要执行的方法，方法名为类的名字，一般的目的是为了给类进行一些初始化值。</p>
-<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MerchandiseV2WithConstructor</span><span class="hljs-params">(String name, String id, <span class="hljs-keyword">int</span> count,</span></span>
+<h1 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h1><div class="hljs"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MerchandiseV2WithConstructor</span><span class="hljs-params">(String name, String id, <span class="hljs-keyword">int</span> count,</span></span>
 <span class="hljs-function"><span class="hljs-params">                                        <span class="hljs-keyword">double</span> soldPrice, <span class="hljs-keyword">double</span> purchasePrice)</span> </span>&#123;
         <span class="hljs-keyword">this</span>.name = name;
         <span class="hljs-keyword">this</span>.id = id;
         <span class="hljs-keyword">this</span>.count = count;
         <span class="hljs-keyword">this</span>.soldPrice = soldPrice;
         <span class="hljs-keyword">this</span>.purchasePrice = purchasePrice;
-    &#125;</code></pre>
+    &#125;</code></pre></div>
 
 <h1 id="构造方法的继承"><a href="#构造方法的继承" class="headerlink" title="构造方法的继承"></a>构造方法的继承</h1><p>子类创建构造方法中一定会创建一个父类的构造方法，所以this和super不可以共存。</p>
 
@@ -366,6 +372,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

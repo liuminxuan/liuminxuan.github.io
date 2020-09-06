@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2019-03-06 10:24" pubdate>
-      2019年3月6日 上午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-03-06 10:24" pubdate>
+        2019年3月6日 上午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,7 +221,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -234,7 +240,7 @@
 <li>从第一层邻居关系开始搜索，直到所有邻居都搜索完。</li>
 <li>返回结果</li>
 </ol>
-<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><pre><code class="hljs python"><span class="hljs-comment"># coding: utf-8</span>
+<h1 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h1><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># coding: utf-8</span>
 <span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque
 
 graph = &#123;&#125;
@@ -267,7 +273,7 @@ graph[<span class="hljs-string">&quot;jonny&quot;</span>] = []
 
 search(<span class="hljs-string">&quot;you&quot;</span>)
 
-</code></pre>
+</code></pre></div>
 <h1 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h1><p>广度优先沿着每条边前行，然后将每个人加入队列中检查，所以运行时间为O(边数+人数)，通常写做O(V+E)。</p>
 
             </div>
@@ -408,6 +414,10 @@ search(<span class="hljs-string">&quot;you&quot;</span>)
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2019-03-13 09:56" pubdate>
-      2019年3月13日 上午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-03-13 09:56" pubdate>
+        2019年3月13日 上午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,7 +221,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -247,7 +253,7 @@
 <li>重复第一步。</li>
 </ol>
 <p>算法运行时间为O(n^2), n为广播台数量。</p>
-<h2 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h2><pre><code class="hljs python"><span class="hljs-comment"># coding: utf-8</span>
+<h2 id="代码表现"><a href="#代码表现" class="headerlink" title="代码表现"></a>代码表现</h2><div class="hljs"><pre><code class="hljs python"><span class="hljs-comment"># coding: utf-8</span>
 states_needed = set([<span class="hljs-string">&quot;mt&quot;</span>,<span class="hljs-string">&quot;wa&quot;</span>,<span class="hljs-string">&quot;or&quot;</span>,<span class="hljs-string">&quot;id&quot;</span>,<span class="hljs-string">&quot;nv&quot;</span>,<span class="hljs-string">&quot;ut&quot;</span>,<span class="hljs-string">&quot;ca&quot;</span>,<span class="hljs-string">&quot;az&quot;</span>]) <span class="hljs-comment"># 输入所有地区</span>
 
 stations = &#123;&#125; <span class="hljs-comment">#用散列表表示电台</span>
@@ -271,7 +277,7 @@ final_station = set() <span class="hljs-comment">#最终选择广播台</span>
     states_needed -= states_covered <span class="hljs-comment">#剔除覆盖的地区</span>
     final_station.add(best_station)
 
-<span class="hljs-keyword">print</span> final_station</code></pre>
+<span class="hljs-keyword">print</span> final_station</code></pre></div>
 
 <p>得到结果<code>set([&#39;ktwo&#39;, &#39;kthree&#39;, &#39;kone&#39;, &#39;kfive&#39;])</code></p>
 
@@ -415,6 +421,10 @@ final_station = set() <span class="hljs-comment">#最终选择广播台</span>
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

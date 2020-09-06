@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-05-03 11:20" pubdate>
-      2020年5月3日 上午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-03 11:20" pubdate>
+        2020年5月3日 上午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,14 +221,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
               <h2 id="题目编号"><a href="#题目编号" class="headerlink" title="题目编号"></a>题目编号</h2><p>3 209</p>
 <h2 id="3-无重复字符的最长子串"><a href="#3-无重复字符的最长子串" class="headerlink" title="3. 无重复字符的最长子串"></a>3. 无重复字符的最长子串</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>一开始以子串的长度为基准，发现循环中的代码非常复杂，一不注意就出错，后来看了评论才知道应该以左边的数字为基准，外层循环遍历整个字符串，内层循环遍历当前子串是否有相同的字符。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(String s)</span> </span>&#123;
         <span class="hljs-keyword">int</span> maxCount = <span class="hljs-number">0</span>;
         <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>; <span class="hljs-comment">// 左边的那个数</span>
@@ -239,7 +245,7 @@
         maxCount = Math.max(maxCount, sToChar.length - left);
         <span class="hljs-keyword">return</span> maxCount;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
 
 <a id="more"></a>
 
@@ -250,7 +256,7 @@
 <li>从第三个数开始往后加，加到满足条件看有几个元素，然后跟第二个比较，</li>
 <li>。。。得出结果</li>
 </ul>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><div class="hljs"><pre><code class="hljs Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minSubArrayLen</span><span class="hljs-params">(<span class="hljs-keyword">int</span> s, <span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
         <span class="hljs-keyword">int</span> len = nums.length + <span class="hljs-number">1</span>;
         <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
@@ -268,7 +274,7 @@
         &#125;
         <span class="hljs-keyword">return</span> len == nums.length + <span class="hljs-number">1</span> ? <span class="hljs-number">0</span> : len;
     &#125;
-&#125;</code></pre>
+&#125;</code></pre></div>
             </div>
             <hr>
             <div>
@@ -405,6 +411,10 @@
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2018-12-04 15:59" pubdate>
-      2018年12月4日 下午
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-04 15:59" pubdate>
+        2018年12月4日 下午
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,7 +221,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -235,19 +241,19 @@
 <li>但是192.168.1.1拒绝通信</li>
 </ul>
 <p>配置路由器</p>
-<pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
 Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.1.254 255.255.255.0</span>
 Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
 Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
 Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.2.254 255.255.255.0</span>
 Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
-Router<span class="hljs-meta">#show interface 确认端口是否设置成功</span></code></pre>
+Router<span class="hljs-meta">#show interface 确认端口是否设置成功</span></code></pre></div>
 <p>配置ACL</p>
-<pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 1 deny host 192.168.1.1</span>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 1 deny host 192.168.1.1</span>
 Router(config)<span class="hljs-meta">#access-list 1 permit any</span>
 Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
 Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip access-group 1 in</span>
-Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre>
+Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre></div>
 
 
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
@@ -259,12 +265,12 @@ Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></
 <li>PC A和PC D不能ping成功</li>
 </ul>
 <p>如果选择Fa 1端口配置ACL的话，就修改成如下代码</p>
-<pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
 Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip access-group 1 out</span>
-Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre>
+Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre></div>
 
 <p>如果不需要这个ACL的话</p>
-<pre><code class="hljs C">Router(config)<span class="hljs-meta">#no access-list 1</span></code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#no access-list 1</span></code></pre></div>
 
 <p>就可以将ACL删去.</p>
 <p>ACL的对照顺序是自上向下并且默认是deny的，如果将实验中ACL的两行互换在本演习中理论上没有影响，但是具体实验并没有实施，“顺序因素对ACL的影响”是以后可以考虑的问题点之一。</p>
@@ -405,6 +411,10 @@ Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 

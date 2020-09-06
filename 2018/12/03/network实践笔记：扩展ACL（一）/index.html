@@ -27,7 +27,10 @@
 
   
     
-    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
   
 
   
@@ -35,11 +38,11 @@
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -157,14 +160,17 @@
             </span>
 
             
-              
-  <div class="mt-3 post-meta">
-    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2018-12-03 20:59" pubdate>
-      2018年12月3日 晚上
-    </time>
-  </div>
-
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-03 20:59" pubdate>
+        2018年12月3日 晚上
+      </time>
+    </span>
+  
+</div>
 
 <div class="mt-1">
   
@@ -215,7 +221,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -229,23 +235,23 @@
 <li>设置番号为100的扩展ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</li>
 </ol>
 <p>首先配置路由器让其互相ping通  </p>
-<pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
 Router(config)<span class="hljs-meta">#ip address 192.168.1.254 255.255.255.0</span>
 Router(config)<span class="hljs-meta">#no shutdown</span>
 Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
 Router(config)<span class="hljs-meta">#ip address 192.168.2.254 255.255.255.0</span>
 Router(config)<span class="hljs-meta">#no shutdown</span>
-Router<span class="hljs-meta">#show interface   确认端口是否配置成功</span></code></pre>
+Router<span class="hljs-meta">#show interface   确认端口是否配置成功</span></code></pre></div>
 
 <p>配置ACL</p>
-<pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span>
 Router(config)<span class="hljs-meta">#access-list 100 permit ip any any</span>
 Router(config)<span class="hljs-meta">#show access-lists 确认ACL是否建立成功</span>
 Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
-Router(config)<span class="hljs-meta">#ip access-group 100 in</span></code></pre>
+Router(config)<span class="hljs-meta">#ip access-group 100 in</span></code></pre></div>
 <p>如果想设置Fa 1端口，就用</p>
-<pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1  </span>
-Router(config)<span class="hljs-meta">#ip access-group 100 out</span></code></pre>
+<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1  </span>
+Router(config)<span class="hljs-meta">#ip access-group 100 out</span></code></pre></div>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最后检查结果时，会出现PCA1到PCB1到达不能，PCB1到PCA1出现timeout，这是正常结果，因为tcp/ip的三次握手中，当PCA1到PCB1通路阻断时，PCA1不能回应PCB1发出的“问候”，从而出现timeout。  </p>
 
             </div>
@@ -378,6 +384,10 @@ Router(config)<span class="hljs-meta">#ip access-group 100 out</span></code></pr
 
   
     <script  src="/js/lazyload.js" ></script>
+  
+
+
+
   
 
 
