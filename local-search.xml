@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>Java学习笔记：常见异常以及异常分类checked exception和unchecked expception</title>
+    <link href="/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%BC%82%E5%B8%B8%E4%BB%A5%E5%8F%8A%E5%BC%82%E5%B8%B8%E5%88%86%E7%B1%BBchecked-exception%E5%92%8Cunchecked-expception/"/>
+    <url>/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%BC%82%E5%B8%B8%E4%BB%A5%E5%8F%8A%E5%BC%82%E5%B8%B8%E5%88%86%E7%B1%BBchecked-exception%E5%92%8Cunchecked-expception/</url>
+    
+    <content type="html"><![CDATA[<h1 id="常见异常"><a href="#常见异常" class="headerlink" title="常见异常"></a>常见异常</h1><table><thead><tr><th>类别</th><th>常见异常</th></tr></thead><tbody><tr><td>Error</td><td>AssertionError、OutOfMemoryError、StackOverflowError</td></tr><tr><td>UncheckedException</td><td>AlreadyBoundException、ClassCastException、ConcurrentModificationException、IllegalArgumentException、IllegalStateException、IndexOutOfBoundsException、JSONException、NullPointerException、SecurityException、UnsupportedOperationException｜</td></tr><tr><td>CheckedException</td><td>ClassNotFoundException、CloneNotSupportedException、FileAlreadyExistsException、FileNotFoundException、InterruptedException、IOException、SQLException、TimeoutException、UnknownHostException</td></tr></tbody></table><h1 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h1><p><strong>Error通常描述了系统级的错误，并且程序猿无法主动处理</strong>——当然，系统级错误也有可能由代码间接导致，这不在我们的讨论范围内。发生系统级错误的时候，系统环境已经不健康了，因此，Error不强制捕获或声明，也就是<strong>不强制处理，一般情况下只需要把异常信息记录下来</strong>（如果能记下当时的系统快照更好）。</p><h1 id="Unchecked-Exception"><a href="#Unchecked-Exception" class="headerlink" title="Unchecked Exception"></a>Unchecked Exception</h1><p>严格来说，Error也可以被划归UncheckedException，但我们更习惯用<strong>UncheckedException描述运行期发生，通常由于代码问题直接引起的程序相关的错误，并且程序猿无法主动处理</strong>。注意区分，系统级错误都应该用Error描述。UncheckedException发生的大部分情况是代码写挫了，因此，UncheckedException也不强制捕获或声明，也就是<strong>不强制处理，一般情况下记下日志即可</strong>。</p><p>不同的是，如果可能，<strong>要保证UncheckedException是可控的（在异常被动抛出前检查并主动抛出）</strong>。</p><h1 id="Checked-Expception"><a href="#Checked-Expception" class="headerlink" title="Checked Expception"></a>Checked Expception</h1><p><strong>CheckedException描述了外部环境导致的不太严重的错误，程序猿应该主动处理</strong>。注意与系统级错误区分，系统级错误通常是不可恢复的。因此，CheckedException强制捕获或声明，程序猿必须处理。<strong>记录日志，包装后再次抛出，在方法签名中声明</strong>，是三种最常见的做法。</p><p>同UncheckedException一样，<strong>CheckedException也要保证是可控的</strong>。对CheckedException的可控性要求更高，不仅要主动检查，还要在捕获到异常时，作出合适的处理。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Java学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java学习笔记：枚举</title>
+    <link href="/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%9A%E4%B8%BE/"/>
+    <url>/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%9A%E4%B8%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Java枚举"><a href="#Java枚举" class="headerlink" title="Java枚举"></a>Java枚举</h1><p>Java 枚举是一个特殊的类，一般表示一组常量，比如一年的 4 个季节，一个年的 12 个月份，一个星期的 7 天，方向有东南西北等。<br>Java 枚举类使用 enum 关键字来定义，各个常量使用逗号 , 来分割。</p><h1 id="例如定义一个颜色的枚举类"><a href="#例如定义一个颜色的枚举类" class="headerlink" title="例如定义一个颜色的枚举类"></a>例如定义一个颜色的枚举类</h1><pre><code class="hljs Java"><span class="hljs-keyword">enum</span> Color &#123;     RED, GREEN, BLUE; &#125;</code></pre><p>实例：</p><pre><code class="hljs Java"><span class="hljs-keyword">enum</span> Color&#123;    RED, GREEN, BLUE;&#125; <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span></span><span class="hljs-class"></span>&#123;    <span class="hljs-comment">// 执行输出结果</span>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span><span class="hljs-function">    </span>&#123;        Color c1 = Color.RED;        System.out.println(c1);    &#125;&#125;</code></pre><p>执行结果</p><pre><code class="hljs ebnf"><span class="hljs-attribute">RED</span></code></pre><h1 id="迭代枚举元素"><a href="#迭代枚举元素" class="headerlink" title="迭代枚举元素"></a>迭代枚举元素</h1><p>可以使用 for 语句来迭代枚举元素：</p><pre><code class="hljs Java"><span class="hljs-keyword">enum</span> Color&#123;    RED, GREEN, BLUE;&#125;<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> </span>&#123;  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;    <span class="hljs-keyword">for</span> (Color myVar : Color.values()) &#123;      System.out.println(myVar);    &#125;  &#125;&#125;</code></pre><p>输出结果</p><pre><code class="hljs ebnf"><span class="hljs-attribute">RED</span><span class="hljs-attribute">GREEN</span><span class="hljs-attribute">BLUE</span></code></pre><h1 id="在switch中使用枚举类"><a href="#在switch中使用枚举类" class="headerlink" title="在switch中使用枚举类"></a>在switch中使用枚举类</h1><pre><code class="hljs Java"><span class="hljs-keyword">enum</span> Color&#123;    RED, GREEN, BLUE;&#125;<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> </span>&#123;  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;    Color myVar = Color.BLUE;    <span class="hljs-keyword">switch</span>(myVar) &#123;      <span class="hljs-keyword">case</span> RED:        System.out.println(<span class="hljs-string">&quot;红色&quot;</span>);        <span class="hljs-keyword">break</span>;      <span class="hljs-keyword">case</span> GREEN:         System.out.println(<span class="hljs-string">&quot;绿色&quot;</span>);        <span class="hljs-keyword">break</span>;      <span class="hljs-keyword">case</span> BLUE:        System.out.println(<span class="hljs-string">&quot;蓝色&quot;</span>);        <span class="hljs-keyword">break</span>;    &#125;  &#125;&#125;</code></pre><p>结果为<code>蓝色</code></p><h1 id="values-ordinal-和-valueOf-方法"><a href="#values-ordinal-和-valueOf-方法" class="headerlink" title="values(), ordinal() 和 valueOf() 方法"></a>values(), ordinal() 和 valueOf() 方法</h1><p>enum 定义的枚举类默认继承了 java.lang.Enum 类，并实现了 java.lang.Seriablizable 和 java.lang.Comparable 两个接口。<br>values(), ordinal() 和 valueOf() 方法位于 java.lang.Enum 类中：</p><ul><li>values() 返回枚举类中所有的值。</li><li>ordinal()方法可以找到每个枚举常量的索引，就像数组索引一样。</li><li>valueOf()方法返回指定字符串值的枚举常量。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Java学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java学习笔记：HashMap和HashTable</title>
+    <link href="/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AHashMap%E5%92%8CHashTable/"/>
+    <url>/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9AHashMap%E5%92%8CHashTable/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>HashMap是非线程安全的，HashTable是线程安全的。</p></li><li><p>HashMap的键和值都允许有null值存在(允许一个)，而HashTable则不行。</p></li><li><p>因为线程安全的问题，HashMap效率比HashTable的要高。</p></li><li><p>Hashtable是同步的，而HashMap不是。因此，HashMap更适合于单线程环境，而Hashtable适合于多线程环境。</p><p> 一般现在<strong>不建议用HashTable</strong>, ①是HashTable是遗留类，内部实现很多没优化和冗余。②即使在多线程环境下，现在也有<strong>同步的ConcurrentHashMap</strong>替代，没有必要因为是多线程而用HashTable。</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Java学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【剑指offer】21. 调整数组顺序使奇数位于偶数前面</title>
     <link href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/"/>
     <url>/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/</url>
