@@ -176,6 +176,110 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/11/24/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%EF%BC%88%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%89/">【Java学习】静态方法（类方法）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/24/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%EF%BC%88%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%89/">
+          
+          
+            
+          
+          类方法类方法： 又叫做静态方法
+对象方法： 又叫实例方法，非静态方法
+访问一个对象方法，必须建立在有一个对象的前提的基础上访问类方法，不需要对象的存在，直接就访问
+public class Hero &#123;
+    public String name;
+    protected float hp;
+ 
+    //实例方法,对象方法，非静态方法
+    //必须有对象才能够调用
+    
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-24 11:07" pubdate>
+              2020-11-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/11/19/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F/">【Java学习】静态属性（类属性）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/19/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F/">
+          
+          
+            
+          
+          static当一个属性被static修饰的时候，就叫做类属性，又叫做静态属性当一个属性被声明成类属性，那么所有的对象，都共享一个值
+类属性和对象属性类属性： 又叫做静态属性对象属性： 又叫实例属性，非静态属性如果一个属性声明成类属性，那么所有的对象，都共享这么一个值给英雄设置一个类属性叫做“版权” (copyright), 无论有多少个具体的英雄，所有的英雄的版权都属于 Riot Games公司。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-19 10:43" pubdate>
+              2020-11-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%BC%82%E5%B8%B8%E4%BB%A5%E5%8F%8A%E5%BC%82%E5%B8%B8%E5%88%86%E7%B1%BBchecked-exception%E5%92%8Cunchecked-expception/">【Java学习】常见异常以及异常分类</a>
       </h1>
 
@@ -301,14 +405,15 @@ enum Color
             
           
           
+Hashtable继承自Dictionary类，而HashMap继承自AbstractMap类。
+
 HashMap是非线程安全的，HashTable是线程安全的。
 
 HashMap的键和值都允许有null值存在(允许一个)，而HashTable则不行。
 
 因为线程安全的问题，HashMap效率比HashTable的要高。
 
-Hashtable是同步的，而HashMap不是。因此，HashMap更适合于单线程环境，而Hashtable适合于多线程环境。
- 一般现在不建议用HashTable, ①
+Hashtable是同步的，而HashMap不是。因此，HashMap更
         </a>
       </p>
 
@@ -610,100 +715,6 @@ Hashtable是同步的，而HashMap不是。因此，HashMap更适合于单线程
               <a href="/tags/Leetcode/">Leetcode</a>
             
               <a href="/tags/HashMap/">HashMap</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">【Java学习】接口</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">
-          
-          
-            
-          
-          关于接口接口是Java语言中的一个抽象类，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式来继承接口的抽象方法。接口不是类，编写接口的方式和类很相似，但是他们属于不同的概念。类描述对象的属性和方法，接口则包含类要实现的方法。除非实现接口的类是抽象类，否则该类要定义接口中的所有方法。接口无法被实例化，但是可以被实现。一个实现接口的类，必须实现接口内所描述的所有方法，否则
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-28 14:43" pubdate>
-              2020-08-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">【Java学习】抽象类和抽象方法</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">
-          
-          
-            
-          
-          关于Java是面向对象的语言，通过类来描述对象，但是如果一个类中没有足够的信息来描述对象，那么这个类就是抽象类。抽象类不能被实例化,但是其他功能照常，成员变量、成员方法和构造方法和普通类一样。由于抽象类不能被实例化，所以抽象类必须被继承后才能使用。父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。在Java中抽象类表示的是一种继承关系，一个类只能继承一个抽象类，而一个
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-08-28 10:48" pubdate>
-              2020-08-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">Java</a>
             
           </div>
         

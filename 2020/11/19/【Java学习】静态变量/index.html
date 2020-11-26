@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>【算法图解】散列表 - LIU的学习笔记</title>
+  <title>【Java学习】静态属性（类属性） - LIU的学习笔记</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-03-03 10:32" pubdate>
-        2019年3月3日 上午
+      <time datetime="2020-11-19 10:43" pubdate>
+        2020年11月19日 上午
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      896 字
+      406 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      4
        分钟
     </span>
   
@@ -217,73 +217,47 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">【算法图解】散列表</h1>
+            <h1 style="display: none">【Java学习】静态属性（类属性）</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 个月前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>当要快速查找一样水果的价格时，可以用前面所学的二分查找来进行查找，但是二分查找的运行时间虽然为O(log n)但是总归会随着元素数量增加而拖慢查找速度。</p>
-<p>所以数据结构中引入了<strong>散列表</strong>,散列表的运行时间始终为O(1)，是比较理想的数据存储方式。</p>
-<a id="more"></a>
-
-<p>散列表的数据存储原理如下：</p>
-<ol>
-<li>创建一个合适的空数组。</li>
-<li>将输入的值用链表的方式加入数组中。</li>
-<li>如果散列表中<strong>填装因子</strong>过大，则扩大数组（一般扩大两倍）。</li>
+              <h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><p>当一个属性被<strong>static</strong>修饰的时候，就叫做<strong>类属性</strong>，又叫做<strong>静态属性</strong><br>当一个属性被声明成类属性，<strong>那么所有的对象，都共享一个值</strong></p>
+<h1 id="类属性和对象属性"><a href="#类属性和对象属性" class="headerlink" title="类属性和对象属性"></a>类属性和对象属性</h1><p><strong>类属性</strong>： 又叫做静态属性<br><strong>对象属性</strong>： 又叫实例属性，非静态属性<br>如果一个属性声明成类属性，那么所有的对象，都共享这么一个值<br>给英雄设置一个类属性叫做“版权” (copyright), 无论有多少个具体的英雄，所有的英雄的版权都属于 Riot Games公司。</p>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> charactor;
+ 
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Hero</span> </span>&#123;
+    <span class="hljs-keyword">public</span> String name; <span class="hljs-comment">//实例属性，对象属性，非静态属性</span>
+    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">float</span> hp;
+    <span class="hljs-keyword">static</span> String copyright;<span class="hljs-comment">//类属性,静态属性</span>
+     
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+           Hero garen =  <span class="hljs-keyword">new</span> Hero();
+           garen.name = <span class="hljs-string">&quot;盖伦&quot;</span>;
+            
+           Hero.copyright = <span class="hljs-string">&quot;版权由Riot Games公司所有&quot;</span>;
+            
+           System.out.println(garen.name);
+           System.out.println(garen.copyright);
+            
+           Hero teemo =  <span class="hljs-keyword">new</span> Hero();
+           teemo.name = <span class="hljs-string">&quot;提莫&quot;</span>;
+           System.out.println(teemo.name);    
+           System.out.println(teemo.copyright);
+         
+    &#125;
+     
+&#125;</code></pre></div>
+<h1 id="访问类属性"><a href="#访问类属性" class="headerlink" title="访问类属性"></a>访问类属性</h1><ol>
+<li><code>teemo.copyright</code></li>
+<li><code>Hero.copyright</code></li>
 </ol>
-<p>以上所说的<strong>填装因子</strong>为：（散列表包含的元素数/位置总数）一般填装因子临界值设置为0.7。</p>
-<p>回到一开始的问题，假如苹果价钱是0.67，牛奶的价格是1.49，鳄梨价格是1.49，要快速查找各个水果价格可以用散列表。</p>
-<p>虽然散列表自己实现比较难，但是任何主流语言都提供了散列表的实现，python提供的散列表实现为<strong>字典</strong>。</p>
-<div class="hljs"><pre><code class="hljs python">&gt;&gt;&gt;book = dict()
-&gt;&gt;&gt;book[<span class="hljs-string">&quot;apple&quot;</span>] = <span class="hljs-number">0.67</span>
-&gt;&gt;&gt;book[<span class="hljs-string">&quot;milk&quot;</span>] = <span class="hljs-number">1.49</span>
-&gt;&gt;&gt;book[<span class="hljs-string">&quot;avocado&quot;</span>] + <span class="hljs-number">1.49</span>
-&gt;&gt;&gt;<span class="hljs-keyword">print</span> book</code></pre></div>
-
-<p>如果要查询鳄梨的价格，我们只需输入<code>print book[&quot;avocado&quot;]</code>即可。</p>
-<h1 id="散列表的应用"><a href="#散列表的应用" class="headerlink" title="散列表的应用"></a>散列表的应用</h1><h2 id="用于查找"><a href="#用于查找" class="headerlink" title="用于查找"></a>用于查找</h2><p>手机内置电话簿就可使用散列表实现，具体实现代码如下：</p>
-<div class="hljs"><pre><code class="hljs python">&gt;&gt;&gt;phone_book = dict() <span class="hljs-comment">#亦可使用phone_book = &#123;&#125;</span>
-&gt;&gt;&gt;phone_book[<span class="hljs-string">&quot;jenny&quot;</span>] = <span class="hljs-number">8675309</span>
-&gt;&gt;&gt;phone_book[<span class="hljs-string">&quot;emergency&quot;</span>] = <span class="hljs-number">110</span></code></pre></div>
-
-<p>现在要查找jenny的电话号码，只需输入<code>print phone_book[&quot;jenny&quot;]</code>即可得出jenny的电话号。</p>
-<p>还有DNS解析也使用了散列表。</p>
-<h2 id="防止重复"><a href="#防止重复" class="headerlink" title="防止重复"></a>防止重复</h2><p>投票中，要知道一个人是否已经投过票需要查找一串长长的名单，但是运用散列表就可以很快的查处一个人是否已经投过票。</p>
-<div class="hljs"><pre><code class="hljs python">voted = &#123;&#125;
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">check_voter</span>(<span class="hljs-params">name</span>):</span>
-    <span class="hljs-keyword">if</span> voted.get(name):
-        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;kick him out!&quot;</span>
-    <span class="hljs-keyword">else</span>:
-        voted[name] = <span class="hljs-literal">True</span>
-        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;let him vote!&quot;</span>
-
-check_voter(<span class="hljs-string">&quot;tom&quot;</span>)
-check_voter(<span class="hljs-string">&quot;mike&quot;</span>)
-check_voter(<span class="hljs-string">&quot;tom&quot;</span>)</code></pre></div>
-<p>输出结果为：</p>
-<div class="hljs"><pre><code class="hljs result">let him vote!
-let him vote!
-kick him out!</code></pre></div>
-<p>如果存储在列表中，运用简单查找速度将非常慢，存储在散列表中，查询速度非常快。</p>
-<h2 id="用于缓存"><a href="#用于缓存" class="headerlink" title="用于缓存"></a>用于缓存</h2><p>当你第一次进入网页时，服务器需要做大量的查找工作，如果每次进网页都交由服务器处理，那么服务器将不堪重负，所以当你第一次进入网页中时，服务器处理后会生成一个散列表在缓存上，当你再次进入相同的页面时，就不用通过服务器处理，直接调用散列表中的缓存的数据就可以快速访问网页，大大提高了服务器的运行效率。</p>
-<p>具体代码如下：</p>
-<div class="hljs"><pre><code class="hljs python">cache = &#123;&#125;
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_page</span>(<span class="hljs-params">url</span>):</span>
-	<span class="hljs-keyword">if</span> cache.get(url):
-		<span class="hljs-keyword">return</span> cache[url]
-	<span class="hljs-keyword">else</span>:
-		data = get_data_from_server(url)
-		cache[url] = data
-		<span class="hljs-keyword">return</span> data</code></pre></div>
-
-<h1 id="散列表性能"><a href="#散列表性能" class="headerlink" title="散列表性能"></a>散列表性能</h1><p>根据散列表特性，最好的情况为O(1),最坏的情况为O(n),所以当填装因子过大时，为了防止<strong>冲突</strong>，我们需要对散列表进行扩容，虽然调整散列表长度开销很大，但是就整体而言，散列表的整体运行时间依然是O(1)。</p>
-<h1 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h1><p>散列函数作为非基础模块，本章不做解释，具体可以了解SHA函数和MD5算法。</p>
+<h1 id="什么时候使用对象属性，什么时候使用类属性"><a href="#什么时候使用对象属性，什么时候使用类属性" class="headerlink" title="什么时候使用对象属性，什么时候使用类属性"></a>什么时候使用对象属性，什么时候使用类属性</h1><p>如果一个属性，每个英雄都不一样，比如name，这样的属性就应该设计为对象属性，因为<strong>它是跟着对象走的</strong>，每个对象的name都是不同的</p>
+<p>如果一个属性，<strong>所有的英雄都共享</strong>，都是一样的，那么就应该设计为类属性。比如血量上限，所有的英雄的血量上限都是 9999，不会因为英雄不同，而取不同的值。 这样的属性，就适合设计为类属性</p>
 
             </div>
             <hr>
@@ -293,7 +267,7 @@ kick him out!</code></pre></div>
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法图解学习笔记</a>
+                      <a class="hover-with-bg" href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
                     
                   </div>
                 
@@ -301,9 +275,7 @@ kick him out!</code></pre></div>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
                     
                   </div>
                 
@@ -316,9 +288,9 @@ kick him out!</code></pre></div>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2019/03/06/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
+                      <a href="/2020/11/24/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%EF%BC%88%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%89/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【算法图解】广度优先搜索</span>
+                        <span class="hidden-mobile">【Java学习】静态方法（类方法）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -326,8 +298,8 @@ kick him out!</code></pre></div>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2019/03/02/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
-                        <span class="hidden-mobile">【算法图解】快速排序</span>
+                      <a href="/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%B8%B8%E7%94%A8%E5%BC%82%E5%B8%B8%E4%BB%A5%E5%8F%8A%E5%BC%82%E5%B8%B8%E5%88%86%E7%B1%BBchecked-exception%E5%92%8Cunchecked-expception/">
+                        <span class="hidden-mobile">【Java学习】常见异常以及异常分类</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -470,7 +442,7 @@ kick him out!</code></pre></div>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "【算法图解】散列表&nbsp;",
+        "【Java学习】静态属性（类属性）&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,
