@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>【Java学习】== 和equals()</title>
+    <link href="/2020/11/30/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91-%E5%92%8Cequals/"/>
+    <url>/2020/11/30/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91-%E5%92%8Cequals/</url>
+    
+    <content type="html"><![CDATA[<h1 id=""><a href="#" class="headerlink" title="=="></a>==</h1><p>“==” 用于判断两个引用是否指向同一个对象。准确说是判断两个引用指向的地址是否相同。</p><h1 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h1><p>“equals”用于判断两个对象的内容是否相同<br>如果对象里面的属性以及方法的值完全相同，那两个对象就相等。</p><h1 id="String类型比较"><a href="#String类型比较" class="headerlink" title="String类型比较"></a>String类型比较</h1><p>每次创建一个String对象都是创建一个新的对象，但是创建的时候如果String不是很长，Java会在已创建的String对象里寻找相同的对象然后指向它。</p><p>但是当String非常长的时候，Java会直接创建对象，所以比较两个String对象的时候，不要用”==”,要用equals方法。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Java学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【Java学习】静态方法（类方法）</title>
     <link href="/2020/11/24/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%EF%BC%88%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%89/"/>
     <url>/2020/11/24/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%EF%BC%88%E7%B1%BB%E6%96%B9%E6%B3%95%EF%BC%89/</url>
@@ -503,31 +528,6 @@
       <tag>python</tag>
       
       <tag>爬虫</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>【Java学习】equals方法</title>
-    <link href="/2020/05/08/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Aequals%E6%96%B9%E6%B3%95/"/>
-    <url>/2020/05/08/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Aequals%E6%96%B9%E6%B3%95/</url>
-    
-    <content type="html"><![CDATA[<h2 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h2><p>equals方法可以比较两个对象是否相等。</p><h2 id="String类型比较"><a href="#String类型比较" class="headerlink" title="String类型比较"></a>String类型比较</h2><p>每次创建一个String对象都是创建一个新的对象，但是创建的时候如果String不是很长，Java会在已创建的String对象里寻找相同的对象然后指向它。</p><p>但是当String非常长的时候，Java会直接创建对象，所以比较两个String对象的时候，不要用”==”,要用equals方法。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Java学习笔记</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Java</tag>
       
     </tags>
     
