@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>【network实践】标准ACL - LIU的学习笔记</title>
+  <title>【Java学习】默认方法 - LIU的学习笔记</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -165,8 +165,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2018-12-04 15:59" pubdate>
-        2018年12月4日 下午
+      <time datetime="2020-12-21 20:53" pubdate>
+        2020年12月21日 晚上
       </time>
     </span>
   
@@ -177,7 +177,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      394 字
+      286 字
     </span>
   
 
@@ -187,7 +187,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      4
        分钟
     </span>
   
@@ -217,64 +217,61 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">【network实践】标准ACL</h1>
+            <h1 style="display: none">【Java学习】默认方法</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：4 个月前
+                  本文最后更新于：1 小时前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <p>ACL(Access Control List)是进行网络通信识别控制中记录控制条件的一个表，在Router的interface中应用，与许可条件一致的话就可以通过，除此以外全部拒绝通信。  </p>
-<a id="more"></a>
+              <h1 id="什么是默认方法"><a href="#什么是默认方法" class="headerlink" title="什么是默认方法"></a>什么是默认方法</h1><p>默认方法是JDK8新特性，指的是接口也可以提供具体方法了，而不像以前，只能提供抽象方法。</p>
+<h1 id="为什么会有默认方法"><a href="#为什么会有默认方法" class="headerlink" title="为什么会有默认方法"></a>为什么会有默认方法</h1><p>原来的类不用改动就都能得到相同的一种方法。可以方便扩展新的类，而且不影响别的类。</p>
+<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><p>当一个类实现两个接口并且两个接口中有相同的默认方法时，必须在类中override默认方法。要不然编译器无法判断使用谁的默认方法。</p>
+<div class="hljs"><pre><code class="hljs Java"><span class="hljs-comment">/*AD.java*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">AD</span> </span>&#123;
+    <span class="hljs-comment">//物理伤害</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">physicAttack</span><span class="hljs-params">()</span></span>;
 
-<p>标准acl list的号码可以是1〜99和1300〜1999，扩张acl list号码为100〜199和2000〜2699。</p>
-<h2 id="演习"><a href="#演习" class="headerlink" title="演习"></a>演习</h2><p><img src="/images/%E6%A0%87%E5%87%86ACL.jpg" srcset="/img/loading.gif"></p>
-<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><blockquote>
-<ul>
-<li>组成如图所示的网络并相互ping通</li>
-</ul>
-</blockquote>
-<ul>
-<li>192.168.1.0所属的PC能够和192.168.2.1通信</li>
-<li>但是192.168.1.1拒绝通信</li>
-</ul>
-<p>配置路由器</p>
-<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
-Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.1.254 255.255.255.0</span>
-Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
-Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
-Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.2.254 255.255.255.0</span>
-Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span>
-Router<span class="hljs-meta">#show interface 确认端口是否设置成功</span></code></pre></div>
-<p>配置ACL</p>
-<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 1 deny host 192.168.1.1</span>
-Router(config)<span class="hljs-meta">#access-list 1 permit any</span>
-Router(config)<span class="hljs-meta">#interface fastethernet 0</span>
-Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip access-group 1 in</span>
-Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre></div>
+    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">attack</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">&quot;default method attack&quot;</span>);
+    &#125;
+&#125;
 
+<span class="hljs-comment">/*AP.java*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">AP</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">magicAttack</span><span class="hljs-params">()</span></span>;
 
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><blockquote>
-<ul>
-<li>PC B,PC C,PC D之间可以相互ping</li>
-</ul>
-</blockquote>
-<ul>
-<li>PC A和PC D不能ping成功</li>
-</ul>
-<p>如果选择Fa 1端口配置ACL的话，就修改成如下代码</p>
-<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1</span>
-Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip access-group 1 out</span>
-Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></code></pre></div>
+    <span class="hljs-function"><span class="hljs-keyword">default</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">attack</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">&quot;default method attack&quot;</span>);
+    &#125;
+&#125;
 
-<p>如果不需要这个ACL的话</p>
-<div class="hljs"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#no access-list 1</span></code></pre></div>
+<span class="hljs-comment">/*ADAPHero.java*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ADAPHero</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Hero</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AP</span>,<span class="hljs-title">AD</span>,<span class="hljs-title">Mortal</span></span>&#123;
 
-<p>就可以将ACL删去.</p>
-<p>ACL的对照顺序是自上向下并且默认是deny的，如果将实验中ACL的两行互换在本演习中理论上没有影响，但是具体实验并没有实施，“顺序因素对ACL的影响”是以后可以考虑的问题点之一。</p>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">physicAttack</span><span class="hljs-params">()</span> </span>&#123;
+        System.out.println(<span class="hljs-string">&quot;进行物理攻击&quot;</span>);
+    &#125;
 
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">magicAttack</span><span class="hljs-params">()</span> </span>&#123;
+        System.out.println(<span class="hljs-string">&quot;进行魔法攻击&quot;</span>);
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">die</span><span class="hljs-params">()</span> </span>&#123;
+        System.out.println(name +<span class="hljs-string">&quot; is an APADHero and die.&quot;</span>);
+    &#125;
+
+    <span class="hljs-comment">// 必须重写该方法才不会报错</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">attack</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">&quot;ADAP attack&quot;</span>);
+    &#125;
+&#125;
+</code></pre></div>
             </div>
             <hr>
             <div>
@@ -283,7 +280,7 @@ Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">network实践笔记</a>
+                      <a class="hover-with-bg" href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
                     
                   </div>
                 
@@ -291,9 +288,7 @@ Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/network/">network</a>
-                    
-                      <a class="hover-with-bg" href="/tags/cisco/">cisco</a>
+                      <a class="hover-with-bg" href="/tags/Java/">Java</a>
                     
                   </div>
                 
@@ -306,18 +301,12 @@ Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/12/05/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E7%9A%84%E5%AE%9E%E7%8E%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【network实践】单臂路由的实现</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2018/12/04/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%89%A9%E5%B1%95ACL%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                        <span class="hidden-mobile">【network实践】扩展ACL(二)</span>
+                      <a href="/2020/12/07/%E3%80%90Java%E5%AD%A6%E4%B9%A0%E3%80%91%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/">
+                        <span class="hidden-mobile">【Java学习】抽象类和接口的区别</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -460,7 +449,7 @@ Router<span class="hljs-meta">#show access-lists  确认ACL创建成功</span></
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "【network实践】标准ACL&nbsp;",
+        "【Java学习】默认方法&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 120,
