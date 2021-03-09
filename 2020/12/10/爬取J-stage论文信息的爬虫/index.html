@@ -8,37 +8,43 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  
+    <meta name="description" content="">
+  
   <meta name="author" content="">
   <meta name="keywords" content="">
+  
   <title>【小项目】爬取J-stage论文信息的爬虫 - LIU的学习笔记</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
   <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
     
     
       
-      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/tomorrow-night-eighties.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/tomorrow-night-eighties.min.css" />
     
   
 
   
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -50,6 +56,10 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liuminxuan.github.io","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -149,13 +159,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="【小项目】爬取J-stage论文信息的爬虫">
               
             </span>
 
@@ -209,168 +219,30 @@
     
       
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
     <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-md">
-      <div class="container nopadding-md" id="board-ctn">
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
         <div class="py-5" id="board">
-          <article class="post-content mx-auto" id="post">
+          <article class="post-content mx-auto">
             <!-- SEO header -->
             <h1 style="display: none">【小项目】爬取J-stage论文信息的爬虫</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 天前
+                  本文最后更新于：2 个月前
                 
               </p>
             
-            <div class="markdown-body" id="post-body">
+            <div class="markdown-body">
               <p>最近接了一个活，需要爬取日本论文网站的论文信息并且把对应的论文全部下载下来。对于这种重复劳动，计算机的学生当然不会手动一个一个下载，所以临时学了一点爬虫，照着写了一个小代码。</p>
 <h1 id="设计爬虫"><a href="#设计爬虫" class="headerlink" title="设计爬虫"></a>设计爬虫</h1><p>因为日本没有类似中国知网这种官方论文网站，所以我就选取了<a target="_blank" rel="noopener" href="https://www.jstage.jst.go.jp/browse/-char/ja">J-stage</a>作为这次爬虫的目标网站。<a target="_blank" rel="noopener" href="https://www.jstage.jst.go.jp/browse/-char/ja">J-stage</a>上面的论文几乎免费，在日本范围内是很好的论文检索网站。  </p>
 <p>要求爬取论文题目，作者所属机关，作者名，发表年月，几卷几号多少页，输出成Excel表格，顺便下载已经爬取的论文。</p>
 <p>一开始想用Selenium库来爬取，因为看上去和手动操作极度类似，但是Selenium库存在代码不易编写的问题，而且Selenium作为一个网页测试工具，运行速度也成问题。所以转而用普遍方法Request。</p>
 <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>本代码是基于网上爬取豆瓣电影的代码修改而成，其中部分细节借鉴了Github上的<a target="_blank" rel="noopener" href="https://github.com/nagomiso/jstage-spider">jstage-spider</a>项目。在此表示感谢。</p>
 <p>因为主要架构大体相同，不同的杂志只需要修改URL和卷号就行，所以本代码以爬取コンピュータ＆エデュケーション杂志为例。</p>
-<div class="hljs"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span>
-<span class="hljs-string">  function:爬取j-stage（コンピュータ＆エデュケーション）杂志论文，并写入Excel文件</span>
-<span class="hljs-string">  env:python3.6.5</span>
-<span class="hljs-string">  author:lmx</span>
-<span class="hljs-string">&#x27;&#x27;&#x27;</span>
-<span class="hljs-keyword">import</span> time
-<span class="hljs-keyword">import</span> requests
-
-<span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> workbook  <span class="hljs-comment"># 写入Excel表所用</span>
-<span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup <span class="hljs-keyword">as</span> bs
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Jstage</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span>
-        <span class="hljs-comment">#起始地址</span>
-        self.start_url = <span class="hljs-string">&#x27;https://www.jstage.jst.go.jp/browse/konpyutariyoukyouiku/&#x27;</span> <span class="hljs-comment">#url前半部分不变，只需修改最后数字</span>
-        <span class="hljs-comment">#请求头，浏览器模拟</span>
-        self.headers = &#123;
-            <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36&#x27;</span>,
-        &#125;
-        <span class="hljs-comment">#本卷有多少号</span>
-        self.page_num = <span class="hljs-number">48</span>
-
-    <span class="hljs-string">&#x27;&#x27;&#x27;url拼接&#x27;&#x27;&#x27;</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_page_url</span>(<span class="hljs-params">self</span>):</span>
-        n = <span class="hljs-number">47</span> <span class="hljs-comment">#第一页开始,下标0</span>
-        <span class="hljs-keyword">while</span> n&lt;self.page_num:
-            <span class="hljs-keyword">yield</span> self.start_url+ str(n) + <span class="hljs-string">&#x27;/0/_contents/-char/ja&#x27;</span>
-            n += <span class="hljs-number">1</span>
-
-    <span class="hljs-string">&#x27;&#x27;&#x27;获取页面源码&#x27;&#x27;&#x27;</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">self</span>):</span>
-        gu = self.get_page_url() <span class="hljs-comment">#url生成器</span>
-        <span class="hljs-keyword">for</span> url <span class="hljs-keyword">in</span> gu:
-            html = requests.get(url,headers=self.headers).text
-            <span class="hljs-keyword">yield</span> html
-
-    <span class="hljs-string">&#x27;&#x27;&#x27;数据提取&#x27;&#x27;&#x27;</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getData</span>(<span class="hljs-params">self</span>):</span>
-        gh = self.getHtml() <span class="hljs-comment"># html源码生成器</span>
-        <span class="hljs-keyword">for</span> html <span class="hljs-keyword">in</span> gh: <span class="hljs-comment"># html:网页源码</span>
-            soup = bs(html, <span class="hljs-string">&#x27;html.parser&#x27;</span>)
-            <span class="hljs-comment">#tmp = soup.find_all(&#x27;ul&#x27;, class_=&#x27;search-resultslisting&#x27;) # 辅助定位</span>
-            <span class="hljs-keyword">for</span> ul <span class="hljs-keyword">in</span> soup.find_all(<span class="hljs-string">&#x27;ul&#x27;</span>, class_=<span class="hljs-string">&#x27;search-resultslisting&#x27;</span>):
-                <span class="hljs-keyword">for</span> li <span class="hljs-keyword">in</span> ul.find_all(<span class="hljs-string">&#x27;li&#x27;</span>):
-                    <span class="hljs-comment"># 标题</span>
-                    title = li.find(<span class="hljs-string">&#x27;div&#x27;</span>,class_=<span class="hljs-string">&#x27;searchlist-title&#x27;</span>).text.strip()
-                    <span class="hljs-comment"># 找到标题内部的链接，跳转进去</span>
-                    title_url = li.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;searchlist-title&#x27;</span>).find(<span class="hljs-string">&#x27;a&#x27;</span>).get(<span class="hljs-string">&#x27;href&#x27;</span>)
-                    <span class="hljs-comment"># 将详情页转为html</span>
-                    title_html = requests.get(title_url).text
-                    soup = bs(title_html, <span class="hljs-string">&#x27;html.parser&#x27;</span>)
-                    <span class="hljs-comment"># 找到作者所在研究机关</span>
-                    <span class="hljs-keyword">try</span>:
-                        institution = soup.find(<span class="hljs-string">&#x27;ul&#x27;</span>, class_=<span class="hljs-string">&#x27;accodion_body_ul&#x27;</span>).find(<span class="hljs-string">&#x27;li&#x27;</span>).find(<span class="hljs-string">&#x27;p&#x27;</span>).text.strip()
-                    <span class="hljs-keyword">except</span>:
-                        institution = <span class="hljs-string">&quot;none&quot;</span>
-                    <span class="hljs-comment"># 查找论文keyword</span>
-                    <span class="hljs-keyword">try</span>:
-                        pre_keyword = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;global-para&#x27;</span>).text.strip()
-                        pre_keyword = pre_keyword.replace(<span class="hljs-string">&#x27;\u2003&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\u3000&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\t&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\n&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).strip()
-                    <span class="hljs-keyword">except</span>:
-                        pre_keyword = <span class="hljs-string">&quot;none:none&quot;</span>
-
-                    <span class="hljs-comment"># 对keyword进行分割，只留关键信息</span>
-                    <span class="hljs-keyword">try</span>:
-                        pre_keyword = pre_keyword.split(<span class="hljs-string">&quot;:&quot;</span>,<span class="hljs-number">1</span>)
-                        pre, keyword = pre_keyword[<span class="hljs-number">0</span>],pre_keyword[<span class="hljs-number">1</span>]
-                    <span class="hljs-keyword">except</span>:
-                        keyword = <span class="hljs-string">&quot;none&quot;</span>
-
-                    <span class="hljs-comment"># 在搜索页查找作者名，发表年份，几卷几号，第几页</span>
-                    <span class="hljs-keyword">try</span>:
-                        author = li.find(<span class="hljs-string">&#x27;div&#x27;</span>,class_=<span class="hljs-string">&#x27;searchlist-authortags customTooltip&#x27;</span>).text.strip()
-                        info = li.find(<span class="hljs-string">&#x27;div&#x27;</span>,class_=<span class="hljs-string">&#x27;searchlist-additional-info&#x27;</span>).text.strip()
-                        info = info.replace(<span class="hljs-string">&#x27;\u2003&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\u3000&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\t&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\n&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).strip()
-                        info = info.split(<span class="hljs-string">&quot;年&quot;</span>,<span class="hljs-number">1</span>)
-                        year, rem = info[<span class="hljs-number">0</span>],info[<span class="hljs-number">1</span>]
-                        rem = rem.split(<span class="hljs-string">&quot;p.&quot;</span>,<span class="hljs-number">1</span>)
-                        vol, page = rem[<span class="hljs-number">0</span>],rem[<span class="hljs-number">1</span>]
-                        page = page.split(<span class="hljs-string">&quot;発&quot;</span>,<span class="hljs-number">1</span>)
-                        page = page[<span class="hljs-number">0</span>]
-                    <span class="hljs-keyword">except</span>:
-                        print(title + <span class="hljs-string">&quot;,未能收集&quot;</span>)
-                        author = <span class="hljs-string">&quot;no author&quot;</span>
-                        year = <span class="hljs-string">&quot;no year&quot;</span>
-                        vol = <span class="hljs-string">&quot;no vol&quot;</span>
-                        page = <span class="hljs-string">&quot;no page&quot;</span>
-
-                    <span class="hljs-comment"># 查找概要</span>
-                    <span class="hljs-keyword">try</span>:
-                        abstract = li.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;inner-content abstract&#x27;</span>).text.strip()
-                        abstract = abstract.replace(<span class="hljs-string">&#x27;\u2003&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\u3000&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\t&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\n&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).strip()
-                    <span class="hljs-keyword">except</span>:
-                        abstract = <span class="hljs-string">&quot;none. 抄録全体を表示&quot;</span>
-
-                    abstract = abstract.split(<span class="hljs-string">&quot;抄録全体&quot;</span>, <span class="hljs-number">1</span>)
-                    abstract = abstract[<span class="hljs-number">0</span>]
-
-                    <span class="hljs-comment"># 执行论文pdf下载</span>
-                    pre_file_url = li.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;lft&#x27;</span>).find(<span class="hljs-string">&#x27;span&#x27;</span>).find(<span class="hljs-string">&#x27;a&#x27;</span>)
-                    file_url = pre_file_url.get(<span class="hljs-string">&#x27;href&#x27;</span>)
-
-                    print(file_url)
-                    <span class="hljs-keyword">try</span>:
-                        r = requests.get(file_url, stream=<span class="hljs-literal">True</span>)
-                        <span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;[&quot;</span> + vol + <span class="hljs-string">&quot;]&quot;</span> + page + <span class="hljs-string">&quot;.pdf&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> pdf:
-                            <span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> r.iter_content(chunk_size=<span class="hljs-number">1024</span>):
-                                <span class="hljs-keyword">if</span> chunk:
-                                    pdf.write(chunk)
-                        print(<span class="hljs-string">&quot;完成收集:&quot;</span> + title)
-                    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
-                        print(<span class="hljs-string">&quot;------------------------------------------------未能下载:&quot;</span> + title)
-                        print(<span class="hljs-string">&quot;原因:%s&quot;</span>%e)
-
-                    <span class="hljs-comment"># 对服务器仁慈</span>
-                    time.sleep(<span class="hljs-number">15</span>)
-                    <span class="hljs-keyword">yield</span> [author, institution, title, keyword, year, vol, page, abstract]
-
-
-    <span class="hljs-string">&#x27;&#x27;&#x27;保存到excel文件</span>
-<span class="hljs-string">    :param file_name:文件名</span>
-<span class="hljs-string">    &#x27;&#x27;&#x27;</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">saveToExcel</span>(<span class="hljs-params">self,file_name</span>):</span>
-        wb = workbook.Workbook()  <span class="hljs-comment"># 创建Excel对象</span>
-        ws = wb.active  <span class="hljs-comment"># 获取当前正在操作的表对象</span>
-        ws.append([<span class="hljs-string">&#x27;author&#x27;</span>, <span class="hljs-string">&#x27;institution&#x27;</span>, <span class="hljs-string">&#x27;title&#x27;</span>, <span class="hljs-string">&#x27;keyword&#x27;</span>, <span class="hljs-string">&#x27;year&#x27;</span>, <span class="hljs-string">&#x27;vol&#x27;</span>, <span class="hljs-string">&#x27;page&#x27;</span>, <span class="hljs-string">&#x27;abstract&#x27;</span>])
-        gd = self.getData() <span class="hljs-comment">#数据生成器</span>
-        <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> gd:
-            ws.append(data)
-        wb.save(file_name)
-
-<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:
-    start = time.time()
-    top = Jstage()
-    <span class="hljs-keyword">try</span>:
-        top.saveToExcel(<span class="hljs-string">&#x27;computer_edu.xlsx&#x27;</span>)
-        print(<span class="hljs-string">&#x27;抓取成功,用时%4.2f&#x27;</span>%(time.time()-start)+<span class="hljs-string">&#x27;秒&#x27;</span>)
-    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
-        print(<span class="hljs-string">&#x27;抓取失败,原因:%s&#x27;</span>%e)
-</code></pre></div>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">  function:爬取j-stage（コンピュータ＆エデュケーション）杂志论文，并写入Excel文件</span><br><span class="hljs-string">  env:python3.6.5</span><br><span class="hljs-string">  author:lmx</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">from</span> openpyxl <span class="hljs-keyword">import</span> workbook  <span class="hljs-comment"># 写入Excel表所用</span><br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup <span class="hljs-keyword">as</span> bs<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Jstage</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-comment">#起始地址</span><br>        self.start_url = <span class="hljs-string">&#x27;https://www.jstage.jst.go.jp/browse/konpyutariyoukyouiku/&#x27;</span> <span class="hljs-comment">#url前半部分不变，只需修改最后数字</span><br>        <span class="hljs-comment">#请求头，浏览器模拟</span><br>        self.headers = &#123;<br>            <span class="hljs-string">&#x27;User-Agent&#x27;</span>:<span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36&#x27;</span>,<br>        &#125;<br>        <span class="hljs-comment">#本卷有多少号</span><br>        self.page_num = <span class="hljs-number">48</span><br><br>    <span class="hljs-string">&#x27;&#x27;&#x27;url拼接&#x27;&#x27;&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_page_url</span>(<span class="hljs-params">self</span>):</span><br>        n = <span class="hljs-number">47</span> <span class="hljs-comment">#第一页开始,下标0</span><br>        <span class="hljs-keyword">while</span> n&lt;self.page_num:<br>            <span class="hljs-keyword">yield</span> self.start_url+ str(n) + <span class="hljs-string">&#x27;/0/_contents/-char/ja&#x27;</span><br>            n += <span class="hljs-number">1</span><br><br>    <span class="hljs-string">&#x27;&#x27;&#x27;获取页面源码&#x27;&#x27;&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getHtml</span>(<span class="hljs-params">self</span>):</span><br>        gu = self.get_page_url() <span class="hljs-comment">#url生成器</span><br>        <span class="hljs-keyword">for</span> url <span class="hljs-keyword">in</span> gu:<br>            html = requests.get(url,headers=self.headers).text<br>            <span class="hljs-keyword">yield</span> html<br><br>    <span class="hljs-string">&#x27;&#x27;&#x27;数据提取&#x27;&#x27;&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getData</span>(<span class="hljs-params">self</span>):</span><br>        gh = self.getHtml() <span class="hljs-comment"># html源码生成器</span><br>        <span class="hljs-keyword">for</span> html <span class="hljs-keyword">in</span> gh: <span class="hljs-comment"># html:网页源码</span><br>            soup = bs(html, <span class="hljs-string">&#x27;html.parser&#x27;</span>)<br>            <span class="hljs-comment">#tmp = soup.find_all(&#x27;ul&#x27;, class_=&#x27;search-resultslisting&#x27;) # 辅助定位</span><br>            <span class="hljs-keyword">for</span> ul <span class="hljs-keyword">in</span> soup.find_all(<span class="hljs-string">&#x27;ul&#x27;</span>, class_=<span class="hljs-string">&#x27;search-resultslisting&#x27;</span>):<br>                <span class="hljs-keyword">for</span> li <span class="hljs-keyword">in</span> ul.find_all(<span class="hljs-string">&#x27;li&#x27;</span>):<br>                    <span class="hljs-comment"># 标题</span><br>                    title = li.find(<span class="hljs-string">&#x27;div&#x27;</span>,class_=<span class="hljs-string">&#x27;searchlist-title&#x27;</span>).text.strip()<br>                    <span class="hljs-comment"># 找到标题内部的链接，跳转进去</span><br>                    title_url = li.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;searchlist-title&#x27;</span>).find(<span class="hljs-string">&#x27;a&#x27;</span>).get(<span class="hljs-string">&#x27;href&#x27;</span>)<br>                    <span class="hljs-comment"># 将详情页转为html</span><br>                    title_html = requests.get(title_url).text<br>                    soup = bs(title_html, <span class="hljs-string">&#x27;html.parser&#x27;</span>)<br>                    <span class="hljs-comment"># 找到作者所在研究机关</span><br>                    <span class="hljs-keyword">try</span>:<br>                        institution = soup.find(<span class="hljs-string">&#x27;ul&#x27;</span>, class_=<span class="hljs-string">&#x27;accodion_body_ul&#x27;</span>).find(<span class="hljs-string">&#x27;li&#x27;</span>).find(<span class="hljs-string">&#x27;p&#x27;</span>).text.strip()<br>                    <span class="hljs-keyword">except</span>:<br>                        institution = <span class="hljs-string">&quot;none&quot;</span><br>                    <span class="hljs-comment"># 查找论文keyword</span><br>                    <span class="hljs-keyword">try</span>:<br>                        pre_keyword = soup.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;global-para&#x27;</span>).text.strip()<br>                        pre_keyword = pre_keyword.replace(<span class="hljs-string">&#x27;\u2003&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\u3000&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\t&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\n&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).strip()<br>                    <span class="hljs-keyword">except</span>:<br>                        pre_keyword = <span class="hljs-string">&quot;none:none&quot;</span><br><br>                    <span class="hljs-comment"># 对keyword进行分割，只留关键信息</span><br>                    <span class="hljs-keyword">try</span>:<br>                        pre_keyword = pre_keyword.split(<span class="hljs-string">&quot;:&quot;</span>,<span class="hljs-number">1</span>)<br>                        pre, keyword = pre_keyword[<span class="hljs-number">0</span>],pre_keyword[<span class="hljs-number">1</span>]<br>                    <span class="hljs-keyword">except</span>:<br>                        keyword = <span class="hljs-string">&quot;none&quot;</span><br><br>                    <span class="hljs-comment"># 在搜索页查找作者名，发表年份，几卷几号，第几页</span><br>                    <span class="hljs-keyword">try</span>:<br>                        author = li.find(<span class="hljs-string">&#x27;div&#x27;</span>,class_=<span class="hljs-string">&#x27;searchlist-authortags customTooltip&#x27;</span>).text.strip()<br>                        info = li.find(<span class="hljs-string">&#x27;div&#x27;</span>,class_=<span class="hljs-string">&#x27;searchlist-additional-info&#x27;</span>).text.strip()<br>                        info = info.replace(<span class="hljs-string">&#x27;\u2003&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\u3000&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\t&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\n&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).strip()<br>                        info = info.split(<span class="hljs-string">&quot;年&quot;</span>,<span class="hljs-number">1</span>)<br>                        year, rem = info[<span class="hljs-number">0</span>],info[<span class="hljs-number">1</span>]<br>                        rem = rem.split(<span class="hljs-string">&quot;p.&quot;</span>,<span class="hljs-number">1</span>)<br>                        vol, page = rem[<span class="hljs-number">0</span>],rem[<span class="hljs-number">1</span>]<br>                        page = page.split(<span class="hljs-string">&quot;発&quot;</span>,<span class="hljs-number">1</span>)<br>                        page = page[<span class="hljs-number">0</span>]<br>                    <span class="hljs-keyword">except</span>:<br>                        print(title + <span class="hljs-string">&quot;,未能收集&quot;</span>)<br>                        author = <span class="hljs-string">&quot;no author&quot;</span><br>                        year = <span class="hljs-string">&quot;no year&quot;</span><br>                        vol = <span class="hljs-string">&quot;no vol&quot;</span><br>                        page = <span class="hljs-string">&quot;no page&quot;</span><br><br>                    <span class="hljs-comment"># 查找概要</span><br>                    <span class="hljs-keyword">try</span>:<br>                        abstract = li.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;inner-content abstract&#x27;</span>).text.strip()<br>                        abstract = abstract.replace(<span class="hljs-string">&#x27;\u2003&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\u3000&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\t&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).replace(<span class="hljs-string">&#x27;\n&#x27;</span>, <span class="hljs-string">&#x27;&#x27;</span>).strip()<br>                    <span class="hljs-keyword">except</span>:<br>                        abstract = <span class="hljs-string">&quot;none. 抄録全体を表示&quot;</span><br><br>                    abstract = abstract.split(<span class="hljs-string">&quot;抄録全体&quot;</span>, <span class="hljs-number">1</span>)<br>                    abstract = abstract[<span class="hljs-number">0</span>]<br><br>                    <span class="hljs-comment"># 执行论文pdf下载</span><br>                    pre_file_url = li.find(<span class="hljs-string">&#x27;div&#x27;</span>, class_=<span class="hljs-string">&#x27;lft&#x27;</span>).find(<span class="hljs-string">&#x27;span&#x27;</span>).find(<span class="hljs-string">&#x27;a&#x27;</span>)<br>                    file_url = pre_file_url.get(<span class="hljs-string">&#x27;href&#x27;</span>)<br><br>                    print(file_url)<br>                    <span class="hljs-keyword">try</span>:<br>                        r = requests.get(file_url, stream=<span class="hljs-literal">True</span>)<br>                        <span class="hljs-keyword">with</span> open(<span class="hljs-string">&quot;[&quot;</span> + vol + <span class="hljs-string">&quot;]&quot;</span> + page + <span class="hljs-string">&quot;.pdf&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>) <span class="hljs-keyword">as</span> pdf:<br>                            <span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> r.iter_content(chunk_size=<span class="hljs-number">1024</span>):<br>                                <span class="hljs-keyword">if</span> chunk:<br>                                    pdf.write(chunk)<br>                        print(<span class="hljs-string">&quot;完成收集:&quot;</span> + title)<br>                    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>                        print(<span class="hljs-string">&quot;------------------------------------------------未能下载:&quot;</span> + title)<br>                        print(<span class="hljs-string">&quot;原因:%s&quot;</span>%e)<br><br>                    <span class="hljs-comment"># 对服务器仁慈</span><br>                    time.sleep(<span class="hljs-number">15</span>)<br>                    <span class="hljs-keyword">yield</span> [author, institution, title, keyword, year, vol, page, abstract]<br><br><br>    <span class="hljs-string">&#x27;&#x27;&#x27;保存到excel文件</span><br><span class="hljs-string">    :param file_name:文件名</span><br><span class="hljs-string">    &#x27;&#x27;&#x27;</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">saveToExcel</span>(<span class="hljs-params">self,file_name</span>):</span><br>        wb = workbook.Workbook()  <span class="hljs-comment"># 创建Excel对象</span><br>        ws = wb.active  <span class="hljs-comment"># 获取当前正在操作的表对象</span><br>        ws.append([<span class="hljs-string">&#x27;author&#x27;</span>, <span class="hljs-string">&#x27;institution&#x27;</span>, <span class="hljs-string">&#x27;title&#x27;</span>, <span class="hljs-string">&#x27;keyword&#x27;</span>, <span class="hljs-string">&#x27;year&#x27;</span>, <span class="hljs-string">&#x27;vol&#x27;</span>, <span class="hljs-string">&#x27;page&#x27;</span>, <span class="hljs-string">&#x27;abstract&#x27;</span>])<br>        gd = self.getData() <span class="hljs-comment">#数据生成器</span><br>        <span class="hljs-keyword">for</span> data <span class="hljs-keyword">in</span> gd:<br>            ws.append(data)<br>        wb.save(file_name)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    start = time.time()<br>    top = Jstage()<br>    <span class="hljs-keyword">try</span>:<br>        top.saveToExcel(<span class="hljs-string">&#x27;computer_edu.xlsx&#x27;</span>)<br>        print(<span class="hljs-string">&#x27;抓取成功,用时%4.2f&#x27;</span>%(time.time()-start)+<span class="hljs-string">&#x27;秒&#x27;</span>)<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>        print(<span class="hljs-string">&#x27;抓取失败,原因:%s&#x27;</span>%e)<br><br></code></pre></div></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -395,10 +267,14 @@
                 
               </div>
               
-                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
               
               
-                <div class="post-prevnext row">
+                <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
                     
@@ -432,7 +308,7 @@
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
   <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div id="tocbot"></div>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
       </div>
@@ -444,16 +320,15 @@
 
 
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -474,33 +349,41 @@
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -515,103 +398,49 @@
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
 
 
 
-
-  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    $(document).ready(function () {
-      var boardCtn = $('#board-ctn');
-      var boardTop = boardCtn.offset().top;
-
-      tocbot.init({
-        tocSelector: '#tocbot',
-        contentSelector: '#post-body',
-        headingSelector: 'h1,h2,h3,h4,h5,h6',
-        linkClass: 'tocbot-link',
-        activeLinkClass: 'tocbot-active-link',
-        listClass: 'tocbot-list',
-        isCollapsedClass: 'tocbot-is-collapsed',
-        collapsibleClass: 'tocbot-is-collapsible',
-        collapseDepth: 0,
-        scrollSmooth: true,
-        headingsOffset: -boardTop
-      });
-      if ($('.toc-list-item').length > 0) {
-        $('#toc').css('visibility', 'visible');
-      }
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
-  <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "【小项目】爬取J-stage论文信息的爬虫&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 120,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
-  <script>
-    anchors.options = {
-      placement: "right",
-      visible: "hover",
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
       
-    };
-    var el = "h1,h2,h3,h4,h5,h6".split(",");
-    var res = [];
-    for (item of el) {
-      res.push(".markdown-body > " + item)
-    }
-    anchors.add(res.join(", "))
+      typing(title)
+      
+    })(window, document);
   </script>
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
-  </script>
-
-
-
-  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-  <script>
-    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
-      function () {
-        var element = document.createElement('a');
-        $(element).attr('data-fancybox', 'images');
-        $(element).attr('href', $(this).attr('src'));
-        $(this).wrap(element);
-      }
-    );
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -628,8 +457,8 @@
 
 
 
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 

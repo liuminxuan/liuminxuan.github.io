@@ -8,24 +8,27 @@
 <head>
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  
+    <meta name="description" content="">
+  
   <meta name="author" content="">
   <meta name="keywords" content="">
+  
   <title>LIU的学习笔记</title>
 
-  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
 
 
 
@@ -37,6 +40,10 @@
 <!-- 自定义样式保持在最底部 -->
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liuminxuan.github.io","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":120,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.1.1"></head>
@@ -136,13 +143,13 @@
   </div>
 </nav>
 
-    <div class="banner intro-2" id="background" parallax=true
+    <div class="banner" id="banner" parallax=true
          style="background: url('/img/index.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
-          <div class="container page-header text-center fade-in-up">
-            <span class="h2" id="subtitle">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="温故知新">
               
             </span>
 
@@ -161,7 +168,7 @@
 
   <main>
     
-      <div class="container nopadding-md">
+      <div class="container nopadding-x-md">
         <div class="py-5" id="board"
           style=margin-top:0>
           
@@ -176,6 +183,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/">【剑指offer】21. 调整数组顺序使奇数位于偶数前面</a>
       </h1>
 
@@ -186,10 +194,8 @@
             
           
           剑指offer刷题笔记：21. 调整数组顺序使奇数位于偶数前面题目描述输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
-示例输入：nums = [1,2,3,4]
-输出：[1,3,2,4] 
-注：[3,1,2,4] 也是正确的答案之一。
-解题思路1 头尾指针记录这题是因为这是最近leetcode第一道没有出现错误一气呵成的题目，算
+示例123输入：nums = [1,2,3,4]输出：[1,3,2,4] 注：[3,1,2,4] 也是正确的答案之一。
+解题思路1 头尾指针记录这题是因为这是最近leetcode第一道没有出现错误一气呵成的题目，
         </a>
       </p>
 
@@ -231,6 +237,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">【剑指offer】18. 删除链表的节点</a>
       </h1>
 
@@ -241,10 +248,8 @@
             
           
           剑指 Offer 18. 删除链表的节点题目描述给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。返回删除后的链表的头节点。注意：此题对比原题有改动
-示例1输入: head = [4,5,1,9], val = 5
-输出: [4,1,9]
-解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
-示例2输入: hea
+示例1123输入: head = [4,5,1,9], val = 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
+示例2123输入:
         </a>
       </p>
 
@@ -286,6 +291,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/">【剑指offer】39. 数组中出现次数超过一半的数字</a>
       </h1>
 
@@ -297,12 +303,10 @@
           
           39. 数组中出现次数超过一半的数字题目描述数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
-示例输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
-输出: 2
+示例12输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]输出: 2
 
 解题思路1 排序因为需要的数字出现次数多于一半，那么排序后必定在中间。
-代码class Solution &#123;
-    public int m
+代码123456class Solution &#123;    public
         </a>
       </p>
 
@@ -340,6 +344,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/">【Java学习】内部类</a>
       </h1>
 
@@ -397,6 +402,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/">【剑指offer】57. 和为s的两个数字</a>
       </h1>
 
@@ -407,10 +413,8 @@
             
           
           57. 和为s的两个数字题目描述输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。
-示例1输入：nums = [2,7,11,15], target = 9
-输出：[2,7] 或者 [7,2]
-示例2输入：nums = [10,26,30,31,47,60], target = 40
-输出：[10,30] 或者 [30,10
+示例112输入：nums = [2,7,11,15], target = 9输出：[2,7] 或者 [7,2]
+示例212输入：nums = [10,26,30,31,47,60], target = 40输出：[10,30] 或者 [30,
         </a>
       </p>
 
@@ -452,6 +456,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">【Java学习】接口</a>
       </h1>
 
@@ -499,6 +504,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">【Java学习】抽象类和抽象方法</a>
       </h1>
 
@@ -546,6 +552,7 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/">【Java学习】instanceof</a>
       </h1>
 
@@ -557,8 +564,8 @@
           
           关于因为Java是一个面向对象的语言，需要通过创建实例来实现算法，所以Java中有一个instanceof操作符，用来判断实例是否属于某一个类。
 instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，返回boolean数据类型。
-用法result = object instanceof class;
-参数Result：布尔类型。Object：必选项。任意对象表达式。Cl
+用法1result = object instanceof class;
+参数Result：布尔类型。Object：必选项。任意对象表达式。C
         </a>
       </p>
 
@@ -596,6 +603,7 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/">【Leetcode】二叉树</a>
       </h1>
 
@@ -605,16 +613,11 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
           
             
           
-          编写二叉树public class TreeNode &#123;
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) &#123; val = x; &#125;
- &#125;
+          编写二叉树123456public class TreeNode &#123;    int val;    TreeNode left;    TreeNode right;    TreeNode(int x) &#123; val = x; &#125; &#125;
 
 
 题目编号226 101
-226. 翻转二叉树解题思路二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左右
+226. 翻转二叉树解题思路二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左
         </a>
       </p>
 
@@ -656,6 +659,7 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        
         <a href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">谈谈遗传算法：用遗传算法求最大值</a>
       </h1>
 
@@ -713,15 +717,9 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -731,16 +729,15 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
         </div>
       </div>
     
-  </main>
 
-  
-    <a id="scroll-top-button" href="#" role="button">
-      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-    </a>
-  
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-  
-    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -761,33 +758,41 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
     </div>
   </div>
 </div>
-  
-
-  
-
-  
-
-  <footer class="mt-5">
-  <div class="text-center py-3">
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <i class="iconfont icon-love"></i>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
-        <span>Fluid</span></a>
-    </div>
     
 
     
+  </main>
 
-    
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
   </div>
+  
+
+  
+
+  
 </footer>
 
 <!-- SCRIPTS -->
-<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
-<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
 <script  src="/js/debouncer.js" ></script>
-<script  src="/js/main.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
@@ -802,47 +807,43 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
 
 
 
-  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
-  <script  src="/js/clipboard-use.js" ></script>
 
 
 
 
 
 
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
 
-  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
   <script>
-    var typed = new Typed('#subtitle', {
-      strings: [
-        '  ',
-        "温故知新&nbsp;",
-      ],
-      cursorChar: "_",
-      typeSpeed: 120,
-      loop: false,
-    });
-    typed.stop();
-    $(document).ready(function () {
-      $(".typed-cursor").addClass("h2");
-      typed.start();
-    });
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
   </script>
-
-
 
 
 
   <script  src="/js/local-search.js" ></script>
   <script>
-    var path = "/local-search.xml";
-    var inputArea = document.querySelector("#local-search-input");
-    inputArea.onclick = function () {
-      searchFunc(path, 'local-search-input', 'local-search-result');
-      this.onclick = null
-    }
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -859,10 +860,8 @@ instanceof是一个二元操作符，类似于 ==，&gt;，&lt; 等操作符，�
 
 
 
-
-
-
-
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
 
 
 
