@@ -1,0 +1,500 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>【network实践】DHCP和NAT - LIU的学习笔记</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liuminxuan.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LIU的学习笔记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/index.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="【network实践】DHCP和NAT">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-17 21:48" pubdate>
+        2018年12月17日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      888 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      12
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【network实践】DHCP和NAT</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：6 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="DHCP概要"><a href="#DHCP概要" class="headerlink" title="DHCP概要"></a>DHCP概要</h1><p>DHCP(dynamic host configuration protocol)是局域网中的一种协议，可以给内部网自动分配ip地址。  </p>
+<p>DHCP客户端和DHCP服务器之间连接过程分为四步：  </p>
+<ol>
+<li>discovery阶段：客户端通过broadcast寻找服务器</li>
+<li>offer阶段：服务器预约ip地址并回信给客户端</li>
+<li>request阶段：客户端收到offer，并将需要的ip地址，broadcast告诉服务器</li>
+<li>ack阶段：服务器按照要求给客户端分配ip地址</li>
+</ol>
+<a id="more"></a>
+
+<h1 id="NAT概要"><a href="#NAT概要" class="headerlink" title="NAT概要"></a>NAT概要</h1><p>NAT(network address translation)相当于在外部的网络记住内部网络的网络端口，从而可以在ip地址一直变化的情况下做到准确运输数据包。  </p>
+<p><strong>NAT有两个优点：</strong>  </p>
+<ol>
+<li>可以解决ipv4地址枯竭的问题。</li>
+<li>可以提高网络的安全性。</li>
+</ol>
+<p><strong>几个需要注意的NAT用语：</strong></p>
+<ul>
+<li>内部local address：从内部往内部看ip地址。</li>
+<li>内部global address：从外部向内部看ip地址。</li>
+<li>外部local address：从内部看外部的ip地址。</li>
+<li>外部global address：从外部看外部的ip地址。</li>
+</ul>
+<p>NAT内部local address和内部global address是一一对应的关系：  </p>
+<ul>
+<li>10.1.1.1 – 1.1.1.1</li>
+<li>10.1.1.2 – 1.1.1.2</li>
+<li>10.1.1.3 – 1.1.1.3</li>
+<li>10.1.1.4 – 1.1.1.4</li>
+</ul>
+<h1 id="PAT概要"><a href="#PAT概要" class="headerlink" title="PAT概要"></a>PAT概要</h1><p>PAT(port address translation)是局域网中的一种协议，与NAT不同的是，PAT可以就一个ip地址通过分配不同的网口的形式，实现只用一个内部global address分配到不同的内部local address。</p>
+<ul>
+<li>10.1.1.1:1025 – 1.1.1.1:1025</li>
+<li>10.1.1.2:1029 – 1.1.1.1:1029</li>
+<li>10.1.1.5:1030 – 1.1.1.1:1030</li>
+</ul>
+<h1 id="演习"><a href="#演习" class="headerlink" title="演习"></a>演习</h1><p>network拓扑图如下,要求用两台router，一台switch完成实验，从ISP路由器出发分割出的global地址是209.165.200.224/29，利用此global地址设定GW路由器的PAT，内部IP地址根据192.168.32.0/24的范围进行DHCP分配地址,PC取得适当的ip地址后，模拟网络服务(loopback)能完成通信的话就是成功。</p>
+<p><img src="/images/DHCP.jpg" srcset="/img/loading.gif">  </p>
+<p><strong>首先配置GW的路由器NAT：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">GW_Router(config)<span class="hljs-meta">#interface fastethernet 0</span><br>GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.32.254 255.255.255.0</span><br>GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip nat inside</span><br>GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span><br>GW_Router(config)<span class="hljs-meta">#interface fastethernet 1</span><br>GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 209.165.201.18 255.255.255.0</span><br>GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip nat outside</span><br>GW_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span><br>GW_Router(config)<span class="hljs-meta">#ip nat pool DPAT 209.165.201.209 209.165.201.230 netmask 255.255.255.0</span><br>GW_Router(config)<span class="hljs-meta">#access-list 1 permit host 192.168.32.0  <span class="hljs-comment">//设置ACL</span></span><br>GW_Router(config)<span class="hljs-meta">#ip nat inside source list 1 pool DPAT overload <span class="hljs-comment">//PAT定义</span></span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>其次配置GW路由器DHCP：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">GW_Router(config)<span class="hljs-meta">#ip dhcp excluded-address 192.168.32.10 192.168.32.254<span class="hljs-comment">//192.168.32.10-254除外</span></span><br>GW_Router(config)<span class="hljs-meta">#ip dhcp pool LANUser</span><br>GW_Router(dhcp-config)<span class="hljs-meta">#network 192.168.32.0 255.255.255.0</span><br>GW_Router(dhcp-config)<span class="hljs-meta">#default-router 192.168.32.254</span><br>GW_Router(dhcp-config)<span class="hljs-meta">#domain-name google.com</span><br>GW_Router(dhcp-config)<span class="hljs-meta">#dns-server 8.8.8.8 <span class="hljs-comment">//设定dns服务器</span></span><br>GW_Router(dhcp-config)<span class="hljs-meta">#lease 0 12 <span class="hljs-comment">//释放时间设置为12小时</span></span><br>GW_Router(config)<span class="hljs-meta">#ip route 0.0.0.0 0.0.0.0 209.165.201.17<span class="hljs-comment">//设定GW路由到ISP路由的默认路由通路</span></span><br></code></pre></div></td></tr></table></figure>
+<p><strong>接着配置ISP服务器：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">ISP_Router(config)<span class="hljs-meta">#interface fastethernet 0</span><br>ISP_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 209.165.201.17 255.255.255.0</span><br>ISP_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span><br>ISP_Router(config)<span class="hljs-meta">#interface loopback 0</span><br>ISP_Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 8.8.8.8 255.255.255.0</span><br>ISP_Router(config)<span class="hljs-meta">#ip route 209.165.200.224 255.255.255.248 209.165.201.18</span><br>ISP_Router<span class="hljs-meta">#show ip route</span><br></code></pre></div></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>至此所有NAT配置完成，但是最终<code>show ip nat translations</code>什么也不显示，原因是设置完后没有运行，这时用PC<code>ping 8.8.8.8</code>就可以查看设置是否成功，<code>show ip nat translations</code>也会显示内容。  </p>
+<p>有一个小疑问<code>GW_Router(config)#ip route 0.0.0.0 0.0.0.0 209.165.201.17</code>这个语句为什么是从default gateway出发？</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">network实践笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/network/">network</a>
+                    
+                      <a class="hover-with-bg" href="/tags/cisco/">cisco</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/02/27/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【算法图解】二分查找</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/06/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9Aaccess%E5%92%8Ctrunk%E9%85%8D%E7%BD%AE/">
+                        <span class="hidden-mobile">【network实践】access和trunk配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>

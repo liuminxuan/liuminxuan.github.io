@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <title>【network实践】单臂路由的实现 - LIU的学习笔记</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/tomorrow-night-eighties.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"liuminxuan.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LIU的学习笔记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/index.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="【network实践】单臂路由的实现">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2018-12-05 18:12" pubdate>
+        2018年12月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      944 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">【network实践】单臂路由的实现</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：6 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>vlan間ルーティング（ROUTER ON A STICK,单臂路由）在很多博客上都有记录，物理上的要实现两个不同网段的互联的拓扑图如下</p>
+<a id="more"></a>
+<p><img src="/images/%E6%BC%94%E4%B9%A01%E6%8B%93%E6%89%91%E5%9B%BE.jpg" srcset="/img/loading.gif"><br>但是现在只需要一台路由器和一台switch通过access和trunk制造虚拟的网口就可实现两个不同网段在同一台switch上的互联。  </p>
+<h2 id="演习"><a href="#演习" class="headerlink" title="演习"></a>演习</h2><p><img src="/images/%E6%BC%94%E4%B9%A01%E6%8B%93%E6%89%91%E5%9B%BE.jpg" srcset="/img/loading.gif"><br>条件：</p>
+<blockquote>
+<ul>
+<li>拓扑图如上所示</li>
+</ul>
+</blockquote>
+<ul>
+<li>建立单臂路由实现三个PC之间的相互通信</li>
+</ul>
+<p>Router设定</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0.1</span><br>Router(config-subif)<span class="hljs-meta">#encapsulation dot1q 1</span><br>Router(config-subif)<span class="hljs-meta">#ip address 172.16.1.254 255.255.255.0</span><br>Router(config-subif)<span class="hljs-meta">#exit</span><br>Router(config)<span class="hljs-meta">#interface fastethernet 0.10</span><br>Router(config-subif)<span class="hljs-meta">#encapsulation dot1q 10</span><br>Router(config-subif)<span class="hljs-meta">#ip address 172.16.10.254 255.255.255.0</span><br>Router(config-subif)<span class="hljs-meta">#exit</span><br>Router(config)<span class="hljs-meta">#interface fastethernet 0.20</span><br>Router(config-subif)<span class="hljs-meta">#encapsulation dot1q 20</span><br>Router(config-subif)<span class="hljs-meta">#ip address 172.16.20.254 255.255.255.0</span><br>Router(config-subif)<span class="hljs-meta">#exit</span><br>Router(config)<span class="hljs-meta">#interface fastethernet 0.99</span><br>Router(config-subif)<span class="hljs-meta">#encapsulation dot1q 99 native</span><br>Router(config-subif)<span class="hljs-meta">#exit</span><br>Router(config)<span class="hljs-meta">#interface fastethernet 0</span><br>Router(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span><br></code></pre></div></td></tr></table></figure>
+
+<p>switch设定</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Switch(config)<span class="hljs-meta">#vlan 10,20,99</span><br>Switch(config-vlan)<span class="hljs-meta">#exit</span><br>Switch(config)<span class="hljs-meta">#interface range fastethernet 0/1 - 3</span><br><span class="hljs-keyword">switch</span>(config-<span class="hljs-keyword">if</span>-range)<span class="hljs-meta">#switchport mode access</span><br>Switch(config-<span class="hljs-keyword">if</span>-range)<span class="hljs-meta">#interface fastethernet 0/2</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#switchport access vlan 10</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#interface fastethernet 0/3</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#switchport access vlan 20</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#interface fastethernet 0/12</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#switchport trunk encapsulation dot1q</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#switchport mode trunk</span><br><span class="hljs-comment">//Switch(config-if)#switchport nonegotiate  2950switch已经不需要这一步骤</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#switchport trunk native vlan 99</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#interface vlan 1</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 172.16.1.100 255.255.255.0</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span><br>Switch(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#exit</span><br>Switch(config)<span class="hljs-meta">#ip default-gateway 172.16.1.254</span><br>Switch(config)<span class="hljs-meta">#exit</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="单臂路由的验证"><a href="#单臂路由的验证" class="headerlink" title="单臂路由的验证"></a>单臂路由的验证</h3><p>Router</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router<span class="hljs-meta">#show ip interface [brief]</span><br>Router<span class="hljs-meta">#show ip route</span><br>Router<span class="hljs-meta">#show vlans</span><br></code></pre></div></td></tr></table></figure>
+
+<p>Switch</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Switch<span class="hljs-meta">#show interfaces trunk</span><br>Switch<span class="hljs-meta">#show interfaces switchport</span><br>Switch<span class="hljs-meta">#show vlan [brief]</span><br>Switch<span class="hljs-meta">#show interfaces vlan <span class="hljs-meta-string">&lt;vlan-id&gt;</span></span><br>Switch<span class="hljs-meta">#show run</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="演习结果"><a href="#演习结果" class="headerlink" title="演习结果"></a>演习结果</h3><p>switch端结果</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Switch<span class="hljs-meta">#show vlan</span><br><br>VLAN Name                             Status    Ports<br>---- -------------------------------- --------- -------------------------------<br><span class="hljs-number">1</span>    <span class="hljs-keyword">default</span>                          active    Fa0/<span class="hljs-number">17</span>, Fa0/<span class="hljs-number">18</span>, Fa0/<span class="hljs-number">19</span>, Fa0/<span class="hljs-number">20</span><br>                                                Fa0/<span class="hljs-number">21</span>, Fa0/<span class="hljs-number">22</span>, Fa0/<span class="hljs-number">23</span><br><span class="hljs-number">10</span>   VLAN0010                         active    Fa0/<span class="hljs-number">1</span>, Fa0/<span class="hljs-number">2</span>, Fa0/<span class="hljs-number">4</span>, Fa0/<span class="hljs-number">5</span><br>                                                Fa0/<span class="hljs-number">6</span>, Fa0/<span class="hljs-number">7</span>, Fa0/<span class="hljs-number">8</span><br><span class="hljs-number">20</span>   VLAN0020                         active    Fa0/<span class="hljs-number">3</span>, Fa0/<span class="hljs-number">9</span>, Fa0/<span class="hljs-number">10</span>, Fa0/<span class="hljs-number">11</span><br>                                                Fa0/<span class="hljs-number">12</span>, Fa0/<span class="hljs-number">13</span>, Fa0/<span class="hljs-number">14</span>, Fa0/<span class="hljs-number">15</span><br>                                                Fa0/<span class="hljs-number">16</span><br><span class="hljs-number">99</span>   VLAN0099                         active<br><span class="hljs-number">1002</span> fddi-<span class="hljs-keyword">default</span>                     active<br><span class="hljs-number">1003</span> token-ring-<span class="hljs-keyword">default</span>               active<br><span class="hljs-number">1004</span> fddinet-<span class="hljs-keyword">default</span>                  active<br><span class="hljs-number">1005</span> trnet-<span class="hljs-keyword">default</span>                    active<br><br>VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2<br>---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------<br><span class="hljs-number">1</span>    enet  <span class="hljs-number">100001</span>     <span class="hljs-number">1500</span>  -      -      -        -    -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><span class="hljs-number">10</span>   enet  <span class="hljs-number">100010</span>     <span class="hljs-number">1500</span>  -      -      -        -    -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><span class="hljs-number">20</span>   enet  <span class="hljs-number">100020</span>     <span class="hljs-number">1500</span>  -      -      -        -    -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><span class="hljs-number">99</span>   enet  <span class="hljs-number">100099</span>     <span class="hljs-number">1500</span>  -      -      -        -    -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><span class="hljs-number">1002</span> fddi  <span class="hljs-number">101002</span>     <span class="hljs-number">1500</span>  -      -      -        -    -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><span class="hljs-number">1003</span> tr    <span class="hljs-number">101003</span>     <span class="hljs-number">1500</span>  -      -      -        -    -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><span class="hljs-number">1004</span> fdnet <span class="hljs-number">101004</span>     <span class="hljs-number">1500</span>  -      -      -        ieee -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><span class="hljs-number">1005</span> trnet <span class="hljs-number">101005</span>     <span class="hljs-number">1500</span>  -      -      -        ibm  -        <span class="hljs-number">0</span>      <span class="hljs-number">0</span><br><br>Remote SPAN VLANs<br>------------------------------------------------------------------------------<br><br><br>Primary Secondary Type              Ports<br>------- --------- ----------------- ------------------------------------------<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Switch<span class="hljs-meta">#show interface trunk</span><br><br>Port        Mode         Encapsulation  Status        Native vlan<br>Fa0/<span class="hljs-number">24</span>      on           <span class="hljs-number">802.1</span>q         trunking      <span class="hljs-number">1</span><br><br>Port      Vlans allowed on trunk<br>Fa0/<span class="hljs-number">24</span>      <span class="hljs-number">1</span><span class="hljs-number">-4094</span><br><br>Port        Vlans allowed <span class="hljs-keyword">and</span> active in management domain<br>Fa0/<span class="hljs-number">24</span>      <span class="hljs-number">1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">99</span><br><br>Port        Vlans in spanning tree forwarding state <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> pruned<br>Fa0/<span class="hljs-number">24</span>      <span class="hljs-number">1</span>,<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">99</span><br></code></pre></div></td></tr></table></figure>
+<p>Router端结果</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router<span class="hljs-meta">#show ip interface brief</span><br>Interface                  IP-Address      OK? Method Status                Prot                                                                                                             ocol<br>FastEthernet0              unassigned      YES NVRAM  up                    up                                                                                                               <br>FastEthernet0<span class="hljs-number">.1</span>            <span class="hljs-number">172.16</span><span class="hljs-number">.1</span><span class="hljs-number">.254</span>    YES manual up                    up                                                                                                               <br>FastEthernet0<span class="hljs-number">.10</span>           <span class="hljs-number">172.16</span><span class="hljs-number">.10</span><span class="hljs-number">.254</span>   YES manual up                    up                                                                                                               <br>FastEthernet0<span class="hljs-number">.20</span>           <span class="hljs-number">172.16</span><span class="hljs-number">.20</span><span class="hljs-number">.254</span>   YES manual up                    up                                                                                                               <br>FastEthernet0<span class="hljs-number">.99</span>           unassigned      YES unset  up                    up                                                                                                               <br>FastEthernet1              unassigned      YES NVRAM  up                    down                                                                                                             <br>BRI0                       unassigned      YES NVRAM  administratively down down                                                                                                             <br>BRI0:<span class="hljs-number">1</span>                     unassigned      YES unset  administratively down down                                                                                                             <br>BRI0:<span class="hljs-number">2</span>                     unassigned      YES unset  administratively down down                                                                                                             <br>FastEthernet2              unassigned      YES unset  up                    down                                                                                                             <br>FastEthernet3              unassigned      YES unset  up                    down<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router<span class="hljs-meta">#show ip route</span><br>Codes: C - connected, S - <span class="hljs-keyword">static</span>, R - RIP, M - mobile, B - BGP<br>       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area<br>       N1 - OSPF NSSA external type <span class="hljs-number">1</span>, N2 - OSPF NSSA external type <span class="hljs-number">2</span><br>       E1 - OSPF external type <span class="hljs-number">1</span>, E2 - OSPF external type <span class="hljs-number">2</span><br>       i - IS-IS, su - IS-IS summary, L1 - IS-IS level<span class="hljs-number">-1</span>, L2 - IS-IS level<span class="hljs-number">-2</span><br>       ia - IS-IS inter area, * - candidate <span class="hljs-keyword">default</span>, U - per-user <span class="hljs-keyword">static</span> route<br>       o - ODR, P - periodic downloaded <span class="hljs-keyword">static</span> route<br><br>Gateway of last resort is <span class="hljs-keyword">not</span> <span class="hljs-built_in">set</span><br><br>     <span class="hljs-number">172.16</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span> is subnetted, <span class="hljs-number">3</span> subnets<br>C       <span class="hljs-number">172.16</span><span class="hljs-number">.20</span><span class="hljs-number">.0</span> is directly connected, FastEthernet0<span class="hljs-number">.20</span><br>C       <span class="hljs-number">172.16</span><span class="hljs-number">.10</span><span class="hljs-number">.0</span> is directly connected, FastEthernet0<span class="hljs-number">.10</span><br>C       <span class="hljs-number">172.16</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span> is directly connected, FastEthernet0<span class="hljs-number">.1</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>做完这个实验才理解了为什么单臂路由为什么在network里如此重要，也理解了为什么前两节课先生要那么大力气讲access和trunk的作用，通过路由器的虚拟网口，可以变相地将一台路由器当作多台使用（毕竟路由器那么贵），switch也变相承担了路由器的部分功能（switch相对便宜），但是虚拟网口是否能无限扩容并且实际体验是否能跟物理接续体验一致也是以后值得研究的课题。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/">network实践笔记</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/network/">network</a>
+                    
+                      <a class="hover-with-bg" href="/tags/cisco/">cisco</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/12/06/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9Aaccess%E5%92%8Ctrunk%E9%85%8D%E7%BD%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【network实践】access和trunk配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/12/04/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%87%E5%87%86ACL/">
+                        <span class="hidden-mobile">【network实践】标准ACL</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
