@@ -1,57 +1,90 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="雨晴">
+<meta property="og:url" content="http://liuminxuan.github.io/page/2/index.html">
+<meta property="og:site_name" content="雨晴">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
   <title>雨晴</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"liuminxuan.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":120,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null},"tajs":null}};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liuminxuan.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand"
-       href="/">&nbsp;<strong>LIU的学习笔记</strong>&nbsp;</a>
+    <a class="navbar-brand" href="/">
+      <strong>AMAHARASHI</strong>
+    </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -70,7 +103,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -82,7 +115,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -94,7 +127,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -106,7 +139,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -118,21 +151,24 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
         
         
           <li class="nav-item" id="search-btn">
-            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
-                class="iconfont icon-search"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" href="javascript:">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -140,34 +176,40 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/index.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="温故知新">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/index.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle" data-typed-text="人生不是轨道，是大海"></span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -181,20 +223,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/">【剑指offer】21. 调整数组顺序使奇数位于偶数前面</a>
+        <a href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" target="_self">
+          【剑指offer】21. 调整数组顺序使奇数位于偶数前面
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/">
-          
-          
-            
-          
-          剑指offer刷题笔记：21. 调整数组顺序使奇数位于偶数前面题目描述输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。
-示例123输入：nums = [1,2,3,4]输出：[1,3,2,4] 注：[3,1,2,4] 也是正确的答案之一。
-解题思路1 头尾指针记录这题是因为这是最近leetcode第一道没有出现错误一气呵成的题目，
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/09/04/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A21-%E8%B0%83%E6%95%B4%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E4%BD%BF%E5%A5%87%E6%95%B0%E4%BD%8D%E4%BA%8E%E5%81%B6%E6%95%B0%E5%89%8D%E9%9D%A2/" target="_self">
+        <div>
+          剑指offer刷题笔记：21. 调整数组顺序使奇数位于偶数前面题目描述输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。 示例123输入：nums = [1,2,3,4]输出：[1,3,2,4] 注：[3,1,2,4] 也是正确的答案之一。 解题思路1 头尾指针记录这题是因为这是最近leetcode第一道没有出现错误一气呵成的题目，
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -206,22 +245,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">剑指offer刷题笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">剑指offer刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
-              <a href="/tags/Leetcode/">Leetcode</a>
+              <a href="/tags/Leetcode/">#Leetcode</a>
             
-              <a href="/tags/%E6%95%B0%E7%BB%84/">数组</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/">#数组</a>
             
           </div>
         
@@ -235,20 +288,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">【剑指offer】18. 删除链表的节点</a>
+        <a href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" target="_self">
+          【剑指offer】18. 删除链表的节点
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/">
-          
-          
-            
-          
-          剑指 Offer 18. 删除链表的节点题目描述给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。返回删除后的链表的头节点。注意：此题对比原题有改动
-示例1123输入: head = [4,5,1,9], val = 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.
-示例2123输入:
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/09/03/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A18-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9/" target="_self">
+        <div>
+          剑指 Offer 18. 删除链表的节点题目描述给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。返回删除后的链表的头节点。注意：此题对比原题有改动 示例1123输入: head = [4,5,1,9], val = 5输出: [4,1,9]解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9. 示例2123输入:
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -260,22 +310,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">剑指offer刷题笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">剑指offer刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
-              <a href="/tags/Leetcode/">Leetcode</a>
+              <a href="/tags/Leetcode/">#Leetcode</a>
             
-              <a href="/tags/%E9%93%BE%E8%A1%A8/">链表</a>
+              <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
             
           </div>
         
@@ -289,23 +353,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/">【剑指offer】39. 数组中出现次数超过一半的数字</a>
+        <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
+          【剑指offer】39. 数组中出现次数超过一半的数字
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/">
-          
-          
-            
-          
-          39. 数组中出现次数超过一半的数字题目描述数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
-你可以假设数组是非空的，并且给定的数组总是存在多数元素。
-示例12输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]输出: 2
-
-解题思路1 排序因为需要的数字出现次数多于一半，那么排序后必定在中间。
-代码123456class Solution &#123;    public
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/09/02/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B039-%E6%95%B0%E7%BB%84%E4%B8%AD%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E8%B6%85%E8%BF%87%E4%B8%80%E5%8D%8A%E7%9A%84%E6%95%B0%E5%AD%97/" target="_self">
+        <div>
+          39. 数组中出现次数超过一半的数字题目描述数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。 你可以假设数组是非空的，并且给定的数组总是存在多数元素。 示例12输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]输出: 2  解题思路1 排序因为需要的数字出现次数多于一半，那么排序后必定在中间。 代码123456class Solution &#123;    public
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -317,18 +375,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">剑指offer刷题笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">剑指offer刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
           </div>
         
@@ -342,28 +414,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/">【Java学习】内部类</a>
+        <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/" target="_self">
+          【Java学习】内部类
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/">
-          
-          
-            
-          
-          关于内部类
-内部类(inner class) : 定义在另一个类重的类
-
-为什么需要内部类？
-
-内部类方法可以访问该类定义所在作用域中的数据，包括被 private 修饰的私有数据
-内部类可以对同一包中的其他类隐藏起来
-内部类可以一定程度修复 java 单继承的缺陷
-当我们想要定义一个回调函数却不想写大量代码的时候我们可以选择使用匿名内部类来实现
-
-内部类的分类内部类可以分为：静态内部类（嵌套类）
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/09/01/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%86%85%E9%83%A8%E7%B1%BB/" target="_self">
+        <div>
+          关于内部类 内部类(inner class) : 定义在另一个类重的类  为什么需要内部类？  内部类方法可以访问该类定义所在作用域中的数据，包括被 private 修饰的私有数据 内部类可以对同一包中的其他类隐藏起来 内部类可以一定程度修复 java 单继承的缺陷 当我们想要定义一个回调函数却不想写大量代码的时候我们可以选择使用匿名内部类来实现  内部类的分类内部类可以分为：静态内部类（嵌套类）
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -375,18 +436,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">Java学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
           </div>
         
@@ -400,20 +475,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/">【剑指offer】57. 和为s的两个数字</a>
+        <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/" target="_self">
+          【剑指offer】57. 和为s的两个数字
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/">
-          
-          
-            
-          
-          57. 和为s的两个数字题目描述输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。
-示例112输入：nums = [2,7,11,15], target = 9输出：[2,7] 或者 [7,2]
-示例212输入：nums = [10,26,30,31,47,60], target = 40输出：[10,30] 或者 [30,
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/09/01/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A57/" target="_self">
+        <div>
+          57. 和为s的两个数字题目描述输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。 示例112输入：nums = [2,7,11,15], target = 9输出：[2,7] 或者 [7,2] 示例212输入：nums = [10,26,30,31,47,60], target = 40输出：[10,30] 或者 [30,
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -425,22 +497,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">剑指offer刷题笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%91%E6%8C%87offer%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">剑指offer刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
-              <a href="/tags/Leetcode/">Leetcode</a>
+              <a href="/tags/Leetcode/">#Leetcode</a>
             
-              <a href="/tags/HashMap/">HashMap</a>
+              <a href="/tags/HashMap/">#HashMap</a>
             
           </div>
         
@@ -454,18 +540,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">【Java学习】接口</a>
+        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/" target="_self">
+          【Java学习】接口
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/">
-          
-          
-            
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8E%A5%E5%8F%A3/" target="_self">
+        <div>
           关于接口接口是Java语言中的一个抽象类，是抽象方法的集合，接口通常以interface来声明。一个类通过继承接口的方式来继承接口的抽象方法。接口不是类，编写接口的方式和类很相似，但是他们属于不同的概念。类描述对象的属性和方法，接口则包含类要实现的方法。除非实现接口的类是抽象类，否则该类要定义接口中的所有方法。接口无法被实例化，但是可以被实现。一个实现接口的类，必须实现接口内所描述的所有方法，否则
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -477,18 +562,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">Java学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
           </div>
         
@@ -502,18 +601,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">【Java学习】抽象类和抽象方法</a>
+        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/" target="_self">
+          【Java学习】抽象类和抽象方法
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/">
-          
-          
-            
-          
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/28/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/" target="_self">
+        <div>
           关于Java是面向对象的语言，通过类来描述对象，但是如果一个类中没有足够的信息来描述对象，那么这个类就是抽象类。抽象类不能被实例化,但是其他功能照常，成员变量、成员方法和构造方法和普通类一样。由于抽象类不能被实例化，所以抽象类必须被继承后才能使用。父类包含了子类集合的常见的方法，但是由于父类本身是抽象的，所以不能使用这些方法。在Java中抽象类表示的是一种继承关系，一个类只能继承一个抽象类，而一个
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -525,18 +623,32 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">Java学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
           </div>
         
@@ -550,21 +662,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/">【Java学习】instanceof</a>
+        <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/" target="_self">
+          【Java学习】instanceof
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/">
-          
-          
-            
-          
-          关于因为Java是一个面向对象的语言，需要通过创建实例来实现算法，所以Java中有一个instanceof操作符，用来判断实例是否属于某一个类。
-instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操作符，返回boolean数据类型。
-用法1result = object instanceof class;
-参数Result：布尔类型。Object：必选项
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/27/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9Ainstanceof/" target="_self">
+        <div>
+          关于因为Java是一个面向对象的语言，需要通过创建实例来实现算法，所以Java中有一个instanceof操作符，用来判断实例是否属于某一个类。 instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操作符，返回boolean数据类型。 用法1result = object instanceof class; 参数Result：布尔类型。Object：必选项
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -576,18 +684,32 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Java学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">Java学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
           </div>
         
@@ -601,22 +723,17 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/">【Leetcode】二叉树</a>
+        <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
+          【Leetcode】二叉树
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/">
-          
-          
-            
-          
-          编写二叉树123456public class TreeNode &#123;    int val;    TreeNode left;    TreeNode right;    TreeNode(int x) &#123; val = x; &#125; &#125;
-
-
-题目编号226 101
-226. 翻转二叉树解题思路二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/26/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%BA%8C%E5%8F%89%E6%A0%91/" target="_self">
+        <div>
+          编写二叉树123456public class TreeNode &#123;    int val;    TreeNode left;    TreeNode right;    TreeNode(int x) &#123; val = x; &#125; &#125;   题目编号226 101 226. 翻转二叉树解题思路二叉树分为左右节点，首先考虑一个节点，将左右子节点交换，然后递归到左
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -628,22 +745,36 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">Leetcode刷题笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Leetcode%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="category-chain-item">Leetcode刷题笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
-              <a href="/tags/Leetcode/">Leetcode</a>
+              <a href="/tags/Leetcode/">#Leetcode</a>
             
-              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a>
+              <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/">#二叉树</a>
             
           </div>
         
@@ -657,25 +788,17 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">谈谈遗传算法：用遗传算法求最大值</a>
+        <a href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/" target="_self">
+          谈谈遗传算法：用遗传算法求最大值
+        </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">
-          
-          
-            
-          
-          遗传算法简介遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：
-
-将要解决的问题主体进行编码，形成初始种群。
-用选择函数对种群中的个体进行选择。
-将生存的个体进行交叉，生成子代。
-交叉中设置一定的变异率，防止陷入局部最优解。
-将2.3.4.循环操作最终的到最优种群集合，在其中找到最优解
-
-        </a>
-      </p>
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2020/08/20/%E8%B0%88%E8%B0%88%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/" target="_self">
+        <div>
+          遗传算法简介遗传算法运用自然界优胜劣汰的法则，可以解决大多数最优解问题，算法过程如下：  将要解决的问题主体进行编码，形成初始种群。 用选择函数对种群中的个体进行选择。 将生存的个体进行交叉，生成子代。 交叉中设置一定的变异率，防止陷入局部最优解。 将2.3.4.循环操作最终的到最优种群集合，在其中找到最优解
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -687,22 +810,36 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%B0%88%E8%B0%88%E6%8A%80%E6%9C%AF/">谈谈技术</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%B0%88%E8%B0%88%E6%8A%80%E6%9C%AF/" class="category-chain-item">谈谈技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/python/">python</a>
+              <a href="/tags/python/">#python</a>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
             
-              <a href="/tags/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">遗传算法</a>
+              <a href="/tags/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">#遗传算法</a>
             
           </div>
         
@@ -714,15 +851,9 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
 
 
 
@@ -734,7 +865,7 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
     
 
     
-      <a id="scroll-top-button" href="#" role="button">
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
         <i class="iconfont icon-arrowup" aria-hidden="true"></i>
       </a>
     
@@ -753,34 +884,37 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-
   
-</footer>
+  
+  
+</div>
 
-<!-- SCRIPTS -->
+  </footer>
 
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -791,81 +925,52 @@ instanceof是一个二元操作符，类似于 &#x3D;&#x3D;，&gt;，&lt; 等操
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/debouncer.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
 
-
-  
-    <script  src="/js/lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
-
-
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-      typing(title)
+        typing(text);
       
     })(window, document);
   </script>
 
 
 
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
   <script  src="/js/local-search.js" ></script>
-  <script>
-    (function () {
-      var path = "/local-search.xml";
-      var inputArea = document.querySelector("#local-search-input");
-      inputArea.onclick = function () {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-        this.onclick = null
-      }
-    })()
-  </script>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
 
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
