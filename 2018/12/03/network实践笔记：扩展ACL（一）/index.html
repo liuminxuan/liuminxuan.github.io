@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="keywords" content="">
-  <title>【network实践】扩展ACL(一) - LIU的学习笔记</title>
+  <title>【network实践】扩展ACL(一) - 雨晴</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -59,7 +59,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.1.1"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -228,25 +228,28 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：6 个月前
+                  本文最后更新于：2 年前
                 
               </p>
             
             <div class="markdown-body">
               <p> 与标准ACL不同，扩展ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。</p>
 <a id="more"></a>
-<h2 id="演习1"><a href="#演习1" class="headerlink" title="演习1"></a>演习1</h2><p><img src="/images/%E6%BC%94%E4%B9%A01%E6%8B%93%E6%89%91%E5%9B%BE.jpg" srcset="/img/loading.gif">  </p>
+
+<h2 id="演习1"><a href="#演习1" class="headerlink" title="演习1"></a>演习1</h2><p><img src="https://gitee.com/ishikuma/blogimage/raw/master/%E6%BC%94%E4%B9%A01%E6%8B%93%E6%89%91%E5%9B%BE.jpg" srcset="/img/loading.gif"></p>
 <h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><ol>
 <li>整个网络要能互相ping通  </li>
 <li>设置番号为100的扩展ACL，从PC A1到PC B1的数据包全部拒绝，其余都许可通信。</li>
 </ol>
 <p>首先配置路由器让其互相ping通  </p>
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 0</span><br>Router(config)<span class="hljs-meta">#ip address 192.168.1.254 255.255.255.0</span><br>Router(config)<span class="hljs-meta">#no shutdown</span><br>Router(config)<span class="hljs-meta">#interface fastethernet 1</span><br>Router(config)<span class="hljs-meta">#ip address 192.168.2.254 255.255.255.0</span><br>Router(config)<span class="hljs-meta">#no shutdown</span><br>Router<span class="hljs-meta">#show interface   确认端口是否配置成功</span><br></code></pre></div></td></tr></table></figure>
+
 <p>配置ACL</p>
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#access-list 100 deny ip host 192.168.1.1 host 192.168.2.1</span><br>Router(config)<span class="hljs-meta">#access-list 100 permit ip any any</span><br>Router(config)<span class="hljs-meta">#show access-lists 确认ACL是否建立成功</span><br>Router(config)<span class="hljs-meta">#interface fastethernet 0</span><br>Router(config)<span class="hljs-meta">#ip access-group 100 in</span><br></code></pre></div></td></tr></table></figure>
 <p>如果想设置Fa 1端口，就用</p>
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#interface fastethernet 1  </span><br>Router(config)<span class="hljs-meta">#ip access-group 100 out</span><br></code></pre></div></td></tr></table></figure>
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最后检查结果时，会出现PCA1到PCB1到达不能，PCB1到PCA1出现timeout，这是正常结果，因为tcp/ip的三次握手中，当PCA1到PCB1通路阻断时，PCA1不能回应PCB1发出的“问候”，从而出现timeout。  </p>
+<p>​       </p>
 
             </div>
             <hr>
@@ -279,9 +282,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/12/04/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%89%A9%E5%B1%95ACL%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                      <a href="/2018/12/04/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%87%E5%87%86ACL/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【network实践】扩展ACL(二)</span>
+                        <span class="hidden-mobile">【network实践】标准ACL</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
