@@ -172,7 +172,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-03-02 18:33" pubdate>
+      <time datetime="2019-03-02 19:33" pubdate>
         2019年3月2日 晚上
       </time>
     </span>
@@ -242,7 +242,7 @@
 <li>返回结果，结束程序。</li>
 </ol>
 <p>此问题中基线条件为<strong>一条边长度是另一条边的整数倍</strong>。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p><strong>D&amp;C原理</strong></p>
 <ol>
@@ -258,7 +258,7 @@
 <li>结束。</li>
 </ol>
 <p>代码表现为：</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum</span>(<span class="hljs-params">x</span>):</span><br>    <span class="hljs-keyword">if</span> x == <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> x + sum(x - <span class="hljs-number">2</span>)<br><span class="hljs-keyword">print</span> sum(<span class="hljs-number">6</span>)<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">sum</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">if</span> x == <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> x + <span class="hljs-built_in">sum</span>(x - <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span> <span class="hljs-built_in">sum</span>(<span class="hljs-number">6</span>)<br></code></pre></div></td></tr></table></figure>
 
 <h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序也运用了D&amp;C，其原理如下：</p>
 <ol>
@@ -269,7 +269,7 @@
 <li>结束程序。</li>
 </ol>
 <p>代码表现如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">quicksort</span>(<span class="hljs-params">array</span>):</span><br>    <span class="hljs-keyword">if</span> len(array) &lt; <span class="hljs-number">2</span>: <span class="hljs-comment">#基线条件</span><br>        <span class="hljs-keyword">return</span> array<br>    <span class="hljs-keyword">else</span>:<br>        pivot = array[<span class="hljs-number">0</span>]<br>        less = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> array[<span class="hljs-number">1</span>:] <span class="hljs-keyword">if</span> i &lt;= pivot] <span class="hljs-comment">#由所有小于等于基准值组成的子数组</span><br>        greater = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> array[<span class="hljs-number">1</span>:] <span class="hljs-keyword">if</span> i &gt; pivot] <span class="hljs-comment">#由所有大于基准值组成的子数组</span><br>        <span class="hljs-keyword">return</span> quicksort(less) + [pivot] + quicksort(greater)<br><span class="hljs-keyword">print</span> quicksort([<span class="hljs-number">10</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">quicksort</span>(<span class="hljs-params">array</span>):<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(array) &lt; <span class="hljs-number">2</span>: <span class="hljs-comment">#基线条件</span><br>        <span class="hljs-keyword">return</span> array<br>    <span class="hljs-keyword">else</span>:<br>        pivot = array[<span class="hljs-number">0</span>]<br>        less = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> array[<span class="hljs-number">1</span>:] <span class="hljs-keyword">if</span> i &lt;= pivot] <span class="hljs-comment">#由所有小于等于基准值组成的子数组</span><br>        greater = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> array[<span class="hljs-number">1</span>:] <span class="hljs-keyword">if</span> i &gt; pivot] <span class="hljs-comment">#由所有大于基准值组成的子数组</span><br>        <span class="hljs-keyword">return</span> quicksort(less) + [pivot] + quicksort(greater)<br><span class="hljs-built_in">print</span> quicksort([<span class="hljs-number">10</span>,<span class="hljs-number">5</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])<br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>

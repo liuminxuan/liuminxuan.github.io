@@ -172,7 +172,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-01-21 12:30" pubdate>
+      <time datetime="2020-01-21 13:30" pubdate>
         2020年1月21日 下午
       </time>
     </span>
@@ -236,9 +236,9 @@
               <p>以前学数组，总是学的稀里糊涂，对数组的生成以及对数组内存储数的查找并不明白是怎么一回事。</p>
 <p>最近温习Java的数组操作，对数组也有了一点更深的认识。</p>
 <p>先来看一段程序:</p>
-<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WhatIsArray</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <br>        <span class="hljs-keyword">int</span>[] book = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">100</span>];<br><br>        book[<span class="hljs-number">0</span>] = <span class="hljs-number">3</span>;<br>        System.out.println(book[<span class="hljs-number">0</span>]);<br><br>        book = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">3</span>];<br>        System.out.println(book[<span class="hljs-number">0</span>]);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WhatIsArray</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <br>        <span class="hljs-type">int</span>[] book = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">100</span>];<br><br>        book[<span class="hljs-number">0</span>] = <span class="hljs-number">3</span>;<br>        System.out.println(book[<span class="hljs-number">0</span>]);<br><br>        book = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">3</span>];<br>        System.out.println(book[<span class="hljs-number">0</span>]);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-<a id="more"></a>
+<span id="more"></span>
 
 <p>计算机生成数组的过程如下：</p>
 <ol>

@@ -172,7 +172,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-28 13:17" pubdate>
+      <time datetime="2021-01-28 14:17" pubdate>
         2021年1月28日 下午
       </time>
     </span>
@@ -249,7 +249,7 @@
 </ol>
 <h1 id="语法树"><a href="#语法树" class="headerlink" title="语法树"></a>语法树</h1><p>要了解程序语言运行的先后顺序，语法树是必要的。比如当计算器遇到“+”时，就生成了以“+”为根结点的二叉树，左右节点分别是数字；又比如当计算器遇到“;”的时候，就生成了以“;”为根结点的语法树，左边为上一个表达式，右边为下一个表达式。</p>
 <p>比如我们想计算如下算式：</p>
-<figure class="highlight gml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs gml"><span class="hljs-symbol">x</span> := <span class="hljs-number">-2</span>;<br><span class="hljs-symbol">x</span> := <span class="hljs-number">-2</span>*<span class="hljs-symbol">x</span>;<br><span class="hljs-symbol">x</span> := <span class="hljs-number">-2</span>*<span class="hljs-symbol">x</span>;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs llvm"><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span>*<span class="hljs-keyword">x</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span>*<span class="hljs-keyword">x</span><span class="hljs-comment">;</span><br></code></pre></div></td></tr></table></figure>
 <p>我们得到了如下所示的语法树：<br><img src="https://raw.githubusercontent.com/liuminxuan/PicRepo/main/ObjectDiagramOfAssignCalculator.png" srcset="/img/loading.gif" alt="ObjectDiagramOfAssignCalculator"></p>
 <h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>虚拟机通过读取语法树里的节点，进而对节点进行处理，从而输出结果，本项目中的虚拟机通过Map和Stack实现数字的加减乘除。</p>
 <p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/liuminxuan/LanguageProcessor">点此进入</a></p>

@@ -172,7 +172,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2019-03-01 10:07" pubdate>
+      <time datetime="2019-03-01 11:07" pubdate>
         2019年3月1日 上午
       </time>
     </span>
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      482 字
+      489 字
     </span>
   
 
@@ -242,9 +242,9 @@
 <li>如果是钥匙，结束返回。</li>
 <li>回到第二步。</li>
 </ol>
-<a id="more"></a>
+<span id="more"></span>
 
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">look_for_key</span>(<span class="hljs-params">main_box</span>):</span><br>    pile = main_box.make_a_pile_to_look_through()<br>    <span class="hljs-keyword">while</span> pile <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty:<br>        box = pile.grab_a_box()<br>        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> box:<br>            <span class="hljs-keyword">if</span> item.is_a_box():<br>                pile.append(item)<br>            <span class="hljs-keyword">elif</span> item.is_a_key():<br>                <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;find the key!&quot;</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">look_for_key</span>(<span class="hljs-params">main_box</span>):<br>    pile = main_box.make_a_pile_to_look_through()<br>    <span class="hljs-keyword">while</span> pile <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> empty:<br>        box = pile.grab_a_box()<br>        <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> box:<br>            <span class="hljs-keyword">if</span> item.is_a_box():<br>                pile.append(item)<br>            <span class="hljs-keyword">elif</span> item.is_a_key():<br>                <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;find the key!&quot;</span><br></code></pre></div></td></tr></table></figure>
 
 
 <p><strong>方法二</strong></p>
@@ -253,12 +253,12 @@
 <li>如果是盒子，返回第一步。</li>
 <li>如果是钥匙，结束返回。</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">look_for_key</span>(<span class="hljs-params">box</span>):</span><br>    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> box:<br>        <span class="hljs-keyword">if</span> item.is_a_box(): <span class="hljs-comment">#递归条件</span><br>            look_for_key(item)<br>        <span class="hljs-keyword">elif</span> item.is_a_key(): <span class="hljs-comment">#基线条件</span><br>            <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;find the key!&quot;</span><br><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">look_for_key</span>(<span class="hljs-params">box</span>):<br>    <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> box:<br>        <span class="hljs-keyword">if</span> item.is_a_box(): <span class="hljs-comment">#递归条件</span><br>            look_for_key(item)<br>        <span class="hljs-keyword">elif</span> item.is_a_key(): <span class="hljs-comment">#基线条件</span><br>            <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;find the key!&quot;</span><br><br></code></pre></div></td></tr></table></figure>
 <p>第二种方法就使用了递归，自己调用自己。</p>
 <h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>一个简单函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greet</span>(<span class="hljs-params">name</span>):</span><br>	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;hello,&quot;</span> + name + <span class="hljs-string">&quot;!&quot;</span><br>	greet2(name)<br>	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;greeting ready to say bye...&quot;</span><br>	bye()<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">greet</span>(<span class="hljs-params">name</span>):<br>	<span class="hljs-built_in">print</span> <span class="hljs-string">&quot;hello,&quot;</span> + name + <span class="hljs-string">&quot;!&quot;</span><br>	greet2(name)<br>	<span class="hljs-built_in">print</span> <span class="hljs-string">&quot;greeting ready to say bye...&quot;</span><br>	bye()<br></code></pre></div></td></tr></table></figure>
 <p>这个函数调用了两个函数，两个函数代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">greeet2</span>(<span class="hljs-params">name</span>):</span><br>	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;how are you,&quot;</span> + name + <span class="hljs-string">&quot;?&quot;</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bye</span>():</span><br>	<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;ok bye!&quot;</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">greeet2</span>(<span class="hljs-params">name</span>):<br>	<span class="hljs-built_in">print</span> <span class="hljs-string">&quot;how are you,&quot;</span> + name + <span class="hljs-string">&quot;?&quot;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">bye</span>():<br>	<span class="hljs-built_in">print</span> <span class="hljs-string">&quot;ok bye!&quot;</span><br></code></pre></div></td></tr></table></figure>
 
 <p>在内存中，这个函数运行过程如下：</p>
 <ol>
@@ -271,14 +271,14 @@
 <li>greet()返回。</li>
 </ol>
 <p>这个栈用于存储多个函数的变量，被称为<strong>调用栈</strong>。所有函数调用都进入调用栈。</p>
-<h1 id="递归调用栈"><a href="#递归调用栈" class="headerlink" title="递归调用栈"></a>递归调用栈</h1><p>给定函数factorial(5)写做5!=5*4*3*2*1，那么：</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fact</span>(<span class="hljs-params">x</span>):</span><br>	<span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>	<span class="hljs-keyword">else</span>:<br>		<span class="hljs-keyword">return</span> x*fact(x<span class="hljs-number">-1</span>)<br></code></pre></div></td></tr></table></figure>
+<h1 id="递归调用栈"><a href="#递归调用栈" class="headerlink" title="递归调用栈"></a>递归调用栈</h1><p>给定函数factorial(5)写做5!&#x3D;5*4*3*2*1，那么：</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fact</span>(<span class="hljs-params">x</span>):<br>	<span class="hljs-keyword">if</span> x == <span class="hljs-number">1</span>:<br>		<span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>	<span class="hljs-keyword">else</span>:<br>		<span class="hljs-keyword">return</span> x*fact(x-<span class="hljs-number">1</span>)<br></code></pre></div></td></tr></table></figure>
 
 <p>fact(3)的调用栈变化如下：</p>
 <ol>
-<li>搭积木，最下层放入x=3，其上依次为x=2，x=1。</li>
-<li>x=1满足结束条件，返回1，并弹出x=1的栈。</li>
-<li>返回2*1，弹出x=2的栈。</li>
+<li>搭积木，最下层放入x&#x3D;3，其上依次为x&#x3D;2，x&#x3D;1。</li>
+<li>x&#x3D;1满足结束条件，返回1，并弹出x&#x3D;1的栈。</li>
+<li>返回2*1，弹出x&#x3D;2的栈。</li>
 <li>返回3*2，结束程序。</li>
 </ol>
 <p>栈使用理解方便，但是占用内存大。栈太高时，可以转用循环。</p>

@@ -234,7 +234,7 @@
             
             <div class="markdown-body">
               <h2 id="演习2"><a href="#演习2" class="headerlink" title="演习2"></a>演习2</h2><p> 与标准ACL不同，扩展ACL可以进行对送信元IP地址、宛先IP地址、プロトコル、送信元ポート、宛先ポート的控制来进行针对性的访问控制。  </p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p><img src="https://gitee.com/ishikuma/blogimage/raw/master/%E6%BC%94%E4%B9%A01%E6%8B%93%E6%89%91%E5%9B%BE.jpg" srcset="/img/loading.gif"></p>
 <h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><ol>
@@ -250,7 +250,7 @@
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C"><span class="hljs-keyword">switch</span>(config)<span class="hljs-meta">#interface vlan 1</span><br><span class="hljs-keyword">switch</span>(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#ip address 192.168.1.100 255.255.255.0</span><br><span class="hljs-keyword">switch</span>(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#no shutdown</span><br><span class="hljs-keyword">switch</span>(config-<span class="hljs-keyword">if</span>)<span class="hljs-meta">#exit</span><br><span class="hljs-keyword">switch</span>(config)<span class="hljs-meta">#ip default-gateway 192.168.1.254</span><br></code></pre></div></td></tr></table></figure>
 <p>switch有两台，根据上述代码可以配置另一台  </p>
 <p>配置router密码  </p>
-<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#<span class="hljs-meta-keyword">line</span> vty 0 4</span><br>Router(config-line)<span class="hljs-meta">#password cisco</span><br>Router(config-line)<span class="hljs-meta">#login</span><br>Router(config-line)<span class="hljs-meta">#end</span><br>Router<span class="hljs-meta">#show run 确认router密码是否配置成功</span><br></code></pre></div></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs C">Router(config)<span class="hljs-meta">#<span class="hljs-keyword">line</span> vty 0 4</span><br>Router(config-line)<span class="hljs-meta">#password cisco</span><br>Router(config-line)<span class="hljs-meta">#login</span><br>Router(config-line)<span class="hljs-meta">#end</span><br>Router<span class="hljs-meta">#show run 确认router密码是否配置成功</span><br></code></pre></div></td></tr></table></figure>
 
 <h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>最终结果为PCA无法telnet到PCB（显示访问拒绝），但是PCB可以telnet到PCA，电脑之间的互相ping正常。</p>
 
@@ -285,9 +285,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/12/05/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%8D%95%E8%87%82%E8%B7%AF%E7%94%B1%E7%9A%84%E5%AE%9E%E7%8E%B0/">
+                      <a href="/2018/12/04/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%87%E5%87%86ACL/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【network实践】单臂路由的实现</span>
+                        <span class="hidden-mobile">【network实践】标准ACL</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -295,8 +295,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2018/12/04/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%A0%87%E5%87%86ACL/">
-                        <span class="hidden-mobile">【network实践】标准ACL</span>
+                      <a href="/2018/12/03/network%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%89%A9%E5%B1%95ACL%EF%BC%88%E4%B8%80%EF%BC%89/">
+                        <span class="hidden-mobile">【network实践】扩展ACL(一)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
