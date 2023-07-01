@@ -4,12 +4,43 @@
   
   
   <entry>
+    <title>【Linux】如何通过免密登录传送文件</title>
+    <link href="/2023/07/02/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/"/>
+    <url>/2023/07/02/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<p>工作中有时候会遇到数据迁移的场景，比如将minio的一个存储节点移动到另一个服务器中，直接使用SCP可能会在传输过程中有中断，所以可以使用免密登录的方式登录目标服务器进行SCP数据传送。</p><p>假如原数据在192.168.21.22上，目标服务器为192.168.21.33。</p><p>步骤如下:</p><ol><li>在192.168.21.22上生成Key <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa<br></code></pre></td></tr></table></figure></li><li>进入 <code>.ssh</code>路径 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd .ssh<br></code></pre></td></tr></table></figure></li><li>将<code>id_rsa.pub</code>传送到192.168.21.33的<code>.ssh</code>路径下（如果没有，就新建）。 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">scp  -P22 ./id_rsa.pub username@<span class="hljs-number">192.168</span><span class="hljs-number">.21</span><span class="hljs-number">.33</span>:<span class="hljs-regexp">/.ssh/</span><br></code></pre></td></tr></table></figure></li><li>登录192.168.21.33并切换到<code>.ssh</code>路径下，更名。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> id_rsa.pub authorized_keys<br></code></pre></td></tr></table></figure></li><li>测试ssh免密登录是否成功。</li><li>传送文件，然后合上电脑，该干嘛干嘛。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nohup scp -r -P22 ./data/store puaiuc@192.168.21.33:/data/  &gt; ./sl.log 2&gt;&amp;1 &amp; <br></code></pre></td></tr></table></figure></li><li>传送完毕查看数据一致性。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -lR | grep <span class="hljs-string">&quot;^d&quot;</span> | <span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【小项目】Java实现带编译器和解释器的计算器</title>
     <link href="/2021/01/28/%E3%80%90%E5%B0%8F%E9%A1%B9%E7%9B%AE%E3%80%91Java%E5%AE%9E%E7%8E%B0%E7%BC%96%E8%AF%91%E5%99%A8%E5%92%8C%E8%A7%A3%E9%87%8A%E5%99%A8/"/>
     <url>/2021/01/28/%E3%80%90%E5%B0%8F%E9%A1%B9%E7%9B%AE%E3%80%91Java%E5%AE%9E%E7%8E%B0%E7%BC%96%E8%AF%91%E5%99%A8%E5%92%8C%E8%A7%A3%E9%87%8A%E5%99%A8/</url>
     
-    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本项目通过Java写的语法树和虚拟机对variable实现简单的计算器操作，实现的功能如下图所示</p><p><img src="https://raw.githubusercontent.com/liuminxuan/PicRepo/main/StateDiagramOfAssignCalculator.png" alt="StateDiagramOfAssignCalculator"></p><h1 id="编译器和解释器"><a href="#编译器和解释器" class="headerlink" title="编译器和解释器"></a>编译器和解释器</h1><p>计算机语言可以有两种执行方式：</p><ol><li>先编译成机器码，再执行。</li><li>边解释边执行。</li></ol><p>我们常见的C和C++是通过先编译再执行，而 python可以边解释边执行。Java语言比较特殊，会对热点代码进行编译，编译和解释混用。</p><p>编译器和解释器区别如下：</p><ol><li>解释器可以运行同时翻译程序。编译器先扫描整个程序然后将程序翻译成机器码。</li><li>解释器可以用较少的时间分析程序，但是运行时间比编译器长。编译器需要较长的时间去分析程序，但是可以以较快的速度运行。</li><li>解释器不会生成临时的对象码，所以可以更好利用内存。编译器需要生成临时的文件去获取机器码关联，所以需要更多的内存。</li></ol><h1 id="语法树"><a href="#语法树" class="headerlink" title="语法树"></a>语法树</h1><p>要了解程序语言运行的先后顺序，语法树是必要的。比如当计算器遇到“+”时，就生成了以“+”为根结点的二叉树，左右节点分别是数字；又比如当计算器遇到“;”的时候，就生成了以“;”为根结点的语法树，左边为上一个表达式，右边为下一个表达式。</p><p>比如我们想计算如下算式：</p><figure class="highlight llvm"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs llvm"><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span>*<span class="hljs-keyword">x</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span>*<span class="hljs-keyword">x</span><span class="hljs-comment">;</span><br></code></pre></div></td></tr></table></figure><p>我们得到了如下所示的语法树：<br><img src="https://raw.githubusercontent.com/liuminxuan/PicRepo/main/ObjectDiagramOfAssignCalculator.png" alt="ObjectDiagramOfAssignCalculator"></p><h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>虚拟机通过读取语法树里的节点，进而对节点进行处理，从而输出结果，本项目中的虚拟机通过Map和Stack实现数字的加减乘除。</p><p>项目地址：<a href="https://github.com/liuminxuan/LanguageProcessor">点此进入</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>本项目通过Java写的语法树和虚拟机对variable实现简单的计算器操作，实现的功能如下图所示</p><p><img src="https://raw.githubusercontent.com/liuminxuan/PicRepo/main/StateDiagramOfAssignCalculator.png" alt="StateDiagramOfAssignCalculator"></p><h1 id="编译器和解释器"><a href="#编译器和解释器" class="headerlink" title="编译器和解释器"></a>编译器和解释器</h1><p>计算机语言可以有两种执行方式：</p><ol><li>先编译成机器码，再执行。</li><li>边解释边执行。</li></ol><p>我们常见的C和C++是通过先编译再执行，而 python可以边解释边执行。Java语言比较特殊，会对热点代码进行编译，编译和解释混用。</p><p>编译器和解释器区别如下：</p><ol><li>解释器可以运行同时翻译程序。编译器先扫描整个程序然后将程序翻译成机器码。</li><li>解释器可以用较少的时间分析程序，但是运行时间比编译器长。编译器需要较长的时间去分析程序，但是可以以较快的速度运行。</li><li>解释器不会生成临时的对象码，所以可以更好利用内存。编译器需要生成临时的文件去获取机器码关联，所以需要更多的内存。</li></ol><h1 id="语法树"><a href="#语法树" class="headerlink" title="语法树"></a>语法树</h1><p>要了解程序语言运行的先后顺序，语法树是必要的。比如当计算器遇到“+”时，就生成了以“+”为根结点的二叉树，左右节点分别是数字；又比如当计算器遇到“;”的时候，就生成了以“;”为根结点的语法树，左边为上一个表达式，右边为下一个表达式。</p><p>比如我们想计算如下算式：</p><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span>*<span class="hljs-keyword">x</span><span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span> :<span class="hljs-operator">=</span> <span class="hljs-number">-2</span>*<span class="hljs-keyword">x</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><p>我们得到了如下所示的语法树：<br><img src="https://raw.githubusercontent.com/liuminxuan/PicRepo/main/ObjectDiagramOfAssignCalculator.png" alt="ObjectDiagramOfAssignCalculator"></p><h1 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h1><p>虚拟机通过读取语法树里的节点，进而对节点进行处理，从而输出结果，本项目中的虚拟机通过Map和Stack实现数字的加减乘除。</p><p>项目地址：<a href="https://github.com/liuminxuan/LanguageProcessor">点此进入</a></p>]]></content>
     
+    
+    <categories>
+      
+      <category>小项目</category>
+      
+    </categories>
     
     
     <tags>
