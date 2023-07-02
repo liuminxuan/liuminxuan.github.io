@@ -4,9 +4,34 @@
   
   
   <entry>
+    <title>【Linux】如何使用sudo免密执行</title>
+    <link href="/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8sudo%E5%85%8D%E5%AF%86%E6%89%A7%E8%A1%8C/"/>
+    <url>/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8sudo%E5%85%8D%E5%AF%86%E6%89%A7%E8%A1%8C/</url>
+    
+    <content type="html"><![CDATA[<p>在使用Jenkins自动部署部署的时候，有的程序需要su权限执行，一种方法是将执行用户加入root权限组，另一种更为方便的方法是赋予该用户免输入密码sudo权限。</p><ol><li>切换root用户<code>su root</code></li><li>打开sudo配置文件<code>visudo</code></li><li>修改权限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">username   ALL=(ALL)NOPASSWD:ALL    <br></code></pre></td></tr></table></figure></li><li>保存退出</li><li>如果sudo之后还是被要求输入密码，就把用户添加到sudo用户组<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">usermod -<span class="hljs-selector-tag">a</span> -G sudo username<br></code></pre></td></tr></table></figure></li><li>sudo执行命令时，有时会显示command not found，因为sudo只提升了权限，环境变量还是原来的。<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ruby">vim /etc/sudoers<br><span class="hljs-title class_">Defaults</span>    secure_path = <span class="hljs-regexp">/sbin:/bin</span><span class="hljs-symbol">:/usr/sbin</span><span class="hljs-symbol">:/usr/bin</span><span class="hljs-symbol">:/usr/local/python3/bin</span>  <span class="hljs-comment"># 找到这一行，直接在后面以分号隔离之后，加上你的路径即可</span><br></code></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux学习笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【Linux】如何通过免密登录传送文件</title>
-    <link href="/2023/07/02/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/"/>
-    <url>/2023/07/02/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/</url>
+    <link href="/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/"/>
+    <url>/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/</url>
     
     <content type="html"><![CDATA[<p>工作中有时候会遇到数据迁移的场景，比如将minio的一个存储节点移动到另一个服务器中，直接使用SCP可能会在传输过程中有中断，所以可以使用免密登录的方式登录目标服务器进行SCP数据传送。</p><p>假如原数据在192.168.21.22上，目标服务器为192.168.21.33。</p><p>步骤如下:</p><ol><li>在192.168.21.22上生成Key <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa<br></code></pre></td></tr></table></figure></li><li>进入 <code>.ssh</code>路径 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd .ssh<br></code></pre></td></tr></table></figure></li><li>将<code>id_rsa.pub</code>传送到192.168.21.33的<code>.ssh</code>路径下（如果没有，就新建）。 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">scp  -P22 ./id_rsa.pub username@<span class="hljs-number">192.168</span><span class="hljs-number">.21</span><span class="hljs-number">.33</span>:<span class="hljs-regexp">/.ssh/</span><br></code></pre></td></tr></table></figure></li><li>登录192.168.21.33并切换到<code>.ssh</code>路径下，更名。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> id_rsa.pub authorized_keys<br></code></pre></td></tr></table></figure></li><li>测试ssh免密登录是否成功。</li><li>传送文件，然后合上电脑，该干嘛干嘛。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nohup scp -r -P22 ./data/store puaiuc@192.168.21.33:/data/  &gt; ./sl.log 2&gt;&amp;1 &amp; <br></code></pre></td></tr></table></figure></li><li>传送完毕查看数据一致性。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -lR | grep <span class="hljs-string">&quot;^d&quot;</span> | <span class="hljs-built_in">wc</span> -l<br></code></pre></td></tr></table></figure></li></ol>]]></content>
     

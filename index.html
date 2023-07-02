@@ -223,13 +223,74 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2023/07/02/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/" target="_self">
+        <a href="/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8sudo%E5%85%8D%E5%AF%86%E6%89%A7%E8%A1%8C/" target="_self">
+          【Linux】如何使用sudo免密执行
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8sudo%E5%85%8D%E5%AF%86%E6%89%A7%E8%A1%8C/" target="_self">
+        <div>
+          在使用Jenkins自动部署部署的时候，有的程序需要su权限执行，一种方法是将执行用户加入root权限组，另一种更为方便的方法是赋予该用户免输入密码sudo权限。  切换root用户su root 打开sudo配置文件visudo 修改权限1username   ALL=(ALL)NOPASSWD:ALL     保存退出 如果sudo之后还是被要求输入密码，就把用户添加到sudo用户组1user
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-07-02 16:35" pubdate>
+              2023-07-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">Linux学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/" target="_self">
           【Linux】如何通过免密登录传送文件
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/02/%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/07/02/%E3%80%90Linux%E3%80%91%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6/" target="_self">
         <div>
           工作中有时候会遇到数据迁移的场景，比如将minio的一个存储节点移动到另一个服务器中，直接使用SCP可能会在传输过程中有中断，所以可以使用免密登录的方式登录目标服务器进行SCP数据传送。 假如原数据在192.168.21.22上，目标服务器为192.168.21.33。 步骤如下:  在192.168.21.22上生成Key 1ssh-keygen -t rsa 进入 .ssh路径 1cd .ss
         </div>
@@ -768,72 +829,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%9A%E4%B8%BE/" target="_self">
-          【Java学习】枚举
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2020/10/14/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E6%9E%9A%E4%B8%BE/" target="_self">
-        <div>
-          Java枚举Java 枚举是一个特殊的类，一般表示一组常量，比如一年的 4 个季节，一个年的 12 个月份，一个星期的 7 天，方向有东南西北等。Java 枚举类使用 enum 关键字来定义，各个常量使用逗号 , 来分割。 例如定义一个颜色的枚举类1234enum Color &#123;     RED, GREEN, BLUE; &#125;  实例： 1234567891011121314e
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-14 16:53" pubdate>
-              2020-10-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">Java学习笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Java/">#Java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
